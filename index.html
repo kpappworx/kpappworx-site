@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KPappworx — AI Products & App Development Studio</title>
+  <meta name="description" content="KPappworx is an AI product studio. We build SaaS tools, iOS apps, and custom AI solutions for startups and businesses — fast, affordable, and production-ready." />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{background:#08080f;color:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+
+    /* NAV */
+    nav{border-bottom:1px solid rgba(255,255,255,0.06);padding:18px 64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(8,8,15,0.92);backdrop-filter:blur(16px);z-index:100}
+    .logo{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:800;letter-spacing:-0.3px}
+    .logo svg{width:36px;height:36px}
+    .nav-links{display:flex;align-items:center;gap:32px;font-size:14px;color:rgba(255,255,255,0.45)}
+    .nav-links a:hover{color:#fff;transition:color 0.2s}
+    .nav-cta{background:#7c3aed;color:#fff!important;padding:10px 22px;border-radius:9px;font-weight:700;font-size:13px!important;transition:background 0.2s}
+    .nav-cta:hover{background:#6d28d9!important}
+
+    /* HERO */
+    .hero{max-width:1100px;margin:0 auto;padding:130px 64px 100px;text-align:center;position:relative}
+    .hero::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(124,58,237,0.18) 0%,transparent 70%);pointer-events:none}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.22);color:#a78bfa;font-size:12px;font-weight:600;padding:7px 18px;border-radius:100px;margin-bottom:36px;letter-spacing:0.3px}
+    .pulse{width:6px;height:6px;background:#7c3aed;border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+    .hero h1{font-size:clamp(44px,7vw,76px);font-weight:900;letter-spacing:-3px;line-height:1.02;margin-bottom:26px}
+    .hero h1 em{font-style:normal;background:linear-gradient(135deg,#a78bfa 0%,#818cf8 50%,#60a5fa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero p{font-size:19px;color:rgba(255,255,255,0.42);max-width:560px;margin:0 auto 52px;line-height:1.7}
+    .hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+    .btn-primary{background:#7c3aed;color:#fff;padding:15px 34px;border-radius:12px;font-size:15px;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px}
+    .btn-primary:hover{background:#6d28d9;transform:translateY(-2px);box-shadow:0 12px 32px rgba(124,58,237,0.35)}
+    .btn-outline{background:transparent;color:rgba(255,255,255,0.6);padding:15px 34px;border-radius:12px;font-size:15px;font-weight:500;border:1px solid rgba(255,255,255,0.12);transition:all 0.2s}
+    .btn-outline:hover{background:rgba(255,255,255,0.05);color:#fff;border-color:rgba(255,255,255,0.22)}
+
+    /* TRUST BAR */
+    .trust-bar{border-top:1px solid rgba(255,255,255,0.06);border-bottom:1px solid rgba(255,255,255,0.06);padding:28px 64px;display:flex;justify-content:center;gap:64px;flex-wrap:wrap}
+    .trust-item{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.35)}
+    .trust-item svg{width:16px;height:16px;color:#7c3aed}
+    .trust-item strong{color:rgba(255,255,255,0.65);font-weight:600}
+
+    /* SECTION */
+    .section{max-width:1100px;margin:0 auto;padding:90px 64px}
+    .sec-label{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:#7c3aed;font-weight:700;margin-bottom:14px}
+    .sec-title{font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+    .sec-sub{font-size:16px;color:rgba(255,255,255,0.38);line-height:1.65}
+    .sec-header{margin-bottom:52px}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .service-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:18px;padding:32px;transition:all 0.25s;position:relative;overflow:hidden}
+    .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#7c3aed,#4f46e5);opacity:0;transition:opacity 0.25s}
+    .service-card:hover{background:rgba(255,255,255,0.055);border-color:rgba(124,58,237,0.25);transform:translateY(-3px)}
+    .service-card:hover::before{opacity:1}
+    .service-icon{width:48px;height:48px;border-radius:13px;background:rgba(124,58,237,0.15);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px}
+    .service-card h3{font-size:17px;font-weight:700;margin-bottom:10px}
+    .service-card p{font-size:13px;color:rgba(255,255,255,0.4);line-height:1.65;margin-bottom:16px}
+    .service-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .stag{font-size:11px;padding:3px 9px;border-radius:100px;background:rgba(124,58,237,0.12);color:#a78bfa;font-weight:500}
+
+    /* PRODUCTS */
+    .products-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+    .product-card{border-radius:20px;padding:36px;display:flex;flex-direction:column;gap:18px;transition:transform 0.2s;position:relative;overflow:hidden}
+    .product-card:hover{transform:translateY(-3px)}
+    .product-card.violet{background:linear-gradient(135deg,rgba(124,58,237,0.2),rgba(79,70,229,0.12));border:1px solid rgba(124,58,237,0.28)}
+    .product-card.blue{background:linear-gradient(135deg,rgba(59,130,246,0.16),rgba(14,165,233,0.1));border:1px solid rgba(59,130,246,0.22)}
+    .product-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px}
+    .product-card.violet .product-icon{background:rgba(124,58,237,0.25)}
+    .product-card.blue .product-icon{background:rgba(59,130,246,0.2)}
+    .product-card h3{font-size:22px;font-weight:800;letter-spacing:-0.5px}
+    .product-card p{font-size:14px;color:rgba(255,255,255,0.48);line-height:1.65;flex:1}
+    .product-features{display:flex;flex-direction:column;gap:7px}
+    .product-feature{font-size:13px;color:rgba(255,255,255,0.5);display:flex;align-items:center;gap:8px}
+    .product-feature::before{content:'✓';color:#4ade80;font-weight:700;font-size:11px;flex-shrink:0}
+    .product-footer{display:flex;align-items:center;justify-content:space-between;margin-top:4px;flex-wrap:wrap;gap:10px}
+    .product-cta{padding:10px 22px;border-radius:10px;font-size:13px;font-weight:700;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+    .product-card.violet .product-cta{background:#7c3aed;color:#fff}
+    .product-card.violet .product-cta:hover{background:#6d28d9}
+    .product-card.blue .product-cta{background:#3b82f6;color:#fff}
+    .product-card.blue .product-cta:hover{background:#2563eb}
+    .live-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#4ade80;font-weight:600}
+    .live-dot{width:6px;height:6px;background:#4ade80;border-radius:50%}
+
+    /* APPS */
+    .apps-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+    .app-card{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:20px;display:flex;align-items:flex-start;gap:14px;transition:all 0.2s}
+    .app-card:hover{background:rgba(255,255,255,0.05);border-color:rgba(255,255,255,0.1);transform:translateY(-2px)}
+    .app-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+    .app-info{flex:1;min-width:0}
+    .app-cat{font-size:10px;color:rgba(255,255,255,0.22);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:3px}
+    .app-info h3{font-size:14px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .app-info p{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.5;margin-bottom:8px}
+    .app-store-link{font-size:11px;color:#7c3aed;font-weight:600;display:inline-flex;align-items:center;gap:3px}
+    .app-store-link:hover{color:#a78bfa}
+
+    /* HOW WE WORK */
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .process-step{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:28px 24px;text-align:center}
+    .step-num{width:36px;height:36px;background:rgba(124,58,237,0.2);border:1px solid rgba(124,58,237,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#a78bfa;margin:0 auto 16px}
+    .process-step h4{font-size:15px;font-weight:700;margin-bottom:8px}
+    .process-step p{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6}
+
+    /* CTA */
+    .cta-section{background:linear-gradient(135deg,rgba(124,58,237,0.18),rgba(79,70,229,0.12));border:1px solid rgba(124,58,237,0.22);border-radius:24px;padding:70px;text-align:center;margin:0 64px}
+    .cta-section h2{font-size:40px;font-weight:900;letter-spacing:-1.5px;margin-bottom:14px}
+    .cta-section p{font-size:17px;color:rgba(255,255,255,0.42);margin-bottom:36px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.65}
+
+    /* FOOTER */
+    footer{border-top:1px solid rgba(255,255,255,0.06);padding:36px 64px;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap;gap:20px;margin-top:80px}
+    .footer-logo{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:800}
+    .footer-logo svg{width:28px;height:28px}
+    .footer-links{display:flex;gap:28px;font-size:13px;color:rgba(255,255,255,0.28)}
+    .footer-links a:hover{color:rgba(255,255,255,0.65)}
+    .footer-copy{font-size:12px;color:rgba(255,255,255,0.18)}
+
+    @media(max-width:900px){
+      nav{padding:16px 24px}
+      .nav-links{display:none}
+      .hero{padding:80px 24px 60px}
+      .trust-bar{padding:24px;gap:24px}
+      .section{padding:60px 24px}
+      .services-grid{grid-template-columns:1fr}
+      .products-grid{grid-template-columns:1fr}
+      .process-grid{grid-template-columns:1fr 1fr}
+      .cta-section{padding:40px 24px;margin:0 24px}
+      footer{padding:28px 24px;flex-direction:column;align-items:flex-start}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lg1" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#a855f7"/>
+        </linearGradient>
+      </defs>
+      <path d="M60 40 L60 160 M60 100 L110 40 M60 100 L110 160" stroke="url(#lg1)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M125 40 C125 40 170 40 170 70 C170 100 125 100 125 100 C125 100 170 100 170 130 C170 160 125 160 125 160" stroke="url(#lg1)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    KPappworx
+  </div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#products">Products</a>
+    <a href="#apps">Portfolio</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:kanthipriyamahale@gmail.com" class="nav-cta">Work With Us →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">
+    <span class="pulse"></span>
+    AI Product Studio · Bangalore, India
+  </div>
+  <h1>We build <em>AI-powered</em><br/>products that ship</h1>
+  <p>SaaS tools, iOS apps, and custom AI solutions — built fast, priced fairly, and ready for production. From idea to launch.</p>
+  <div class="hero-ctas">
+    <a href="mailto:kanthipriyamahale@gmail.com" class="btn-primary">Start a Project →</a>
+    <a href="#products" class="btn-outline">See Our Work</a>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span><strong>12+ Products</strong> shipped to production</span>
+  </div>
+  <div class="trust-item">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span><strong>AI + iOS + SaaS</strong> under one roof</span>
+  </div>
+  <div class="trust-item">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span><strong>Fast delivery</strong> — weeks, not months</span>
+  </div>
+  <div class="trust-item">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+    <span><strong>Startups to enterprises</strong> welcome</span>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<div class="section" id="services">
+  <div class="sec-header">
+    <p class="sec-label">What We Build</p>
+    <h2 class="sec-title">Services</h2>
+    <p class="sec-sub">We take your idea from concept to a working product — AI-first, mobile-ready, and built to scale.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-icon">🤖</div>
+      <h3>AI Tool Development</h3>
+      <p>Custom AI-powered tools built on top of GPT, Claude, or your own models. Automation, document processing, content generation, intelligent assistants — anything that saves your team hours.</p>
+      <div class="service-tags">
+        <span class="stag">LLM Integration</span>
+        <span class="stag">Automation</span>
+        <span class="stag">Claude / GPT</span>
+        <span class="stag">RAG</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">📱</div>
+      <h3>iOS App Development</h3>
+      <p>Native and cross-platform iOS apps — from consumer apps to business tools. Clean UI, fast performance, App Store ready. We've shipped 10+ apps to production.</p>
+      <div class="service-tags">
+        <span class="stag">Swift</span>
+        <span class="stag">SwiftUI</span>
+        <span class="stag">App Store</span>
+        <span class="stag">In-App Purchase</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🚀</div>
+      <h3>SaaS Development</h3>
+      <p>Full-stack SaaS products with auth, billing, dashboards, and APIs — built on modern stacks like Next.js, Supabase, and Vercel. Subscription-ready from day one.</p>
+      <div class="service-tags">
+        <span class="stag">Next.js</span>
+        <span class="stag">Supabase</span>
+        <span class="stag">Stripe / LemonSqueezy</span>
+        <span class="stag">Vercel</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">⚡</div>
+      <h3>MVP in Weeks</h3>
+      <p>Got a startup idea? We build lean, validated MVPs fast — so you can get to market, test with real users, and raise funding before burning runway on a full build.</p>
+      <div class="service-tags">
+        <span class="stag">Rapid Prototyping</span>
+        <span class="stag">MVP</span>
+        <span class="stag">Startup</span>
+        <span class="stag">Fast Launch</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🔗</div>
+      <h3>API & Integrations</h3>
+      <p>Connect your product to any third-party service — payment gateways, CRMs, communication tools, data sources. We design clean APIs and handle complex integrations.</p>
+      <div class="service-tags">
+        <span class="stag">REST API</span>
+        <span class="stag">Webhooks</span>
+        <span class="stag">Zapier</span>
+        <span class="stag">Custom Integrations</span>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon">🎨</div>
+      <h3>Product Design & UI</h3>
+      <p>Clean, modern product design that converts. We design and build interfaces that feel premium — dark themes, responsive layouts, and intuitive user flows.</p>
+      <div class="service-tags">
+        <span class="stag">UI/UX</span>
+        <span class="stag">Tailwind CSS</span>
+        <span class="stag">Responsive</span>
+        <span class="stag">Design Systems</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section" id="products">
+  <div class="sec-header">
+    <p class="sec-label">Live Products</p>
+    <h2 class="sec-title">Built by us. Used right now.</h2>
+    <p class="sec-sub">These are our own SaaS products — proof of what we ship.</p>
+  </div>
+
+  <div class="products-grid">
+
+    <div class="product-card violet">
+      <div class="product-icon">📄</div>
+      <h3>DocGen</h3>
+      <p>Paste any GitHub repo URL and get full AI-generated documentation in 30 seconds. Built for developers and engineering teams who are tired of writing docs manually.</p>
+      <div class="product-features">
+        <div class="product-feature">Project overview & tech stack breakdown</div>
+        <div class="product-feature">File-by-file code guide</div>
+        <div class="product-feature">Setup instructions & main features</div>
+        <div class="product-feature">Download as Markdown or PDF</div>
+      </div>
+      <div class="product-footer">
+        <a href="https://docgen-lemon-eight.vercel.app" target="_blank" class="product-cta">Launch DocGen →</a>
+        <span class="live-badge"><span class="live-dot"></span> Live · Free & Pro $9/mo</span>
+      </div>
+    </div>
+
+    <div class="product-card blue">
+      <div class="product-icon">📋</div>
+      <h3>ATS Resume Checker</h3>
+      <p>AI tool that scores your resume against a job description before you apply. Built for job seekers who want to apply with confidence and beat the ATS filter.</p>
+      <div class="product-features">
+        <div class="product-feature">ATS compatibility score</div>
+        <div class="product-feature">Missing keywords analysis</div>
+        <div class="product-feature">Resume improvement suggestions</div>
+        <div class="product-feature">Instant results — no signup needed</div>
+      </div>
+      <div class="product-footer">
+        <a href="https://ats-oiq6t65g7-kpappworxs-projects.vercel.app/" target="_blank" class="product-cta">Launch ATS Checker →</a>
+        <span class="live-badge"><span class="live-dot"></span> Live · Free</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- HOW WE WORK -->
+<div class="section">
+  <div class="sec-header">
+    <p class="sec-label">Process</p>
+    <h2 class="sec-title">How we work</h2>
+    <p class="sec-sub">Simple, fast, no fluff.</p>
+  </div>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="step-num">1</div>
+      <h4>Discovery Call</h4>
+      <p>We understand your idea, goals, and constraints. 30 minutes is usually enough to scope a project.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">2</div>
+      <h4>Proposal & Timeline</h4>
+      <p>Clear scope, fixed price or retainer, and a realistic delivery timeline — no surprises.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">3</div>
+      <h4>Build & Iterate</h4>
+      <p>We build fast, share progress weekly, and incorporate feedback as we go.</p>
+    </div>
+    <div class="process-step">
+      <div class="step-num">4</div>
+      <h4>Launch & Support</h4>
+      <p>We deploy to production and stay available for fixes, improvements, and scaling.</p>
+    </div>
+  </div>
+</div>
+
+<!-- iOS PORTFOLIO -->
+<div class="section" id="apps">
+  <div class="sec-header">
+    <p class="sec-label">iOS Portfolio</p>
+    <h2 class="sec-title">10 apps shipped to the App Store</h2>
+    <p class="sec-sub">Across productivity, wellness, finance, and AI — all live and maintained.</p>
+  </div>
+  <div class="apps-grid">
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(124,58,237,0.2)">🤖</div>
+      <div class="app-info">
+        <div class="app-cat">AI · Productivity</div>
+        <h3>Aiden AI</h3>
+        <p>A private AI executive assistant for daily tasks.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(239,68,68,0.2)">🍅</div>
+      <div class="app-info">
+        <div class="app-cat">Productivity</div>
+        <h3>Pomodoro Timer DeepFocus</h3>
+        <p>Deep work sessions using the Pomodoro technique.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(34,197,94,0.2)">🌿</div>
+      <div class="app-info">
+        <div class="app-cat">AI · Wellness</div>
+        <h3>SVA: SelfCare AI</h3>
+        <p>Feel better, one day at a time with AI support.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(59,130,246,0.2)">💭</div>
+      <div class="app-info">
+        <div class="app-cat">Wellness</div>
+        <h3>Release Your Burden</h3>
+        <p>A mindful space to let go and find clarity.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(251,191,36,0.2)">🌸</div>
+      <div class="app-info">
+        <div class="app-cat">Productivity</div>
+        <h3>Haru Haru</h3>
+        <p>Day by day productivity inspired by Japanese simplicity.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(16,185,129,0.2)">💰</div>
+      <div class="app-info">
+        <div class="app-cat">Finance</div>
+        <h3>Cashchum</h3>
+        <p>Track spending and build better money habits.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(251,146,60,0.2)">🌳</div>
+      <div class="app-info">
+        <div class="app-cat">Journal</div>
+        <h3>Gratitude Tree: Daily Journal</h3>
+        <p>Grow your gratitude one entry at a time.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(251,191,36,0.2)">🫙</div>
+      <div class="app-info">
+        <div class="app-cat">Journal · Wellness</div>
+        <h3>Gratitudes Jar</h3>
+        <p>Collect daily gratitudes in a beautiful jar.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(16,185,129,0.2)">🧾</div>
+      <div class="app-info">
+        <div class="app-cat">Finance · Business</div>
+        <h3>InvoFast</h3>
+        <p>Create and send professional invoices fast.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon" style="background:rgba(124,58,237,0.2)">💼</div>
+      <div class="app-info">
+        <div class="app-cat">AI · Business</div>
+        <h3>BizMentorAI</h3>
+        <p>AI-powered business mentor and strategy guide.</p>
+        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-store-link">App Store →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="section" id="contact">
+  <div class="cta-section">
+    <h2>Have an idea?<br/>Let's build it.</h2>
+    <p>Whether you need an AI tool, a mobile app, or a full SaaS product — we can scope it, price it, and ship it. No long contracts, no agency bloat.</p>
+    <div class="hero-ctas">
+      <a href="mailto:kanthipriyamahale@gmail.com" class="btn-primary">Email Us →</a>
+      <a href="https://x.com/kpappworx" target="_blank" class="btn-outline">Follow on X</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="lg2" x1="0" y1="0" x2="200" y2="200" gradientUnits="userSpaceOnUse">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#a855f7"/>
+        </linearGradient>
+      </defs>
+      <path d="M60 40 L60 160 M60 100 L110 40 M60 100 L110 160" stroke="url(#lg2)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M125 40 C125 40 170 40 170 70 C170 100 125 100 125 100 C125 100 170 100 170 130 C170 160 125 160 125 160" stroke="url(#lg2)" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    KPappworx
+  </div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#products">Products</a>
+    <a href="#apps">Portfolio</a>
+    <a href="mailto:kanthipriyamahale@gmail.com">Contact</a>
+    <a href="https://x.com/kpappworx" target="_blank">Twitter</a>
+  </div>
+  <div class="footer-copy">© 2026 KPappworx · Bangalore, India · AI Product Studio</div>
+</footer>
+
+</body>
+</html>
