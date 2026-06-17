@@ -365,6 +365,40 @@
       border-radius: 50%;
     }
 
+    .early-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      color: #f59e0b;
+      background: rgba(245,158,11,0.08);
+      border: 1px solid rgba(245,158,11,0.2);
+      padding: 3px 9px;
+      border-radius: 100px;
+    }
+
+    .early-dot {
+      width: 5px;
+      height: 5px;
+      background: #f59e0b;
+      border-radius: 50%;
+    }
+
+    .product-card.featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .product-card.featured .product-main { flex: 1; display: flex; flex-direction: column; gap: 16px; }
+    .product-card.featured .product-side { flex: 1; display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
+
+    @media (max-width: 900px) {
+      .product-card.featured { flex-direction: column; }
+    }
+
     .product-card h3 {
       font-size: 18px;
       font-weight: 700;
@@ -864,6 +898,63 @@
       <div class="product-footer">
         <a href="https://ats-oiq6t65g7-kpappworxs-projects.vercel.app/" target="_blank" class="product-cta">Launch ATS Checker →</a>
         <span class="product-price"><strong>Free</strong></span>
+      </div>
+    </div>
+
+    <!-- QUARTERDECK AI — featured full-width card -->
+    <div class="product-card featured">
+      <div class="product-main">
+        <div class="product-header">
+          <div class="product-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+              <line x1="12" y1="3" x2="12" y2="8" stroke-linecap="round"/>
+              <line x1="12" y1="16" x2="12" y2="21" stroke-linecap="round"/>
+              <line x1="3" y1="12" x2="8" y2="12" stroke-linecap="round"/>
+              <line x1="16" y1="12" x2="21" y2="12" stroke-linecap="round"/>
+              <line x1="12" y1="10" x2="15.5" y2="6.5" stroke-linecap="round" stroke-width="2" stroke="currentColor" opacity="0.7"/>
+            </svg>
+          </div>
+          <span class="early-badge"><span class="early-dot"></span>Early Access</span>
+        </div>
+        <div>
+          <h3>Quarterdeck AI</h3>
+          <p style="font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;">The Revenue Trust Layer for HubSpot</p>
+        </div>
+        <p>Know if your CRM is board-ready before your next forecast. Quarterdeck connects to HubSpot, identifies pipeline risks hiding beneath the dashboard, and shows leadership how much of the forecast deserves to be trusted.</p>
+        <div class="product-footer">
+          <a href="mailto:kanthipriyamahale@gmail.com?subject=HubSpot&body=Hi%2C%20I%27d%20like%20to%20apply%20for%20a%20free%20Revenue%20Trust%20Audit." class="product-cta">Get a Free Revenue Trust Audit →</a>
+          <span class="product-price">Free · <strong>Design Partners Only</strong></span>
+        </div>
+      </div>
+      <div class="product-side">
+        <div class="product-features" style="border-top:none;padding-top:0;">
+          <div class="product-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            Revenue Health Score — pipeline strength at a glance
+          </div>
+          <div class="product-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            Board Readiness Score — know before the meeting starts
+          </div>
+          <div class="product-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            Deal Risk Flags — stale, overdue, unowned pipeline in seconds
+          </div>
+          <div class="product-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            Read-only HubSpot access — never edits your CRM
+          </div>
+          <div class="product-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            Prioritized actions — fix what moves forecast trust most
+          </div>
+          <div class="product-feature">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
+            Free audit for early design partners (3 spots left)
+          </div>
+        </div>
       </div>
     </div>
 
