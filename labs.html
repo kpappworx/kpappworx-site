@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Labs — KPAppWorx</title>
+<meta name="description" content="Independent apps built and maintained by KPAppWorx, separate from our Quarterdeck AI product work." />
+<meta name="robots" content="index,follow" />
+<link rel="icon" href="logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#fff;--bg-2:#f7f7f8;--ink:#101014;--ink-2:#4a4a54;--ink-3:#77777f;--line:#e8e8ed;--line-2:#d8d8e0;--accent:#4f46e5;--accent-deep:#3d34c9;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+.site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+.nav{max-width:1120px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px;}
+.brand{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:800;letter-spacing:-.02em;}
+.brand img{width:28px;height:28px;border-radius:7px;object-fit:cover;}
+.nav-back{font-size:14px;font-weight:500;color:var(--ink-2);}
+.nav-back:hover{color:var(--ink);}
+.hero{padding:88px 0 48px;}
+.kicker{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--accent);margin-bottom:14px;}
+.hero h1{font-size:clamp(32px,4.4vw,48px);font-weight:800;letter-spacing:-.03em;line-height:1.06;max-width:720px;margin-bottom:18px;}
+.hero p{font-size:17px;color:var(--ink-2);line-height:1.65;max-width:620px;}
+.section{padding:0 0 104px;}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;gap:14px;align-items:flex-start;transition:border-color .15s,box-shadow .15s,transform .15s;}
+.card:hover{border-color:var(--line-2);box-shadow:0 1px 2px rgba(16,16,20,.04),0 8px 24px rgba(16,16,20,.05);transform:translateY(-2px);}
+.icon{width:42px;height:42px;border-radius:11px;flex-shrink:0;background:var(--bg-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--ink-2);}
+.icon svg{width:18px;height:18px;}
+.info h3{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:3px;}
+.info p{font-size:13px;color:var(--ink-2);line-height:1.55;margin-bottom:8px;}
+.info .app-link{font-size:12.5px;font-weight:600;color:var(--accent);}
+.info .app-link:hover{color:var(--accent-deep);}
+.note{margin-top:22px;font-size:14px;color:var(--ink-2);line-height:1.7;}
+.footer{border-top:1px solid var(--line);background:var(--bg-2);padding:40px 0;font-size:13px;color:var(--ink-3);}
+.footer a{color:var(--ink-2);}
+.footer a:hover{color:var(--ink);}
+@media(max-width:900px){.grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.grid{grid-template-columns:1fr;}.wrap,.nav{padding:0 22px;}}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a href="index.html" class="brand" aria-label="KPAppWorx home"><img src="logo.png" alt="" width="28" height="28" />KPAppWorx</a>
+    <a href="index.html" class="nav-back">&larr; Back to Quarterdeck</a>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <div class="wrap">
+    <p class="kicker">KPAppWorx Labs</p>
+    <h1>Independent apps we've built and maintain.</h1>
+    <p>Separate from our enterprise product work on Quarterdeck AI, these are consumer and utility apps we ship and support on the App Store. We keep them here so they don't distract from the product — but they're evidence of a team that ships and maintains software, not just prototypes.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap">
+    <div class="grid">
+      <article class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.8 15.9L9 18.8l-.8-2.9a4.5 4.5 0 00-3.1-3.1L2.3 12l2.8-.8a4.5 4.5 0 003.1-3.1L9 5.3l.8 2.8a4.5 4.5 0 003.1 3.1l2.8.8-2.8.8a4.5 4.5 0 00-3.1 3.1z"/></svg></div><div class="info"><h3>Aiden AI</h3><p>A private AI executive assistant for daily tasks.</p><a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store &rarr;</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M10 2h4"/></svg></div><div class="info"><h3>DeepFocus</h3><p>Deep work sessions built on the Pomodoro technique.</p><a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store &rarr;</a></div></article>
+      <article class="card"><div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8M7 5h10v3.5c0 1-.7 1.9-1.6 2.2 0 0 .6 8.3.6 9.3a2 2 0 01-2 2h-4a2 2 0 01-2-2c0-1 .6-9.3.6-9.3A2.4 2.4 0 017 8.5V5z"/><path d="M10.5 14.5h3"/></svg></div><div class="info"><h3>Gratitudes Jar</h3><p>Collect daily gratitudes in a beautiful jar.</p><a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store &rarr;</a></div></article>
+    </div>
+    <p class="note">Also on the App Store: BizMentorAI, SVA SelfCare AI, Haru Haru, Cashchum, InvoFast, Release Your Burden, and Gratitude Tree &mdash; <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;">see all &rarr;</a></p>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">© <span id="year">2026</span> KPAppWorx Technologies Private Limited · Bangalore, India · <a href="index.html">Quarterdeck AI</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+</footer>
+<script>var y=document.getElementById('year');if(y)y.textContent=new Date().getFullYear();</script>
+</body>
+</html>
