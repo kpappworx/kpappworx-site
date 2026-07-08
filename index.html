@@ -1,1165 +1,1281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KPappworx — AI Products & App Development Studio</title>
-  <meta name="description" content="KPappworx is an AI product studio. We build SaaS tools, iOS apps, and custom AI solutions for startups and businesses — fast, affordable, and production-ready." />
-  <script defer src="/_vercel/insights/script.js"></script>
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-    :root {
-      --bg: #0b0b0f;
-      --bg-surface: #111116;
-      --bg-raised: #16161d;
-      --border: rgba(255,255,255,0.08);
-      --border-hover: rgba(255,255,255,0.14);
-      --text: #f0f0f4;
-      --text-muted: rgba(255,255,255,0.38);
-      --text-mid: rgba(255,255,255,0.55);
-      --accent: #7c3aed;
-      --accent-hover: #6d28d9;
-      --accent-dim: rgba(124,58,237,0.12);
-      --radius-sm: 8px;
-      --radius-md: 12px;
-      --radius-lg: 16px;
-      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-    }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font);
-      min-height: 100vh;
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    /* ─── NAV ─── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(11,11,15,0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 48px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      color: var(--text);
-    }
-
-    .logo img {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      font-size: 13.5px;
-      color: var(--text-muted);
-    }
-
-    .nav-links a { transition: color 0.15s; }
-    .nav-links a:hover { color: var(--text); }
-
-    .nav-btn {
-      background: var(--accent);
-      color: #fff !important;
-      padding: 7px 16px;
-      border-radius: var(--radius-sm);
-      font-size: 13px !important;
-      font-weight: 600;
-      transition: background 0.15s;
-    }
-
-    .nav-btn:hover { background: var(--accent-hover) !important; }
-
-    /* ─── HERO ─── */
-    .hero {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 96px 48px 80px;
-    }
-
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--text-muted);
-      letter-spacing: 0.5px;
-      margin-bottom: 28px;
-      border: 1px solid var(--border);
-      padding: 5px 12px;
-      border-radius: 100px;
-    }
-
-    .hero-label-dot {
-      width: 5px;
-      height: 5px;
-      background: #4ade80;
-      border-radius: 50%;
-    }
-
-    .hero h1 {
-      font-size: clamp(38px, 5.5vw, 62px);
-      font-weight: 800;
-      letter-spacing: -2px;
-      line-height: 1.06;
-      color: var(--text);
-      margin-bottom: 20px;
-      max-width: 700px;
-    }
-
-    .hero p {
-      font-size: 17px;
-      color: var(--text-muted);
-      max-width: 480px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-
-    .hero-ctas {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 22px;
-      border-radius: var(--radius-sm);
-      font-size: 14px;
-      font-weight: 600;
-      transition: all 0.15s;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-hover);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      color: var(--text-mid);
-      border: 1px solid var(--border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--border-hover);
-      color: var(--text);
-    }
-
-    /* ─── DIVIDER ─── */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 0;
-    }
-
-    /* ─── TRUST BAR ─── */
-    .trust-bar {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 24px 48px;
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .trust-icon {
-      width: 14px;
-      height: 14px;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .trust-item strong { color: var(--text-mid); font-weight: 500; }
-
-    /* ─── SECTION ─── */
-    .section {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 72px 48px;
-    }
-
-    .section-header {
-      margin-bottom: 40px;
-    }
-
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
-
-    .section-title {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.8px;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .section-sub {
-      font-size: 15px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ─── SERVICES ─── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .service-card {
-      background: var(--bg);
-      padding: 28px;
-      transition: background 0.15s;
-    }
-
-    .service-card:hover { background: var(--bg-surface); }
-
-    .service-icon {
-      width: 36px;
-      height: 36px;
-      margin-bottom: 16px;
-      color: var(--text-mid);
-    }
-
-    .service-card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .service-card p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.65;
-      margin-bottom: 16px;
-    }
-
-    .service-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-    }
-
-    .stag {
-      font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 4px;
-      background: var(--bg-raised);
-      color: var(--text-muted);
-      border: 1px solid var(--border);
-      font-weight: 500;
-    }
-
-    /* ─── PRODUCTS ─── */
-    .products-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .product-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      transition: border-color 0.15s;
-    }
-
-    .product-card:hover { border-color: var(--border-hover); }
-
-    .product-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .product-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--bg-raised);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-mid);
-      flex-shrink: 0;
-    }
-
-    .product-icon svg { width: 18px; height: 18px; }
-
-    .live-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      font-weight: 500;
-      color: #4ade80;
-      background: rgba(74,222,128,0.08);
-      border: 1px solid rgba(74,222,128,0.15);
-      padding: 3px 9px;
-      border-radius: 100px;
-    }
-
-    .live-dot {
-      width: 5px;
-      height: 5px;
-      background: #4ade80;
-      border-radius: 50%;
-    }
-
-    .early-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      font-weight: 500;
-      color: #f59e0b;
-      background: rgba(245,158,11,0.08);
-      border: 1px solid rgba(245,158,11,0.2);
-      padding: 3px 9px;
-      border-radius: 100px;
-    }
-
-    .early-dot {
-      width: 5px;
-      height: 5px;
-      background: #f59e0b;
-      border-radius: 50%;
-    }
-
-    .product-card.featured {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 40px;
-    }
-
-    .product-card.featured .product-main { flex: 1; display: flex; flex-direction: column; gap: 16px; }
-    .product-card.featured .product-side { flex: 1; display: flex; flex-direction: column; gap: 12px; justify-content: space-between; }
-
-    @media (max-width: 900px) {
-      .product-card.featured { flex-direction: column; }
-    }
-
-    .product-card h3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--text);
-      letter-spacing: -0.3px;
-      margin-bottom: 4px;
-    }
-
-    .product-card > p {
-      font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    .product-features {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      padding-top: 4px;
-      border-top: 1px solid var(--border);
-    }
-
-    .product-feature {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .product-feature svg {
-      width: 13px;
-      height: 13px;
-      color: #4ade80;
-      flex-shrink: 0;
-    }
-
-    .product-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 10px;
-      padding-top: 4px;
-    }
-
-    .product-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 18px;
-      border-radius: var(--radius-sm);
-      font-size: 13px;
-      font-weight: 600;
-      background: var(--accent);
-      color: #fff;
-      transition: background 0.15s;
-    }
-
-    .product-cta:hover { background: var(--accent-hover); }
-
-    .product-price {
-      font-size: 12px;
-      color: var(--text-muted);
-    }
-
-    .product-price strong { color: var(--text-mid); }
-
-    /* ─── PROCESS ─── */
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .process-step {
-      background: var(--bg);
-      padding: 28px 24px;
-    }
-
-    .step-num {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--accent);
-      letter-spacing: 1px;
-      margin-bottom: 14px;
-    }
-
-    .process-step h4 {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .process-step p {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* ─── APPS ─── */
-    .apps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .app-card {
-      background: var(--bg);
-      padding: 20px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      transition: background 0.15s;
-    }
-
-    .app-card:hover { background: var(--bg-surface); }
-
-    .app-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--bg-raised);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--text-mid);
-    }
-
-    .app-icon svg { width: 18px; height: 18px; }
-
-    .app-info { flex: 1; min-width: 0; }
-
-    .app-cat {
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 3px;
-    }
-
-    .app-info h3 {
-      font-size: 13.5px;
-      font-weight: 600;
-      color: var(--text);
-      margin-bottom: 4px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .app-info p {
-      font-size: 12px;
-      color: var(--text-muted);
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .app-link {
-      font-size: 12px;
-      color: var(--accent);
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 3px;
-      transition: opacity 0.15s;
-    }
-
-    .app-link:hover { opacity: 0.75; }
-
-    /* ─── CTA SECTION ─── */
-    .cta-wrap {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 0 48px 80px;
-    }
-
-    .cta-box {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 64px 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      flex-wrap: wrap;
-    }
-
-    .cta-text h2 {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.8px;
-      color: var(--text);
-      margin-bottom: 8px;
-    }
-
-    .cta-text p {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 420px;
-      line-height: 1.65;
-    }
-
-    .cta-actions {
-      display: flex;
-      gap: 10px;
-      flex-shrink: 0;
-      flex-wrap: wrap;
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 48px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .footer-logo img {
-      width: 22px;
-      height: 22px;
-      border-radius: 5px;
-      object-fit: cover;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-      font-size: 13px;
-      color: var(--text-muted);
-    }
-
-    .footer-links a:hover { color: var(--text-mid); }
-
-    .footer-copy {
-      font-size: 12px;
-      color: rgba(255,255,255,0.2);
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      nav { padding: 0 24px; }
-      .nav-links { display: none; }
-      .hero { padding: 64px 24px 48px; }
-      .trust-bar { padding: 20px 24px; gap: 20px; }
-      .section { padding: 56px 24px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .products-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: 1fr 1fr; }
-      .cta-wrap { padding: 0 24px 56px; }
-      .cta-box { padding: 36px 28px; flex-direction: column; align-items: flex-start; }
-      footer { padding: 24px; flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KPAppWorx — Enterprise AI Software</title>
+<meta name="description" content="KPAppWorx builds enterprise AI systems, AI SaaS products, and native iOS applications. Flagship product: Quarterdeck AI — the revenue trust layer for HubSpot." />
+<meta property="og:title" content="KPAppWorx — Enterprise AI Software" />
+<meta property="og:description" content="AI software built for production — not demos. Home of Quarterdeck AI." />
+<meta property="og:type" content="website" />
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+/* ================= RESET & TOKENS ================= */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  --bg:#ffffff;
+  --bg-2:#f7f7f8;
+  --bg-3:#f0f0f3;
+  --ink:#101014;
+  --ink-2:#4a4a54;
+  --ink-3:#77777f;
+  --line:#e8e8ed;
+  --line-2:#d8d8e0;
+  --accent:#4f46e5;
+  --accent-deep:#3d34c9;
+  --accent-soft:#eef0fe;
+  --good:#15803d;
+  --good-soft:#ecfdf3;
+  --warn:#b45309;
+  --warn-soft:#fffaeb;
+  --bad:#b91c1c;
+  --bad-soft:#fef2f2;
+  /* dark dashboard palette */
+  --dk-bg:#0d0f16;
+  --dk-panel:#141826;
+  --dk-line:rgba(255,255,255,0.08);
+  --dk-ink:#edeff6;
+  --dk-mut:#8b92ab;
+  --dk-good:#4ade80;
+  --dk-warn:#fbbf24;
+  --dk-bad:#f87171;
+  --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:20px;
+  --shadow-card:0 1px 2px rgba(16,16,20,0.04), 0 8px 24px rgba(16,16,20,0.05);
+  --shadow-deep:0 24px 64px -16px rgba(16,16,20,0.35);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
+body{
+  background:var(--bg); color:var(--ink); font-family:var(--font);
+  line-height:1.55; font-size:16px;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+}
+
+a{ color:inherit; text-decoration:none; }
+img{ max-width:100%; display:block; }
+button{ font:inherit; background:none; border:none; cursor:pointer; color:inherit; }
+
+:focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:4px; }
+
+.skip-link{
+  position:absolute; left:-9999px; top:0; z-index:999;
+  background:var(--ink); color:#fff; padding:10px 18px; border-radius:0 0 8px 0;
+  font-size:14px; font-weight:600;
+}
+.skip-link:focus{ left:0; }
+
+.wrap{ max-width:1120px; margin:0 auto; padding-left:32px; padding-right:32px; }
+
+/* ================= TYPE ================= */
+.kicker{
+  font-size:12px; font-weight:700; text-transform:uppercase;
+  letter-spacing:0.14em; color:var(--accent); margin-bottom:14px;
+}
+.h2{
+  font-size:clamp(28px,3.6vw,40px); font-weight:700; letter-spacing:-0.025em;
+  line-height:1.12; color:var(--ink); max-width:640px;
+}
+.lede{
+  font-size:17px; color:var(--ink-2); line-height:1.65; max-width:560px; margin-top:14px;
+}
+.section{ padding:104px 0; }
+.section-tint{ background:var(--bg-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+
+/* ================= BUTTONS ================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  padding:12px 22px; border-radius:10px; font-size:15px; font-weight:600;
+  transition:background .15s ease, border-color .15s ease, transform .15s ease, box-shadow .15s ease;
+  white-space:nowrap;
+}
+.btn svg{ width:15px; height:15px; }
+.btn-dark{ background:var(--ink); color:#fff; }
+.btn-dark:hover{ background:#26262e; transform:translateY(-1px); box-shadow:0 6px 20px -6px rgba(16,16,20,.4); }
+.btn-accent{ background:var(--accent); color:#fff; }
+.btn-accent:hover{ background:var(--accent-deep); transform:translateY(-1px); box-shadow:0 6px 20px -6px rgba(79,70,229,.5); }
+.btn-ghost{ background:transparent; color:var(--ink); border:1px solid var(--line-2); }
+.btn-ghost:hover{ border-color:var(--ink-3); background:var(--bg-2); }
+.btn-light{ background:#fff; color:var(--ink); }
+.btn-light:hover{ background:var(--bg-3); transform:translateY(-1px); }
+.btn-outline-light{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.28); }
+.btn-outline-light:hover{ border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.06); }
+
+.text-link{ color:var(--accent); font-weight:600; display:inline-flex; align-items:center; gap:5px; }
+.text-link:hover{ color:var(--accent-deep); }
+
+/* ================= NAV ================= */
+.site-header{
+  position:sticky; top:0; z-index:100;
+  background:rgba(255,255,255,0.85); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  max-width:1120px; margin:0 auto; padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between; gap:24px;
+}
+.brand{ display:flex; align-items:center; gap:10px; font-size:16px; font-weight:800; letter-spacing:-0.02em; }
+.brand img{ width:28px; height:28px; border-radius:7px; object-fit:cover; }
+.nav-links{ display:flex; align-items:center; gap:32px; font-size:14px; font-weight:500; color:var(--ink-2); }
+.nav-links a:not(.btn){ transition:color .15s; padding:4px 0; }
+.nav-links a:not(.btn):hover{ color:var(--ink); }
+.nav-links .btn{ padding:9px 18px; font-size:14px; }
+.nav-toggle{ display:none; width:40px; height:40px; align-items:center; justify-content:center; border-radius:8px; }
+.nav-toggle:hover{ background:var(--bg-2); }
+.nav-toggle svg{ width:20px; height:20px; }
+
+/* mobile menu */
+.mobile-menu{
+  display:none; flex-direction:column; gap:4px; padding:12px 24px 20px;
+  border-top:1px solid var(--line); background:#fff;
+}
+.mobile-menu a{ padding:12px 8px; font-size:15px; font-weight:500; color:var(--ink-2); border-radius:8px; }
+.mobile-menu a:hover{ background:var(--bg-2); color:var(--ink); }
+.mobile-menu.open{ display:flex; }
+
+/* ================= HERO ================= */
+.hero{ padding:120px 0 88px; position:relative; overflow:hidden; }
+.hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 45% at 70% -10%, rgba(79,70,229,0.07), transparent 65%),
+    radial-gradient(ellipse 45% 35% at 15% 0%, rgba(79,70,229,0.04), transparent 60%);
+}
+.hero .wrap{ position:relative; }
+.hero-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  font-size:13px; font-weight:600; color:var(--accent-deep);
+  background:var(--accent-soft); border:1px solid #dfe2fc;
+  padding:6px 14px 6px 8px; border-radius:100px; margin-bottom:32px;
+  transition:border-color .15s;
+}
+.hero-pill:hover{ border-color:#c3c8f9; }
+.hero-pill .tag{
+  background:var(--accent); color:#fff; font-size:11px; font-weight:700;
+  padding:2px 8px; border-radius:100px; letter-spacing:0.02em;
+}
+.hero h1{
+  font-size:clamp(40px,5.8vw,68px); font-weight:800; letter-spacing:-0.035em;
+  line-height:1.04; max-width:820px; margin-bottom:24px;
+}
+.hero h1 em{ font-style:normal; color:var(--accent); }
+.hero-sub{
+  font-size:18px; color:var(--ink-2); line-height:1.65; max-width:600px; margin-bottom:40px;
+}
+.hero-ctas{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.hero-note{ margin-top:28px; font-size:13.5px; color:var(--ink-3); }
+.hero-note strong{ color:var(--ink-2); font-weight:600; }
+
+/* ================= TRUST STRIP ================= */
+.trust{ border-top:1px solid var(--line); border-bottom:1px solid var(--line); background:var(--bg-2); }
+.trust-row{
+  max-width:1120px; margin:0 auto; padding:22px 32px;
+  display:flex; flex-wrap:wrap; gap:14px 40px; align-items:center;
+}
+.trust-item{ display:flex; align-items:center; gap:9px; font-size:13.5px; color:var(--ink-2); }
+.trust-item svg{ width:15px; height:15px; color:var(--good); flex-shrink:0; }
+.trust-item strong{ font-weight:600; color:var(--ink); }
+.trust-item .ph{ color:var(--ink-3); font-style:italic; }
+
+/* ================= QUARTERDECK ================= */
+.qd-section{ padding:112px 0 120px; background:linear-gradient(180deg,#fff 0%,var(--bg-2) 18%,var(--bg-2) 100%); border-bottom:1px solid var(--line); }
+.qd-head{ display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:end; margin-bottom:56px; }
+.qd-head-right{ display:flex; flex-direction:column; gap:20px; padding-bottom:6px; }
+.qd-head-right p{ font-size:16px; color:var(--ink-2); line-height:1.7; }
+.qd-ctas{ display:flex; gap:12px; flex-wrap:wrap; }
+.qd-badge{
+  display:inline-flex; align-items:center; gap:7px; align-self:flex-start;
+  font-size:12px; font-weight:600; color:var(--warn);
+  background:var(--warn-soft); border:1px solid #fde5b8;
+  padding:4px 12px; border-radius:100px;
+}
+.qd-badge .dot{ width:6px; height:6px; border-radius:50%; background:#f59e0b; }
+.qd-title{ font-size:clamp(34px,4.4vw,52px); font-weight:800; letter-spacing:-0.03em; line-height:1.05; }
+.qd-tagline{ margin-top:14px; font-size:18px; font-weight:600; color:var(--ink); }
+.qd-tagline span{ color:var(--accent); }
+
+/* dashboard mockup */
+.qd-window{
+  background:var(--dk-bg); border:1px solid rgba(16,16,20,.9); border-radius:var(--r-lg);
+  box-shadow:var(--shadow-deep); overflow:hidden; color:var(--dk-ink);
+}
+.qd-titlebar{
+  display:flex; align-items:center; gap:14px; padding:13px 18px;
+  border-bottom:1px solid var(--dk-line); background:rgba(255,255,255,.02);
+}
+.qd-dots{ display:flex; gap:6px; }
+.qd-dots span{ width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,.14); }
+.qd-titlebar .tb-title{ font-size:12.5px; font-weight:600; color:var(--dk-mut); }
+.qd-titlebar .tb-right{
+  margin-left:auto; display:flex; align-items:center; gap:6px;
+  font-size:11px; font-weight:600; color:var(--dk-good);
+  background:rgba(74,222,128,.08); border:1px solid rgba(74,222,128,.18);
+  padding:3px 10px; border-radius:100px;
+}
+.qd-titlebar .tb-right .dot{ width:5px; height:5px; border-radius:50%; background:var(--dk-good); }
+.qd-grid{
+  display:grid; grid-template-columns:repeat(12,1fr); gap:14px; padding:18px;
+}
+.qd-panel{
+  background:var(--dk-panel); border:1px solid var(--dk-line); border-radius:12px; padding:18px;
+  display:flex; flex-direction:column; gap:12px; min-width:0;
+}
+.qd-panel h4{
+  font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; color:var(--dk-mut);
+}
+.p-score{ grid-column:span 3; }
+.p-board{ grid-column:span 3; }
+.p-forecast{ grid-column:span 6; }
+.p-pipeline{ grid-column:span 7; }
+.p-risk{ grid-column:span 5; }
+
+.score-ring{ display:flex; align-items:center; gap:16px; }
+.score-num{ font-size:34px; font-weight:800; letter-spacing:-0.03em; line-height:1; }
+.score-num small{ font-size:14px; font-weight:600; color:var(--dk-mut); }
+.delta-up{ font-size:12px; font-weight:600; color:var(--dk-good); display:flex; align-items:center; gap:3px; }
+.delta-up svg{ width:11px; height:11px; }
+.qd-panel .sub{ font-size:12px; color:var(--dk-mut); line-height:1.5; }
+
+.board-checks{ display:flex; flex-direction:column; gap:7px; }
+.board-checks div{ display:flex; align-items:center; gap:8px; font-size:12px; color:var(--dk-ink); }
+.board-checks svg{ width:12px; height:12px; flex-shrink:0; }
+.bc-ok svg{ color:var(--dk-good); }
+.bc-warn svg{ color:var(--dk-warn); }
+.bc-warn{ color:var(--dk-mut) !important; }
+
+.fc-rows{ display:flex; flex-direction:column; gap:12px; }
+.fc-row{ display:grid; grid-template-columns:84px 1fr 68px; align-items:center; gap:12px; font-size:12px; }
+.fc-row .lbl{ color:var(--dk-mut); font-weight:500; }
+.fc-row .amt{ text-align:right; font-weight:700; font-variant-numeric:tabular-nums; }
+.fc-bar{ height:8px; border-radius:100px; background:rgba(255,255,255,.06); overflow:hidden; }
+.fc-bar i{ display:block; height:100%; border-radius:100px; }
+.fc-hi i{ width:86%; background:linear-gradient(90deg,#34d399,#4ade80); }
+.fc-md i{ width:58%; background:linear-gradient(90deg,#fbbf24,#f59e0b); }
+.fc-lo i{ width:32%; background:linear-gradient(90deg,#f87171,#ef4444); }
+
+.risk-rows{ display:flex; flex-direction:column; }
+.risk-row{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:9px 0; border-bottom:1px solid var(--dk-line); font-size:12.5px;
+}
+.risk-row:last-child{ border-bottom:none; }
+.risk-row .deal{ font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.risk-row .deal small{ display:block; font-weight:500; color:var(--dk-mut); font-size:11px; margin-top:1px; }
+.chip{ font-size:10.5px; font-weight:700; padding:3px 9px; border-radius:100px; white-space:nowrap; letter-spacing:.02em; }
+.chip-bad{ color:var(--dk-bad); background:rgba(248,113,113,.1); border:1px solid rgba(248,113,113,.22); }
+.chip-warn{ color:var(--dk-warn); background:rgba(251,191,36,.09); border:1px solid rgba(251,191,36,.22); }
+
+.qd-caption{
+  margin-top:16px; text-align:center; font-size:12.5px; color:var(--ink-3);
+}
+
+/* quarterdeck feature trio */
+.qd-feats{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px; }
+.qd-feat{
+  background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); padding:26px;
+  box-shadow:var(--shadow-card);
+}
+.qd-feat h3{ font-size:15.5px; font-weight:700; margin-bottom:8px; letter-spacing:-0.01em; }
+.qd-feat p{ font-size:13.5px; color:var(--ink-2); line-height:1.65; }
+.qd-feat .fi{
+  width:36px; height:36px; border-radius:10px; background:var(--accent-soft);
+  display:flex; align-items:center; justify-content:center; color:var(--accent); margin-bottom:16px;
+}
+.qd-feat .fi svg{ width:17px; height:17px; }
+
+/* ================= PROBLEMS ================= */
+.prob-list{ display:flex; flex-direction:column; border-top:1px solid var(--line); margin-top:56px; }
+.prob-row{
+  display:grid; grid-template-columns:1fr 1fr; gap:48px;
+  padding:36px 0; border-bottom:1px solid var(--line);
+}
+.prob-pain{ display:flex; gap:16px; align-items:flex-start; }
+.prob-pain .pi{
+  width:34px; height:34px; border-radius:10px; flex-shrink:0;
+  background:var(--bad-soft); color:var(--bad);
+  display:flex; align-items:center; justify-content:center;
+}
+.prob-pain .pi svg{ width:16px; height:16px; }
+.prob-pain h3{ font-size:17px; font-weight:700; letter-spacing:-0.01em; margin-bottom:6px; }
+.prob-pain p{ font-size:14px; color:var(--ink-2); line-height:1.65; }
+.prob-fix{ display:flex; gap:16px; align-items:flex-start; }
+.prob-fix .fi{
+  width:34px; height:34px; border-radius:10px; flex-shrink:0;
+  background:var(--good-soft); color:var(--good);
+  display:flex; align-items:center; justify-content:center;
+}
+.prob-fix .fi svg{ width:16px; height:16px; }
+.prob-fix h4{ font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:var(--good); margin-bottom:6px; }
+.prob-fix p{ font-size:14.5px; color:var(--ink-2); line-height:1.65; }
+
+/* ================= CAPABILITIES ================= */
+.cap-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:56px; }
+.cap-card{
+  background:#fff; border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:32px; transition:border-color .15s, box-shadow .15s, transform .15s;
+}
+.cap-card:hover{ border-color:var(--line-2); box-shadow:var(--shadow-card); transform:translateY(-2px); }
+.cap-card .ci{
+  width:40px; height:40px; border-radius:11px; background:var(--bg-2); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; color:var(--ink); margin-bottom:20px;
+}
+.cap-card .ci svg{ width:18px; height:18px; }
+.cap-card h3{ font-size:17px; font-weight:700; letter-spacing:-0.01em; margin-bottom:8px; }
+.cap-card p{ font-size:14px; color:var(--ink-2); line-height:1.65; margin-bottom:18px; }
+.cap-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+.ctag{
+  font-size:11.5px; font-weight:600; padding:4px 10px; border-radius:100px;
+  background:var(--bg-2); color:var(--ink-2); border:1px solid var(--line);
+}
+
+/* ================= WHY ================= */
+.why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; margin-top:56px; }
+.why-col{ background:#fff; padding:36px 30px; }
+.why-col .who{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--accent); margin-bottom:14px; }
+.why-col h3{ font-size:18px; font-weight:700; letter-spacing:-0.015em; margin-bottom:18px; line-height:1.3; }
+.why-col ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+.why-col li{ display:flex; gap:10px; font-size:14px; color:var(--ink-2); line-height:1.55; }
+.why-col li svg{ width:15px; height:15px; color:var(--good); flex-shrink:0; margin-top:3px; }
+
+/* ================= SOCIAL PROOF ================= */
+.logo-row{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; margin-top:48px; }
+.logo-ph{
+  height:64px; border:1.5px dashed var(--line-2); border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:12.5px; font-weight:500; color:var(--ink-3); background:var(--bg-2);
+}
+.proof-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:16px; margin-top:16px; }
+.quote-ph{
+  border:1px solid var(--line); border-radius:var(--r-lg); padding:32px;
+  background:#fff; box-shadow:var(--shadow-card); display:flex; flex-direction:column; gap:20px;
+}
+.quote-ph .qmark{ font-size:44px; line-height:0.6; color:var(--accent); font-weight:800; font-family:Georgia,serif; }
+.quote-ph blockquote{ font-size:16.5px; line-height:1.6; color:var(--ink-2); font-style:italic; }
+.quote-ph .attrib{ display:flex; align-items:center; gap:12px; }
+.quote-ph .avatar-ph{
+  width:40px; height:40px; border-radius:50%; border:1.5px dashed var(--line-2);
+  background:var(--bg-2); display:flex; align-items:center; justify-content:center;
+  font-size:9px; color:var(--ink-3); text-align:center;
+}
+.quote-ph .attrib div p{ font-size:13.5px; font-weight:600; }
+.quote-ph .attrib div span{ font-size:12.5px; color:var(--ink-3); }
+.metric-phs{ display:flex; flex-direction:column; gap:16px; }
+.metric-ph{
+  flex:1; border:1.5px dashed var(--line-2); border-radius:var(--r-lg); background:var(--bg-2);
+  padding:22px 26px; display:flex; flex-direction:column; justify-content:center; gap:4px;
+}
+.metric-ph .num{ font-size:24px; font-weight:800; letter-spacing:-0.02em; color:var(--ink-3); }
+.metric-ph .lbl{ font-size:13px; color:var(--ink-3); }
+
+/* ================= PRODUCTS ================= */
+.pgroup{ margin-top:48px; }
+.pgroup + .pgroup{ margin-top:40px; }
+.pgroup-label{
+  font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em;
+  color:var(--ink-3); margin-bottom:14px; display:flex; align-items:center; gap:10px;
+}
+.pgroup-label::after{ content:""; flex:1; height:1px; background:var(--line); }
+.prod-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.prod-card{
+  background:#fff; border:1px solid var(--line); border-radius:14px; padding:20px;
+  display:flex; gap:14px; align-items:flex-start;
+  transition:border-color .15s, box-shadow .15s, transform .15s;
+}
+.prod-card:hover{ border-color:var(--line-2); box-shadow:var(--shadow-card); transform:translateY(-2px); }
+.prod-icon{
+  width:42px; height:42px; border-radius:11px; flex-shrink:0;
+  background:var(--bg-2); border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; color:var(--ink-2);
+}
+.prod-icon svg{ width:18px; height:18px; }
+.prod-info h3{ font-size:14.5px; font-weight:700; letter-spacing:-0.01em; margin-bottom:3px; }
+.prod-info p{ font-size:12.5px; color:var(--ink-2); line-height:1.55; margin-bottom:8px; }
+.prod-info .app-link{ font-size:12.5px; font-weight:600; color:var(--accent); }
+.prod-info .app-link:hover{ color:var(--accent-deep); }
+
+/* ================= PROCESS ================= */
+.proc-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:56px; }
+.proc-step{ position:relative; padding:28px 24px 26px; background:#fff; border:1px solid var(--line); border-radius:var(--r-lg); }
+.proc-step .num{
+  font-size:12px; font-weight:800; color:var(--accent); letter-spacing:.08em; margin-bottom:16px;
+  display:flex; align-items:center; gap:10px;
+}
+.proc-step .num::after{ content:""; flex:1; height:1px; background:var(--line); }
+.proc-step h3{ font-size:15.5px; font-weight:700; margin-bottom:8px; letter-spacing:-0.01em; }
+.proc-step p{ font-size:13.5px; color:var(--ink-2); line-height:1.65; }
+
+/* ================= ABOUT ================= */
+.about-grid{ display:grid; grid-template-columns:1.15fr .85fr; gap:64px; margin-top:56px; align-items:start; }
+.about-copy h3{ font-size:16px; font-weight:700; margin:28px 0 8px; letter-spacing:-0.01em; }
+.about-copy h3:first-child{ margin-top:0; }
+.about-copy p{ font-size:15px; color:var(--ink-2); line-height:1.75; }
+.about-facts{
+  background:var(--bg-2); border:1px solid var(--line); border-radius:var(--r-lg);
+  padding:32px; position:sticky; top:96px;
+}
+.about-facts h3{ font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-3); margin-bottom:20px; }
+.fact-row{ display:flex; justify-content:space-between; gap:16px; padding:13px 0; border-bottom:1px solid var(--line); font-size:14px; }
+.fact-row:last-child{ border-bottom:none; }
+.fact-row .k{ color:var(--ink-3); }
+.fact-row .v{ font-weight:600; text-align:right; }
+.fact-row .v.ph{ color:var(--ink-3); font-style:italic; font-weight:500; }
+
+/* ================= CTA ================= */
+.cta-section{ padding:0 0 112px; }
+.cta-box{
+  background:var(--ink); color:#fff; border-radius:24px;
+  padding:72px 64px; text-align:center; position:relative; overflow:hidden;
+}
+.cta-box::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background:radial-gradient(ellipse 55% 60% at 50% -10%, rgba(99,91,255,0.25), transparent 70%);
+}
+.cta-box > *{ position:relative; }
+.cta-box h2{ font-size:clamp(28px,3.8vw,44px); font-weight:800; letter-spacing:-0.03em; line-height:1.1; max-width:640px; margin:0 auto 16px; }
+.cta-box p{ font-size:16.5px; color:rgba(255,255,255,.65); max-width:520px; margin:0 auto 36px; line-height:1.65; }
+.cta-box .cta-actions{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.cta-box .cta-mini{ margin-top:24px; font-size:13px; color:rgba(255,255,255,.4); }
+
+/* ================= FOOTER ================= */
+.site-footer{ border-top:1px solid var(--line); background:var(--bg-2); padding:64px 0 40px; }
+.footer-grid{ display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:48px; }
+.footer-brand p{ font-size:13.5px; color:var(--ink-3); line-height:1.7; margin-top:14px; max-width:280px; }
+.footer-col h4{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-3); margin-bottom:18px; }
+.footer-col ul{ list-style:none; display:flex; flex-direction:column; gap:11px; }
+.footer-col a{ font-size:14px; color:var(--ink-2); transition:color .15s; }
+.footer-col a:hover{ color:var(--ink); }
+.footer-bottom{
+  margin-top:56px; padding-top:24px; border-top:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+  font-size:12.5px; color:var(--ink-3);
+}
+.footer-bottom .reg{ font-style:italic; }
+
+/* ================= REVEAL ================= */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+  .btn, .cap-card, .prod-card{ transition:none; }
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1000px){
+  .qd-head{ grid-template-columns:1fr; gap:28px; }
+  .p-score{ grid-column:span 6; }
+  .p-board{ grid-column:span 6; }
+  .p-forecast{ grid-column:span 12; }
+  .p-pipeline{ grid-column:span 12; }
+  .p-risk{ grid-column:span 12; }
+  .qd-feats{ grid-template-columns:1fr; }
+  .cap-grid{ grid-template-columns:1fr; }
+  .why-grid{ grid-template-columns:1fr; }
+  .prod-grid{ grid-template-columns:1fr 1fr; }
+  .proc-grid{ grid-template-columns:1fr 1fr; }
+  .about-grid{ grid-template-columns:1fr; gap:40px; }
+  .about-facts{ position:static; }
+  .proof-grid{ grid-template-columns:1fr; }
+  .logo-row{ grid-template-columns:repeat(3,1fr); }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+}
+@media (max-width: 680px){
+  .wrap{ padding-left:22px; padding-right:22px; }
+  .nav{ padding:0 22px; }
+  .nav-links{ display:none; }
+  .nav-toggle{ display:flex; }
+  .hero{ padding:72px 0 64px; }
+  .section{ padding:72px 0; }
+  .qd-section{ padding:80px 0; }
+  .prob-row{ grid-template-columns:1fr; gap:20px; padding:28px 0; }
+  .prod-grid{ grid-template-columns:1fr; }
+  .proc-grid{ grid-template-columns:1fr; }
+  .logo-row{ grid-template-columns:1fr 1fr; }
+  .cta-box{ padding:52px 28px; }
+  .footer-grid{ grid-template-columns:1fr; gap:36px; }
+  .qd-grid{ padding:12px; gap:10px; }
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="logo">
-    <img src="logo.png" alt="KPappworx" />
-    KPappworx
-  </div>
-  <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#products">Products</a>
-    <a href="#apps">Portfolio</a>
-    <a href="#contact">Contact</a>
-    <a href="mailto:hello@kpappworx.com" class="nav-btn">Work With Us</a>
-  </div>
-</nav>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-label">
-    <span class="hero-label-dot"></span>
-    AI Product Studio · Bangalore, India
-  </div>
-  <h1>We build AI-powered products that ship</h1>
-  <p>SaaS tools, iOS apps, and custom AI solutions — built fast, priced fairly, and ready for production. From idea to launch.</p>
-  <div class="hero-ctas">
-    <a href="mailto:hello@kpappworx.com" class="btn btn-primary">
-      Start a Project
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+<!-- ============ NAV ============ -->
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <a href="#" class="brand" aria-label="KPAppWorx home">
+      <img src="logo.png" alt="" width="28" height="28" />
+      KPAppWorx
     </a>
-    <a href="#products" class="btn btn-secondary">See Our Work</a>
-  </div>
-</div>
-
-<hr class="divider" />
-
-<!-- TRUST BAR -->
-<div class="trust-bar">
-  <div class="trust-item">
-    <svg class="trust-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-    <span><strong>12+ products</strong> shipped to production</span>
-  </div>
-  <div class="trust-item">
-    <svg class="trust-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-    <span><strong>AI + iOS + SaaS</strong> under one roof</span>
-  </div>
-  <div class="trust-item">
-    <svg class="trust-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-    <span><strong>Fast delivery</strong> — weeks, not months</span>
-  </div>
-  <div class="trust-item">
-    <svg class="trust-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-    <span><strong>Startups to enterprises</strong> welcome</span>
-  </div>
-</div>
-
-<hr class="divider" />
-
-<!-- SERVICES -->
-<div class="section" id="services">
-  <div class="section-header">
-    <p class="section-label">What We Build</p>
-    <h2 class="section-title">Services</h2>
-    <p class="section-sub">We take your idea from concept to a working product — AI-first, mobile-ready, and built to scale.</p>
-  </div>
-  <div class="services-grid">
-
-    <div class="service-card">
-      <svg class="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-      <h3>AI Tool Development</h3>
-      <p>Custom AI-powered tools built on top of GPT, Claude, or your own models. Automation, document processing, intelligent assistants — anything that saves your team hours.</p>
-      <div class="service-tags">
-        <span class="stag">LLM Integration</span>
-        <span class="stag">Automation</span>
-        <span class="stag">Claude / GPT</span>
-        <span class="stag">RAG</span>
-      </div>
+    <div class="nav-links">
+      <a href="#quarterdeck">Quarterdeck AI</a>
+      <a href="#capabilities">What We Build</a>
+      <a href="#products">Products</a>
+      <a href="#process">Process</a>
+      <a href="#about">About</a>
+      <a href="mailto:hello@kpappworx.com" class="btn btn-dark">Talk to Us</a>
     </div>
-
-    <div class="service-card">
-      <svg class="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"/></svg>
-      <h3>iOS App Development</h3>
-      <p>Native and cross-platform iOS apps — from consumer apps to business tools. Clean UI, fast performance, App Store ready. We've shipped 10+ apps to production.</p>
-      <div class="service-tags">
-        <span class="stag">Swift</span>
-        <span class="stag">SwiftUI</span>
-        <span class="stag">App Store</span>
-        <span class="stag">In-App Purchase</span>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <svg class="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.737 5.1a3.375 3.375 0 012.7-1.35h7.126c1.062 0 2.062.5 2.7 1.35l2.587 3.45a4.5 4.5 0 01.9 2.7m0 0a3 3 0 01-3 3m0 3h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008zm-3 6h.008v.008h-.008v-.008zm0-6h.008v.008h-.008v-.008z"/></svg>
-      <h3>SaaS Development</h3>
-      <p>Full-stack SaaS products with auth, billing, dashboards, and APIs — built on modern stacks like Next.js, Supabase, and Vercel. Subscription-ready from day one.</p>
-      <div class="service-tags">
-        <span class="stag">Next.js</span>
-        <span class="stag">Supabase</span>
-        <span class="stag">Stripe</span>
-        <span class="stag">Vercel</span>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <svg class="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z"/></svg>
-      <h3>MVP in Weeks</h3>
-      <p>Got a startup idea? We build lean, validated MVPs fast — so you can get to market, test with real users, and raise funding before burning runway on a full build.</p>
-      <div class="service-tags">
-        <span class="stag">Rapid Prototyping</span>
-        <span class="stag">MVP</span>
-        <span class="stag">Startup</span>
-        <span class="stag">Fast Launch</span>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <svg class="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
-      <h3>API & Integrations</h3>
-      <p>Connect your product to any third-party service — payment gateways, CRMs, communication tools, data sources. We design clean APIs and handle complex integrations.</p>
-      <div class="service-tags">
-        <span class="stag">REST API</span>
-        <span class="stag">Webhooks</span>
-        <span class="stag">Zapier</span>
-        <span class="stag">Custom Integrations</span>
-      </div>
-    </div>
-
-    <div class="service-card">
-      <svg class="service-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/></svg>
-      <h3>Product Design & UI</h3>
-      <p>Clean, modern product design that converts. We design and build interfaces that feel premium — responsive layouts, and intuitive user flows built to production standard.</p>
-      <div class="service-tags">
-        <span class="stag">UI/UX</span>
-        <span class="stag">Tailwind CSS</span>
-        <span class="stag">Responsive</span>
-        <span class="stag">Design Systems</span>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<hr class="divider" />
-
-<!-- PRODUCTS -->
-<div class="section" id="products">
-  <div class="section-header">
-    <p class="section-label">Live Products</p>
-    <h2 class="section-title">Built by us. Used right now.</h2>
-    <p class="section-sub">Our own SaaS products — proof of what we ship.</p>
-  </div>
-  <div class="products-grid">
-
-    <div class="product-card">
-      <div class="product-header">
-        <div class="product-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
-        </div>
-        <span class="live-badge"><span class="live-dot"></span>Live</span>
-      </div>
-      <div>
-        <h3>DocGen</h3>
-      </div>
-      <p>Paste any GitHub repo URL and get full AI-generated documentation in 30 seconds. Built for developers and engineering teams who are tired of writing docs manually.</p>
-      <div class="product-features">
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          Project overview & tech stack breakdown
-        </div>
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          File-by-file code guide
-        </div>
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          Setup instructions & main features
-        </div>
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          Download as Markdown or PDF
-        </div>
-      </div>
-      <div class="product-footer">
-        <a href="https://docgen-lemon-eight.vercel.app" target="_blank" class="product-cta">Launch DocGen →</a>
-        <span class="product-price">Free · <strong>$9/mo Pro</strong></span>
-      </div>
-    </div>
-
-    <div class="product-card">
-      <div class="product-header">
-        <div class="product-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z"/></svg>
-        </div>
-        <span class="live-badge"><span class="live-dot"></span>Live</span>
-      </div>
-      <div>
-        <h3>ATS Resume Checker</h3>
-      </div>
-      <p>AI tool that scores your resume against a job description before you apply. Built for job seekers who want to apply with confidence and beat the ATS filter.</p>
-      <div class="product-features">
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          ATS compatibility score
-        </div>
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          Missing keywords analysis
-        </div>
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          Resume improvement suggestions
-        </div>
-        <div class="product-feature">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-          Instant results — no signup needed
-        </div>
-      </div>
-      <div class="product-footer">
-        <a href="https://ats-oiq6t65g7-kpappworxs-projects.vercel.app/" target="_blank" class="product-cta">Launch ATS Checker →</a>
-        <span class="product-price"><strong>Free</strong></span>
-      </div>
-    </div>
-
-    <!-- QUARTERDECK AI — featured full-width card -->
-    <div class="product-card featured">
-      <div class="product-main">
-        <div class="product-header">
-          <div class="product-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="12" r="9"/>
-              <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
-              <line x1="12" y1="3" x2="12" y2="8" stroke-linecap="round"/>
-              <line x1="12" y1="16" x2="12" y2="21" stroke-linecap="round"/>
-              <line x1="3" y1="12" x2="8" y2="12" stroke-linecap="round"/>
-              <line x1="16" y1="12" x2="21" y2="12" stroke-linecap="round"/>
-              <line x1="12" y1="10" x2="15.5" y2="6.5" stroke-linecap="round" stroke-width="2" stroke="currentColor" opacity="0.7"/>
-            </svg>
-          </div>
-          <span class="early-badge"><span class="early-dot"></span>Early Access</span>
-        </div>
-        <div>
-          <h3>Quarterdeck AI</h3>
-          <p style="font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;">The Revenue Trust Layer for HubSpot</p>
-        </div>
-        <p>Know if your CRM is board-ready before your next forecast. Quarterdeck connects to HubSpot, identifies pipeline risks hiding beneath the dashboard, and shows leadership how much of the forecast deserves to be trusted.</p>
-        <div class="product-footer">
-          <a href="mailto:kanthipriyamahale@gmail.com?subject=HubSpot&body=Hi%2C%20I%27d%20like%20to%20apply%20for%20a%20free%20Revenue%20Trust%20Audit." class="product-cta">Get a Free Revenue Trust Audit →</a>
-          <span class="product-price">Free · <strong>Design Partners Only</strong></span>
-        </div>
-      </div>
-      <div class="product-side">
-        <div class="product-features" style="border-top:none;padding-top:0;">
-          <div class="product-feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-            Revenue Health Score — pipeline strength at a glance
-          </div>
-          <div class="product-feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-            Board Readiness Score — know before the meeting starts
-          </div>
-          <div class="product-feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-            Deal Risk Flags — stale, overdue, unowned pipeline in seconds
-          </div>
-          <div class="product-feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-            Read-only HubSpot access — never edits your CRM
-          </div>
-          <div class="product-feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-            Prioritized actions — fix what moves forecast trust most
-          </div>
-          <div class="product-feature">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5"/></svg>
-            Free audit for early design partners (3 spots left)
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<hr class="divider" />
-
-<!-- PROCESS -->
-<div class="section">
-  <div class="section-header">
-    <p class="section-label">Process</p>
-    <h2 class="section-title">How we work</h2>
-    <p class="section-sub">Simple, fast, no fluff.</p>
-  </div>
-  <div class="process-grid">
-    <div class="process-step">
-      <div class="step-num">01</div>
-      <h4>Discovery Call</h4>
-      <p>We understand your idea, goals, and constraints. 30 minutes is usually enough to scope a project.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">02</div>
-      <h4>Proposal & Timeline</h4>
-      <p>Clear scope, fixed price or retainer, and a realistic delivery timeline — no surprises.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">03</div>
-      <h4>Build & Iterate</h4>
-      <p>We build fast, share progress weekly, and incorporate feedback as we go.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">04</div>
-      <h4>Launch & Support</h4>
-      <p>We deploy to production and stay available for fixes, improvements, and scaling.</p>
-    </div>
-  </div>
-</div>
-
-<hr class="divider" />
-
-<!-- iOS PORTFOLIO -->
-<div class="section" id="apps">
-  <div class="section-header">
-    <p class="section-label">iOS Portfolio</p>
-    <h2 class="section-title">10 apps shipped to the App Store</h2>
-    <p class="section-sub">Across productivity, wellness, finance, and AI — all live and maintained.</p>
-  </div>
-  <div class="apps-grid">
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">AI · Productivity</div>
-        <h3>Aiden AI</h3>
-        <p>A private AI executive assistant for daily tasks.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">Productivity</div>
-        <h3>Pomodoro Timer DeepFocus</h3>
-        <p>Deep work sessions using the Pomodoro technique.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">AI · Wellness</div>
-        <h3>SVA: SelfCare AI</h3>
-        <p>Feel better, one day at a time with AI support.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18.75a6 6 0 006-6v-1.5m-6 7.5a6 6 0 01-6-6v-1.5m6 7.5v3.75m-3.75 0h7.5M12 15.75a3 3 0 01-3-3V4.5a3 3 0 116 0v8.25a3 3 0 01-3 3z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">Wellness</div>
-        <h3>Release Your Burden</h3>
-        <p>A mindful space to let go and find clarity.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">Productivity</div>
-        <h3>Haru Haru</h3>
-        <p>Day by day productivity inspired by Japanese simplicity.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">Finance</div>
-        <h3>Cashchum</h3>
-        <p>Track spending and build better money habits.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">Journal</div>
-        <h3>Gratitude Tree: Daily Journal</h3>
-        <p>Grow your gratitude one entry at a time.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">Journal · Wellness</div>
-        <h3>Gratitudes Jar</h3>
-        <p>Collect daily gratitudes in a beautiful jar.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">Finance · Business</div>
-        <h3>InvoFast</h3>
-        <p>Create and send professional invoices fast.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-    <div class="app-card">
-      <div class="app-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z"/></svg>
-      </div>
-      <div class="app-info">
-        <div class="app-cat">AI · Business</div>
-        <h3>BizMentorAI</h3>
-        <p>AI-powered business mentor and strategy guide.</p>
-        <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" class="app-link">App Store →</a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-wrap" id="contact">
-  <div class="cta-box">
-    <div class="cta-text">
-      <h2>Have an idea? Let's build it.</h2>
-      <p>Whether you need an AI tool, a mobile app, or a full SaaS product — we can scope it, price it, and ship it. No long contracts, no agency bloat.</p>
-    </div>
-    <div class="cta-actions">
-      <a href="mailto:hello@kpappworx.com" class="btn btn-primary">
-        Email Us
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
-      <a href="https://x.com/kpappworx" target="_blank" class="btn btn-secondary">Follow on X</a>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo">
-    <img src="logo.png" alt="KPappworx" />
-    KPappworx
-  </div>
-  <div class="footer-links">
-    <a href="#services">Services</a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#quarterdeck">Quarterdeck AI</a>
+    <a href="#capabilities">What We Build</a>
     <a href="#products">Products</a>
-    <a href="#apps">Portfolio</a>
-    <a href="mailto:support@kpappworx.com">Support</a>
-    <a href="https://x.com/kpappworx" target="_blank">Twitter</a>
+    <a href="#process">Process</a>
+    <a href="#about">About</a>
+    <a href="mailto:hello@kpappworx.com"><strong>Talk to Us →</strong></a>
   </div>
-  <div class="footer-copy">© 2026 KPappworx · Bangalore, India</div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <a href="#quarterdeck" class="hero-pill">
+      <span class="tag">New</span>
+      Quarterdeck AI — early access for HubSpot teams is open
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </a>
+    <h1 id="hero-title">AI software built for production. <em>Not for demos.</em></h1>
+    <p class="hero-sub">KPAppWorx builds enterprise AI systems, SaaS products, and native iOS applications — engineered to hold up under real users, real data, and real stakes.</p>
+    <div class="hero-ctas">
+      <a href="mailto:hello@kpappworx.com" class="btn btn-dark">
+        Talk to Us
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#quarterdeck" class="btn btn-ghost">See Quarterdeck AI</a>
+    </div>
+    <p class="hero-note"><strong>10+ products in production</strong> across AI, SaaS, and iOS — designed, built, and operated in-house.</p>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust" role="region" aria-label="Company credibility">
+  <div class="trust-row">
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <span><strong>10+ products</strong> shipped to production</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <span><strong><span class="ph">[XX]</span> years</strong> building software</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <span><strong>Enterprise AI</strong> expertise</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <span><strong>Privacy-first</strong> engineering</span>
+    </div>
+    <div class="trust-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+      <span>Based in <strong>Bangalore</strong>, serving globally</span>
+    </div>
+  </div>
+</div>
+
+<!-- ============ QUARTERDECK AI (FLAGSHIP) ============ -->
+<section class="qd-section" id="quarterdeck" aria-labelledby="qd-title">
+  <div class="wrap">
+    <div class="qd-head reveal">
+      <div>
+        <p class="kicker">Flagship Product</p>
+        <span class="qd-badge"><span class="dot" aria-hidden="true"></span>Early Access · Design partners only</span>
+        <h2 class="qd-title" id="qd-title" style="margin-top:18px;">Quarterdeck AI</h2>
+        <p class="qd-tagline">The revenue trust layer for <span>HubSpot</span>.</p>
+      </div>
+      <div class="qd-head-right">
+        <p>Every forecast is built on CRM data — and most CRM data quietly decays. Quarterdeck connects to HubSpot in read-only mode, scores how trustworthy your pipeline actually is, and tells you exactly what to fix before the board meeting, not after.</p>
+        <div class="qd-ctas">
+          <a href="mailto:hello@kpappworx.com?subject=Quarterdeck%20AI%20%E2%80%94%20Revenue%20Trust%20Audit&body=Hi%2C%20I%27d%20like%20to%20apply%20for%20a%20free%20Revenue%20Trust%20Audit%20for%20our%20HubSpot%20instance." class="btn btn-accent">
+            Get a Free Revenue Trust Audit
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#problems" class="btn btn-ghost">Why it matters</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dashboard mockup -->
+    <div class="qd-window reveal" role="img" aria-label="Quarterdeck AI dashboard showing revenue trust score, forecast confidence, board readiness, and deal risk panels">
+      <div class="qd-titlebar">
+        <div class="qd-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <span class="tb-title">Quarterdeck — Pipeline Review · Q3 FY26</span>
+        <span class="tb-right"><span class="dot" aria-hidden="true"></span>HubSpot connected · Read-only</span>
+      </div>
+      <div class="qd-grid">
+
+        <div class="qd-panel p-score">
+          <h4>Revenue Trust Score</h4>
+          <div class="score-ring">
+            <svg width="72" height="72" viewBox="0 0 72 72" aria-hidden="true">
+              <circle cx="36" cy="36" r="30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="7"/>
+              <circle cx="36" cy="36" r="30" fill="none" stroke="#4ade80" stroke-width="7" stroke-linecap="round"
+                stroke-dasharray="188.5" stroke-dashoffset="52.8" transform="rotate(-90 36 36)"/>
+            </svg>
+            <div>
+              <div class="score-num">72<small>/100</small></div>
+              <div class="delta-up">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+                +6 this week
+              </div>
+            </div>
+          </div>
+          <p class="sub">72% of committed pipeline is backed by current, verifiable CRM data.</p>
+        </div>
+
+        <div class="qd-panel p-board">
+          <h4>Board Readiness</h4>
+          <div class="score-num" style="font-size:28px;">84<small>%</small></div>
+          <div class="board-checks">
+            <div class="bc-ok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+              Close dates verified
+            </div>
+            <div class="bc-ok">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+              Stage definitions consistent
+            </div>
+            <div class="bc-warn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01"/></svg>
+              3 deals missing next steps
+            </div>
+          </div>
+        </div>
+
+        <div class="qd-panel p-forecast">
+          <h4>Forecast Confidence</h4>
+          <div class="fc-rows">
+            <div class="fc-row fc-hi">
+              <span class="lbl">Commit</span>
+              <div class="fc-bar"><i></i></div>
+              <span class="amt">$2.4M</span>
+            </div>
+            <div class="fc-row fc-md">
+              <span class="lbl">Best case</span>
+              <div class="fc-bar"><i></i></div>
+              <span class="amt">$1.1M</span>
+            </div>
+            <div class="fc-row fc-lo">
+              <span class="lbl">Pipeline</span>
+              <div class="fc-bar"><i></i></div>
+              <span class="amt">$3.8M</span>
+            </div>
+          </div>
+          <p class="sub">Confidence weighted by data freshness, activity signals, and stage history — not rep optimism.</p>
+        </div>
+
+        <div class="qd-panel p-pipeline">
+          <h4>Pipeline Health · Trailing 8 Weeks</h4>
+          <svg viewBox="0 0 460 120" width="100%" height="120" aria-hidden="true" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="phFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#4f46e5" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#4f46e5" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <g stroke="rgba(255,255,255,0.06)" stroke-width="1">
+              <line x1="0" y1="30" x2="460" y2="30"/>
+              <line x1="0" y1="60" x2="460" y2="60"/>
+              <line x1="0" y1="90" x2="460" y2="90"/>
+            </g>
+            <path d="M0,88 L66,80 L131,84 L197,64 L263,58 L329,44 L394,38 L460,24 L460,120 L0,120 Z" fill="url(#phFill)"/>
+            <path d="M0,88 L66,80 L131,84 L197,64 L263,58 L329,44 L394,38 L460,24" fill="none" stroke="#818cf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="460" cy="24" r="4" fill="#818cf8"/>
+          </svg>
+          <p class="sub">Hygiene score trending up since last data-quality sprint · <span style="color:#818cf8;font-weight:600;">+18% QoQ</span></p>
+        </div>
+
+        <div class="qd-panel p-risk">
+          <h4>Deal Risk Flags</h4>
+          <div class="risk-rows">
+            <div class="risk-row">
+              <span class="deal">Enterprise renewal<small>$180K · Stage: Negotiation</small></span>
+              <span class="chip chip-bad">Stale 21d</span>
+            </div>
+            <div class="risk-row">
+              <span class="deal">Expansion — APAC<small>$95K · Stage: Proposal</small></span>
+              <span class="chip chip-warn">No owner</span>
+            </div>
+            <div class="risk-row">
+              <span class="deal">New logo — Fintech<small>$140K · Stage: Commit</small></span>
+              <span class="chip chip-bad">Close date passed</span>
+            </div>
+            <div class="risk-row">
+              <span class="deal">Platform upgrade<small>$60K · Stage: Discovery</small></span>
+              <span class="chip chip-warn">Single-threaded</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <p class="qd-caption">Product interface — illustrative. [Replace with live Quarterdeck dashboard screenshot]</p>
+
+    <div class="qd-feats">
+      <div class="qd-feat reveal">
+        <div class="fi" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Read-only by design</h3>
+        <p>Quarterdeck never writes to your CRM. It observes, scores, and recommends — your data stays exactly as your team left it.</p>
+      </div>
+      <div class="qd-feat reveal">
+        <div class="fi" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+        </div>
+        <h3>Signals, not vanity metrics</h3>
+        <p>Every score traces back to specific deals and specific fixes — so revenue teams act on evidence, not dashboards.</p>
+      </div>
+      <div class="qd-feat reveal">
+        <div class="fi" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        </div>
+        <h3>Board-ready in minutes</h3>
+        <p>Walk into your next board meeting knowing which numbers will hold — and which questions are coming.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CUSTOMER PROBLEMS ============ -->
+<section class="section" id="problems" aria-labelledby="problems-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">The Problems We Solve</p>
+      <h2 class="h2" id="problems-title">Revenue teams don't have a dashboard problem. They have a trust problem.</h2>
+      <p class="lede">Quarterdeck exists because the numbers leadership presents are only as good as the CRM underneath them.</p>
+    </div>
+
+    <div class="prob-list">
+      <div class="prob-row reveal">
+        <div class="prob-pain">
+          <div class="pi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4m0 4h.01M10.3 3.9L1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z"/></svg>
+          </div>
+          <div>
+            <h3>Sales leaders don't trust their own forecast</h3>
+            <p>Commit numbers are built on rep judgment and stale stage data. By the time the miss is visible, the quarter is over.</p>
+          </div>
+        </div>
+        <div class="prob-fix">
+          <div class="fi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h4>How Quarterdeck solves it</h4>
+            <p>Every deal in the forecast gets a confidence score based on data freshness, activity, and stage history — so leaders see how much of the number is actually defensible.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prob-row reveal">
+        <div class="prob-pain">
+          <div class="pi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          </div>
+          <div>
+            <h3>CRM data decays silently</h3>
+            <p>Close dates slip, owners change, activity stops — and nothing alerts anyone. Bad hygiene compounds until the pipeline is fiction.</p>
+          </div>
+        </div>
+        <div class="prob-fix">
+          <div class="fi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h4>How Quarterdeck solves it</h4>
+            <p>Continuous hygiene monitoring flags stale, unowned, and inconsistent deals the moment they drift — with a prioritized fix list ordered by revenue impact.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prob-row reveal">
+        <div class="prob-pain">
+          <div class="pi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7V3m8 4V3M4 11h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z"/></svg>
+          </div>
+          <div>
+            <h3>Board prep takes days, not minutes</h3>
+            <p>Ops teams spend hours every cycle reconciling exports, chasing reps, and hand-building slides that are outdated on arrival.</p>
+          </div>
+        </div>
+        <div class="prob-fix">
+          <div class="fi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h4>How Quarterdeck solves it</h4>
+            <p>A Board Readiness Score plus auto-generated pipeline narrative turns board prep from a multi-day scramble into a review-and-send exercise.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prob-row reveal">
+        <div class="prob-pain">
+          <div class="pi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <div>
+            <h3>Risk hides beneath the dashboard</h3>
+            <p>Standard CRM reports show what reps entered — not what they stopped doing. Single-threaded and quietly dying deals look healthy until they vanish.</p>
+          </div>
+        </div>
+        <div class="prob-fix">
+          <div class="fi" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+          </div>
+          <div>
+            <h4>How Quarterdeck solves it</h4>
+            <p>Deal-level risk flags surface stale, overdue, unowned, and single-threaded pipeline in seconds — before it costs you the quarter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT WE BUILD ============ -->
+<section class="section section-tint" id="capabilities" aria-labelledby="cap-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">What We Build</p>
+      <h2 class="h2" id="cap-title">Four things. Done to a production standard.</h2>
+      <p class="lede">We don't take every project. We build AI software in the categories where we've already shipped — and we take it all the way to production.</p>
+    </div>
+    <div class="cap-grid">
+      <div class="cap-card reveal">
+        <div class="ci" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 9l3 3-3 3M13 15h4"/></svg>
+        </div>
+        <h3>Enterprise AI Systems</h3>
+        <p>Custom AI built around your data, your workflows, and your compliance requirements. Retrieval pipelines, evaluation harnesses, and guardrails included — because an AI system without them isn't an enterprise system.</p>
+        <div class="cap-tags">
+          <span class="ctag">LLM Integration</span><span class="ctag">RAG Pipelines</span><span class="ctag">Evaluation & Guardrails</span><span class="ctag">Private Deployment</span>
+        </div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="ci" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 13l4-4 3 3 5-6"/></svg>
+        </div>
+        <h3>AI SaaS Products</h3>
+        <p>Full products, not prototypes: authentication, billing, dashboards, APIs, and the AI core that makes them worth paying for. Quarterdeck AI is built exactly this way — and so is everything we ship for clients.</p>
+        <div class="cap-tags">
+          <span class="ctag">Next.js</span><span class="ctag">Supabase</span><span class="ctag">Stripe Billing</span><span class="ctag">Multi-tenant</span>
+        </div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="ci" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+        </div>
+        <h3>AI Automation & Internal Tools</h3>
+        <p>The unglamorous work that compounds: document processing, reporting pipelines, ops copilots, and intelligent internal tools that quietly remove hundreds of hours of manual work per quarter.</p>
+        <div class="cap-tags">
+          <span class="ctag">Workflow Automation</span><span class="ctag">Document Intelligence</span><span class="ctag">Internal Copilots</span><span class="ctag">Integrations</span>
+        </div>
+      </div>
+      <div class="cap-card reveal">
+        <div class="ci" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18.5h2"/></svg>
+        </div>
+        <h3>Native iOS Applications</h3>
+        <p>Ten apps shipped to the App Store across productivity, finance, and wellness — designed, built, reviewed, and maintained in-house. Swift and SwiftUI, App Store compliant from day one.</p>
+        <div class="cap-tags">
+          <span class="ctag">Swift / SwiftUI</span><span class="ctag">App Store</span><span class="ctag">In-App Purchase</span><span class="ctag">On-device AI</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY KPAPPWORX ============ -->
+<section class="section" id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">Why KPAppWorx</p>
+      <h2 class="h2" id="why-title">Chosen for outcomes, not slide decks.</h2>
+      <p class="lede">Different companies come to us for different reasons. The common thread: they leave with software that works.</p>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-col">
+        <p class="who">For Startups</p>
+        <h3>Ship a fundable product without hiring a team</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>A validated MVP in weeks — scoped ruthlessly around what investors and first users actually need to see.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Product decisions made by people who have shipped and sold their own products — not billed hours against yours.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>A codebase your future engineering team will thank you for, not rewrite.</li>
+        </ul>
+      </div>
+      <div class="why-col">
+        <p class="who">For Growing Companies</p>
+        <h3>Turn AI from a slide into a system</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>We start from the workflow and the ROI, not the model — so the tool gets used after launch week.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Automation that pays for itself in recovered hours, measured and reported.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>One senior team from design through deployment — no handoffs, no telephone game.</li>
+        </ul>
+      </div>
+      <div class="why-col">
+        <p class="who">For Enterprises</p>
+        <h3>AI you can defend to security and the board</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Privacy-first architecture: least-privilege access, read-only integrations where possible, your data never used for training.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Evaluation and monitoring built in, so model behavior is observable — not anecdotal.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 13l4 4L19 7"/></svg>Documentation and handover as deliverables, not afterthoughts.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOCIAL PROOF ============ -->
+<section class="section section-tint" id="proof" aria-labelledby="proof-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">Early Traction</p>
+      <h2 class="h2" id="proof-title">Built with our first design partners.</h2>
+      <p class="lede">Quarterdeck AI is in early access with a small group of revenue teams. Their logos and results will live here.</p>
+    </div>
+    <div class="logo-row reveal" aria-label="Customer logos — placeholders">
+      <div class="logo-ph">[Customer Logo]</div>
+      <div class="logo-ph">[Customer Logo]</div>
+      <div class="logo-ph">[Partner Logo]</div>
+      <div class="logo-ph">[Customer Logo]</div>
+      <div class="logo-ph">[Partner Logo]</div>
+    </div>
+    <div class="proof-grid reveal">
+      <div class="quote-ph">
+        <span class="qmark" aria-hidden="true">"</span>
+        <blockquote>[Customer testimonial — a short, specific quote about the forecast clarity or hours saved with Quarterdeck AI goes here.]</blockquote>
+        <div class="attrib">
+          <div class="avatar-ph" aria-hidden="true">Photo</div>
+          <div>
+            <p>[Customer Name]</p>
+            <span>[Title], [Company]</span>
+          </div>
+        </div>
+      </div>
+      <div class="metric-phs">
+        <div class="metric-ph">
+          <span class="num">[XX]%</span>
+          <span class="lbl">Improvement in forecast confidence — success metric placeholder</span>
+        </div>
+        <div class="metric-ph">
+          <span class="num">[XX] hrs</span>
+          <span class="lbl">Saved per board cycle — case study placeholder</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SELECTED PRODUCTS ============ -->
+<section class="section" id="products" aria-labelledby="products-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">Selected Products</p>
+      <h2 class="h2" id="products-title">Ten products. Shipped, live, and maintained.</h2>
+      <p class="lede">We build our own products the same way we build for clients. Every app below is live on the App Store today.</p>
+    </div>
+
+    <div class="pgroup reveal">
+      <p class="pgroup-label">AI</p>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9.8 15.9L9 18.8l-.8-2.9a4.5 4.5 0 00-3.1-3.1L2.3 12l2.8-.8a4.5 4.5 0 003.1-3.1L9 5.3l.8 2.8a4.5 4.5 0 003.1 3.1l2.8.8-2.8.8a4.5 4.5 0 00-3.1 3.1z"/><path d="M18 5l.5 1.7L20.2 7l-1.7.5L18 9.2l-.5-1.7L15.8 7l1.7-.3z"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>Aiden AI</h3>
+            <p>A private AI executive assistant for daily tasks.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v5c0 4.4-3 8.2-7 9-4-0.8-7-4.6-7-9V7l7-4z"/><path d="M9.5 12l1.8 1.8 3.2-3.6"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>BizMentorAI</h3>
+            <p>An AI business mentor for strategy and decisions.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8.25c0-2.5-2.1-4.5-4.7-4.5-1.9 0-3.6 1.1-4.3 2.7-.7-1.6-2.4-2.7-4.3-2.7C5.1 3.75 3 5.75 3 8.25c0 7.2 9 12 9 12s9-4.8 9-12z"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>SVA: SelfCare AI</h3>
+            <p>Feel better, one day at a time, with AI support.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="pgroup reveal">
+      <p class="pgroup-label">Productivity</p>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M10 2h4"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>Pomodoro Timer DeepFocus</h3>
+            <p>Deep work sessions built on the Pomodoro technique.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>Haru Haru</h3>
+            <p>Day-by-day productivity, inspired by Japanese simplicity.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="pgroup reveal">
+      <p class="pgroup-label">Finance</p>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2.5"/><path d="M2 10h20M6 15h4"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>Cashchum</h3>
+            <p>Track spending and build better money habits.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>InvoFast</h3>
+            <p>Create and send professional invoices, fast.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="pgroup reveal">
+      <p class="pgroup-label">Wellness</p>
+      <div class="prod-grid">
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c-4 -3 -7-6.1 -7-9.6C5 8.4 7.2 6 10 6c1 0 1.6.3 2 .8.4-.5 1-.8 2-.8 2.8 0 5 2.4 5 5.4 0 3.5-3 6.6-7 9.6z"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>Release Your Burden</h3>
+            <p>A mindful space to let go and find clarity.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22v-7M12 15c-1-2.5-3.5-4-6-4 0 3.5 2.5 6 6 6M12 15c1-2.5 3.5-4 6-4 0 3.5-2.5 6-6 6M12 8a3 3 0 100-6 3 3 0 000 6z"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>Gratitude Tree: Daily Journal</h3>
+            <p>Grow your gratitude, one entry at a time.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+        <article class="prod-card">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2h8M7 5h10v3.5c0 1-.7 1.9-1.6 2.2 0 0 .6 8.3.6 9.3a2 2 0 01-2 2h-4a2 2 0 01-2-2c0-1 .6-9.3.6-9.3A2.4 2.4 0 017 8.5V5z"/><path d="M10.5 14.5h3"/></svg>
+          </div>
+          <div class="prod-info">
+            <h3>Gratitudes Jar</h3>
+            <p>Collect daily gratitudes in a beautiful jar.</p>
+            <a class="app-link" href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">App Store →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section section-tint" id="process" aria-labelledby="process-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">How We Work</p>
+      <h2 class="h2" id="process-title">A process built for shipping, not for billing.</h2>
+      <p class="lede">Four stages. Weekly demos. No surprises at the invoice or the deadline.</p>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-step reveal">
+        <p class="num">01 · Scope</p>
+        <h3>Discovery, in one call</h3>
+        <p>We understand the problem, the users, and the constraints. Thirty minutes is usually enough to know whether we're the right team — and to say so honestly if we're not.</p>
+      </div>
+      <div class="proc-step reveal">
+        <p class="num">02 · Commit</p>
+        <h3>Fixed scope, fixed price</h3>
+        <p>A written proposal with clear deliverables, a realistic timeline, and a price that doesn't move. You know what you're getting before we write a line of code.</p>
+      </div>
+      <div class="proc-step reveal">
+        <p class="num">03 · Build</p>
+        <h3>Working software, weekly</h3>
+        <p>You see a working product every week — not status reports. Feedback goes in while it's cheap to act on, not after launch.</p>
+      </div>
+      <div class="proc-step reveal">
+        <p class="num">04 · Operate</p>
+        <h3>Launch and stay accountable</h3>
+        <p>We deploy to production, monitor what we shipped, and stay available for fixes and scaling. Handover includes documentation your team can actually use.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section class="section" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">About KPAppWorx</p>
+      <h2 class="h2" id="about-title">A product company that builds like one.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <h3>Why we exist</h3>
+        <p>Most AI projects die between the demo and the deployment. The prototype impresses everyone; the production system never arrives. KPAppWorx was founded on a simple observation: the gap isn't the models — it's the engineering discipline around them. We exist to close that gap.</p>
+
+        <h3>Our mission</h3>
+        <p>Build AI software that businesses can actually run on — measured not by how impressive it looks in a demo, but by whether it's still trusted and in use a year after launch.</p>
+
+        <h3>How we build</h3>
+        <p>We ship our own products — ten of them, live on the App Store, plus Quarterdeck AI — and we hold client work to the same bar. That means evaluation before excitement, read-only access before write access, boring reliable infrastructure over fashionable fragile infrastructure, and documentation treated as part of the product. Every system we deliver is one we'd be willing to operate ourselves. Usually, we do.</p>
+
+        <h3>Where we're going</h3>
+        <p>Quarterdeck AI is the first of a line of focused, deeply-built AI products for revenue and operations teams. The product side funds our independence; the client side keeps us sharp against real-world constraints. Both make each other better.</p>
+      </div>
+      <aside class="about-facts reveal" aria-label="Company facts">
+        <h3>At a Glance</h3>
+        <div class="fact-row"><span class="k">Founded</span><span class="v ph">[2026 — incorporation in progress]</span></div>
+        <div class="fact-row"><span class="k">Headquarters</span><span class="v">Bangalore, India</span></div>
+        <div class="fact-row"><span class="k">Flagship product</span><span class="v">Quarterdeck AI</span></div>
+        <div class="fact-row"><span class="k">Products shipped</span><span class="v">10+ in production</span></div>
+        <div class="fact-row"><span class="k">Focus</span><span class="v">Enterprise AI · SaaS · iOS</span></div>
+        <div class="fact-row"><span class="k">Engineering stance</span><span class="v">Privacy-first, production-grade</span></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT CTA ============ -->
+<section class="cta-section" id="contact" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2 id="cta-title">Bring us a problem worth solving.</h2>
+      <p>Whether it's a forecast you can't trust, a workflow bleeding hours, or a product that needs to exist — we'll tell you in one call whether it's buildable, what it costs, and how long it takes.</p>
+      <div class="cta-actions">
+        <a href="mailto:hello@kpappworx.com" class="btn btn-light">
+          Email hello@kpappworx.com
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:hello@kpappworx.com?subject=Quarterdeck%20AI%20%E2%80%94%20Revenue%20Trust%20Audit" class="btn btn-outline-light">Get a Quarterdeck Audit</a>
+      </div>
+      <p class="cta-mini">Replies within one business day · No sales sequence, just an answer.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="brand" aria-label="KPAppWorx home">
+          <img src="logo.png" alt="" width="28" height="28" />
+          KPAppWorx
+        </a>
+        <p>Enterprise AI systems, SaaS products, and native iOS applications — built for production in Bangalore, shipped worldwide.</p>
+      </div>
+      <nav class="footer-col" aria-label="Company links">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#quarterdeck">Quarterdeck AI</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#process">Process</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Legal links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#" aria-disabled="true">Privacy Policy</a></li>
+          <li><a href="#" aria-disabled="true">Terms of Service</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Contact links">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://x.com/kpappworx" target="_blank" rel="noopener">X (Twitter)</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> KPAppWorx · Bangalore, India</span>
+      <span class="reg">[Company Registration No. — pending incorporation]</span>
+    </div>
+  </div>
 </footer>
+
+<script>
+(function(){
+  // Mobile nav
+  var toggle = document.querySelector('.nav-toggle');
+  var menu = document.getElementById('mobileMenu');
+  if (toggle && menu){
+    toggle.addEventListener('click', function(){
+      var open = menu.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+    menu.addEventListener('click', function(e){
+      if (e.target.closest('a')){ menu.classList.remove('open'); toggle.setAttribute('aria-expanded','false'); }
+    });
+  }
+  // Reveal on scroll
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function(el){ io.observe(el); });
+  } else {
+    reveals.forEach(function(el){ el.classList.add('in'); });
+  }
+  // Year
+  var y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+})();
+</script>
 
 </body>
 </html>
