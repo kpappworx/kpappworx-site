@@ -9,3 +9,4 @@ BRAND-*.md
 index-old-backup.html
 .vercel
 .env*
+.DS_Store
