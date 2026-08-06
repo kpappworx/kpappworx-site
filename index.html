@@ -41,7 +41,8 @@
       "name": "Quarterdeck AI",
       "applicationCategory": "BusinessApplication",
       "operatingSystem": "Web",
-      "description": "Board-ready revenue reporting and CRM intelligence for HubSpot.",
+      "description": "Weekly pipeline change intelligence for HubSpot — a digest of what actually changed in your forecast, forecast confidence scoring, deal risk flags, and revenue scenarios.",
+      "url": "https://www.kpappworx.com/products.html",
       "publisher": { "@type": "Organization", "name": "KPAppWorx Technologies Private Limited" }
     }
   ]
@@ -66,9 +67,11 @@
 .who-stat .k{ color:var(--ink-3); }
 .who-stat .v{ font-weight:600; color:var(--ink); text-align:right; }
 .soon-row{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px; }
+.prod-grid-3{ grid-template-columns:repeat(3,1fr); }
 @media (max-width:1000px){
   .value-grid-5{ grid-template-columns:repeat(3,1fr); }
   .who-grid{ grid-template-columns:1fr; gap:32px; }
+  .prod-grid-3{ grid-template-columns:1fr; }
 }
 @media (max-width:680px){
   .value-grid-5{ grid-template-columns:1fr 1fr; }
@@ -91,6 +94,7 @@
       <a href="/products.html">Products</a>
       <a href="/about.html">About</a>
       <a href="/company.html">Company</a>
+      <a href="/labs.html">Labs</a>
       <a href="/contact.html">Contact</a>
     </div>
     <div class="nav-actions">
@@ -109,6 +113,7 @@
     <a href="/products.html">Products</a>
     <a href="/about.html">About</a>
     <a href="/company.html">Company</a>
+    <a href="/labs.html">Labs</a>
     <a href="/contact.html">Contact</a>
     <div class="mm-divider"></div>
     <a href="https://app.kpappworx.com" target="_blank" rel="noopener">Log in ↗</a>
@@ -123,7 +128,7 @@
   <div class="wrap">
     <p class="hero-kicker">KPAppWorx Technologies Private Limited</p>
     <h1 id="hero-title">Build AI software that solves real business problems.</h1>
-    <p class="hero-sub">We design and build AI-powered products for modern businesses — practical software for operations, reporting, and decision-making, engineered to hold up in production. Quarterdeck AI, our flagship product, is live today for HubSpot revenue teams.</p>
+    <p class="hero-sub">We design and build AI-powered products for modern businesses — practical software for operations, reporting, and decision-making, engineered to hold up in production. Quarterdeck AI, our flagship product, is live today for HubSpot revenue teams who need to know why their forecast moved.</p>
     <div class="hero-ctas">
       <a href="/products.html" class="btn btn-primary btn-lg">
         Explore Products
@@ -166,7 +171,7 @@
       <p class="lede">We build a small, focused line of AI products rather than spreading thin. Each one has to earn its place in a customer's stack.</p>
     </div>
 
-    <div class="prod-grid reveal" style="margin-top:48px;">
+    <div class="prod-grid prod-grid-3 reveal" style="margin-top:48px;">
       <div class="prod-card live">
         <div class="prod-card-top">
           <div class="prod-icon" aria-hidden="true">
@@ -175,9 +180,24 @@
           <span class="status-chip status-live">Early access</span>
         </div>
         <h3>Quarterdeck AI</h3>
-        <p>Board-ready revenue reporting and CRM intelligence for HubSpot. Quarterdeck scores forecast trust, flags pipeline risk, and drafts the board narrative — so teams fix the number before the meeting, not after.</p>
+        <p>Weekly pipeline change intelligence for HubSpot. Quarterdeck sends a digest of what actually moved in your forecast, scores how defensible the number is, and flags the deals quietly drifting — so nobody walks into a pipeline review guessing.</p>
         <a class="app-link text-link" href="/products.html">
           Explore Quarterdeck AI
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <div class="prod-card live">
+        <div class="prod-card-top">
+          <div class="prod-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 18h6"/></svg>
+          </div>
+          <span class="status-chip status-live">Live on the App Store</span>
+        </div>
+        <h3>KPAppWorx Labs</h3>
+        <p>Consumer and utility apps we design, ship, and support on the App Store — including Gratitudes Jar and Aiden AI. Built by the same team with the same engineering discipline as Quarterdeck.</p>
+        <a class="app-link text-link" href="/labs.html">
+          Explore Labs
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
       </div>
@@ -284,7 +304,7 @@
   <div class="wrap">
     <div class="cta-box reveal">
       <h2 id="cta-title">See what we're building.</h2>
-      <p>Quarterdeck AI is live today for early design partners. Explore the product, or get in touch to learn how KPAppWorx can help your team.</p>
+      <p>Quarterdeck AI is live today for early design partners, telling HubSpot revenue teams what changed in their pipeline every week. Explore the product, or get in touch to learn how KPAppWorx can help your team.</p>
       <div class="cta-actions">
         <a href="/products.html" class="btn btn-spot">
           Explore Products
