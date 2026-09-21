@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Workstate — Stop making developers maintain Jira tickets</title>
+<meta name="description" content="Workstate runs alongside Jira. It connects one Jira project to GitHub or GitLab and tests whether development activity can keep issue status current with less manual ticket maintenance." />
+<meta name="color-scheme" content="light" />
+<meta name="author" content="KPAppWorx Technologies Private Limited" />
+<link rel="icon" type="image/png" href="data:image/png;base64,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" />
+<link rel="canonical" href="https://www.kpappworx.com/workstate" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Workstate" />
+<meta property="og:title" content="Stop making developers maintain Jira tickets" />
+<meta property="og:description" content="Keep Jira. Let development activity keep the project status current. A low-risk pilot from KPAppWorx." />
+<meta property="og:url" content="https://www.kpappworx.com/workstate" />
+<meta property="og:image" content="https://www.kpappworx.com/workstate/og-image.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Stop making developers maintain Jira tickets" />
+<meta name="twitter:description" content="Keep Jira. Let development activity keep the project status current." />
+<meta name="twitter:image" content="https://www.kpappworx.com/workstate/og-image.png" />
+<style>
+  :root {
+    --navy:     #0d1526;
+    --ink:      #1d2635;
+    --ink-2:    #3c4757;
+    --muted:    #5d6877;
+    --faint:    #8a93a1;
+
+    --line:     #e4e8ee;
+    --line-2:   #edf0f4;
+    --tint:     #f7f9fb;
+    --white:    #ffffff;
+
+    --blue:     #0c78fc;
+    --blue-ink: #0a56c4;
+    --blue-bg:  #eaf2ff;
+    --blue-hov: #0a66dd;
+
+    --green:    #0e8a61;
+    --green-bg: #e3f6ed;
+
+    --r-sm: 6px;
+    --r:    9px;
+    --r-lg: 14px;
+
+    --shell: 1060px;
+    --read:  720px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    margin: 0;
+    background: var(--white);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    font-size: 17px;
+    line-height: 1.62;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .shell { max-width: var(--shell); margin: 0 auto; padding: 0 28px; }
+  .read  { max-width: var(--read); }
+
+  h1, h2, h3 { color: var(--navy); font-weight: 640; letter-spacing: -0.025em; margin: 0; }
+  p { margin: 0; }
+
+  code, .mono {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: .88em;
+  }
+
+  /* ---------------- nav ---------------- */
+
+  .nav {
+    position: sticky; top: 0; z-index: 40;
+    background: rgba(255,255,255,.9);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .2s ease;
+  }
+  .nav.stuck { border-bottom-color: var(--line); }
+  .nav-in {
+    height: 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .mark {
+    display: block;
+    width: 38px; height: 24px;
+    background: url("data:image/png;base64,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") left center/contain no-repeat;
+  }
+  .nav-right { display: flex; align-items: center; gap: 26px; }
+  .nav-link {
+    font-size: 14.8px; font-weight: 500;
+    color: var(--muted); text-decoration: none;
+    transition: color .15s ease;
+  }
+  .nav-link:hover { color: var(--navy); }
+  @media (max-width: 680px) { .nav-link { display: none; } }
+
+  /* ---------------- buttons ---------------- */
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--blue); color: #fff;
+    font: inherit; font-size: 15.5px; font-weight: 550; line-height: 1;
+    letter-spacing: -0.006em;
+    padding: 13px 20px;
+    border: 1px solid var(--blue);
+    border-radius: var(--r);
+    text-decoration: none; cursor: pointer;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .btn:hover { background: var(--blue-hov); border-color: var(--blue-hov); }
+  .btn-sm  { padding: 9px 15px; font-size: 14.4px; border-radius: var(--r-sm); }
+  .btn-lg  { padding: 15px 24px; font-size: 16.4px; }
+  .btn-block { width: 100%; }
+  .btn-ghost {
+    background: var(--white); color: var(--navy); border-color: var(--line);
+  }
+  .btn-ghost:hover { background: var(--tint); border-color: #d6dbe3; }
+
+  :where(a, button, input, select, textarea, summary):focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* ---------------- hero ---------------- */
+
+  .hero { padding: 80px 0 68px; }
+
+  h1 {
+    font-size: clamp(34px, 5.4vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -0.032em;
+    margin-bottom: 20px;
+    max-width: 16em;
+  }
+  .sub {
+    font-size: clamp(18px, 2.2vw, 22px);
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    font-weight: 500;
+    color: var(--ink-2);
+    max-width: 26em;
+    margin-bottom: 30px;
+  }
+  .support { max-width: 34em; }
+  .support p {
+    font-size: 16.8px;
+    line-height: 1.66;
+    color: var(--muted);
+    margin-bottom: 13px;
+  }
+  .support p:last-child { margin-bottom: 0; }
+  .support strong { color: var(--ink); font-weight: 580; }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+
+  /* ---------------- flow diagram ---------------- */
+
+  .flow {
+    margin-top: 62px;
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    background: var(--white);
+    padding: 30px 26px 26px;
+  }
+  .flow-grid {
+    display: grid;
+    grid-template-columns: 1fr 44px 1fr 44px 1fr;
+    align-items: stretch;
+  }
+  .node {
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--tint);
+    padding: 17px 18px;
+  }
+  .node.core { background: var(--blue-bg); border-color: #c8ddfe; }
+  .node.out  { background: var(--green-bg); border-color: #c4e9d8; }
+  .node h3 {
+    font-size: 11.4px; font-weight: 660;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 9px;
+  }
+  .node.core h3 { color: var(--blue-ink); }
+  .node.out h3  { color: var(--green); }
+  .node p {
+    font-size: 14.6px; line-height: 1.5;
+    color: var(--ink-2);
+  }
+  .node ul { margin: 0; padding: 0; list-style: none; }
+  .node li {
+    font-size: 14px; line-height: 1.5;
+    color: var(--ink-2);
+    padding-left: 13px; position: relative;
+  }
+  .node li::before {
+    content: ""; position: absolute; left: 0; top: 9px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: #a9b3c2;
+  }
+  .arrow {
+    display: grid; place-items: center;
+    color: #c2c9d4;
+  }
+  .flow-cap {
+    margin-top: 18px; padding-top: 16px;
+    border-top: 1px solid var(--line-2);
+    font-size: 13.8px; color: var(--faint);
+    text-align: center;
+  }
+
+  /* ---------------- sections ---------------- */
+
+  .sec { padding: 86px 0; }
+  .sec-tint { background: var(--tint); border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); }
+
+  .eyebrow {
+    display: block;
+    font-size: 12.2px; font-weight: 660;
+    letter-spacing: .13em; text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-size: clamp(26px, 3.4vw, 35px);
+    line-height: 1.16;
+    letter-spacing: -0.028em;
+    margin-bottom: 14px;
+    max-width: 18em;
+  }
+  .sec-intro {
+    font-size: 17.5px; line-height: 1.6;
+    color: var(--muted);
+    max-width: 32em;
+    margin-bottom: 42px;
+  }
+
+  /* steps */
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps > li {
+    counter-increment: s;
+    position: relative;
+    padding: 0 0 38px 64px;
+  }
+  .steps > li:last-child { padding-bottom: 0; }
+  .steps > li::before {
+    content: "Step " counter(s);
+    position: absolute; left: 0; top: 1px;
+    width: 44px; height: 44px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--blue-ink);
+    font-size: 10.8px; font-weight: 660; letter-spacing: 0;
+    display: grid; place-items: center;
+    text-indent: 0;
+    overflow: hidden;
+    white-space: pre;
+  }
+  .steps > li:not(:last-child)::after {
+    content: "";
+    position: absolute; left: 22px; top: 52px; bottom: 8px;
+    width: 1px; background: var(--line);
+  }
+  .steps h3 {
+    font-size: 18.5px; font-weight: 620;
+    letter-spacing: -0.02em;
+    margin-bottom: 7px;
+    padding-top: 6px;
+  }
+  .steps > li > p {
+    font-size: 16.6px; line-height: 1.58;
+    color: var(--muted);
+  }
+  .note {
+    font-size: 14.8px !important;
+    color: var(--faint) !important;
+    margin-top: 10px !important;
+  }
+
+  .inset {
+    margin-top: 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--tint);
+    padding: 15px 18px;
+  }
+  .inset-label {
+    font-size: 11.2px; font-weight: 660;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: var(--faint);
+    margin-bottom: 11px;
+  }
+  .inset ul { list-style: none; margin: 0; padding: 0; }
+  .inset li {
+    font-size: 15.2px; line-height: 1.55;
+    color: var(--ink-2);
+    padding-left: 15px; position: relative;
+  }
+  .inset li::before {
+    content: ""; position: absolute; left: 0; top: 10px;
+    width: 4px; height: 4px; border-radius: 50%; background: #a9b3c2;
+  }
+
+  /* rule rows */
+  .rules { display: grid; gap: 8px; }
+  .rule {
+    display: grid;
+    grid-template-columns: 1fr 26px auto;
+    align-items: center;
+    gap: 10px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    padding: 10px 13px;
+  }
+  .rule .ev {
+    font-size: 14.4px; color: var(--ink-2); font-weight: 500;
+  }
+  .rule .arr { color: #c2c9d4; display: grid; place-items: center; }
+  .st {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13.2px; font-weight: 600;
+    border-radius: 5px; padding: 3px 9px;
+    white-space: nowrap;
+  }
+  .st::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .st-prog { color: var(--blue-ink); background: var(--blue-bg); }
+  .st-rev  { color: #8a5a06;        background: #fdf3de; }
+  .st-done { color: var(--green);   background: var(--green-bg); }
+
+  /* pilot section */
+  .nos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 30px; }
+  .no {
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--white);
+    padding: 20px;
+    text-align: center;
+  }
+  .no strong {
+    display: block;
+    font-size: 17px; font-weight: 620; color: var(--navy);
+    letter-spacing: -0.02em;
+  }
+
+  /* trust list */
+  .trust { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 26px; list-style: none; margin: 0; padding: 0; }
+  .trust li {
+    display: flex; align-items: flex-start; gap: 11px;
+    font-size: 16.2px; line-height: 1.5;
+    color: var(--ink-2);
+    padding: 4px 0;
+  }
+  .trust svg { flex: none; margin-top: 4px; color: var(--green); }
+
+  /* faq */
+  .faq { border-top: 1px solid var(--line); }
+  .faq details {
+    border-bottom: 1px solid var(--line);
+  }
+  .faq summary {
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+    padding: 19px 0;
+    cursor: pointer;
+    list-style: none;
+    font-size: 17.2px; font-weight: 570;
+    letter-spacing: -0.016em;
+    color: var(--navy);
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary::after {
+    content: "";
+    flex: none;
+    width: 11px; height: 11px;
+    border-right: 1.8px solid #aab3c0;
+    border-bottom: 1.8px solid #aab3c0;
+    transform: rotate(45deg) translate(-2px, -2px);
+    transition: transform .2s ease;
+  }
+  .faq details[open] summary::after { transform: rotate(225deg) translate(-3px, -3px); }
+  .faq summary:hover { color: var(--blue-ink); }
+  .faq .a {
+    padding: 0 0 21px;
+    font-size: 16.4px; line-height: 1.62;
+    color: var(--muted);
+    max-width: 44em;
+  }
+
+  /* ---------------- form ---------------- */
+
+  .apply { padding: 86px 0 96px; }
+  .card {
+    max-width: 660px; margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 32px;
+  }
+  .apply-head { max-width: 34em; margin: 0 auto 34px; text-align: center; }
+  .apply-head h2 { margin: 0 auto 12px; }
+  .apply-head p { color: var(--muted); font-size: 17.2px; }
+
+  .field { margin-bottom: 17px; }
+  .field:last-child { margin-bottom: 0; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+
+  label, .legend {
+    display: block;
+    font-size: 14.2px; font-weight: 560;
+    color: var(--ink); letter-spacing: -0.005em;
+    margin-bottom: 7px;
+  }
+  .opt { color: var(--faint); font-weight: 450; }
+
+  input[type="email"], input[type="text"], select, textarea {
+    width: 100%;
+    font: inherit; font-size: 15.6px;
+    color: var(--navy); background: var(--white);
+    border: 1px solid #d9dee6;
+    border-radius: var(--r);
+    padding: 11px 13px;
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  input::placeholder, textarea::placeholder { color: #a5adba; }
+  input:hover, select:hover, textarea:hover { border-color: #c3cad4; }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(12,120,252,.14);
+  }
+  select {
+    appearance: none; cursor: pointer;
+    padding-right: 36px;
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%235d6877' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 13px center;
+  }
+  textarea { min-height: 104px; resize: vertical; line-height: 1.55; }
+
+  fieldset { border: 0; margin: 0 0 17px; padding: 0; }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+  .choice {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid #d9dee6; border-radius: 999px;
+    padding: 8px 15px 8px 12px;
+    font-size: 14.8px; font-weight: 450;
+    color: var(--ink-2); cursor: pointer; margin: 0;
+    transition: border-color .15s ease, background .15s ease, color .15s ease;
+  }
+  .choice:hover { border-color: #c3cad4; }
+  .choice input { accent-color: var(--blue); margin: 0; }
+  .choice:has(input:checked) { border-color: var(--blue); background: var(--blue-bg); color: var(--blue-ink); }
+  .choice:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  .sep {
+    height: 1px; background: var(--line-2);
+    margin: 24px 0;
+  }
+
+  .submit-note {
+    font-size: 14px; color: var(--faint);
+    text-align: center; margin-top: 13px;
+  }
+
+  .thanks {
+    max-width: 660px; margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 56px 32px;
+    text-align: center;
+  }
+  .thanks .seal {
+    width: 46px; height: 46px; border-radius: 50%;
+    background: var(--green-bg); color: var(--green);
+    display: inline-grid; place-items: center;
+    margin-bottom: 18px;
+  }
+  .thanks h3 { font-size: 21px; letter-spacing: -0.024em; margin-bottom: 10px; }
+  .thanks p { color: var(--muted); font-size: 16.6px; max-width: 30em; margin: 0 auto; line-height: 1.6; }
+
+  [hidden] { display: none !important; }
+
+  /* ---------------- footer ---------------- */
+
+  footer {
+    border-top: 1px solid var(--line-2);
+    background: var(--tint);
+    padding: 30px 0 40px;
+  }
+  .foot {
+    display: flex; flex-wrap: wrap; align-items: center;
+    gap: 12px 24px;
+    font-size: 14.8px; color: var(--muted);
+  }
+  .foot-note { flex: 1 1 340px; }
+  .foot-mail {
+    color: var(--blue-ink); text-decoration: none;
+    font-weight: 530; white-space: nowrap;
+  }
+  .foot-mail:hover { text-decoration: underline; }
+  .foot-legal {
+    margin-top: 22px; padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap;
+    justify-content: space-between; gap: 6px 24px;
+    font-size: 13.6px; color: var(--faint);
+  }
+  .submit-note a { color: var(--blue-ink); text-decoration: none; font-weight: 520; }
+  .submit-note a:hover { text-decoration: underline; }
+  .thanks a { color: var(--blue-ink); text-decoration: none; font-weight: 520; }
+  .thanks a:hover { text-decoration: underline; }
+
+  /* ---------------- responsive ---------------- */
+
+  @media (max-width: 880px) {
+    .flow-grid { grid-template-columns: 1fr; gap: 0; }
+    .arrow { height: 34px; transform: rotate(90deg); }
+    .nos { grid-template-columns: 1fr; }
+    .trust { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 660px) {
+    body { font-size: 16.5px; }
+    .shell { padding: 0 20px; }
+    .hero { padding: 52px 0 52px; }
+    .sec, .apply { padding: 58px 0; }
+    .row { grid-template-columns: 1fr; }
+    .card, .thanks { padding: 22px 18px; }
+    .thanks { padding: 44px 20px; }
+    .cta-row .btn { width: 100%; }
+    .flow { margin-top: 40px; padding: 22px 18px 20px; }
+    .steps > li { padding-left: 56px; }
+    .rule { grid-template-columns: 1fr; gap: 7px; justify-items: start; }
+    .rule .arr { transform: rotate(90deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition-duration: .001ms !important; animation-duration: .001ms !important; }
+  }
+</style>
+</head>
+<body id="top">
+
+<nav class="nav" id="nav">
+  <div class="shell nav-in">
+    <a href="#top" aria-label="Workstate — home"><span class="mark"></span></a>
+    <div class="nav-right">
+      <a class="nav-link" href="#how">How it works</a>
+      <a class="nav-link" href="#pilot">Pilot</a>
+      <a class="nav-link" href="#faq">FAQ</a>
+      <a class="btn btn-sm" href="#apply">Apply for the pilot</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="shell">
+      <div class="read">
+        <h1>Stop making developers maintain Jira tickets</h1>
+        <p class="sub">Keep Jira. Let development activity keep the project status current.</p>
+        <div class="support">
+          <p>Developers don&rsquo;t always keep Jira tickets updated. PMs and engineering leads still need the board to reflect what&rsquo;s actually happening.</p>
+          <p>We&rsquo;re testing a simple way to keep Jira closer to the work by connecting it to GitHub or GitLab and using real development activity such as branches, pull requests and merges.</p>
+          <p><strong>Your team keeps using Jira as usual. Nothing is migrated or switched off.</strong></p>
+          <p>We simply test whether this can reduce the manual work of keeping tickets updated while still giving your team a clear view of progress.</p>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-lg" href="#apply">Apply for the pilot</a>
+          <a class="btn btn-lg btn-ghost" href="#how">How it works</a>
+        </div>
+      </div>
+
+      <div class="flow">
+        <div class="flow-grid">
+          <div class="node">
+            <h3>GitHub / GitLab</h3>
+            <ul>
+              <li>Branch created</li>
+              <li>Commit pushed</li>
+              <li>Pull request opened</li>
+              <li>Pull request merged</li>
+            </ul>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <svg width="17" height="12" viewBox="0 0 18 12" fill="none"><path d="M0 6h15.5M12 1.5 16.5 6 12 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="node core">
+            <h3>Workstate</h3>
+            <ul>
+              <li>Validates the event</li>
+              <li>Matches the Jira issue key</li>
+              <li>Applies a configured status rule</li>
+              <li>Records an audit entry</li>
+            </ul>
+          </div>
+
+          <div class="arrow" aria-hidden="true">
+            <svg width="17" height="12" viewBox="0 0 18 12" fill="none"><path d="M0 6h15.5M12 1.5 16.5 6 12 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+
+          <div class="node out">
+            <h3>Jira</h3>
+            <ul>
+              <li>Issue status updated</li>
+              <li>Existing workflow stays active</li>
+              <li>Jira remains the source of record</li>
+            </ul>
+          </div>
+        </div>
+        <p class="flow-cap">Developers keep working normally. Nothing is migrated, and nothing is switched off.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="sec sec-tint" id="how">
+    <div class="shell">
+      <div class="read">
+        <span class="eyebrow">How it works</span>
+        <h2>Five steps, one project, deterministic rules</h2>
+        <p class="sec-intro">No AI guesswork at this stage. Development events are matched to Jira issues by issue key, and only configured rules can change a status.</p>
+
+        <ol class="steps">
+          <li>
+            <h3>Connect</h3>
+            <p>Connect one Jira project and one GitHub or GitLab repository.</p>
+          </li>
+
+          <li>
+            <h3>Observe development activity</h3>
+            <p>Workstate receives relevant development events:</p>
+            <div class="inset">
+              <p class="inset-label">Events</p>
+              <ul>
+                <li>Branch created</li>
+                <li>Commit pushed</li>
+                <li>Pull request opened</li>
+                <li>Pull request reviewed</li>
+                <li>Pull request merged</li>
+              </ul>
+            </div>
+          </li>
+
+          <li>
+            <h3>Match activity to Jira</h3>
+            <p>Workstate maps development activity to Jira issues using issue keys found in:</p>
+            <div class="inset">
+              <p class="inset-label">Matched from</p>
+              <ul>
+                <li>Branch names &mdash; <code>PROJ-123-fix-login</code></li>
+                <li>Commit messages</li>
+                <li>Pull request titles</li>
+              </ul>
+            </div>
+            <p class="note">Not every event can be matched automatically. Where confidence is low, the Jira status is left alone and the event is flagged instead.</p>
+          </li>
+
+          <li>
+            <h3>Apply status rules</h3>
+            <p>A matched event is checked against the rules configured for that project:</p>
+            <div class="inset">
+              <p class="inset-label">Example rules</p>
+              <div class="rules">
+                <div class="rule">
+                  <span class="ev mono">branch_created</span>
+                  <span class="arr" aria-hidden="true"><svg width="15" height="10" viewBox="0 0 18 12" fill="none"><path d="M0 6h15.5M12 1.5 16.5 6 12 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="st st-prog">In Progress</span>
+                </div>
+                <div class="rule">
+                  <span class="ev mono">pull_request_opened</span>
+                  <span class="arr" aria-hidden="true"><svg width="15" height="10" viewBox="0 0 18 12" fill="none"><path d="M0 6h15.5M12 1.5 16.5 6 12 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="st st-rev">In Review</span>
+                </div>
+                <div class="rule">
+                  <span class="ev mono">pull_request_merged</span>
+                  <span class="arr" aria-hidden="true"><svg width="15" height="10" viewBox="0 0 18 12" fill="none"><path d="M0 6h15.5M12 1.5 16.5 6 12 10.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="st st-done">Done</span>
+                </div>
+              </div>
+            </div>
+            <p class="note">These are example rules only. Each pilot defines which Jira statuses correspond to which events, so unusual workflow states are configured rather than assumed.</p>
+          </li>
+
+          <li>
+            <h3>Update Jira</h3>
+            <p>Workstate updates the Jira issue through the Jira API. Your existing Jira workflow remains active, and every automated change is logged.</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PILOT ============ -->
+  <section class="sec" id="pilot">
+    <div class="shell">
+      <div class="read">
+        <span class="eyebrow">The pilot</span>
+        <h2>Run it alongside Jira.</h2>
+      </div>
+
+      <div class="nos">
+        <div class="no"><strong>No migration</strong></div>
+        <div class="no"><strong>No replacement</strong></div>
+        <div class="no"><strong>No big-bang change</strong></div>
+      </div>
+
+      <div class="read">
+        <p class="sec-intro" style="margin-bottom:26px">We connect one real project and run the experiment alongside your existing Jira workflow. The team continues using Jira normally while we measure whether development activity can reduce manual ticket maintenance.</p>
+        <a class="btn btn-lg" href="#apply">Apply for the pilot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TRUST ============ -->
+  <section class="sec sec-tint">
+    <div class="shell">
+      <div class="read">
+        <span class="eyebrow">Transparency</span>
+        <h2>Your existing workflow stays intact</h2>
+        <p class="sec-intro">Workstate is being tested as a parallel layer, not as a system of record.</p>
+      </div>
+
+      <ul class="trust">
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.8 8.4 6 11.6l7.2-7.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Jira stays active</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.8 8.4 6 11.6l7.2-7.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> GitHub / GitLab stays active</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.8 8.4 6 11.6l7.2-7.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> No migration required</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.8 8.4 6 11.6l7.2-7.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> No Jira project replacement</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.8 8.4 6 11.6l7.2-7.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> The pilot can be limited to one project</li>
+        <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2.8 8.4 6 11.6l7.2-7.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg> Access is scoped as narrowly as possible</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ APPLY ============ -->
+  <section class="apply" id="apply">
+    <div class="shell">
+      <div class="apply-head">
+        <span class="eyebrow">Apply</span>
+        <h2>Apply for the pilot</h2>
+        <p>Tell us about your setup and we&rsquo;ll see whether it fits this round.</p>
+      </div>
+
+      <form class="card" id="apply-form">
+        <div class="row">
+          <div class="field">
+            <label for="email">Work email</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@company.com" required />
+          </div>
+          <div class="field">
+            <label for="company">Company name</label>
+            <input type="text" id="company" name="company" autocomplete="organization" placeholder="Company" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="role">Role</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>CTO</option>
+              <option>VP / Head of Engineering</option>
+              <option>Engineering Manager</option>
+              <option>Tech Lead</option>
+              <option>Product Manager</option>
+              <option>Developer</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="team-size">Engineering team size</label>
+            <select id="team-size" name="team_size" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>1&ndash;10</option>
+              <option>11&ndash;30</option>
+              <option>31&ndash;50</option>
+              <option>51&ndash;100</option>
+              <option>100+</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="jira-type">Jira type</label>
+            <select id="jira-type" name="jira_type" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>Jira Cloud</option>
+              <option>Jira Data Center</option>
+              <option>Jira Server</option>
+              <option>Not sure</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="code-host">Code host</label>
+            <select id="code-host" name="code_host" required>
+              <option value="" disabled selected>Select&hellip;</option>
+              <option>GitHub</option>
+              <option>GitLab</option>
+              <option>Both</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sep"></div>
+
+        <div class="field">
+          <label for="frustration">Biggest frustration with Jira right now</label>
+          <textarea id="frustration" name="frustration" placeholder="What actually costs your team time?" required></textarea>
+        </div>
+
+        <fieldset>
+          <span class="legend" id="open-legend">Would you be open to testing this on one real project?</span>
+          <div class="choices" role="radiogroup" aria-labelledby="open-legend">
+            <label class="choice"><input type="radio" name="open_to_test" value="Yes" required /> Yes</label>
+            <label class="choice"><input type="radio" name="open_to_test" value="Maybe" /> Maybe</label>
+            <label class="choice"><input type="radio" name="open_to_test" value="Not right now" /> Not right now</label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="anything">Anything else we should know? <span class="opt">&mdash; optional</span></label>
+          <textarea id="anything" name="anything" placeholder="Context, constraints, timing" style="min-height:82px"></textarea>
+        </div>
+
+        <div class="sep"></div>
+
+        <button class="btn btn-block btn-lg" type="submit">Apply for the pilot</button>
+        <p class="submit-note">We review each application and reply only if the project looks like a fit.<br />
+          Questions before applying? Email <a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a>.</p>
+      </form>
+
+      <div class="thanks" id="thanks" hidden tabindex="-1" role="status" aria-live="polite">
+        <span class="seal" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 16 16" fill="none"><path d="M2.8 8.4 6 11.6l7.2-7.2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h3>Application received</h3>
+        <p>Thanks. We&rsquo;ll review your application and reach out if the project looks like a good fit for the pilot.<br />
+          In the meantime you can reach us at <a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="sec sec-tint" id="faq">
+    <div class="shell">
+      <div class="read">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions we get asked</h2>
+        <p class="sec-intro">Short answers, no overclaiming.</p>
+
+        <div class="faq">
+          <details open>
+            <summary>Does this replace Jira?</summary>
+            <p class="a">No. The pilot runs alongside Jira.</p>
+          </details>
+          <details>
+            <summary>Do we have to migrate our data?</summary>
+            <p class="a">No.</p>
+          </details>
+          <details>
+            <summary>Do developers need to change how they work?</summary>
+            <p class="a">The goal is the opposite: reduce manual Jira maintenance while developers continue using GitHub or GitLab normally.</p>
+          </details>
+          <details>
+            <summary>Does it work with GitHub?</summary>
+            <p class="a">Yes &mdash; the pilot supports GitHub first.</p>
+          </details>
+          <details>
+            <summary>Does it work with GitLab?</summary>
+            <p class="a">GitLab support is planned. GitHub is built first unless a pilot customer specifically requires GitLab.</p>
+          </details>
+          <details>
+            <summary>Will it automatically change every Jira ticket?</summary>
+            <p class="a">No. Only configured projects and supported events can trigger an automated change.</p>
+          </details>
+          <details>
+            <summary>What happens if Workstate gets something wrong?</summary>
+            <p class="a">Every automated change is logged, and the automation can be disabled.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot">
+      <span class="mark" aria-hidden="true"></span>
+      <span class="foot-note">Workstate runs alongside your existing tools. Nothing is migrated or switched off.</span>
+      <a class="foot-mail" href="mailto:hello@kpappworx.com">hello@kpappworx.com</a>
+    </div>
+    <div class="foot-legal">
+      <span>&copy; 2026 KPAppWorx Technologies Private Limited</span>
+      <span>Workstate is an experimental pilot by KPAppWorx.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    'use strict';
+
+    var nav = document.getElementById('nav');
+    var onScroll = function () { if (nav) nav.classList.toggle('stuck', window.scrollY > 6); };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    var form = document.getElementById('apply-form');
+    var thanks = document.getElementById('thanks');
+
+    if (form && thanks) {
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
+
+        /* Wire up to form storage when ready:
+           var data = Object.fromEntries(new FormData(form).entries()); */
+
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.focus();
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>
