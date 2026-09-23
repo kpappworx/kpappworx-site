@@ -37,6 +37,57 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/base.css" />
 <style>
+/* ---------- Record: a trace, read from the spine out ---------- */
+#background{ position:relative; overflow:hidden; }
+#background::before{
+  content:""; position:absolute; inset:0; pointer-events:none;
+  background-image:
+    linear-gradient(to right, rgba(18,22,27,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18,22,27,.045) 1px, transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(120% 90% at 82% 8%, #000, transparent 72%);
+  mask-image:radial-gradient(120% 90% at 82% 8%, #000, transparent 72%);
+}
+:root[data-theme="dark"] #background::before{
+  background-image:
+    linear-gradient(to right, rgba(236,239,233,.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(236,239,233,.06) 1px, transparent 1px);
+}
+#background .wrap{ position:relative; }
+.trace{ list-style:none; margin:44px 0 0; padding:0 0 0 30px; position:relative; }
+.trace::before{
+  content:""; position:absolute; left:4px; top:10px; bottom:10px; width:1px;
+  background:linear-gradient(to bottom, var(--line-2), var(--line-2) 70%, transparent);
+}
+.trace-row{
+  position:relative; display:grid; align-items:baseline; gap:6px 28px;
+  grid-template-columns:104px minmax(0,1fr) minmax(0,1fr);
+  padding:20px 0; border-bottom:1px solid var(--line);
+}
+.trace-row::before{
+  content:""; position:absolute; left:-30px; top:28px; width:9px; height:9px;
+  border:1px solid var(--line-2); background:var(--bg);
+}
+.trace-row:last-child{ border-bottom:none; }
+.trace-yr{
+  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.06em;
+  color:var(--ink-3); font-variant-numeric:tabular-nums; white-space:nowrap;
+}
+.trace-org{ font-family:var(--font-display); font-weight:500; font-size:23px; letter-spacing:-.008em; line-height:1.2; }
+.trace-role{
+  font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--ink-3);
+}
+/* The current line is the one that matters: filled node, ink weight */
+.trace-now::before{ background:var(--accent); border-color:var(--accent); }
+.trace-now .trace-yr, .trace-now .trace-role{ color:var(--accent); }
+@media (max-width:760px){
+  .trace{ padding-left:24px; }
+  .trace-row{ grid-template-columns:1fr; gap:4px; padding:18px 0; }
+  .trace-row::before{ left:-24px; top:24px; }
+  .trace-org{ font-size:20px; }
+}
+
 /* Founder copy: paragraphs need air; the base rule is tuned for short blocks */
 .about-copy p{ margin-bottom:18px; font-size:16.5px; line-height:1.72; max-width:62ch; }
 .about-copy p:last-child{ margin-bottom:0; }
@@ -138,54 +189,36 @@
 <section class="section section-tint" id="background" aria-labelledby="background-title">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="kicker">Background</p>
+      <p class="kicker">Record</p>
       <h2 class="h2" id="background-title">Where the standard comes from.</h2>
-      <p class="lede">Eight years across avionics, automotive and silicon before starting the company — domains where software is reviewed by people whose job is to disbelieve it.</p>
     </div>
-    <div class="timeline reveal">
-      <div class="tl-row">
-        <div class="tl-date">2016–2017</div>
-        <div class="tl-body">
-          <h3>Schneider Electric · Intern</h3>
-          <p>Embedded firmware verification. Test plans, validation results and sign-off artefacts — the first exposure to software that has to be documented before it can be released.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-date">2018–2021</div>
-        <div class="tl-body">
-          <h3>Veoneer · Software Engineer</h3>
-          <p>Safety-critical automotive software through integration and validation cycles: defect triage across releases, static-analysis compliance, and keeping test outcomes aligned to system requirements under functional-safety objectives.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-date">2021–2022</div>
-        <div class="tl-body">
-          <h3>Bosch Global Software Technologies · Senior Software Engineer</h3>
-          <p>Delivery of embedded modules across engineering, integration and validation. Led static-analysis review cycles against functional-safety guidelines and consolidated defect and compliance status for milestone readiness.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-date">2022–2023</div>
-        <div class="tl-body">
-          <h3>Thales · Senior Software Engineer</h3>
-          <p>End-to-end requirements traceability for safety-critical avionics software: alignment between requirement, implementation and verification, traceability documentation for certification review, and impact assessment on every requirement change.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-date">2023–2026</div>
-        <div class="tl-body">
-          <h3>NVIDIA · Principal Development Engineer</h3>
-          <p>Coordinated engineering, QA and CI/CD across embedded software programs — delivery at a scale where process is the only thing that keeps quality from drifting.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-date">2026</div>
-        <div class="tl-body">
-          <h3>KPAppWorx Technologies Private Limited</h3>
-          <p>Incorporated in Bengaluru. Ten consumer and utility apps released and maintained on the App Store, and Quarterdeck AI built for revenue teams — the same verification habits, applied to a business problem instead of a certified one.</p>
-        </div>
-      </div>
-    </div>
+    <ol class="trace reveal" aria-label="Founder's professional record">
+      <li class="trace-row">
+        <span class="trace-yr">2023–2026</span>
+        <span class="trace-org">NVIDIA</span>
+        <span class="trace-role">Principal Development Engineer</span>
+      </li>
+      <li class="trace-row">
+        <span class="trace-yr">2022–2023</span>
+        <span class="trace-org">Thales</span>
+        <span class="trace-role">Senior Software Engineer</span>
+      </li>
+      <li class="trace-row">
+        <span class="trace-yr">2021–2022</span>
+        <span class="trace-org">Bosch Global Software Technologies</span>
+        <span class="trace-role">Senior Software Engineer</span>
+      </li>
+      <li class="trace-row">
+        <span class="trace-yr">2018–2021</span>
+        <span class="trace-org">Veoneer</span>
+        <span class="trace-role">Software Engineer</span>
+      </li>
+      <li class="trace-row trace-now">
+        <span class="trace-yr">2026–</span>
+        <span class="trace-org">KPAppWorx Technologies</span>
+        <span class="trace-role">Founder</span>
+      </li>
+    </ol>
   </div>
 </section>
 
