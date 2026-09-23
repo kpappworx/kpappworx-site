@@ -1,0 +1,16 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/products.html",
+      "destination": "/quarterdeck",
+      "permanent": true
+    },
+    {
+      "source": "/products",
+      "destination": "/quarterdeck",
+      "permanent": true
+    }
+  ]
+}
