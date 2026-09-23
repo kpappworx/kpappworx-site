@@ -37,6 +37,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/base.css" />
 <style>
+/* Founder name and role hold one line: sized to the longest string, wrap only if the screen can't take it */
+#founder-title{ font-size:clamp(22px,3.1vw,34px); line-height:1.2; max-width:none; }
+@media (min-width:560px){ #founder-title{ white-space:nowrap; } }
+
 /* ---------- Record: an index of institutions, ruled like a spec table ---------- */
 #background{ position:relative; overflow:hidden; }
 #background::before{
