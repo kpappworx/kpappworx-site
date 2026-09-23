@@ -55,7 +55,8 @@
 <link rel="stylesheet" href="/assets/css/base.css" />
 <style>
 /* ---------- Hero: copy left, product panel right ---------- */
-.hero-split{ display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,1fr); gap:64px; align-items:center; }
+.hero-split{ display:grid; grid-template-columns:minmax(0,1.02fr) minmax(0,1fr); gap:60px; align-items:center; }
+.hero{ padding-top:80px; padding-bottom:88px; }
 .hero-eyebrow{ display:inline-flex; align-items:center; gap:9px; font-size:13px; font-weight:600; color:var(--accent); background:var(--accent-soft); border-radius:100px; padding:6px 14px; margin-bottom:26px; }
 .hero-eyebrow .pip{ width:6px; height:6px; border-radius:50%; background:var(--accent); flex-shrink:0; }
 .hero-split h1{ font-size:clamp(34px,3.7vw,50px); line-height:1.08; margin-bottom:22px; max-width:19ch; }
@@ -258,7 +259,7 @@ a.rack-item:hover .rack-go{ color:var(--accent); transform:translateX(3px); }
         </div>
       </div>
 
-      <div class="mock" role="img" aria-label="Example Quarterdeck brief listing four deals flagged for review with the CRM evidence behind each">
+      <div class="mock" role="img" aria-label="Example Quarterdeck brief listing three deals flagged for review with the CRM evidence behind each">
         <div class="mock-bar">
           <span class="mock-dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="mock-title">Monday Brief · Week of 10 August</span>
@@ -277,15 +278,6 @@ a.rack-item:hover .rack-go{ color:var(--accent); transform:translateX(3px); }
           <div class="mrow">
             <span class="mrank">02</span>
             <span>
-              <span class="mname">Brightline Retail</span>
-              <span class="mwhy">Primary contact left the company. No new decision maker identified. Stage unchanged for 21 days with no correspondence.</span>
-              <span class="mflag f-bad">Owner gone</span>
-            </span>
-            <span class="mamt">$55,000</span>
-          </div>
-          <div class="mrow">
-            <span class="mrank">03</span>
-            <span>
               <span class="mname">Meridian Health</span>
               <span class="mwhy">Legal redlines returned yesterday. Procurement asked for net-60 instead of net-30. Timing risk, not deal risk.</span>
               <span class="mflag f-warn">Watch</span>
@@ -293,7 +285,7 @@ a.rack-item:hover .rack-go{ color:var(--accent); transform:translateX(3px); }
             <span class="mamt">$82,500</span>
           </div>
           <div class="mrow">
-            <span class="mrank">04</span>
+            <span class="mrank">03</span>
             <span>
               <span class="mname">Calder Manufacturing</span>
               <span class="mwhy">Economic buyer confirmed budget by email on Tuesday. Security review passed. Contract in signature routing.</span>
@@ -301,7 +293,7 @@ a.rack-item:hover .rack-go{ color:var(--accent); transform:translateX(3px); }
             </span>
             <span class="mamt">$210,000</span>
           </div>
-          <p class="mfoot">4 of 63 open deals flagged. Every line links back to the CRM record it came from.</p>
+          <p class="mfoot">3 of 63 open deals flagged this week. Every line links back to the CRM record it came from.</p>
         </div>
       </div>
     </div>
