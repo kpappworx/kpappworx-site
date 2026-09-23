@@ -241,6 +241,34 @@
   </div>
 </section>
 
+<!-- ============ THE PROBLEM ============ -->
+<section class="section" id="problem" aria-labelledby="problem-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">The problem</p>
+      <h2 class="h2" id="problem-title">The pipeline changed this week. Nobody has time to read all of it.</h2>
+      <p class="lede">A CRM records every edit faithfully. It does not tell you which of those edits should change what you say in the forecast meeting.</p>
+    </div>
+    <div class="value-grid reveal">
+      <div class="value-card">
+        <div class="icon-tile accent" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8v5M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Revenue leaders</h3>
+        <p>You commit to a number on Friday using a pipeline you last examined deal by deal weeks ago. The risky ones are in there somewhere.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-tile accent" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M19 9l-5 5-3-3-4 4"/></svg></div>
+        <h3>Sales managers</h3>
+        <p>Close dates move, stages slip backwards, owners change. Each edit looks reasonable on its own; the pattern across weeks is what matters.</p>
+      </div>
+      <div class="value-card">
+        <div class="icon-tile accent" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg></div>
+        <h3>RevOps</h3>
+        <p>Building the weekly review by hand means exports, pivot tables, and a report that is stale by the time the meeting starts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FEATURES ============ -->
 <section class="section section-tint" id="features" aria-labelledby="features-title">
   <div class="wrap">
@@ -399,6 +427,46 @@
       </div>
     </div>
     <p class="soon-note reveal">Reviewing Quarterdeck for your team? Email <a class="text-link" href="mailto:hello@kpappworx.com?subject=Quarterdeck%20AI%20%E2%80%94%20Security%20review">hello@kpappworx.com</a> for our data-handling details.</p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">Questions</p>
+      <h2 class="h2" id="faq-title">What teams ask before connecting a CRM.</h2>
+    </div>
+    <div class="faq reveal">
+      <details class="faq-item">
+        <summary>Does Quarterdeck write anything to HubSpot?</summary>
+        <p>No. Access is read-only through HubSpot OAuth. No fields are updated, no workflows are triggered, and no automation fires while you review.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Does AI decide which deals get flagged?</summary>
+        <p>No. Ranking is deterministic: amount, stage, close-date proximity, repeated drift, staleness and material changes. Language models only help phrase the explanation — they never invent a fact or change a score.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this a forecasting tool?</summary>
+        <p>No. Quarterdeck explains what changed and which deals deserve a look. It does not predict whether a deal will close, and it does not produce a number to replace your forecast.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Which CRMs are supported?</summary>
+        <p>HubSpot. Nothing else is claimed as supported until it is built and tested against a real pipeline.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long does setup take?</summary>
+        <p>Connecting is one OAuth authorization. Quarterdeck then needs a short baseline period to build change history, because repeated drift can only be seen across several weeks of snapshots.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens in a quiet week?</summary>
+        <p>You get a short brief. If little material changed, the list is small — a brief that pads itself to look busy is worse than no brief.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can we disconnect it?</summary>
+        <p>Yes. Revoke the connection in HubSpot at any time. Your CRM is unchanged because nothing was ever written to it.</p>
+      </details>
+    </div>
   </div>
 </section>
 
