@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>About — KPAppWorx Technologies</title>
-<meta name="description" content="KPAppWorx Technologies Private Limited is an Indian software company incorporated in 2026, building AI-powered software that solves practical business challenges." />
+<meta name="description" content="KPAppWorx Technologies Private Limited is a founder-led Indian software company in Bengaluru, built on eight years of safety-critical engineering across avionics, automotive and silicon — and the verification habits that come with it." />
 <link rel="canonical" href="https://www.kpappworx.com/about" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="KPAppWorx Technologies" />
@@ -37,6 +37,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/base.css" />
 <style>
+/* Founder copy: paragraphs need air; the base rule is tuned for short blocks */
+.about-copy p{ margin-bottom:18px; font-size:16.5px; line-height:1.72; max-width:62ch; }
+.about-copy p:last-child{ margin-bottom:0; }
+.about-facts{ background:var(--bg-2); border:1px solid var(--line); border-radius:4px; padding:28px; }
+.about-facts h3{ font-family:var(--font-mono); font-size:11.5px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); margin-bottom:18px; }
+.fact-row .k{ font-family:var(--font-mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-3); }
+.tl-date{ font-family:var(--font-mono); font-size:12px; letter-spacing:.08em; color:var(--ink-3); }
+.tl-body h3{ font-size:19px; margin-bottom:6px; }
+
 .mv-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px; }
 .mv-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r-xl); padding:36px; }
 .mv-card .kicker{ margin-bottom:12px; }
@@ -90,119 +99,145 @@
 
 <section class="page-hero" aria-labelledby="about-hero-title">
   <div class="wrap">
-    <p class="kicker">About KPAppWorx</p>
-    <h1 class="h1" id="about-hero-title">The company behind Quarterdeck AI.</h1>
-    <p class="intro-lead">KPAppWorx Technologies Private Limited is an Indian software company incorporated in 2026 and headquartered in Bengaluru, Karnataka. Our flagship product is Quarterdeck AI, a read-only HubSpot attention system for weekly pipeline review.</p>
+    <p class="kicker">About</p>
+    <h1 class="h1" id="about-hero-title">A software company run by an engineer from safety-critical systems.</h1>
+    <p class="intro-lead">KPAppWorx Technologies Private Limited is an Indian software company, incorporated in 2026 and headquartered in Bengaluru. We build business software to the standard that avionics and automotive work demands: deterministic calculations, conclusions that carry their evidence, and no claim the system cannot show its working for.</p>
   </div>
 </section>
 
-<!-- ============ MISSION & VISION ============ -->
-<section class="section" style="padding-top:24px;" aria-labelledby="mv-title">
-  <div class="wrap">
-    <h2 class="sr-only" id="mv-title" style="position:absolute;left:-9999px;">Mission and vision</h2>
-    <div class="mv-grid">
-      <div class="mv-card reveal">
-        <p class="kicker">Mission</p>
-        <h3 class="h3">Make AI software businesses can actually run on.</h3>
-        <p>Our mission is to close the gap between what AI can do in a demonstration and what it can be trusted to do inside a real business — reliably, securely, and without surprises. That means evaluation before excitement, and engineering discipline applied to every product we ship.</p>
-      </div>
-      <div class="mv-card reveal">
-        <p class="kicker">Vision</p>
-        <h3 class="h3">Earn a place in a real weekly workflow.</h3>
-        <p>We're not building a portfolio of experiments. Our immediate focus is making Quarterdeck the fastest, most trusted answer to which HubSpot deals deserve attention before the weekly forecast meeting.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ COMPANY STORY ============ -->
-<section class="section section-tint" id="story" aria-labelledby="story-title">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <p class="kicker">Company Story</p>
-      <h2 class="h2" id="story-title">From independent apps to enterprise AI software.</h2>
-      <p class="lede">KPAppWorx was built on a simple habit: ship real software, support it, and learn from what breaks in production — then apply that discipline to harder problems.</p>
-    </div>
-    <div class="timeline reveal">
-      <div class="tl-row">
-        <div class="tl-date">2025</div>
-        <div class="tl-body">
-          <h3>Origins</h3>
-          <p>Before incorporating, our founder designed and shipped a series of independent applications on the Apple App Store — including Aiden AI, DeepFocus, and Gratitudes Jar — to learn what it takes to own software end-to-end: design, release, App Store review, and ongoing support.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-date">2026</div>
-        <div class="tl-body">
-          <h3>Incorporation</h3>
-          <p>KPAppWorx Technologies Private Limited was incorporated in Bengaluru, India, to focus that experience on a harder category of problem: AI software that businesses depend on for revenue-critical decisions.</p>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-date">2026</div>
-        <div class="tl-body">
-          <h3>Quarterdeck AI</h3>
-          <p>Development began on Quarterdeck AI, our flagship product — a read-only HubSpot attention system that ranks the small number of deals worth reviewing each week and explains every conclusion with CRM evidence.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHY WE STARTED ============ -->
-<section class="section" id="why-we-started" aria-labelledby="why-started-title">
+<section class="section" id="founder" aria-labelledby="founder-title" style="padding-top:32px;">
   <div class="wrap">
     <div class="about-grid">
       <div class="about-copy reveal">
-        <p class="kicker">Why We Started KPAppWorx</p>
-        <h2 class="h2" id="why-started-title" style="margin-bottom:20px;">Most AI never survives the gap between the demo and the deployment.</h2>
-        <p>The prototype impresses everyone; the production system rarely arrives. That gap is never really about the model — it's about the engineering discipline around it: evaluation, guardrails, data handling, and the boring reliability that lets a business actually run on the software.</p>
-        <h3>How we build</h3>
-        <p>Evaluation before excitement. Read-only before write access, wherever a product touches a customer's system of record. Reliable infrastructure over fashionable infrastructure. Documentation treated as part of the product. Every system we ship is one we'd be willing to run ourselves.</p>
-        <h3>Where we're going</h3>
-        <p>Revenue attention is the first problem we're going deep on with Quarterdeck AI. The goal is to become useful enough that a RevOps leader actively looks for the brief every Monday, measured by time saved and review work reduced.</p>
+        <p class="kicker">Who runs it</p>
+        <h2 class="h2" id="founder-title" style="margin-bottom:20px;">Kanthipriya S. Mahale, founder.</h2>
+        <p>Eight years building and shipping software where a defect is not a support ticket. Safety-critical embedded systems under DO-178C in avionics and ISO 26262 in automotive: requirements traceability, static analysis against functional-safety guidelines, verification evidence assembled for certification review, and the discipline of proving that what shipped is what was specified.</p>
+        <p>That work leaves a habit behind. In certified software you are not allowed to say a thing is true because the output looks right — you have to show the trace from requirement to implementation to test. Quarterdeck applies the same rule to revenue data: every flag names the record it came from, and nothing is asserted that cannot be traced back.</p>
+        <p>KPAppWorx is founder-led. Design, engineering, release and support sit with the same person, which is why the products stay narrow and why the ones that ship keep working.</p>
+        <p style="margin-top:22px;">
+          <a class="text-link" href="https://www.linkedin.com/in/kanthipriyamahale/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          &nbsp;&nbsp;
+          <a class="text-link" href="https://github.com/kpappworx" target="_blank" rel="noopener">GitHub ↗</a>
+        </p>
       </div>
       <aside class="about-facts reveal" aria-label="Company facts">
-        <h3>At a Glance</h3>
+        <h3>At a glance</h3>
         <div class="fact-row"><span class="k">Legal entity</span><span class="v">KPAppWorx Technologies Pvt. Ltd.</span></div>
         <div class="fact-row"><span class="k">Incorporated</span><span class="v">2026, India</span></div>
         <div class="fact-row"><span class="k">Headquarters</span><span class="v">Bengaluru, Karnataka</span></div>
-        <div class="fact-row"><span class="k">Flagship product</span><span class="v">Quarterdeck AI (early access)</span></div>
-        <div class="fact-row"><span class="k">Focus</span><span class="v">AI software for businesses</span></div>
-        <div class="fact-row"><span class="k">Data stance</span><span class="v">Privacy-first, least-privilege</span></div>
+        <div class="fact-row"><span class="k">Structure</span><span class="v">Founder-led</span></div>
+        <div class="fact-row"><span class="k">Product</span><span class="v">Quarterdeck AI · early access</span></div>
+        <div class="fact-row"><span class="k">Also shipped</span><span class="v">10 apps on the App Store</span></div>
+        <div class="fact-row"><span class="k">Data stance</span><span class="v">Read-only, least privilege</span></div>
+        <div class="fact-row"><span class="k">Contact</span><span class="v"><a class="text-link" href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></span></div>
       </aside>
     </div>
   </div>
 </section>
 
-<!-- ============ LEADERSHIP ============ -->
-<section class="section section-tint" id="leadership" aria-labelledby="leadership-title">
+<section class="section section-tint" id="background" aria-labelledby="background-title">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="kicker">Leadership</p>
-      <h2 class="h2" id="leadership-title">Founder-led, and building with design partners directly.</h2>
+      <p class="kicker">Background</p>
+      <h2 class="h2" id="background-title">Where the standard comes from.</h2>
+      <p class="lede">Eight years across avionics, automotive and silicon before starting the company — domains where software is reviewed by people whose job is to disbelieve it.</p>
     </div>
-    <div class="lead-card reveal">
-      <div class="lead-avatar" aria-hidden="true">KM</div>
-      <div>
-        <h3>Kanthipriya S Mahale</h3>
-        <p class="lead-role">Founder &amp; CEO</p>
-        <p>Kanthipriya founded KPAppWorx in 2026 after designing, shipping, and supporting a series of independent applications on the Apple App Store. That experience — owning software from idea through release, review, and maintenance — shaped KPAppWorx's focus on production-grade engineering. Quarterdeck AI, the company's flagship product, is built on the same principle: ship software a business can depend on, not just a demo.</p>
+    <div class="timeline reveal">
+      <div class="tl-row">
+        <div class="tl-date">2016–2017</div>
+        <div class="tl-body">
+          <h3>Schneider Electric · Intern</h3>
+          <p>Embedded firmware verification. Test plans, validation results and sign-off artefacts — the first exposure to software that has to be documented before it can be released.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2018–2021</div>
+        <div class="tl-body">
+          <h3>Veoneer · Software Engineer</h3>
+          <p>Safety-critical automotive software through integration and validation cycles: defect triage across releases, static-analysis compliance, and keeping test outcomes aligned to system requirements under functional-safety objectives.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2021–2022</div>
+        <div class="tl-body">
+          <h3>Bosch Global Software Technologies · Senior Software Engineer</h3>
+          <p>Delivery of embedded modules across engineering, integration and validation. Led static-analysis review cycles against functional-safety guidelines and consolidated defect and compliance status for milestone readiness.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2022–2023</div>
+        <div class="tl-body">
+          <h3>Thales · Senior Software Engineer</h3>
+          <p>End-to-end requirements traceability for safety-critical avionics software: alignment between requirement, implementation and verification, traceability documentation for certification review, and impact assessment on every requirement change.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2023–2026</div>
+        <div class="tl-body">
+          <h3>NVIDIA · Principal Development Engineer</h3>
+          <p>Coordinated engineering, QA and CI/CD across embedded software programs — delivery at a scale where process is the only thing that keeps quality from drifting.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-date">2026</div>
+        <div class="tl-body">
+          <h3>KPAppWorx Technologies Private Limited</h3>
+          <p>Incorporated in Bengaluru. Ten consumer and utility apps released and maintained on the App Store, and Quarterdeck AI built for revenue teams — the same verification habits, applied to a business problem instead of a certified one.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section class="cta-section" aria-labelledby="about-cta-title">
+<section class="section" id="how-we-build" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">How we build</p>
+      <h2 class="h2" id="how-title">Rules we don't trade away.</h2>
+      <p class="lede">Every one of these costs something — features, speed, or the easier demo. They are the reason the output can be defended in a meeting.</p>
+    </div>
+    <div class="value-grid reveal">
+      <div class="value-card">
+        <h3>Deterministic first</h3>
+        <p>Scores and rankings come from rules that can be read and argued with. A language model may phrase the explanation; it never decides the conclusion or invents a fact.</p>
+      </div>
+      <div class="value-card">
+        <h3>Evidence or silence</h3>
+        <p>If the data doesn't support a claim, the product says so rather than estimating. A gap stated plainly is more useful than a number that looks confident.</p>
+      </div>
+      <div class="value-card">
+        <h3>Read-only where it matters</h3>
+        <p>Anything touching a customer's system of record connects with the least privilege that does the job. No writes, no triggered workflows, no surprises during a review.</p>
+      </div>
+      <div class="value-card">
+        <h3>Narrow on purpose</h3>
+        <p>One recurring question, answered properly, beats a dashboard of things nobody reads. Scope is what keeps a founder-led product trustworthy.</p>
+      </div>
+      <div class="value-card">
+        <h3>Shipped means supported</h3>
+        <p>Ten apps are still on the App Store and still maintained. Releasing software is the start of the obligation, not the end of it.</p>
+      </div>
+      <div class="value-card">
+        <h3>Customers before code</h3>
+        <p>New work starts as an experiment run with real customers. If nobody will pay for the manual version, we don't build the automated one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="about-cta" aria-labelledby="about-cta-title">
   <div class="wrap">
     <div class="cta-box reveal">
-      <h2 id="about-cta-title">Want to learn more about how we work?</h2>
-      <p>Explore Quarterdeck AI or get in touch — we're happy to walk through our approach in detail.</p>
+      <h2 id="about-cta-title">Work with us, or ask us anything.</h2>
+      <p>Design partner conversations, questions about how Quarterdeck reaches a conclusion, or a security review before you connect anything — all welcome.</p>
       <div class="cta-actions">
-        <a href="/quarterdeck" class="btn btn-spot">Explore Quarterdeck AI</a>
-        <a href="/contact" class="btn btn-outline-spot">Contact Us</a>
+        <a href="/quarterdeck" class="btn btn-spot">
+          Explore Quarterdeck AI
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="mailto:hello@kpappworx.com" class="btn btn-outline-spot">hello@kpappworx.com</a>
       </div>
+      <p class="cta-mini">Replies within one business day.</p>
     </div>
   </div>
 </section>
