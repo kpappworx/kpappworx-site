@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KPAppWorx Technologies — Quarterdeck AI</title>
-<meta name="description" content="KPAppWorx Technologies Private Limited builds Quarterdeck AI, a read-only HubSpot attention system that shows revenue leaders which deals need attention before the forecast meeting — with the CRM evidence behind every conclusion." />
+<title>KPAppWorx Technologies — Software that shows its work</title>
+<meta name="description" content="KPAppWorx Technologies Private Limited builds systems that tell teams what needs attention and prove why, from the records they already have — deterministic analysis, explainable conclusions, evidence on every line. Quarterdeck AI is our product for revenue teams." />
 <link rel="canonical" href="https://www.kpappworx.com/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="KPAppWorx Technologies" />
-<meta property="og:title" content="KPAppWorx Technologies — Quarterdeck AI" />
-<meta property="og:description" content="We build Quarterdeck AI for revenue teams, held to one standard: deterministic calculations, explainable conclusions, and evidence for every flag." />
+<meta property="og:title" content="KPAppWorx Technologies — Software that shows its work" />
+<meta property="og:description" content="Deterministic calculations, explainable conclusions, and evidence for every claim — the engineering standard behind every KPAppWorx product." />
 <meta property="og:url" content="https://www.kpappworx.com/" />
 <meta property="og:image" content="https://www.kpappworx.com/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -121,6 +121,28 @@
 .tab-copy li{ display:flex; gap:11px; font-size:14.5px; color:var(--ink-2); }
 .tab-copy li svg{ width:16px; height:16px; color:var(--accent); flex-shrink:0; margin-top:3px; }
 
+/* ---------- Product rack ---------- */
+.rack{ display:flex; flex-direction:column; gap:12px; margin-top:44px; }
+.rack-item{
+  display:grid; grid-template-columns:1fr auto; gap:32px; align-items:center;
+  background:var(--surface); border:1px solid var(--line); border-radius:var(--r-xl);
+  padding:28px 32px; transition:border-color .15s, box-shadow .15s, transform .15s;
+}
+a.rack-item:hover{ border-color:var(--line-2); box-shadow:var(--shadow-card); transform:translateY(-2px); }
+a.rack-item:hover .rack-name{ color:var(--accent); }
+a.rack-item:hover .rack-go{ color:var(--accent); transform:translateX(3px); }
+.rack-name{ display:block; font-family:var(--font-display); font-size:20px; font-weight:700; letter-spacing:-.018em; margin-bottom:8px; transition:color .15s; }
+.rack-desc{ display:block; font-size:14.5px; color:var(--ink-2); line-height:1.65; max-width:66ch; }
+.rack-side{ display:flex; align-items:center; gap:18px; }
+.rack-go{ display:flex; color:var(--ink-3); transition:color .15s, transform .15s; }
+.rack-go svg{ width:18px; height:18px; }
+.rack-next{ background:transparent; border-style:dashed; }
+.rack-next .rack-name{ color:var(--ink-3); }
+@media (max-width:680px){
+  .rack-item{ grid-template-columns:1fr; gap:16px; padding:24px; }
+  .rack-side{ justify-content:space-between; }
+}
+
 /* ---------- Platform band ---------- */
 .plat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:52px; }
 .plat-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--r-xl); padding:32px; }
@@ -220,19 +242,19 @@
   <div class="wrap">
     <div class="hero-split">
       <div>
-        <p class="hero-eyebrow"><span class="pip" aria-hidden="true"></span>Quarterdeck AI · for revenue teams</p>
-        <h1 id="hero-title">Know which deals need attention before the forecast meeting.</h1>
-        <p class="hero-sub">Quarterdeck reads your HubSpot pipeline, finds what materially changed this week, and hands you five to ten deals worth reviewing — each one carrying the CRM evidence that put it on the list.</p>
+        <p class="hero-eyebrow"><span class="pip" aria-hidden="true"></span>KPAppWorx Technologies Private Limited</p>
+        <h1 id="hero-title">Software that shows its work.</h1>
+        <p class="hero-sub">We build systems that tell teams what needs attention — and prove why, from the records they already have. Deterministic analysis, explainable conclusions, and the evidence behind every line.</p>
         <div class="hero-ctas">
           <a href="/products.html" class="btn btn-primary btn-lg">
             Explore Quarterdeck AI
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <a href="#how" class="btn btn-ghost btn-lg">See how it works</a>
+          <a href="#trust" class="btn btn-ghost btn-lg">How we build</a>
         </div>
         <div class="hero-assure">
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Read-only HubSpot access</span>
-          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Nothing written back to your CRM</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Deterministic, not predictive</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>Every conclusion carries its evidence</span>
         </div>
       </div>
 
@@ -283,7 +305,51 @@
         </div>
       </div>
     </div>
-    <p class="qdb-note" style="margin-top:26px;">Illustrative example. Accounts and figures are fictional.</p>
+    <p class="qdb-note" style="margin-top:26px;">Above: Quarterdeck AI, our product for revenue teams. Illustrative example — accounts and figures are fictional.</p>
+  </div>
+</section>
+
+<!-- ============ PRODUCT RACK ============ -->
+<section class="section" id="products" aria-labelledby="rack-title" style="padding-bottom:0;">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <p class="kicker">What we build</p>
+      <h2 class="h2" id="rack-title">One standard, applied product by product.</h2>
+      <p class="lede">Each product starts as an experiment run with real customers. What ships carries a status, so you always know what you are looking at.</p>
+    </div>
+    <div class="rack reveal">
+      <a class="rack-item" href="/products.html">
+        <span class="rack-main">
+          <span class="rack-name">Quarterdeck AI</span>
+          <span class="rack-desc">A read-only HubSpot attention system. Finds what materially changed in the pipeline this week and ranks the few deals worth reviewing, with CRM evidence on every flag.</span>
+        </span>
+        <span class="rack-side">
+          <span class="status-chip status-live">Early access</span>
+          <span class="rack-go" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </span>
+      </a>
+      <a class="rack-item" href="/labs.html">
+        <span class="rack-main">
+          <span class="rack-name">KPAppWorx Labs</span>
+          <span class="rack-desc">Consumer and utility apps designed, shipped and supported end to end. The same ownership that goes into the commercial products, at a smaller scale.</span>
+        </span>
+        <span class="rack-side">
+          <span class="status-chip status-soon">Shipped work</span>
+          <span class="rack-go" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </span>
+      </a>
+      <div class="rack-item rack-next">
+        <span class="rack-main">
+          <span class="rack-name">The next one</span>
+          <span class="rack-desc">In customer discovery. It goes on this page when a real customer has paid for the work done by hand — not before.</span>
+        </span>
+        <span class="rack-side"><span class="status-chip status-soon">In discovery</span></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -316,10 +382,10 @@
 </section>
 
 <!-- ============ PRODUCT TABS ============ -->
-<section class="section" id="product" aria-labelledby="product-title">
+<section class="section" id="quarterdeck" aria-labelledby="product-title">
   <div class="wrap">
     <div class="section-head reveal">
-      <p class="kicker">The product</p>
+      <p class="kicker">Quarterdeck AI · for revenue teams</p>
       <h2 class="h2" id="product-title">One pipeline, three ways to see what changed.</h2>
       <p class="lede">The same deterministic analysis, wherever you meet it — in the app on Monday morning, in the change history when you need the receipts, or in your inbox before the call.</p>
     </div>
