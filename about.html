@@ -37,55 +37,49 @@
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="/assets/css/base.css" />
 <style>
-/* ---------- Record: a trace, read from the spine out ---------- */
+/* ---------- Record: an index of institutions, ruled like a spec table ---------- */
 #background{ position:relative; overflow:hidden; }
 #background::before{
   content:""; position:absolute; inset:0; pointer-events:none;
   background-image:
-    linear-gradient(to right, rgba(18,22,27,.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(18,22,27,.045) 1px, transparent 1px);
+    linear-gradient(to right, rgba(18,22,27,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18,22,27,.05) 1px, transparent 1px);
   background-size:56px 56px;
-  -webkit-mask-image:radial-gradient(120% 90% at 82% 8%, #000, transparent 72%);
-  mask-image:radial-gradient(120% 90% at 82% 8%, #000, transparent 72%);
+  -webkit-mask-image:radial-gradient(130% 95% at 84% 6%, #000, transparent 70%);
+  mask-image:radial-gradient(130% 95% at 84% 6%, #000, transparent 70%);
 }
 :root[data-theme="dark"] #background::before{
   background-image:
-    linear-gradient(to right, rgba(236,239,233,.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(236,239,233,.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(236,239,233,.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(236,239,233,.07) 1px, transparent 1px);
 }
 #background .wrap{ position:relative; }
-.trace{ list-style:none; margin:44px 0 0; padding:0 0 0 30px; position:relative; }
-.trace::before{
-  content:""; position:absolute; left:4px; top:10px; bottom:10px; width:1px;
-  background:linear-gradient(to bottom, var(--line-2), var(--line-2) 70%, transparent);
+.rec{
+  list-style:none; margin:48px 0 0; padding:0;
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line);
 }
-.trace-row{
-  position:relative; display:grid; align-items:baseline; gap:6px 28px;
-  grid-template-columns:104px minmax(0,1fr) minmax(0,1fr);
-  padding:20px 0; border-bottom:1px solid var(--line);
+.rec-cell{
+  background:var(--bg-2); padding:30px 28px; min-height:148px;
+  display:flex; flex-direction:column; justify-content:flex-end; gap:12px;
 }
-.trace-row::before{
-  content:""; position:absolute; left:-30px; top:28px; width:9px; height:9px;
-  border:1px solid var(--line-2); background:var(--bg);
+.rec-org{
+  font-family:var(--font-display); font-weight:500; font-size:24px;
+  letter-spacing:-.008em; line-height:1.18; text-wrap:balance;
 }
-.trace-row:last-child{ border-bottom:none; }
-.trace-yr{
-  font-family:var(--font-mono); font-size:12.5px; letter-spacing:.06em;
-  color:var(--ink-3); font-variant-numeric:tabular-nums; white-space:nowrap;
-}
-.trace-org{ font-family:var(--font-display); font-weight:500; font-size:23px; letter-spacing:-.008em; line-height:1.2; }
-.trace-role{
-  font-family:var(--font-mono); font-size:11.5px; letter-spacing:.14em;
+.rec-role{
+  font-family:var(--font-mono); font-size:11px; letter-spacing:.16em;
   text-transform:uppercase; color:var(--ink-3);
 }
-/* The current line is the one that matters: filled node, ink weight */
-.trace-now::before{ background:var(--accent); border-color:var(--accent); }
-.trace-now .trace-yr, .trace-now .trace-role{ color:var(--accent); }
-@media (max-width:760px){
-  .trace{ padding-left:24px; }
-  .trace-row{ grid-template-columns:1fr; gap:4px; padding:18px 0; }
-  .trace-row::before{ left:-24px; top:24px; }
-  .trace-org{ font-size:20px; }
+.rec-now{ background:var(--ink); }
+.rec-now .rec-org{ color:var(--bg); }
+.rec-now .rec-role{ color:var(--accent); }
+:root[data-theme="dark"] .rec-now .rec-org{ color:var(--bg); }
+@media (max-width:900px){ .rec{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:560px){
+  .rec{ grid-template-columns:1fr; }
+  .rec-cell{ min-height:0; padding:24px; gap:8px; }
+  .rec-org{ font-size:21px; }
 }
 
 /* Founder copy: paragraphs need air; the base rule is tuned for short blocks */
@@ -192,33 +186,32 @@
       <p class="kicker">Record</p>
       <h2 class="h2" id="background-title">Where the standard comes from.</h2>
     </div>
-    <ol class="trace reveal" aria-label="Founder's professional record">
-      <li class="trace-row">
-        <span class="trace-yr">2023–2026</span>
-        <span class="trace-org">NVIDIA</span>
-        <span class="trace-role">Principal Development Engineer</span>
+    <ul class="rec reveal" aria-label="Founder's professional record">
+      <li class="rec-cell">
+        <span class="rec-org">NVIDIA</span>
+        <span class="rec-role">Principal Development Engineer</span>
       </li>
-      <li class="trace-row">
-        <span class="trace-yr">2022–2023</span>
-        <span class="trace-org">Thales</span>
-        <span class="trace-role">Senior Software Engineer</span>
+      <li class="rec-cell">
+        <span class="rec-org">Thales</span>
+        <span class="rec-role">Senior Software Engineer</span>
       </li>
-      <li class="trace-row">
-        <span class="trace-yr">2021–2022</span>
-        <span class="trace-org">Bosch Global Software Technologies</span>
-        <span class="trace-role">Senior Software Engineer</span>
+      <li class="rec-cell">
+        <span class="rec-org">Bosch Global Software Technologies</span>
+        <span class="rec-role">Senior Software Engineer</span>
       </li>
-      <li class="trace-row">
-        <span class="trace-yr">2018–2021</span>
-        <span class="trace-org">Veoneer</span>
-        <span class="trace-role">Software Engineer</span>
+      <li class="rec-cell">
+        <span class="rec-org">Veoneer</span>
+        <span class="rec-role">Software Engineer</span>
       </li>
-      <li class="trace-row trace-now">
-        <span class="trace-yr">2026–</span>
-        <span class="trace-org">KPAppWorx Technologies</span>
-        <span class="trace-role">Founder</span>
+      <li class="rec-cell">
+        <span class="rec-org">Schneider Electric</span>
+        <span class="rec-role">Engineering Intern</span>
       </li>
-    </ol>
+      <li class="rec-cell rec-now">
+        <span class="rec-org">KPAppWorx Technologies</span>
+        <span class="rec-role">Founder</span>
+      </li>
+    </ul>
   </div>
 </section>
 
