@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Terms of Service — KPAppWorx Technologies</title>
-<meta name="description" content="The terms governing use of Quarterdeck AI and KPAppWorx Technologies services." />
-<link rel="canonical" href="https://www.kpappworx.com/terms" />
+<title>[PRODUCT NAME] — [short positioning] | KPAppWorx</title>
+<meta name="description" content="[PRODUCT NAME] is [one-line positioning] for [CUSTOMER / TEAM]. Built by KPAppWorx." />
+<link rel="canonical" href="https://www.kpappworx.com/products/[slug]" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="KPAppWorx Technologies" />
-<meta property="og:title" content="Terms of Service — KPAppWorx Technologies" />
-<meta property="og:description" content="The terms governing use of Quarterdeck AI and KPAppWorx Technologies services." />
-<meta property="og:url" content="https://www.kpappworx.com/terms" />
+<meta property="og:title" content="[PRODUCT NAME] — [short positioning] | KPAppWorx" />
+<meta property="og:description" content="[PRODUCT NAME] is [one-line positioning] for [CUSTOMER / TEAM]. Built by KPAppWorx." />
+<meta property="og:url" content="https://www.kpappworx.com/products/[slug]" />
 <meta property="og:image" content="https://www.kpappworx.com/logo.png" />
 <meta name="twitter:card" content="summary" />
 <meta name="theme-color" content="#12161b" />
@@ -43,6 +43,17 @@
         "https://www.linkedin.com/company/kpappworx/",
         "https://github.com/kpappworx"
       ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "[PRODUCT NAME]",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "[One-sentence description]",
+      "url": "https://www.kpappworx.com/products/[slug]",
+      "publisher": {
+        "@id": "https://www.kpappworx.com/#org"
+      }
     }
   ]
 }
@@ -55,7 +66,7 @@
 <link rel="stylesheet" href="/assets/css/kp.css" />
 
 </head>
-<body>
+<body style="--p:#6b5a2e;--p-dark:#d2bd84" data-product="[slug]">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -67,7 +78,7 @@
     </a>
     <div class="nav-links">
       <div class="nav-dd">
-        <button class="nav-dd-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-products">Products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="nav-dd-btn active" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-products">Products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="nav-dd-menu" id="dd-products">
           <div class="nav-dd-card">
             <div class="nav-dd-head"><span class="mono-label">Products</span><span>Built by KPAppWorx</span></div>
@@ -106,60 +117,108 @@
   </div>
 </header>
 
-<main id="main" class="legal-main">
-  <div class="wrap-narrow">
-    <h1>Terms of Service</h1>
-    <p class="meta">Last updated: <span id="today">2026</span> · KPAppWorx Technologies Private Limited</p>
+<!--
+  PRODUCT PAGE TEMPLATE
+  1. Copy to products/<slug>.html
+  2. Replace every [BRACKETED] value. Keep claims to what the product does today.
+  3. Set the product accent in the <body> style attribute (--p light, --p-dark dark),
+     matching the entry in assets/js/products.js.
+  4. Label every example screen, company and figure as illustrative.
+  5. Add the page to sitemap.xml. Remove this comment.
+-->
 
-    <p>These Terms of Service ("Terms") govern your access to and use of Quarterdeck AI, our website, and related applications (the "Services") provided by KPAppWorx Technologies Private Limited ("KPAppWorx", "we", "us"). By accessing or using the Services, you agree to these Terms. If you are using the Services on behalf of an organization, you represent that you are authorized to bind that organization.</p>
+<div class="pbar" aria-label="[PRODUCT NAME] product navigation">
+  <div class="pbar-in">
+    <a class="pbar-id" href="#top"><span class="pf-mark"><span aria-hidden="true" style="font-family:var(--font-mono);font-size:13px;">02</span></span>[PRODUCT NAME] <span class="pbar-by">by KPAppWorx</span></a>
+    <nav class="pbar-links" aria-label="[PRODUCT NAME] sections"><a href="#problem">Problem</a><a href="#how">How it works</a><a href="#faq">FAQ</a></nav>
+    <div class="pbar-cta"><a href="/contact" class="btn btn-product">Get in touch</a></div>
+  </div>
+</div>
 
-    <h2>1. Access and eligibility</h2>
-    <p>The Services are currently offered on an early-access basis and may change, be limited, or be discontinued. You must be able to form a binding contract to use the Services, and you agree to provide accurate account information.</p>
+<main id="main">
 
-    <h2>2. Your data and CRM connections</h2>
-    <p>When you connect a CRM such as HubSpot, you grant us permission to access the relevant data in read-only mode to provide the Services. You retain all rights to your data. We use it only to provide and improve the Services as described in our <a href="/privacy">Privacy Policy</a>, and we do not use it to train models.</p>
-
-    <h2>3. Acceptable use</h2>
-    <ul>
-      <li>Do not use the Services unlawfully, or to infringe the rights of others.</li>
-      <li>Do not attempt to disrupt, reverse-engineer, or gain unauthorized access to the Services.</li>
-      <li>Do not resell or provide the Services to third parties without our written consent.</li>
-    </ul>
-
-    <h2>4. Intelligence and outputs</h2>
-    <p>Quarterdeck produces ranked review items, risk flags, evidence summaries, and narratives to support decision-making. These outputs are informational aids and may contain errors or omissions. You are responsible for reviewing outputs and for the decisions you make. The Services do not constitute financial, legal, or investment advice.</p>
-
-    <h2>5. Intellectual property</h2>
-    <p>We own the Services and all related intellectual property, excluding your data. We grant you a limited, non-exclusive, non-transferable right to use the Services during your access period, subject to these Terms.</p>
-
-    <h2>6. Fees</h2>
-    <p>Where fees apply, they will be described at the time of purchase or in a separate order or agreement. Design-partner and early-access arrangements may have specific pricing communicated to you directly.</p>
-
-    <h2>7. Confidentiality</h2>
-    <p>Each party will protect the other's confidential information and use it only to perform under these Terms.</p>
-
-    <h2>8. Disclaimers</h2>
-    <p>The Services are provided "as is" and "as available" without warranties of any kind, to the fullest extent permitted by law. We do not warrant that the Services will be uninterrupted, error-free, or fit for a particular purpose.</p>
-
-    <h2>9. Limitation of liability</h2>
-    <p>To the maximum extent permitted by law, KPAppWorx will not be liable for any indirect, incidental, special, consequential, or punitive damages, or for lost profits or revenues, arising out of or related to the Services.</p>
-
-    <h2>10. Termination</h2>
-    <p>You may stop using the Services at any time and revoke CRM access through your CRM provider. We may suspend or terminate access if these Terms are violated or as needed to protect the Services. On termination, the data-deletion provisions of our Privacy Policy apply.</p>
-
-    <h2>11. Governing law</h2>
-    <p>These Terms are governed by the laws of India, without regard to conflict-of-laws principles. Disputes will be subject to the courts of Bengaluru, India, unless otherwise required by applicable law.</p>
-
-    <h2>12. Changes</h2>
-    <p>We may update these Terms from time to time. Material changes will be reflected by updating the "Last updated" date. Continued use of the Services after changes constitutes acceptance.</p>
-
-    <h2>13. Contact</h2>
-    <p>Questions about these Terms: <a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></p>
-
-    <div class="callout" style="margin-top:34px;">
-      This template is provided as a starting point and should be reviewed by qualified legal counsel before publication to confirm it fits your business, pricing, and jurisdiction.
+<section class="p-hero" id="top" aria-labelledby="p-title">
+  <div class="wrap">
+    <div class="p-hero-grid">
+      <div>
+        <div class="p-hero-top">
+          <span class="pf-mark"><span aria-hidden="true" style="font-family:var(--font-mono);font-size:13px;">02</span></span>
+          <span class="p-aud">For [CUSTOMER / TEAM]</span>
+          <span class="st st-in-development"><i aria-hidden="true"></i>In development</span>
+        </div>
+        <h1 id="p-title">[PRODUCT NAME]</h1>
+        <p class="p-position">[One-line positioning: what it is, for whom.]</p>
+        <p class="p-tagline">[The question it answers, in the customer's words.]</p>
+        <p class="hero-sub">[Two or three sentences: the recurring problem, what the product does about it, and the evidence it shows.]</p>
+        <div class="hero-ctas">
+          <a href="/contact" class="btn btn-product btn-lg">[Primary action] <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
+        </div>
+        <a class="p-built" href="/"><img src="/logo-nav.png" alt="" width="18" height="18" />Built by KPAppWorx</a>
+      </div>
+      <div class="p-hero-visual">
+        <div class="trace"><div class="trace-body" style="padding:48px 22px;"><p class="mono-label">[Product visual — illustrative]</p></div></div>
+        <p class="fiction"><b>Illustrative</b> [Label any example data as fictional.]</p>
+      </div>
     </div>
   </div>
+</section>
+
+<section class="section section-tint" id="problem" aria-labelledby="problem-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">The problem</p>
+      <h2 class="h2" id="problem-title">[The recurring problem, stated plainly.]</h2>
+      <p class="lede">[Who has it, how often, and what they do about it today.]</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">How it works</p>
+      <h2 class="h2" id="how-title">[How it reaches a conclusion.]</h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-step"><p class="num">01 · [Connect]</p><h3>[Step]</h3><p>[Detail]</p></div>
+      <div class="proc-step"><p class="num">02 · [Analyse]</p><h3>[Step]</h3><p>[Detail]</p></div>
+      <div class="proc-step"><p class="num">03 · [Explain]</p><h3>[Step]</h3><p>[Detail]</p></div>
+      <div class="proc-step"><p class="num">04 · [Review]</p><h3>[Step]</h3><p>[Detail]</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="kicker">Questions</p>
+      <h2 class="h2" id="faq-title">[What people ask before using it.]</h2>
+    </div>
+    <div class="faq">
+      <details class="faq-item"><summary>[Question]</summary><p>[Answer]</p></details>
+    </div>
+  </div>
+</section>
+
+
+<section class="cta-section" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div>
+        <h2 id="cta-title">[Closing line.]</h2>
+        <p>[One sentence on what happens next.]</p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-spot btn-lg">Get in touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="/products" class="btn btn-outline-spot btn-lg">All products</a>
+      </div>
+      <p class="cta-mini">Replies within one business day.</p>
+    </div>
+  </div>
+</section>
+
+
 </main>
 
 <footer class="site-footer">

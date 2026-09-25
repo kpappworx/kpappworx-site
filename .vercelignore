@@ -1,0 +1,6 @@
+# Not part of the public site
+_templates
+_archive
+Claude outputs
+*.md
+index-old-backup.html
