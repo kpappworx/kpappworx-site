@@ -4,3 +4,6 @@ _archive
 Claude outputs
 *.md
 index-old-backup.html
+
+_ops/
+index-product-backup.html
