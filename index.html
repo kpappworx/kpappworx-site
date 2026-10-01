@@ -3,21 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KPAppWorx: AI lead response and automation for local businesses</title>
-<meta name="description" content="KPAppWorx sets up and runs AI that texts and calls every new lead within a minute, books the appointment and updates your CRM. $3,000 setup, $1,500 a month." />
+<title>KPAppWorx: observability for AI agents, from metadata only</title>
+<meta name="description" content="Control Tower shows what your AI agents do and what they cost: loops, token spend and latency, from metadata only. It never reads prompts or outputs. In development, recruiting design partners." />
 <link rel="canonical" href="https://www.kpappworx.com/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="KPAppWorx Technologies" />
-<meta property="og:title" content="KPAppWorx: AI lead response and automation for local businesses" />
-<meta property="og:description" content="KPAppWorx sets up and runs AI that texts and calls every new lead within a minute, books the appointment and updates your CRM. $3,000 setup, $1,500 a month." />
+<meta property="og:title" content="KPAppWorx: observability for AI agents, from metadata only" />
+<meta property="og:description" content="Control Tower shows what your AI agents do and what they cost: loops, token spend and latency, from metadata only. It never reads prompts or outputs. In development, recruiting design partners." />
 <meta property="og:url" content="https://www.kpappworx.com/" />
 <meta property="og:image" content="https://www.kpappworx.com/og-image.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta property="og:image:alt" content="KPAppWorx: reply to every new lead in under a minute" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="KPAppWorx: AI lead response and automation for local businesses" />
-<meta name="twitter:description" content="KPAppWorx sets up and runs AI that texts and calls every new lead within a minute, books the appointment and updates your CRM. $3,000 setup, $1,500 a month." />
+<meta name="twitter:title" content="KPAppWorx: observability for AI agents, from metadata only" />
+<meta name="twitter:description" content="Control Tower shows what your AI agents do and what they cost: loops, token spend and latency, from metadata only. It never reads prompts or outputs. In development, recruiting design partners." />
 <meta name="twitter:image" content="https://www.kpappworx.com/og-image.png" />
 <meta name="theme-color" content="#12161b" />
 <link rel="icon" href="/logo-nav.png" type="image/png" />
@@ -58,103 +58,62 @@
       }
     },
     {
-      "@type": "Service",
-      "@id": "https://www.kpappworx.com/#service",
-      "name": "AI lead response and automation",
-      "serviceType": "AI automation",
-      "description": "KPAppWorx sets up and runs AI that texts and calls every new lead within a minute, books the appointment and updates your CRM. $3,000 setup, $1,500 a month.",
-      "provider": {
-        "@id": "https://www.kpappworx.com/#org"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United States"
-      },
-      "offers": [
-        {
-          "@type": "Offer",
-          "name": "Setup",
-          "price": "3000",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "name": "Monthly service",
-          "priceSpecification": {
-            "@type": "UnitPriceSpecification",
-            "price": "1500",
-            "priceCurrency": "USD",
-            "billingDuration": 1,
-            "unitCode": "MON"
-          }
-        }
-      ]
-    },
-    {
       "@type": "FAQPage",
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Will this replace my staff?",
+          "name": "Is Control Tower available today?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. It handles the first minute: replying, asking two questions and booking a time. Your people still do the estimate, the consultation and the relationship. Anyone who asks for a person is handed to your team."
+            "text": "No. It is in development. The design and a 16-week build plan are complete, and we are recruiting a small number of design partners to shape the first version. We will not describe it as shipped until it is."
           }
         },
         {
           "@type": "Question",
-          "name": "Do people know they are talking to an AI?",
+          "name": "Does it read our prompts or model outputs?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The assistant says at the start of every call and text that it is an automated assistant, and it says so again whenever it is asked."
+            "text": "No. The SDK sends only counts, timings, statuses, model names and hashed fingerprints of calls. Prompts, outputs, tool arguments and documents are dropped inside your process before anything leaves it, and our servers reject events that contain anything outside the published list of fields."
           }
         },
         {
           "@type": "Question",
-          "name": "Is it legal to text and call new leads this way?",
+          "name": "Can it stop or change an agent?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It can be, when people have agreed to it. We add clear consent wording next to your form's submit button, include a STOP option in every text, and honor opt-outs. Rules differ by state and industry, and this is not legal advice, so have your own lawyer review the consent wording."
+            "text": "No, by design. Control Tower reads telemetry and sends alerts to Slack, email or a webhook you choose. It has no credentials for your systems and cannot call your agents or tools. What happens after an alert is your decision."
           }
         },
         {
           "@type": "Question",
-          "name": "What tools does it work with?",
+          "name": "How is this different from Langfuse, LangSmith, Helicone or Datadog?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It connects to web forms, calendars and CRMs that offer a standard integration or an API. Tell us what you use during the audit and we will confirm what is possible before you pay anything."
+            "text": "Those are mature products and many are good. Most capture prompts and outputs by default, which some security teams will not approve. Control Tower is metadata-only from the start, and puts loop detection and finance-grade cost views first. It is also much earlier, so if you need a proven platform today, choose one of them."
           }
         },
         {
           "@type": "Question",
-          "name": "How long does setup take?",
+          "name": "Which frameworks will it support?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Most of the wait is carrier registration for business texting, which we do not control and which can take days to weeks. After the audit we give you a date based on your setup."
+            "text": "The first version targets Python with an OpenTelemetry exporter, a LangChain callback handler, an AutoGen adapter and wrappers for the OpenAI and Anthropic clients. Other frameworks come later, in the order design partners ask for them."
           }
         },
         {
           "@type": "Question",
-          "name": "What does the monthly fee cover?",
+          "name": "What do design partners get?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Running and monitoring the system, updates to scripts and workflows, a monthly report, and an agreed number of conversations. Extra conversations are billed at a stated rate. Phone numbers and carrier fees are passed through at cost."
+            "text": "A free pilot, direct access to the founder, and a say in what is built first. We ask for a real agent workload to test against, a regular feedback conversation by message, and honest comments on what is missing."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I cancel?",
+          "name": "Who is building it?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes, with 30 days' written notice. The setup fee is not refundable once work has started, unless your agreement says otherwise."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where are you based?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Bengaluru, India. We work with businesses in the United States, and most of our communication is written so that time zones do not slow anything down."
+            "text": "KPAppWorx Technologies Private Limited, in Bengaluru, India. It is led by Kanthipriya S. Mahale, who has spent 9+ years in safety-critical embedded software."
           }
         }
       ]
@@ -182,7 +141,7 @@
       KPAppWorx
     </a>
     <div class="nav-links">
-      <a href="/#services">Services</a>
+      <a href="/services">Services</a>
       <div class="nav-dd">
         <button class="nav-dd-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="dd-products">Products <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
         <div class="nav-dd-menu" id="dd-products">
@@ -212,7 +171,7 @@
     </button>
   </nav>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="/#services">Services</a>
+    <a href="/services">Services</a>
     <span class="mono-label mm-label">Our software</span>
     <div data-kp="mobile-products" style="display:contents;"></div>
     <a href="/products" class="mm-sub">All products</a>
@@ -230,172 +189,121 @@
 <section class="ag-hero" aria-labelledby="hero-title">
   <div class="ag-wrap ag-hero-grid">
     <div>
-      <h1 id="hero-title">Reply to every new lead in under a minute.</h1>
-      <p class="ag-hero-sub">We set up and run AI that texts and calls your new leads the moment they get in touch, books the appointment and records it in your CRM. It works nights, weekends and while you are on a job.</p>
+      <h1 id="hero-title">See what your AI agents are doing, and what they cost.</h1>
+      <p class="ag-hero-sub">Control Tower tracks every agent run for loops, token spend and slow steps, using metadata only. It never reads your prompts or outputs, and it cannot change anything in your systems.</p>
       <div class="ag-ctas">
-        <a href="/contact" class="btn btn-primary btn-lg">Book a free audit</a>
-        <a href="#cost" class="btn btn-ghost btn-lg">What slow replies cost you</a>
+        <a href="/contact" class="btn btn-primary btn-lg">Become a design partner</a>
+        <a href="#boundary" class="btn btn-ghost btn-lg">How it stays read-only</a>
       </div>
-      <div class="ag-facts">
-        <p><b>Text and AI call</b>within a minute of the enquiry</p>
-        <p><b>Booked for you</b>on your calendar, logged in your CRM</p>
-        <p><b>People stay in charge</b>anyone can ask for a human</p>
-      </div>
+      <p class="ct-status"><b>In development.</b> We are recruiting five design partners running agents in production.</p>
     </div>
 
-    <figure class="ld" data-state="done" data-end="52" aria-labelledby="ld-cap">
-      <div class="ld-bar">
-        <div class="ld-title">A sample lead<span>Summit Heating &amp; Air, Tuesday 9:42 pm</span></div>
-        <div class="ld-clock" aria-hidden="true">0:52</div>
+    <figure class="ct" aria-labelledby="ct-cap">
+      <div class="ct-bar"><span>Run 7f3a, invoice-triage</span><span class="ct-flag">Loop detected</span></div>
+      <table class="ct-table">
+        <caption class="sr-only">Example run with steps, tool, call fingerprint, tokens and estimated cost</caption>
+        <thead><tr><th scope="col">Step</th><th scope="col">Tool</th><th scope="col">Fingerprint</th><th scope="col">Tokens</th><th scope="col">Est. cost</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>llm.plan</td><td>c81e</td><td>2,140</td><td>$0.02</td></tr>
+          <tr><td>2</td><td>crm.lookup</td><td>9f2c</td><td>1,820</td><td>$0.03</td></tr>
+          <tr><td>3</td><td>llm.reason</td><td>51aa</td><td>2,610</td><td>$0.03</td></tr>
+          <tr class="is-rep"><td>4</td><td>crm.lookup</td><td>9f2c</td><td>2,950</td><td>$0.05</td></tr>
+          <tr class="is-rep"><td>5</td><td>crm.lookup</td><td>9f2c</td><td>3,400</td><td>$0.06</td></tr>
+          <tr class="is-rep"><td>6</td><td>crm.lookup</td><td>9f2c</td><td>3,880</td><td>$0.07</td></tr>
+        </tbody>
+      </table>
+      <div class="ct-alert">
+        <b>The same call ran four times in one run.</b>
+        <span>Run cost so far: $0.26 (estimate). Alert sent to #ai-ops. The agent was not touched.</span>
       </div>
-      <div class="ld-feed">
-        <div class="ld-item ld-event" data-t="0"><time>0:00</time><span>Sam submits the quote form on the website.</span></div>
-        <div class="ld-item ld-sms" data-t="6">Hi Sam, thanks for contacting Summit Heating &amp; Air. This is an automated assistant and we will call you in a moment to get you booked. Reply STOP to opt out.<small>Text sent at 0:06</small></div>
-        <div class="ld-item ld-call" data-t="14">
-          <div class="ld-call-head"><span class="ld-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>AI assistant calls Sam</div>
-          <div class="ld-line is-ai"><b>Assistant</b>Hi Sam, this is an automated AI assistant calling for Summit Heating &amp; Air. Is now an okay time?</div>
-          <div class="ld-line"><b>Sam</b>Yes. The AC stopped cooling this evening.</div>
-          <div class="ld-line is-ai"><b>Assistant</b>I can get a technician out tomorrow at 9 AM or 1 PM. Which works?</div>
-          <div class="ld-line"><b>Sam</b>9 AM, please.</div>
-        </div>
-        <div class="ld-item ld-booked" data-t="52"><strong>Booked: tomorrow, 9:00 AM</strong><span>AC not cooling. Added to the calendar, lead and call summary saved to the CRM, owner notified.</span></div>
-      </div>
-      <div class="ld-foot">
-        <p class="ld-note" id="ld-cap">An example conversation, shown at 4&times; speed. Not a client record.</p>
-        <button type="button" class="ld-run">Run a sample lead</button>
-      </div>
+      <figcaption id="ct-cap">An illustration of one detector, not customer data. Fingerprints are hashes, so the call itself is never visible.</figcaption>
     </figure>
   </div>
 </section>
 
-<section class="ag-section" id="cost" aria-labelledby="cost-title">
+<section class="ag-section" id="problem" aria-labelledby="problem-title">
   <div class="ag-wrap">
     <div class="ag-head">
-      <h2 class="ag-h2" id="cost-title">Leads go to whoever answers first.</h2>
-      <p class="ag-lede">You pay for ads, referrals and a website to get enquiries. Then the enquiry waits in a voicemail box or an inbox until someone has time. Put your own numbers in and see what that wait costs.</p>
-    </div>
-    <div class="roi" id="roi" role="group" aria-labelledby="roi-title">
-      <div class="roi-in">
-        <h3 id="roi-title">Your numbers</h3>
-        <div class="roi-field"><label for="roi-inq">New enquiries a month</label><div class="roi-input"><input id="roi-inq" type="number" inputmode="numeric" min="0" step="1" value="60"></div></div>
-        <div class="roi-field"><label for="roi-late">Enquiries that wait too long for a reply</label><div class="roi-input"><input id="roi-late" type="number" inputmode="numeric" min="0" max="100" step="1" value="20"><span>%</span></div><small>After hours, on a job, or later than an hour.</small></div>
-        <div class="roi-field"><label for="roi-book">Of those, how many would have booked with a fast reply</label><div class="roi-input"><input id="roi-book" type="number" inputmode="numeric" min="0" max="100" step="1" value="33"><span>%</span></div></div>
-        <div class="roi-field"><label for="roi-job">Average value of a job</label><div class="roi-input"><span>$</span><input id="roi-job" type="number" inputmode="numeric" min="0" step="100" value="6000"></div></div>
-      </div>
-      <div class="roi-out" aria-live="polite">
-        <p>Bookings that may be going elsewhere, each month</p>
-        <div class="roi-big"><output id="roi-month" for="roi-inq roi-late roi-book roi-job">$24,000</output></div>
-        <div class="roi-rows">
-          <div><span>Enquiries answered too late</span><output id="roi-missed">12</output></div>
-          <div><span>Bookings lost</span><output id="roi-lost">4</output></div>
-          <div><span>Over a year</span><output id="roi-year">$288,000</output></div>
-          <div><span>Jobs to recover to cover the $1,500 monthly fee</span><output id="roi-cover">0.3 jobs a month</output></div>
-        </div>
-        <p class="roi-fine">An illustration built from the numbers you enter. It is not a forecast or a promise of results.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="ag-section" id="services" aria-labelledby="services-title">
-  <div class="ag-wrap">
-    <div class="ag-head">
-      <h2 class="ag-h2" id="services-title">One system, built around the tools you already use.</h2>
-      <p class="ag-lede">We connect your website, phone number, calendar and CRM, write the scripts with you, and manage it every month.</p>
+      <h2 class="ag-h2" id="problem-title">Agents fail in ways normal monitoring cannot see.</h2>
+      <p class="ag-lede">Every call in a loop returns a healthy response. The failure only shows up later, as a bill or an incident.</p>
     </div>
     <div class="ag-rows">
-      <article class="ag-row">
-        <h3>Instant lead response</h3>
-        <p>New leads get a text and an AI call within a minute, day or night.</p>
-        <ul><li>Website forms, ad leads and missed calls</li><li>Asks the questions you choose</li><li>Books straight onto your calendar</li><li>Hands off to a person when asked</li></ul>
-      </article>
-      <article class="ag-row">
-        <h3>CRM automation</h3>
-        <p>Every lead is recorded and followed up without anyone retyping it.</p>
-        <ul><li>Lead and call summary saved automatically</li><li>Follow-up texts and emails on a schedule</li><li>Appointment reminders and no-show recovery</li><li>Alerts to the right person</li></ul>
-      </article>
-      <article class="ag-row">
-        <h3>Workflow integrations</h3>
-        <p>Custom connections between the tools you already pay for.</p>
-        <ul><li>Forms, calendar, CRM, invoicing and email</li><li>Fixed scope and price, quoted up front</li><li>Documented, so you are never locked in</li></ul>
-      </article>
+      <div class="ag-row"><h3>Runaway loops</h3><p>An agent repeats the same tool call, or two agents pass work back and forth, until a limit stops them.</p><ul><li>Each call looks fine on its own</li><li>The cost appears at month end</li></ul></div>
+      <div class="ag-row"><h3>Hidden token spend</h3><p>Your model provider bills one number. You need it by agent, team, task and outcome.</p><ul><li>Retries and failed runs still cost money</li><li>No link between spend and value</li></ul></div>
+      <div class="ag-row"><h3>Behavior that drifts</h3><p>An agent starts using a tool it never used, or runs at a different volume, and nobody notices.</p><ul><li>No baseline of normal</li><li>No inventory of which agents exist</li></ul></div>
     </div>
   </div>
 </section>
 
-<section class="ag-section" id="process" aria-labelledby="process-title">
+<section class="ag-section" id="product" aria-labelledby="product-title">
   <div class="ag-wrap">
     <div class="ag-head">
-      <h2 class="ag-h2" id="process-title">You see it work on your own business before you commit.</h2>
-      <p class="ag-lede">The audit is free. You decide about the build after you have seen the findings.</p>
+      <h2 class="ag-h2" id="product-title">Three parts, one read-only pipeline.</h2>
+      <p class="ag-lede">A small SDK in your environment, a detection layer, and a dashboard your engineers and finance team can both use.</p>
     </div>
-    <ol class="ag-steps">
-      <li><h3>Free audit</h3><p>We send one ordinary enquiry through your form and make one call to your main number, then time the replies. You get a one-page summary of where leads are being lost.</p></li>
-      <li><h3>Build and launch</h3><p>We set up the system with your scripts, calendar and CRM, register your number for business texting, and test the whole path before it goes live.</p></li>
-      <li><h3>We run it</h3><p>We monitor it, adjust the scripts, and send a monthly report of leads, response times and bookings.</p></li>
-    </ol>
+    <div class="ag-rows">
+      <div class="ag-row"><h3>Lightweight SDK</h3><p>Python first, built on OpenTelemetry, with LangChain and AutoGen adapters and wrappers for OpenAI and Anthropic clients.</p><ul><li>Runs in the background, never blocks your agent</li><li>Turns off with one environment variable</li><li>Planned as open source so your security team can read it</li></ul></div>
+      <div class="ag-row"><h3>Loop and anomaly detection</h3><p>Rules that spot repeated calls, repeated results, cycles between agents, runaway steps, cost caps and sudden token spikes.</p><ul><li>Works from hashed fingerprints, not content</li><li>Dry-run mode to tune before anyone is paged</li><li>Alerts to Slack, email or your webhook</li></ul></div>
+      <div class="ag-row"><h3>Cost and governance dashboard</h3><p>Spend, cost per successful run, latency, budgets and forecasts, with an agent inventory and an audit log.</p><ul><li>Cost is labeled as an estimate from token counts</li><li>ROI uses the value you enter per run</li><li>Weekly summary email for finance</li></ul></div>
+    </div>
   </div>
 </section>
 
-<section class="ag-section" id="pricing" aria-labelledby="pricing-title">
+<section class="ag-section ag-band" id="boundary" aria-labelledby="boundary-title">
   <div class="ag-wrap">
     <div class="ag-head">
-      <h2 class="ag-h2" id="pricing-title">Two prices, agreed before we start.</h2>
-      <p class="ag-lede">One setup fee and one monthly fee, in US dollars. Custom integrations outside the core system are quoted separately.</p>
-    </div>
-    <div class="ag-price">
-      <div><h3>Setup</h3><div class="ag-amt">$3,000 <small>one time</small></div><ul><li>Built around your forms, calendar and CRM</li><li>Scripts written for your business</li><li>Phone number registration and testing</li></ul></div>
-      <div><h3>Monthly</h3><div class="ag-amt">$1,500 <small>a month</small></div><ul><li>We run and monitor the system</li><li>Script and workflow updates</li><li>Monthly report</li><li>An agreed number of conversations included</li></ul></div>
-    </div>
-    <p class="ag-fine">Extra conversations above the agreed number are billed at a stated rate. Phone numbers and carrier fees are passed through at cost. Cancel with 30 days' written notice.</p>
-  </div>
-</section>
-
-<section class="ag-section ag-band" id="safeguards" aria-labelledby="safeguards-title">
-  <div class="ag-wrap">
-    <div class="ag-head">
-      <h2 class="ag-h2" id="safeguards-title">Built so you can trust it with your customers.</h2>
-      <p class="ag-lede">Your customers deal with this system on your behalf, so the safeguards are part of the build, not an add-on.</p>
+      <h2 class="ag-h2" id="boundary-title">Built so there is little to approve and nothing to break.</h2>
+      <p class="ag-lede">These limits are written into the design and checked by automated tests before every release.</p>
     </div>
     <dl class="ag-defs">
-      <div><dt>It says it is an AI</dt><dd>The assistant tells people it is automated, and anyone who wants a person gets one.</dd></div>
-      <div><dt>Consent is built in</dt><dd>We add clear wording to your forms so customers agree to be texted and called, and we follow US texting rules.</dd></div>
-      <div><dt>Clear limits</dt><dd>It collects details and books appointments. It does not give legal, medical or financial advice.</dd></div>
-      <div><dt>A record of everything</dt><dd>Every conversation is logged with a summary, so you can see exactly what was said.</dd></div>
+      <div><dt>Metadata only</dt><dd>Token counts, timings, statuses, model and tool names, and hashed fingerprints. No prompts, outputs, tool arguments or end-user data.</dd></div>
+      <div><dt>A closed list of fields</dt><dd>Events with any field outside the published schema are rejected, and values that look like emails, card numbers or keys are dropped.</dd></div>
+      <div><dt>Write-only access</dt><dd>Your ingest key can send data and nothing else. We hold no credentials for your agents, tools, databases or cloud accounts.</dd></div>
+      <div><dt>Alerts, never actions</dt><dd>We tell you what happened. We do not pause, throttle or stop anything. That decision stays with you.</dd></div>
+      <div><dt>Fails open</dt><dd>If our service is slow or down, your agents are unaffected. The SDK drops data rather than waiting, and counts what it dropped.</dd></div>
+      <div><dt>Your data stays yours</dt><dd>Each customer is isolated, with its own encryption keys and a short default retention. Nothing is shared across customers.</dd></div>
     </dl>
   </div>
 </section>
 
-<section class="ag-section" id="fit" aria-labelledby="fit-title">
+<section class="ag-section" id="status" aria-labelledby="status-title">
   <div class="ag-wrap">
     <div class="ag-head">
-      <h2 class="ag-h2" id="fit-title">For local businesses where one lead is worth real money.</h2>
-      <p class="ag-lede">We are early-stage and taking a small number of launch clients, so each one gets direct attention.</p>
+      <h2 class="ag-h2" id="status-title">Where this stands, stated plainly.</h2>
+      <p class="ag-lede">Control Tower is early. Here is what exists and what comes next.</p>
+    </div>
+    <ol class="ag-steps">
+      <li><h3>Done: design</h3><p>Product requirements, data schema, detection rules and a 16-week build plan.</p></li>
+      <li><h3>Now: design partners</h3><p>Finding teams with real agent workloads to test the first version against, before more is built.</p></li>
+      <li><h3>Next: first version</h3><p>SDK, ingestion, eight detectors and the dashboard, built with partners. Sized for about 2,000 events a second in pilots, with a design that can grow far beyond that. These are design targets, not measured results.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="ag-section" id="partners" aria-labelledby="partners-title">
+  <div class="ag-wrap">
+    <div class="ag-head">
+      <h2 class="ag-h2" id="partners-title">Who we want to hear from.</h2>
+      <p class="ag-lede">Platform and AI engineering teams that already run agents in production and cannot see loops or cost per agent.</p>
     </div>
     <div class="ag-fit">
-      <div><h3>Home services</h3><p>HVAC, plumbing, roofing and electrical businesses with urgent, high-value jobs.</p></div>
-      <div><h3>Law firms</h3><p>Intake that collects contact details and a short reason, then passes the enquiry to your team. No legal advice.</p></div>
-      <div><h3>Clinics and medspas</h3><p>Consultation booking and scheduling. We use a setup suitable for patient information and keep health details out of the AI.</p></div>
+      <div><h3>You run agents today</h3><p>LangChain, AutoGen or your own code, calling models from OpenAI, Anthropic or others.</p></div>
+      <div><h3>You have felt the pain</h3><p>A surprise bill, a stuck agent, or a security team that blocked a tool that captures prompts.</p></div>
+      <div><h3>You will give feedback</h3><p>A real workload to test against and short written feedback each week. No calls required.</p></div>
     </div>
   </div>
 </section>
 
-<section class="ag-section" id="team" aria-labelledby="team-title">
+<section class="ag-section" id="products" aria-labelledby="products-title">
   <div class="ag-wrap">
     <div class="ag-head">
-      <h2 class="ag-h2" id="team-title">Built by an engineer who ships software that cannot fail.</h2>
-      <p class="ag-lede">KPAppWorx is run by its founder, Kanthipriya S. Mahale. You deal with her directly, not an account manager.</p>
+      <h2 class="ag-h2" id="products-title">Our other software and services.</h2>
+      <p class="ag-lede">KPAppWorx has shipped 13 products. These are the ones for businesses.</p>
     </div>
-    <div class="ag-team">
-      <ul class="ag-facts">
-        <li><strong>9+ years</strong> in safety-critical embedded systems, including aviation (DO-178C) and automotive (ISO 26262) software.</li>
-        <li><strong>13 products shipped</strong> through KPAppWorx: ten iOS and macOS apps and three live AI tools.</li>
-        <li><strong>Industry background</strong> at Thales, Bosch, Veoneer, NVIDIA (via Calsoft) and Schneider Electric.</li>
-      </ul>
-      <div class="ag-tools">
-        <h3>Tools we connect to</h3>
-        <p>Twilio for texting and calls, Retell AI for the voice assistant, n8n for the workflows, plus Google Calendar, Outlook, HubSpot, GoHighLevel, Jobber, Housecall Pro and most CRMs with an open API. Tell us what you use and we confirm before you pay.</p>
-      </div>
+    <div class="ag-fit">
+      <div><h3><a class="text-link" href="/products/quarterdeck">Quarterdeck AI</a></h3><p>Read-only HubSpot pipeline audits. Upload a deals file and get an explainable view of stale and at-risk deals.</p></div>
+      <div><h3><a class="text-link" href="/products">All products</a></h3><p>DocGen, ATS Resume Checker and our iOS and macOS apps.</p></div>
+      <div><h3><a class="text-link" href="/services">AI lead response</a></h3><p>For local businesses: we set up and run AI that texts and calls new leads within a minute and books the appointment.</p></div>
     </div>
   </div>
 </section>
@@ -403,36 +311,35 @@
 <section class="ag-section" id="faq" aria-labelledby="faq-title">
   <div class="ag-wrap">
     <div class="ag-head">
-      <h2 class="ag-h2" id="faq-title">Questions owners ask first.</h2>
+      <h2 class="ag-h2" id="faq-title">Questions engineering teams ask first.</h2>
       <p class="ag-lede">Anything else, write to <a class="text-link" href="mailto:hello@kpappworx.com" style="text-decoration:underline;text-underline-offset:3px;">hello@kpappworx.com</a> and we will reply within one business day.</p>
     </div>
     <div class="ag-faq">
-<details><summary>Will this replace my staff?</summary><p>No. It handles the first minute: replying, asking two questions and booking a time. Your people still do the estimate, the consultation and the relationship. Anyone who asks for a person is handed to your team.</p></details>
-<details><summary>Do people know they are talking to an AI?</summary><p>Yes. The assistant says at the start of every call and text that it is an automated assistant, and it says so again whenever it is asked.</p></details>
-<details><summary>Is it legal to text and call new leads this way?</summary><p>It can be, when people have agreed to it. We add clear consent wording next to your form's submit button, include a STOP option in every text, and honor opt-outs. Rules differ by state and industry, and this is not legal advice, so have your own lawyer review the consent wording.</p></details>
-<details><summary>What tools does it work with?</summary><p>It connects to web forms, calendars and CRMs that offer a standard integration or an API. Tell us what you use during the audit and we will confirm what is possible before you pay anything.</p></details>
-<details><summary>How long does setup take?</summary><p>Most of the wait is carrier registration for business texting, which we do not control and which can take days to weeks. After the audit we give you a date based on your setup.</p></details>
-<details><summary>What does the monthly fee cover?</summary><p>Running and monitoring the system, updates to scripts and workflows, a monthly report, and an agreed number of conversations. Extra conversations are billed at a stated rate. Phone numbers and carrier fees are passed through at cost.</p></details>
-<details><summary>Can I cancel?</summary><p>Yes, with 30 days' written notice. The setup fee is not refundable once work has started, unless your agreement says otherwise.</p></details>
-<details><summary>Where are you based?</summary><p>Bengaluru, India. We work with businesses in the United States, and most of our communication is written so that time zones do not slow anything down.</p></details>
+<details><summary>Is Control Tower available today?</summary><p>No. It is in development. The design and a 16-week build plan are complete, and we are recruiting a small number of design partners to shape the first version. We will not describe it as shipped until it is.</p></details>
+<details><summary>Does it read our prompts or model outputs?</summary><p>No. The SDK sends only counts, timings, statuses, model names and hashed fingerprints of calls. Prompts, outputs, tool arguments and documents are dropped inside your process before anything leaves it, and our servers reject events that contain anything outside the published list of fields.</p></details>
+<details><summary>Can it stop or change an agent?</summary><p>No, by design. Control Tower reads telemetry and sends alerts to Slack, email or a webhook you choose. It has no credentials for your systems and cannot call your agents or tools. What happens after an alert is your decision.</p></details>
+<details><summary>How is this different from Langfuse, LangSmith, Helicone or Datadog?</summary><p>Those are mature products and many are good. Most capture prompts and outputs by default, which some security teams will not approve. Control Tower is metadata-only from the start, and puts loop detection and finance-grade cost views first. It is also much earlier, so if you need a proven platform today, choose one of them.</p></details>
+<details><summary>Which frameworks will it support?</summary><p>The first version targets Python with an OpenTelemetry exporter, a LangChain callback handler, an AutoGen adapter and wrappers for the OpenAI and Anthropic clients. Other frameworks come later, in the order design partners ask for them.</p></details>
+<details><summary>What do design partners get?</summary><p>A free pilot, direct access to the founder, and a say in what is built first. We ask for a real agent workload to test against, a regular feedback conversation by message, and honest comments on what is missing.</p></details>
+<details><summary>Who is building it?</summary><p>KPAppWorx Technologies Private Limited, in Bengaluru, India. It is led by Kanthipriya S. Mahale, who has spent 9+ years in safety-critical embedded software.</p></details>
     </div>
   </div>
 </section>
 
 <section class="ag-close" id="close" aria-labelledby="close-title">
   <div class="ag-wrap">
-    <h2 id="close-title">How fast do your leads get an answer today?</h2>
-    <p>Book a free audit. We will time your current response and tell you plainly what it is costing you and whether we can fix it.</p>
+    <h2 id="close-title">Help shape the first version.</h2>
+    <p>Tell us what your agents do and what you cannot see today. We will reply with whether Control Tower fits and what a pilot would involve.</p>
     <div class="ag-ctas">
-      <a href="/contact" class="btn btn-primary btn-lg">Book a free audit</a>
+      <a href="/contact" class="btn btn-primary btn-lg">Become a design partner</a>
       <a href="mailto:hello@kpappworx.com" class="btn btn-ghost btn-lg">hello@kpappworx.com</a>
     </div>
   </div>
 </section>
 
-<div class="ag-sticky" role="region" aria-label="Book an audit">
-  <span>Free lead-response audit</span>
-  <a href="/contact" class="btn btn-primary">Book it</a>
+<div class="ag-sticky" role="region" aria-label="Design partner program">
+  <span>Control Tower design partners</span>
+  <a href="/contact" class="btn btn-primary">Apply</a>
 </div>
 
 </main>
@@ -455,7 +362,7 @@
       <nav class="footer-col" aria-label="Company">
         <h4>Company</h4>
         <ul>
-          <li><a href="/#services">Services</a></li>
+          <li><a href="/services">Services</a></li>
           <li><a href="/company">Company</a></li>
           <li><a href="/about">About</a></li>
           <li><a href="/labs">Labs</a></li>

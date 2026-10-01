@@ -162,3 +162,22 @@
 @media (max-width:860px){ .ag-team{ grid-template-columns:1fr; } }
 .ag-team .ag-facts{ display:block; }
 .ag-team .ag-facts li{ display:block; width:auto; }
+
+/* control tower hero panel */
+.sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.ct-status{ margin-top:28px; padding-top:20px; border-top:1px solid var(--line); color:var(--ink-2); line-height:1.6; max-width:52ch; }
+.ct-status b{ color:var(--ink); font-weight:600; }
+.ct{ margin:0; background:var(--dk-bg); color:var(--dk-ink); border:1px solid var(--dk-line); border-radius:10px; box-shadow:var(--shadow-deep); overflow:hidden; }
+.ct-bar{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:16px 20px; border-bottom:1px solid var(--dk-line); font-size:14px; font-weight:600; }
+.ct-flag{ font-family:var(--font-mono); font-size:12px; font-weight:500; color:#f2b8a2; border:1px solid #7a4a3a; border-radius:4px; padding:3px 8px; white-space:nowrap; }
+.ct-table{ width:100%; border-collapse:collapse; font-size:13.5px; }
+.ct-table th{ text-align:left; font-weight:500; color:var(--dk-mut); padding:10px 20px; border-bottom:1px solid var(--dk-line); }
+.ct-table td{ padding:10px 20px; border-bottom:1px solid var(--dk-line); font-variant-numeric:tabular-nums; }
+.ct-table td:nth-child(3){ font-family:var(--font-mono); }
+.ct-table th:nth-child(n+4), .ct-table td:nth-child(n+4){ text-align:right; }
+.ct-table tr.is-rep td{ background:rgba(242,184,162,.10); }
+.ct-table tr.is-rep td:nth-child(3){ color:#f2b8a2; }
+.ct-alert{ display:grid; gap:4px; margin:16px 20px; padding:14px 16px; border:1px solid #7a4a3a; border-radius:8px; background:rgba(242,184,162,.06); }
+.ct-alert span{ color:var(--dk-mut); font-size:14px; line-height:1.55; }
+.ct figcaption{ padding:12px 20px 16px; color:var(--dk-mut); font-size:12.5px; line-height:1.5; border-top:1px solid var(--dk-line); }
+@media (max-width:520px){ .ct-table th,.ct-table td{ padding:9px 10px; } .ct-table th:first-child,.ct-table td:first-child{ padding-left:14px; } .ct-bar,.ct-alert{ margin-inline:0; } .ct-alert{ margin:14px; } .ct-table{ font-size:12.5px; } }
