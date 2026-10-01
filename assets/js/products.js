@@ -55,7 +55,7 @@ window.KP_PRODUCTS = [
     accentDark: "#d2bd84",
     mark: null,
     placeholder: true,
-    visible: true
+    visible: false
   }
 ];
 
