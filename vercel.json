@@ -2,8 +2,25 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/quarterdeck", "destination": "/products/quarterdeck", "permanent": true },
-    { "source": "/quarterdeck.html", "destination": "/products/quarterdeck", "permanent": true },
-    { "source": "/products.html", "destination": "/products", "permanent": true }
+    {
+      "source": "/quarterdeck",
+      "destination": "/products/quarterdeck",
+      "permanent": true
+    },
+    {
+      "source": "/quarterdeck.html",
+      "destination": "/products/quarterdeck",
+      "permanent": true
+    },
+    {
+      "source": "/products.html",
+      "destination": "/products",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }
