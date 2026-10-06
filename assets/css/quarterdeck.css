@@ -189,3 +189,13 @@ h1,h2,h3,h4,.h1,.h2,.h3,.display,.brand,.pf-name,.rack-name,.pg-hero h1,.kp-hero
    Quarterdeck sub-bar is navigation only. */
 .pbar-cta{ display:none; }
 .pbar-in{ height:48px; }
+
+/* ---------- One header, not two: product sub-nav becomes a slim in-page strip ---------- */
+.pbar{ position:static !important; top:auto !important; background:var(--bg) !important; }
+.pbar-in{ height:40px; gap:20px; }
+.pbar-id{ font-size:13px; font-weight:600; gap:8px; }
+.pbar-id .pf-mark{ width:20px; height:20px; border-radius:6px; }
+.pbar-id .pf-mark svg{ width:11px; height:11px; }
+.pbar-by{ display:none; }
+.pbar-links{ margin-left:auto; gap:20px; font-size:13px; }
+@media (max-width:760px){ .pbar-links{ display:flex; margin-left:0; gap:16px; } .pbar-in{ gap:14px; } }
