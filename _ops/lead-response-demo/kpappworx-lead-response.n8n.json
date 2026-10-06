@@ -1,0 +1,473 @@
+{
+  "name": "KPAppWorx lead response demo",
+  "nodes": [
+    {
+      "id": "n1",
+      "name": "Lead form webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-demo",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      }
+    },
+    {
+      "id": "n2",
+      "name": "Validate and normalize",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "jsCode": "const b = $input.first().json.body || $input.first().json;\nconst digits = String(b.phone || '').replace(/\\D/g, '');\nlet e164 = '';\nif (digits.length === 10) e164 = '+1' + digits;\nelse if (digits.length === 11 && digits.startsWith('1')) e164 = '+' + digits;\nelse if (String(b.phone || '').trim().startsWith('+') && digits.length >= 11) e164 = '+' + digits;\nconst consent = b.consent === true || String(b.consent).toLowerCase() === 'yes' || String(b.consent).toLowerCase() === 'true' || String(b.consent).toLowerCase() === 'on';\nconst name = String(b.name || '').trim().slice(0, 60);\nconst business = String(b.business_name || 'our team').trim().slice(0, 80);\nconst inquiry = String(b.message || 'a service request').trim().slice(0, 300);\nconst valid = Boolean(consent && e164 && name);\nreturn [{ json: { valid, consent, name, business, inquiry, email: String(b.email || '').trim(), phone: e164, source: String(b.source || 'web form'), received_at: new Date().toISOString() } }];"
+      }
+    },
+    {
+      "id": "n3",
+      "name": "Consent and phone OK?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c1",
+              "leftValue": "={{ $json.valid }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "n4",
+      "name": "Reject: no consent",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        200
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'rejected', reason: 'Consent and a valid phone number are required.' }) }}",
+        "options": {
+          "responseCode": 400
+        }
+      }
+    },
+    {
+      "id": "n5",
+      "name": "Send text (Twilio)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        720,
+        -100
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.twilio.com/2010-04-01/Accounts/REPLACE_TWILIO_ACCOUNT_SID/Messages.json",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpBasicAuth",
+        "sendBody": true,
+        "contentType": "form-urlencoded",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "To",
+              "value": "={{ $json.phone }}"
+            },
+            {
+              "name": "From",
+              "value": "REPLACE_TWILIO_NUMBER_E164"
+            },
+            {
+              "name": "Body",
+              "value": "=Hi {{ $json.name }}, thanks for contacting {{ $json.business }}. This is an automated assistant and we'll call you in a moment to get you booked. Reply STOP to opt out."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "credentials": {
+        "httpBasicAuth": {
+          "id": "REPLACE",
+          "name": "Twilio account SID + auth token"
+        }
+      }
+    },
+    {
+      "id": "n6",
+      "name": "Short wait",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        -100
+      ],
+      "parameters": {
+        "amount": 8,
+        "unit": "seconds"
+      }
+    },
+    {
+      "id": "n7",
+      "name": "Place AI call (Retell)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        -100
+      ],
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.retellai.com/v2/create-phone-call",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ from_number: 'REPLACE_RETELL_NUMBER_E164', to_number: $('Validate and normalize').first().json.phone, override_agent_id: 'REPLACE_RETELL_AGENT_ID', retell_llm_dynamic_variables: { customer_name: $('Validate and normalize').first().json.name, business_name: $('Validate and normalize').first().json.business, inquiry: $('Validate and normalize').first().json.inquiry }, metadata: { email: $('Validate and normalize').first().json.email, phone: $('Validate and normalize').first().json.phone, business: $('Validate and normalize').first().json.business, name: $('Validate and normalize').first().json.name, received_at: $('Validate and normalize').first().json.received_at } }) }}",
+        "options": {}
+      },
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "REPLACE",
+          "name": "Retell API key (Authorization: Bearer ...)"
+        }
+      }
+    },
+    {
+      "id": "n8",
+      "name": "Respond: started",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1440,
+        -100
+      ],
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ status: 'started', call_id: $json.call_id }) }}",
+        "options": {
+          "responseCode": 200
+        }
+      }
+    },
+    {
+      "id": "n9",
+      "name": "Retell events webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        500
+      ],
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "retell-events-REPLACE_RANDOM_SECRET",
+        "responseMode": "onReceived",
+        "options": {}
+      }
+    },
+    {
+      "id": "n10",
+      "name": "Only call_analyzed",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        240,
+        500
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "c2",
+              "leftValue": "={{ $json.body.event }}",
+              "rightValue": "call_analyzed",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "n11",
+      "name": "Shape the log row",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        480,
+        500
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a1",
+              "name": "received_at",
+              "value": "={{ $json.body.call.metadata.received_at }}",
+              "type": "string"
+            },
+            {
+              "id": "a2",
+              "name": "business",
+              "value": "={{ $json.body.call.metadata.business }}",
+              "type": "string"
+            },
+            {
+              "id": "a3",
+              "name": "name",
+              "value": "={{ $json.body.call.metadata.name }}",
+              "type": "string"
+            },
+            {
+              "id": "a4",
+              "name": "phone",
+              "value": "={{ $json.body.call.metadata.phone }}",
+              "type": "string"
+            },
+            {
+              "id": "a5",
+              "name": "email",
+              "value": "={{ $json.body.call.metadata.email }}",
+              "type": "string"
+            },
+            {
+              "id": "a6",
+              "name": "call_id",
+              "value": "={{ $json.body.call.call_id }}",
+              "type": "string"
+            },
+            {
+              "id": "a7",
+              "name": "summary",
+              "value": "={{ $json.body.call.call_analysis.call_summary }}",
+              "type": "string"
+            },
+            {
+              "id": "a8",
+              "name": "successful",
+              "value": "={{ $json.body.call.call_analysis.call_successful }}",
+              "type": "string"
+            },
+            {
+              "id": "a9",
+              "name": "transcript",
+              "value": "={{ $json.body.call.transcript }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "n12",
+      "name": "Log to Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        720,
+        500
+      ],
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "REPLACE_SHEET_ID"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "name",
+          "value": "Leads"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {}
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE",
+          "name": "Google Sheets"
+        }
+      }
+    },
+    {
+      "id": "n13",
+      "name": "Note: add owner alert here",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        960,
+        500
+      ],
+      "parameters": {},
+      "notes": "Add a Slack, email or SMS node here to alert the business owner when call_successful is true."
+    }
+  ],
+  "connections": {
+    "Lead form webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate and normalize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate and normalize": {
+      "main": [
+        [
+          {
+            "node": "Consent and phone OK?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Consent and phone OK?": {
+      "main": [
+        [
+          {
+            "node": "Send text (Twilio)",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reject: no consent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send text (Twilio)": {
+      "main": [
+        [
+          {
+            "node": "Short wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Short wait": {
+      "main": [
+        [
+          {
+            "node": "Place AI call (Retell)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Place AI call (Retell)": {
+      "main": [
+        [
+          {
+            "node": "Respond: started",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Retell events webhook": {
+      "main": [
+        [
+          {
+            "node": "Only call_analyzed",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Only call_analyzed": {
+      "main": [
+        [
+          {
+            "node": "Shape the log row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Shape the log row": {
+      "main": [
+        [
+          {
+            "node": "Log to Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log to Google Sheet": {
+      "main": [
+        [
+          {
+            "node": "Note: add owner alert here",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
