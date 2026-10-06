@@ -183,3 +183,9 @@ h1,h2,h3,h4,.h1,.h2,.h3,.display,.brand,.pf-name,.rack-name,.pg-hero h1,.kp-hero
 .manifest b{ font-weight:600; }
 .labs-hero p.manifest,.labs-hero p.manifest *{ font-size:12px; }
 .labs-hero p.kicker,.labs-hero p.hero-eyebrow,.labs-hero .wrap > p:first-child{ font-size:12px; }
+
+/* ---------- Product sub-bar: no duplicate buttons ----------
+   The global header already carries Sign in / Request access, so the
+   Quarterdeck sub-bar is navigation only. */
+.pbar-cta{ display:none; }
+.pbar-in{ height:48px; }
