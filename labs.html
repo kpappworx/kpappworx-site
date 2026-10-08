@@ -128,6 +128,50 @@ body{ background:var(--bg); color:var(--ink); }
   .labs-hero{ padding:64px 0 40px; }
 }
 
+/* ---------- Portfolio hierarchy: Selected Apps (primary) / More from KPAppWorx (secondary) ---------- */
+.apps-selected{ padding:8px 0 72px; }
+.apps-more{ padding:0 0 40px; }
+.apps-head{ margin-bottom:32px; max-width:62ch; }
+.apps-head h2{
+  font-family:var(--font-display); font-weight:500; letter-spacing:-0.012em;
+  font-size:clamp(30px,3.6vw,42px); line-height:1.1; margin-top:10px;
+}
+.apps-more .apps-head{ margin-bottom:20px; }
+.apps-more .apps-head h2{ font-size:clamp(22px,2.4vw,26px); letter-spacing:-0.008em; }
+.feat-grid{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.feat-card{
+  display:flex; flex-direction:column; min-height:280px; padding:36px 32px 28px;
+  background:var(--bg-2); border:1px solid var(--line-2); border-radius:var(--r-xl, 16px);
+  color:inherit;
+  transition:border-color .18s var(--ease), transform .18s var(--ease), background .18s var(--ease);
+}
+.feat-card:hover, .feat-card:focus-visible{ border-color:var(--accent); background:var(--bg-3); transform:translateY(-3px); }
+.feat-n{ font-family:var(--font-mono); font-size:12px; letter-spacing:.14em; color:var(--ink-3); }
+.feat-name{
+  font-family:var(--font-display); font-weight:500; letter-spacing:-0.012em;
+  font-size:clamp(28px,2.8vw,34px); line-height:1.1; margin:44px 0 14px;
+}
+.feat-what{ font-size:16.5px; color:var(--ink-2); line-height:1.6; }
+.feat-go{
+  margin-top:auto; padding-top:32px;
+  font-family:var(--font-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); white-space:nowrap;
+}
+.feat-card:hover .feat-go, .feat-card:focus-visible .feat-go{ color:var(--accent); }
+.log-row{ padding:20px 0; }
+.log-name{ font-size:21px; }
+@media (max-width:980px){
+  .feat-grid{ grid-template-columns:1fr; gap:16px; }
+  .feat-card{ min-height:0; padding:28px 24px 24px; }
+  .feat-name{ margin:28px 0 10px; }
+  .feat-go{ padding-top:24px; }
+}
+@media (max-width:860px){
+  .apps-selected{ padding-bottom:56px; }
+  .log-row{ padding:18px 0; }
+  .log-name{ font-size:20px; }
+}
+
 .labs-hero h1{ max-width:15ch; }
 .labs-split{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0; margin-top:48px; border-top:1px solid var(--line-2); }
 .labs-split > div{ padding:26px 28px 6px 0; }
@@ -188,7 +232,7 @@ body{ background:var(--bg); color:var(--ink); }
     <p>Experiments, prototypes, consumer utilities and small shipped apps. Everything here is designed, built and supported in-house — and none of it is part of the commercial product portfolio unless it earns a place there.</p>
     <p class="manifest">
       <span><span class="st st-lab" style="--st-c:#0F766E;"><i aria-hidden="true"></i>Lab</span></span>
-      <span><b>10</b> apps released</span>
+      <span><b>12</b> apps released</span>
       <span><b>iOS</b> · App Store</span>
       <span>Bengaluru, <b>India</b></span>
     </p>
@@ -212,73 +256,98 @@ body{ background:var(--bg); color:var(--ink); }
 </section>
 
 <section style="padding-top:24px;" aria-hidden="true"></section>
-<section class="log" aria-labelledby="index-title">
+<section class="apps-selected" aria-labelledby="selected-title">
   <div class="wrap">
-    <h2 class="sr-only" id="index-title">Index of released apps</h2>
+    <div class="apps-head">
+      <span class="mono-label">Featured</span>
+      <h2 id="selected-title">Selected Apps</h2>
+    </div>
+    <div class="feat-grid">
+      <a class="feat-card" href="https://apps.apple.com/us/app/gratitudes-jar/id6736903470" target="_blank" rel="noopener">
+        <span class="feat-n">01</span>
+        <span class="feat-name">Gratitudes Jar</span>
+        <span class="feat-what">A simple daily gratitude practice.</span>
+        <span class="feat-go">App&nbsp;Store ↗</span>
+      </a>
+      <a class="feat-card" href="https://apps.apple.com/in/app/aiden-ai/id6745358011" target="_blank" rel="noopener">
+        <span class="feat-n">02</span>
+        <span class="feat-name">Aiden AI</span>
+        <span class="feat-what">A private, on-device AI assistant for everyday tasks.</span>
+        <span class="feat-go">App&nbsp;Store ↗</span>
+      </a>
+      <a class="feat-card" href="https://apps.apple.com/in/app/pomodoro-timer-deepfocus/id6742362168" target="_blank" rel="noopener">
+        <span class="feat-n">03</span>
+        <span class="feat-name">DeepFocus</span>
+        <span class="feat-what">Deep-work sessions built around the Pomodoro technique.</span>
+        <span class="feat-go">App&nbsp;Store ↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="log apps-more" aria-labelledby="more-title">
+  <div class="wrap">
+    <div class="apps-head">
+      <h2 id="more-title">More from KPAppWorx</h2>
+    </div>
     <div class="log-head" aria-hidden="true">
       <span>No.</span>
       <span>App</span>
       <span>What it does</span>
       <span style="text-align:right;">Listing</span>
     </div>
-      <a class="log-row" href="https://apps.apple.com/in/app/aiden-ai/id6745358011" target="_blank" rel="noopener">
-        <span class="log-n">01</span>
-        <span class="log-name">Aiden AI</span>
-        <span class="log-what">A private, on-device AI assistant for daily tasks.</span>
-        <span class="log-go">App&nbsp;Store ↗</span>
-      </a>
-      <a class="log-row" href="https://apps.apple.com/in/app/pomodoro-timer-deepfocus/id6742362168" target="_blank" rel="noopener">
-        <span class="log-n">02</span>
-        <span class="log-name">DeepFocus</span>
-        <span class="log-what">Deep work sessions built on the Pomodoro technique.</span>
-        <span class="log-go">App&nbsp;Store ↗</span>
-      </a>
-      <a class="log-row" href="https://apps.apple.com/us/app/gratitudes-jar/id6736903470" target="_blank" rel="noopener">
-        <span class="log-n">03</span>
-        <span class="log-name">Gratitudes Jar</span>
-        <span class="log-what">Collect daily gratitudes in a beautiful jar.</span>
-        <span class="log-go">App&nbsp;Store ↗</span>
-      </a>
       <a class="log-row" href="https://apps.apple.com/in/app/bizmentorai/id6753706731" target="_blank" rel="noopener">
-        <span class="log-n">04</span>
+        <span class="log-n">01</span>
         <span class="log-name">BizMentorAI</span>
         <span class="log-what">AI mentorship and guidance for founders and small businesses.</span>
         <span class="log-go">App&nbsp;Store ↗</span>
       </a>
       <a class="log-row" href="https://apps.apple.com/in/app/sva-selfcare-ai/id6741071147" target="_blank" rel="noopener">
-        <span class="log-n">05</span>
+        <span class="log-n">02</span>
         <span class="log-name">SVA: SelfCare AI</span>
         <span class="log-what">Feel better, one day at a time — an AI self-care companion.</span>
         <span class="log-go">App&nbsp;Store ↗</span>
       </a>
       <a class="log-row" href="https://apps.apple.com/in/app/haru-haru/id6745263738" target="_blank" rel="noopener">
-        <span class="log-n">06</span>
+        <span class="log-n">03</span>
         <span class="log-name">Haru Haru</span>
         <span class="log-what">A simple daily journal and mood tracker.</span>
         <span class="log-go">App&nbsp;Store ↗</span>
       </a>
       <a class="log-row" href="https://apps.apple.com/in/app/cashchum/id6754614459" target="_blank" rel="noopener">
-        <span class="log-n">07</span>
+        <span class="log-n">04</span>
         <span class="log-name">Cashchum</span>
         <span class="log-what">Track spending and manage personal finances, simply.</span>
         <span class="log-go">App&nbsp;Store ↗</span>
       </a>
       <a class="log-row" href="https://apps.apple.com/in/app/invofast/id6746692066" target="_blank" rel="noopener">
-        <span class="log-n">08</span>
+        <span class="log-n">05</span>
         <span class="log-name">InvoFast</span>
         <span class="log-what">Fast, simple invoicing for freelancers and small businesses.</span>
         <span class="log-go">App&nbsp;Store ↗</span>
       </a>
       <a class="log-row" href="https://apps.apple.com/in/app/release-your-burden/id6746893568" target="_blank" rel="noopener">
-        <span class="log-n">09</span>
+        <span class="log-n">06</span>
         <span class="log-name">Release Your Burden</span>
         <span class="log-what">Write down what's weighing on you, then let it go.</span>
         <span class="log-go">App&nbsp;Store ↗</span>
       </a>
       <a class="log-row" href="https://apps.apple.com/in/app/gratitude-tree-daily-journal/id6757184327" target="_blank" rel="noopener">
-        <span class="log-n">10</span>
+        <span class="log-n">07</span>
         <span class="log-name">Gratitude Tree</span>
         <span class="log-what">A visual daily gratitude journal that grows a tree with every entry.</span>
+        <span class="log-go">App&nbsp;Store ↗</span>
+      </a>
+      <a class="log-row" href="https://apps.apple.com/in/app/habitheist/id6775268513" target="_blank" rel="noopener">
+        <span class="log-n">08</span>
+        <span class="log-name">HabitHeist</span>
+        <span class="log-what">Build habits, earn rewards.</span>
+        <span class="log-go">App&nbsp;Store ↗</span>
+      </a>
+      <a class="log-row" href="https://apps.apple.com/in/app/bloom-daily-happiness-coach/id6765741101" target="_blank" rel="noopener">
+        <span class="log-n">09</span>
+        <span class="log-name">Bloom: Daily Happiness Coach</span>
+        <span class="log-what">A daily mood and wellbeing coach.</span>
         <span class="log-go">App&nbsp;Store ↗</span>
       </a>
     <p class="log-foot">More on the way — <a href="https://apps.apple.com/in/developer/kanthipriya-mahale/id1773754625" target="_blank" rel="noopener">see every release on the App Store ↗</a></p>
