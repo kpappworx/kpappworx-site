@@ -204,9 +204,21 @@
       window.location.href = 'mailto:hello@kpappworx.com?subject=' + subject + '&body=' + body;
       var status = document.getElementById('formStatus');
       if (status){
+        var plain = ['To: hello@kpappworx.com', 'Subject: KPAppWorx — ' + (reason || 'Website inquiry') + ' — ' + name, '', 'Name: ' + name, 'Email: ' + email, 'Company: ' + company, 'Reason: ' + reason, '', message].join('\n');
+        var gmail = 'https://mail.google.com/mail/?view=cm&fs=1&to=hello%40kpappworx.com&su=' + subject + '&body=' + body;
+        var outlook = 'https://outlook.live.com/mail/0/deeplink/compose?to=hello%40kpappworx.com&subject=' + subject + '&body=' + body;
         status.hidden = false;
-        status.textContent = 'Opening your email client with this message pre-filled — send it from there and we’ll reply within one business day.';
         status.classList.add('ok');
+        status.innerHTML = 'Opening your email app with this message pre-filled; send it from there and we’ll reply within one business day. Nothing opened? ' +
+          '<a class="text-link" href="' + gmail.replace(/&/g, '&amp;') + '" target="_blank" rel="noopener">Compose in Gmail</a> · ' +
+          '<a class="text-link" href="' + outlook.replace(/&/g, '&amp;') + '" target="_blank" rel="noopener">Outlook</a> · ' +
+          '<button type="button" class="text-link" id="copyMsg" style="border:0;background:none;padding:0;cursor:pointer;font:inherit;">Copy message</button>';
+        var btn = document.getElementById('copyMsg');
+        if (btn) btn.addEventListener('click', function(){
+          var done = function(){ btn.textContent = 'Copied. Paste it into an email to hello@kpappworx.com'; };
+          try { navigator.clipboard.writeText(plain).then(done, function(){ btn.textContent = 'Copy failed. Email hello@kpappworx.com directly'; }); }
+          catch (err) { btn.textContent = 'Copy failed. Email hello@kpappworx.com directly'; }
+        });
       }
     });
   }

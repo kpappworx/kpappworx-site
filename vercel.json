@@ -21,6 +21,41 @@
       "source": "/services",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/audit",
+      "destination": "https://app.kpappworx.com/audit",
+      "permanent": false
+    },
+    {
+      "source": "/sample-audit",
+      "destination": "https://app.kpappworx.com/sample-audit",
+      "permanent": false
+    },
+    {
+      "source": "/login",
+      "destination": "https://app.kpappworx.com/login",
+      "permanent": false
+    },
+    {
+      "source": "/signin",
+      "destination": "https://app.kpappworx.com/login",
+      "permanent": false
+    },
+    {
+      "source": "/sign-in",
+      "destination": "https://app.kpappworx.com/login",
+      "permanent": false
+    },
+    {
+      "source": "/signup",
+      "destination": "https://app.kpappworx.com/signup",
+      "permanent": false
+    },
+    {
+      "source": "/app",
+      "destination": "https://app.kpappworx.com/login",
+      "permanent": false
     }
   ]
 }
