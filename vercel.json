@@ -39,7 +39,7 @@
     },
     {
       "source": "/app",
-      "destination": "https://app.kpappworx.com/login",
+      "destination": "https://app.kpappworx.com",
       "permanent": false
     },
     {
