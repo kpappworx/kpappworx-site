@@ -23,16 +23,6 @@
       "permanent": true
     },
     {
-      "source": "/audit",
-      "destination": "https://app.kpappworx.com/audit",
-      "permanent": false
-    },
-    {
-      "source": "/sample-audit",
-      "destination": "https://app.kpappworx.com/sample-audit",
-      "permanent": false
-    },
-    {
       "source": "/login",
       "destination": "https://app.kpappworx.com/login",
       "permanent": false
@@ -48,13 +38,13 @@
       "permanent": false
     },
     {
-      "source": "/signup",
-      "destination": "https://app.kpappworx.com/signup",
+      "source": "/app",
+      "destination": "https://app.kpappworx.com/login",
       "permanent": false
     },
     {
-      "source": "/app",
-      "destination": "https://app.kpappworx.com/login",
+      "source": "/audit",
+      "destination": "/contact?reason=Quarterdeck%20AI%20%E2%80%94%20paid%20audit",
       "permanent": false
     }
   ]
