@@ -44,7 +44,7 @@
     },
     {
       "source": "/audit",
-      "destination": "/contact?reason=Quarterdeck%20AI%20%E2%80%94%20paid%20audit",
+      "destination": "/products/quarterdeck",
       "permanent": false
     }
   ]
