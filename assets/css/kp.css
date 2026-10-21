@@ -489,3 +489,18 @@ a.dd-prod:hover, a.dd-prod:focus-visible{ background:var(--bg-2); }
 
 /* "Open app" lives in the header only where there is room; it is also in the mobile menu, footer and product sub-bar */
 @media (max-width:1100px){ .nav-links a[data-nav="app"]{ display:none; } }
+
+
+/* ---------- Homepage products section: iOS apps strip ---------- */
+.kp-labs-strip{
+  display:flex; align-items:center; justify-content:space-between; gap:20px 32px; flex-wrap:wrap;
+  margin-top:20px; padding:22px 26px; background:var(--surface); border:1px solid var(--line); border-radius:12px;
+}
+.kp-labs-strip b{ display:block; font-size:16px; font-weight:600; color:var(--ink); margin-bottom:4px; }
+.kp-labs-strip span{ font-size:14.5px; color:var(--ink-2); line-height:1.55; }
+.kp-labs-links{ display:flex; align-items:center; gap:22px; flex-wrap:wrap; }
+@media (max-width:620px){ .kp-labs-links .btn{ width:100%; } .kp-labs-links{ width:100%; } }
+
+/* ---------- Products dropdown: keep rows on the 3-column grid (beats the generic .nav-dd-card a rule) ---------- */
+.nav-dd-card a.dd-prod{ display:grid; grid-template-columns:34px minmax(0,1fr) auto; gap:12px; align-items:center; justify-content:normal; padding:10px 12px; font-size:inherit; font-weight:inherit; color:var(--ink); text-align:left; }
+.nav-dd-card .nav-dd-foot a{ justify-content:flex-start; gap:8px; }
