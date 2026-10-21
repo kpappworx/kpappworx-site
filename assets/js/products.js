@@ -42,6 +42,20 @@ window.KP_PRODUCTS = [
     visible: true
   },
   {
+    id: "udgass",
+    name: "Udgass.ai",
+    audience: "inventory and demand planners",
+    descriptor: "AI demand forecasting from historical patterns",
+    summary: "Learns from years of business history to anticipate demand, with the uncertainty shown. Early-access list open; no product to sign in to yet.",
+    status: "in-development",
+    href: "/udgass",
+    accent: "#24509c",
+    accentDark: "#8fb0ee",
+    mark: "udgass",
+    placeholder: false,
+    visible: true
+  },
+  {
     // PRODUCT #2 — replace the bracketed values when the product is ready to be named.
     // Set visible:false to hide this card until then.
     id: "product-2",
@@ -71,5 +85,7 @@ window.KP_STATUSES = {
 /* Product marks — simple inline SVG on a 24×24 grid, drawn in currentColor. */
 window.KP_MARKS = {
   // Quarterdeck: two nested quarter-sweeps — the wide view, and the part that matters.
+  // Udgass: a remembered curve that continues, dashed, into the forecast.
+  udgass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 17c2.5 0 2.5-9 5.5-9s2.5 9 5.5 9"/><path d="M14 17c1.5 0 2.6-2.4 5-6" stroke-dasharray="1.8 3"/><circle cx="20" cy="10" r="1.6" fill="currentColor" stroke="none"/></svg>',
   quarterdeck: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 20V5a15 15 0 0 1 15 15H4z" opacity=".38"/><path d="M4 20v-8a8 8 0 0 1 8 8H4z"/></svg>'
 };
