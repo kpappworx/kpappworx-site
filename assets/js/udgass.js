@@ -370,7 +370,9 @@
       var btn = earlyForm.querySelector('button[type="submit"]');
       btn.disabled = true;
       showResult('pending'); result.textContent = 'Sending…';
-      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(d) })
+      /* Google Apps Script web apps reject CORS preflight, so send JSON as text/plain (a "simple" request). */
+      var isGas = /^https:\/\/script\.google(usercontent)?\.com\//.test(endpoint);
+      fetch(endpoint, { method: 'POST', headers: { 'Content-Type': isGas ? 'text/plain;charset=utf-8' : 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(d) })
         .then(function(res){
           btn.disabled = false;
           if (res.ok){
