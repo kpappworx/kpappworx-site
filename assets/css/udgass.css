@@ -533,3 +533,10 @@ body.ud .ud-h3{ font-family:var(--ud-text); font-weight:600; font-size:19px; let
 @media (max-width:520px){ .lf-lab{ display:none; } }
 @media (max-width:900px){ .ud-field-bg{ opacity:.4; } }
 .ud-honest .ud-caption{ color:var(--ud-ink-2); }
+
+.ud-field select{ width:100%; height:48px; padding:0 14px; border:1px solid #7a7565; border-radius:10px; background:#fff; font:inherit; font-size:16px; color:var(--ud-ink); }
+.ud-field select:focus{ outline:2px solid var(--ud-accent); outline-offset:1px; border-color:var(--ud-accent); }
+.ud-field input[type="text"][name="today"]{ width:100%; }
+.ud-hint{ font-size:12.5px; color:var(--ud-ink-3); margin:10px 0 0; }
+.ud-check label{ display:flex; gap:10px; align-items:flex-start; font-weight:400; font-size:14px; line-height:1.5; color:var(--ud-ink-2); cursor:pointer; }
+.ud-check input{ width:20px; height:20px; margin-top:1px; flex:none; accent-color:var(--ud-accent); }

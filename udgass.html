@@ -522,7 +522,7 @@
         <h2 class="ud-h2" id="cta-title">What could your business learn from its history?</h2>
         <p class="ud-lede">We’re exploring how businesses can turn their own history into better-informed decisions, beginning with demand and inventory. Join the early-access list to follow Udgass and express interest in participating.</p>
         <ul class="ud-cta-points">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Four short questions. No phone number.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>A few short questions, most optional. No phone number.</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>No need to connect any business account or share any data.</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Interest only. Joining the list is not a commitment, and Udgass is not available yet.</li>
         </ul>
@@ -550,17 +550,38 @@
               <input type="text" id="ea-role" name="role" autocomplete="organization-title" />
             </div>
           </div>
+          <div class="ud-field">
+            <label for="ea-size">Company size <span class="opt">(optional)</span></label>
+            <select id="ea-size" name="size">
+              <option value="">Choose one</option>
+              <option>Under 50 people</option>
+              <option>50–500 people</option>
+              <option>500+ people</option>
+            </select>
+          </div>
           <fieldset class="ud-field">
-            <legend>Primary forecasting challenge <span class="opt">(optional)</span></legend>
+            <legend>Which business decision do you most want better evidence for? <span class="opt">(optional)</span></legend>
             <div class="ud-chips">
               <label><input type="radio" name="challenge" value="Stockouts" /><span>Stockouts</span></label>
               <label><input type="radio" name="challenge" value="Excess inventory" /><span>Excess inventory</span></label>
               <label><input type="radio" name="challenge" value="Seasonal demand" /><span>Seasonal demand</span></label>
               <label><input type="radio" name="challenge" value="Unpredictable demand" /><span>Unpredictable demand</span></label>
               <label><input type="radio" name="challenge" value="Supplier planning" /><span>Supplier planning</span></label>
+              <label><input type="radio" name="challenge" value="Purchasing" /><span>Purchasing</span></label>
+              <label><input type="radio" name="challenge" value="Pricing" /><span>Pricing</span></label>
+              <label><input type="radio" name="challenge" value="Cash flow" /><span>Cash flow</span></label>
+              <label><input type="radio" name="challenge" value="Staffing" /><span>Staffing</span></label>
               <label><input type="radio" name="challenge" value="Other" /><span>Other</span></label>
             </div>
+            <p class="ud-hint">Demand and inventory come first. The others tell us where to go next.</p>
           </fieldset>
+          <div class="ud-field">
+            <label for="ea-today">How do you handle this today? <span class="opt">(optional)</span></label>
+            <input type="text" id="ea-today" name="today" maxlength="200" placeholder="Spreadsheets, an ERP, a planning tool, nothing formal…" />
+          </div>
+          <div class="ud-field ud-check">
+            <label><input type="checkbox" id="ea-call" name="call" /><span>Happy to have a short call, or to try Udgass on an export of my data when it’s ready.</span></label>
+          </div>
 
           <button type="submit" class="ud-btn ud-btn-solid">Join the Early Access List
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>

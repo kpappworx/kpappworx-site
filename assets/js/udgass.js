@@ -317,11 +317,14 @@
         company: companyI.value.trim(),
         role: roleI.value.trim(),
         challenge: ch ? ch.value : '',
+        size: document.getElementById('ea-size').value,
+        today: document.getElementById('ea-today').value.trim(),
+        call: document.getElementById('ea-call').checked ? 'Yes' : '',
         source: 'kpappworx.com/udgass'
       };
     }
     function plain(d){
-      return ['Product: Udgass.ai (early access list)', 'Work email: ' + d.email, 'Company: ' + d.company, 'Role: ' + (d.role || '—'), 'Primary forecasting challenge: ' + (d.challenge || '—')].join('\n');
+      return ['Product: Udgass.ai (early access list)', 'Work email: ' + d.email, 'Company: ' + d.company, 'Role: ' + (d.role || '—'), 'Decision to improve: ' + (d.challenge || '—'), 'Company size: ' + (d.size || '—'), 'Handled today: ' + (d.today || '—'), 'Open to a call or data trial: ' + (d.call || 'No')].join('\n');
     }
     function clear(node){ while (node.firstChild) node.removeChild(node.firstChild); }
     function link(label, href){
