@@ -19,13 +19,13 @@
     var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, width: W, height: H, 'aria-hidden': 'true', focusable: 'false' }, host);
     var r = rng(11), narrow = W < 760;
     var N = narrow ? 11 : 17, top = H * 0.12, bot = H * 0.92, gap = (bot - top) / (N - 1);
-    var px = W * (narrow ? 0.62 : 0.74);
+    var px = W * (host.getAttribute('data-center') ? 0.5 : (narrow ? 0.62 : 0.74));
     var ph = []; for (var i = 0; i < N; i++) ph.push([r() * 6.28, r() * 6.28]);
     function yAt(i, x){
       var t = x / W, a = 5 + i * 0.7;
       return top + i * gap + Math.sin(t * 5.2 + ph[i][0]) * a * 0.6 + Math.sin(t * 11 + ph[i][1]) * a * 0.22 + Math.sin(t * 2.1 + i * 0.3) * 9;
     }
-    var traces = narrow ? [3, 7] : [3, 8, 12], mid = traces[Math.floor(traces.length / 2)];
+    var traces = narrow ? [4, 8] : [4, 10, 14], mid = traces[Math.floor(traces.length / 2)];
     var yNow = yAt(mid, px);
     var spreadMax = H * 0.2;
     // strata: past (solid) and future (dashed, fading)
