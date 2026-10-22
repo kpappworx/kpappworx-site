@@ -39,10 +39,10 @@
       var f = '';
       for (x = px; x <= W; x += 10){
         var k = (x - px) / (W - px);
-        var y = yNow + (yAt(i, x) - yAt(i, px)) * 0.5 + (i - mid) * gap * 0.35 * Math.pow(k, 1.1);
+        var y = yAt(i, x) + (i - mid) * gap * 0.22 * Math.pow(k, 1.1);
         f += (x === px ? 'M' : 'L') + x + ',' + y.toFixed(1);
       }
-      el('path', { d: f, 'class': 'mf-fut', style: 'opacity:' + (0.5 - depth * 0.2).toFixed(2) }, g);
+      el('path', { d: f, 'class': 'mf-fut', style: 'opacity:' + (0.85 - depth * 0.3).toFixed(2) }, g);
     }
     // the forecast fan (uncertainty widens with distance)
     var cl = 'M' + px + ',' + yNow;

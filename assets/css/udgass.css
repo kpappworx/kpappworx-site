@@ -662,3 +662,16 @@ body.ud .tp-cta .ud-h2{ font-family:var(--ud-display); font-weight:700; font-siz
 .tp-hero .ud-field-bg{ opacity:.5; }
 .tp .ud-loopfig-cap .n{ margin:0 auto 10px; }
 .tp .ud-loopfig-cap h3{ -webkit-text-fill-color:#eceeea; }
+
+/* hero: patterns fill the whole screen */
+.tp-hero .ud-field-bg{ opacity:1; }
+.tp-hero .ud-field-bg svg{ width:100%; height:100%; }
+.tp-hero .mf-line{ stroke:rgba(214,228,224,.5); stroke-width:1.1; }
+.tp-hero .mf-trace{ stroke-width:1.8; }
+.tp-hero .mf-fut{ stroke:rgba(214,228,224,.55); }
+.tp-hero .mf-fan{ fill:rgba(127,207,188,.16); stroke:rgba(127,207,188,.5); }
+.tp-hero .mf-arc{ stroke:rgba(127,207,188,.7); }
+.tp-hero .mf-now{ stroke:rgba(214,228,224,.3); }
+.tp-hero::after{ background:radial-gradient(ellipse 46% 30% at 50% 40%, rgba(16,17,18,.62), transparent 80%); }
+.tp-hero .tp-sub{ text-shadow:0 2px 28px rgba(16,17,18,.85); }
+@media (max-width:900px){ .tp-hero .ud-field-bg{ opacity:1; } .tp-hero::after{ background:radial-gradient(ellipse 80% 34% at 50% 44%, rgba(16,17,18,.7), transparent 85%); } }
