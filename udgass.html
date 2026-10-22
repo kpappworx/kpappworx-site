@@ -319,6 +319,49 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
 @media(max-width:1000px){.secgrid{grid-template-columns:1fr 1fr}.secgrid .glass,.secgrid .glass:nth-child(n+4){grid-column:auto}}
 @media(max-width:620px){.secgrid{grid-template-columns:1fr}}
 
+
+/* ---- polish layer ---- */
+.prog{position:fixed;left:0;top:0;right:0;height:2px;z-index:80;background:transparent}
+.prog i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--violet));box-shadow:0 0 10px rgba(34,211,238,.6)}
+.nav nav a:not(.btn){position:relative}
+.nav nav a:not(.btn)::after{content:"";position:absolute;left:4px;right:4px;bottom:6px;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:0 50%;transition:transform .3s}
+.nav nav a.on::after{transform:scaleX(1)}
+.nav nav a.on{color:#fff}
+.hero-cta{margin-top:30px}
+.hero .start{margin-top:16px;color:var(--ink-3);font-size:.92rem}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.vs .glass{padding:clamp(22px,3vw,34px)}
+.vs h3{font-size:1.3rem;margin-bottom:16px}
+.vs ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;color:var(--ink-2)}
+.vs li{display:grid;grid-template-columns:20px 1fr;gap:10px}
+.vs-a li::before{content:"–";color:var(--ink-3)}
+.vs-b li::before{content:"✓";color:var(--cyan);font-weight:700}
+.vs-a{opacity:.85}
+.vs-b{background:linear-gradient(160deg,rgba(34,211,238,.10),var(--glass))}
+.pilot{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,4vw,56px);align-items:center;margin-top:44px}
+.pf{padding:clamp(18px,2.6vw,28px)}
+.pf svg{width:100%;height:auto;display:block;margin-top:8px}
+.pf-cap{margin-top:10px;color:var(--ink-2);font-size:.92rem}
+.psteps{list-style:none;margin:0;padding:0;display:grid;gap:22px}
+.psteps li{display:grid;grid-template-columns:40px 1fr;gap:16px}
+.psteps li>span{width:40px;height:40px;border-radius:50%;border:1px solid rgba(34,211,238,.5);display:grid;place-items:center;font:600 .95rem var(--mono);color:var(--cyan)}
+.psteps h3{font-size:1.2rem;margin-bottom:4px}
+.psteps p{color:var(--ink-2);font-size:.98rem}
+.needs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
+.needs>div{padding:24px 26px;border:1px solid var(--line);border-radius:18px;background:rgba(9,9,11,.5)}
+.needs h3{font:600 .78rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
+.needs ul{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:8px}
+.start,.needs ul{text-shadow:0 1px 12px rgba(9,9,11,.9)}
+.mbar{display:none}
+@media(max-width:900px){.vs,.pilot,.needs{grid-template-columns:1fr}}
+@media(max-width:700px){
+  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(9,9,11,0),rgba(9,9,11,.92) 35%);transform:translateY(110%);transition:transform .35s}
+  .mbar.show{transform:none}
+  .mbar .btn{width:100%}
+  footer{padding-bottom:96px}
+}
+@media(prefers-reduced-motion:reduce){.mbar{transition:none}.prog i{transition:none}}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
@@ -334,6 +377,7 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
 <body class="no-js" data-endpoint="https://script.google.com/macros/s/AKfycbzS8-cyFKdKrawQlgVAj1tFy9tQsouOKPW6wgqKv_glHlvtp1JPwgQMXkTP8ZO510zS/exec">
 <script>document.body.classList.remove('no-js')</script>
 <a class="skip" href="#main">Skip to content</a>
+<div class="prog" aria-hidden="true"><i id="progBar"></i></div>
 <canvas id="gl" aria-hidden="true"></canvas>
 <div class="veil" aria-hidden="true"></div>
 
@@ -346,7 +390,8 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
     <span class="badge" role="status"><i aria-hidden="true"></i>Early development</span>
     <nav aria-label="Main">
       <a href="#how">How it works</a>
-      <a href="#record">Decision record</a>
+      <a href="#difference">Difference</a>
+      <a href="#pilot">Pilot</a>
       <a href="#security">Security</a>
       <a href="#founder">Founder</a>
       <a class="btn" href="#join">Request access</a>
@@ -361,9 +406,10 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
     <div>
       <p class="eyebrow">Business Decision Intelligence</p>
       <h1 style="margin-top:18px">Your business has <span class="grad">seen the pattern&nbsp;before.</span></h1>
-      <p class="lead">Udgass is a decision intelligence engine in development. It connects business history, decisions and measured outcomes so organisations can understand what is changing, anticipate what may follow, and evaluate their options with the evidence in view.</p>
+      <p class="lead">Udgass is a decision intelligence engine in development. It connects business history, decisions and measured outcomes, so organisations can see what is changing and weigh their options with the evidence in view.</p>
       <p class="notdash"><b>Not another dashboard.</b> A system of record for decisions: what was known, what was estimated, what was decided, and what actually happened.</p>
-      <div class="hero-cta"><a class="btn" href="#join">Request Early Access</a><span class="start">First application: demand and inventory planning.</span></div>
+      <div class="hero-cta"><a class="btn" href="#join">Request Early Access</a><a class="btn ghost" href="/assets/udgass-design-partner-brief.pdf" download>Design-partner brief (PDF)</a></div>
+      <p class="start">First application: demand and inventory planning.</p>
     </div>
     <div class="stage" id="stage" aria-label="Illustrative example panels">
       <div class="pane glass p-chat" data-depth="1">
@@ -412,6 +458,35 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
       <p class="big">Without that link, an organisation cannot tell whether its judgement, or its models, are improving.</p>
       <p>Udgass is being built to maintain it.</p>
     </div>
+  </div>
+</section>
+
+<!-- DIFFERENCE -->
+<section id="difference" aria-labelledby="df-t">
+  <div class="wrap">
+    <p class="eyebrow rv">What is different</p>
+    <h2 class="h2 rv" id="df-t" style="margin-top:14px;max-width:20ch">A forecast gives a number. <span class="grad">Udgass keeps the record.</span></h2>
+    <div class="vs">
+      <div class="glass rv vs-a">
+        <h3>A typical forecast</h3>
+        <ul>
+          <li>Produces an estimate</li>
+          <li>Is replaced by the next one</li>
+          <li>Rarely keeps what it was based on</li>
+          <li>Seldom checked against what happened</li>
+        </ul>
+      </div>
+      <div class="glass rv vs-b">
+        <h3>The Udgass decision record</h3>
+        <ul>
+          <li>Keeps the evidence, assumptions and range</li>
+          <li>Records the decision and who made it</li>
+          <li>Reconciles the estimate with the outcome</li>
+          <li>Reports its own accuracy over time</li>
+        </ul>
+      </div>
+    </div>
+    <p class="tp-note rv" style="margin-top:22px">Describes the intended design. Udgass is in early development.</p>
   </div>
 </section>
 
@@ -474,6 +549,48 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
   </div>
 </section>
 
+<!-- PILOT -->
+<section id="pilot" aria-labelledby="pl-t">
+  <div class="wrap">
+    <p class="eyebrow rv">Proposed pilot</p>
+    <h2 class="h2 rv" id="pl-t" style="margin-top:14px;max-width:22ch">Test it on your own history <span class="grad">before you rely on it.</span></h2>
+    <p class="lead rv" style="margin-top:22px">We propose a backtest. We replay your past using only what was known at the time, then compare each estimate with what actually happened. No live systems are touched, and nothing is used for real decisions until you choose.</p>
+    <div class="pilot">
+      <div class="glass pf rv" role="img" aria-label="Illustrative schematic of a backtest: estimates are made as of a past date and compared with the outcome that followed.">
+        <div class="lg-h"><span>How a backtest works</span><b>Illustrative</b></div>
+        <svg viewBox="0 0 420 190" aria-hidden="true">
+          <defs><linearGradient id="pfG" x1="0" x2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".4"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".1"/></linearGradient></defs>
+          <rect x="226" y="18" width="180" height="136" rx="8" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.14)" stroke-dasharray="4 5"/>
+          <path d="M12 118 L52 104 L92 112 L132 88 L172 94 L226 72" fill="none" stroke="#e4e4e7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M226 72 L406 30 L406 118 Z" fill="url(#pfG)"/>
+          <path d="M226 72 C280 62 340 54 406 58" fill="none" stroke="#22d3ee" stroke-width="2.2"/>
+          <path d="M226 72 C270 80 330 96 406 92" fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-dasharray="1 5" stroke-linecap="round"/>
+          <line x1="226" y1="10" x2="226" y2="164" stroke="#fff" stroke-opacity=".5"/>
+          <circle cx="226" cy="72" r="4.5" fill="#fff"/>
+          <text x="12" y="182" fill="#a1a1aa" font-size="11" font-family="Inter,sans-serif">Known at the time</text>
+          <text x="236" y="182" fill="#a1a1aa" font-size="11" font-family="Inter,sans-serif">Hidden from the estimate</text>
+          <text x="232" y="14" fill="#e4e4e7" font-size="11" font-family="Inter,sans-serif">“As of” date</text>
+          <text x="330" y="48" fill="#67e8f9" font-size="11" font-family="Inter,sans-serif">Estimate</text>
+          <text x="328" y="110" fill="#fcd34d" font-size="11" font-family="Inter,sans-serif">What happened</text>
+        </svg>
+        <p class="pf-cap">Estimates are made from the past only, then checked against the outcome that followed.</p>
+      </div>
+      <ol class="psteps">
+        <li class="rv"><span>1</span><div><h3>Agree the scope</h3><p>One product group or decision, and the history to use. Scope and duration are agreed up front.</p></div></li>
+        <li class="rv"><span>2</span><div><h3>Replay the past</h3><p>For chosen past dates, produce estimates using only the data available then.</p></div></li>
+        <li class="rv"><span>3</span><div><h3>Compare with outcomes</h3><p>Measure accuracy against what actually happened, including where the estimates were wrong.</p></div></li>
+        <li class="rv"><span>4</span><div><h3>Decide together</h3><p>You review a written report and choose whether a live trial is worthwhile. No obligation.</p></div></li>
+      </ol>
+    </div>
+    <div class="needs rv">
+      <div><h3>What we would need</h3><ul><li>Exports of sales, orders and stock history</li><li>Product and supplier reference data, where available</li><li>A named decision owner, and a few conversations</li></ul></div>
+      <div><h3>What you would get</h3><ul><li>A written backtest report: estimates, outcomes, accuracy and failures</li><li>A view of how the decision record would look on your data</li><li>No cost and no commitment at this stage of development</li></ul></div>
+    </div>
+    <p class="tp-note rv">A proposal. It has not yet been run with a partner. Terms are agreed in writing before any data is shared.</p>
+    <div class="rv" style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap"><a class="btn" href="#join">Discuss a pilot</a><a class="btn ghost" href="/assets/udgass-design-partner-brief.pdf" download>Download the brief (PDF)</a></div>
+  </div>
+</section>
+
 <!-- FOCUS -->
 <section id="focus" aria-labelledby="fo-t">
   <div class="wrap">
@@ -489,20 +606,6 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
     <div class="prose rv">
       <p>Udgass is being designed to evaluate these questions against historical evidence, then compare each estimate with what actually happens.</p>
       <p class="dim">The architecture is intended to extend to other planning and operational decisions. That extension depends on first demonstrating results here.</p>
-    </div>
-  </div>
-</section>
-
-<!-- BUILT FOR DECISIONS -->
-<section id="built" aria-labelledby="bt-t">
-  <div class="wrap">
-    <h2 class="h2 rv" id="bt-t" style="max-width:20ch">Designed for decisions, <span class="grad">not for reporting.</span></h2>
-    <div class="feat">
-      <div class="glass rv"><h3>Historical context</h3><p>Read current conditions against comparable past situations, not in isolation.</p></div>
-      <div class="glass rv"><h3>Evidence-backed estimates</h3><p>Each estimate shows its supporting history, assumptions, uncertainty and limitations.</p></div>
-      <div class="glass rv"><h3>Scenario evaluation</h3><p>Compare outcomes and trade-offs before committing to a course of action.</p></div>
-      <div class="glass rv"><h3>Measured performance</h3><p>Accuracy is judged against realised outcomes over time, not asserted.</p></div>
-      <div class="glass rv hum"><h3>Decision support, by design</h3><p>Udgass is being designed to read from source systems and advise. It does not execute actions. Accountability stays with the people who decide.</p></div>
     </div>
   </div>
 </section>
@@ -594,6 +697,7 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
     <span><a href="/privacy">Privacy</a> · <a href="/">KPAppWorx</a></span>
   </div>
 </footer>
+<div class="mbar" id="mbar" aria-hidden="true"><a class="btn" href="#join" tabindex="-1">Request early access</a></div>
 
 <template id="tpl-form">
   <div class="f1">
@@ -830,6 +934,24 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
       }).catch(function(e){status(s2,failText(e),'err')}).then(function(){b2.disabled=false;b2.textContent='Send'});
     });
   });
+})();
+
+/* ---- progress, active nav, mobile CTA ---- */
+(function(){
+  var bar=document.getElementById('progBar'),mb=document.getElementById('mbar'),join=document.getElementById('join');
+  var links=[].slice.call(document.querySelectorAll('.nav nav a[href^="#"]:not(.btn)'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+  var hero=document.getElementById('top');
+  function upd(){
+    var max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    bar.style.transform='scaleX('+Math.min(1,scrollY/max)+')';
+    var cur=null;secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.top<innerHeight*.4&&r.bottom>innerHeight*.4)cur=s.id});
+    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
+    var jr=join.getBoundingClientRect(),hr=hero.getBoundingClientRect();
+    var show=hr.bottom<0&&(jr.top>innerHeight*.85||jr.bottom<0);
+    mb.classList.toggle('show',show);mb.querySelector('a').tabIndex=show?0:-1;
+  }
+  addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
 })();
 </script>
 </body>
