@@ -3,718 +3,805 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Udgass · Business Decision Intelligence</title>
-<meta name="description" content="Udgass is a decision intelligence engine in development. It connects business history, decisions and measured outcomes so organisations can evaluate their options with the evidence in view. First application: demand and inventory planning.">
+<title>Udgass · Decision Intelligence</title>
+<meta name="description" content="Udgass is a decision intelligence engine in development. It connects business history, decisions and measured outcomes. First application: demand and inventory intelligence.">
 <link rel="canonical" href="https://www.kpappworx.com/udgass">
-<meta property="og:url" content="https://www.kpappworx.com/udgass">
-<meta property="og:title" content="Udgass · Business Decision Intelligence">
-<meta property="og:description" content="A decision intelligence engine in development: business history, decisions and measured outcomes in one record.">
-<meta property="og:image" content="https://www.kpappworx.com/assets/img/udgass-og.png">
-<meta property="og:type" content="website">
-<meta name="theme-color" content="#09090b">
-<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<meta name="theme-color" content="#090D12">
+<link rel="preload" href="assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
-@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(assets/fonts/newsreader-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
 @font-face{font-family:"Newsreader";src:url(assets/fonts/newsreader-latin-wght-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"JetBrains Mono";src:url(assets/fonts/jetbrains-mono-latin-wght-normal.woff2) format("woff2");font-weight:100 800;font-display:swap}
 
 :root{
-  --bg:#09090b;            /* zinc-950 */
-  --ink:#f4f4f5;           /* zinc-100 */
-  --ink-2:#d4d4d8;         /* zinc-300 */
-  --ink-3:#a1a1aa;         /* zinc-400 */
-  --cyan:#22d3ee;
-  --violet:#a78bfa;
-  --amber:#fbbf24;
-  --line:rgba(255,255,255,.10);
-  --glass:rgba(255,255,255,.045);
-  --glass-2:rgba(255,255,255,.075);
-  --display:"Bricolage Grotesque",Inter,system-ui,sans-serif;
-  --body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
-  --serif:Newsreader,Georgia,serif;
-  --mono:"JetBrains Mono",ui-monospace,monospace;
-  --gut:clamp(18px,4vw,40px);
+  --bg:#090D12; --s1:#101720; --s2:#151F29;
+  --tx:#F0F2EF; --mu:#9BA8B5; --dim:#8493A2;
+  --ac:#70D6C3; --ac-d:rgba(112,214,195,.14);
+  --am:#E3B96F; --rk:#E39A80;
+  --ln:rgba(155,168,181,.2); --ln2:rgba(155,168,181,.36);
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --gut:clamp(16px,4vw,40px);
+  --sp1:8px;--sp2:16px;--sp3:24px;--sp4:40px;--sp5:64px;--sp6:clamp(72px,10vw,128px);
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%}
 a{color:inherit}
-h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
-p{margin:0}
-h1,h2{filter:drop-shadow(0 2px 16px rgba(9,9,11,.95))}
-.lead,.founder .body p,.prom p,.faq details p,.eyebrow,.trust,.f-note{text-shadow:0 1px 14px rgba(9,9,11,.95),0 0 3px rgba(9,9,11,.8)}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
-.skip{position:absolute;left:12px;top:-60px;background:#fff;color:#000;padding:10px 14px;border-radius:8px;z-index:100}
-.skip:focus{top:12px}
+h1,h2,h3,p,ul,ol,dl,dd,figure{margin:0}
+ul,ol{padding:0;list-style:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:2px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ac);color:#06201b;padding:10px 16px;z-index:100;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--gut)}
+section{padding:var(--sp6) 0;position:relative}
+.mono{font-family:var(--mono)}
+.eyebrow{font:500 .75rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ac)}
+.h2{text-wrap:balance;font:400 clamp(2rem,4.4vw,3.4rem)/1.08 var(--serif);letter-spacing:-.018em;max-width:20ch;margin-top:var(--sp2)}
+.h2 em,.h1 em{font-style:italic;color:var(--ac)}
+.lead{color:var(--mu);font-size:clamp(1.05rem,1.4vw,1.2rem);max-width:58ch;margin-top:var(--sp3)}
+.tag{display:inline-flex;align-items:center;gap:8px;font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--am);border:1px solid rgba(227,185,111,.45);padding:7px 10px;border-radius:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:2px;border:1px solid var(--ac);background:var(--ac);color:#06201b;font:600 .98rem var(--sans);text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+.btn:hover{background:#8fe3d3}
+.btn.ghost{background:transparent;color:var(--tx);border-color:var(--ln2)}
+.btn.ghost:hover{border-color:var(--ac);color:var(--ac)}
+.link{background:none;border:0;color:var(--mu);text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:12px 6px;min-height:44px}
 
-/* ---------- background ---------- */
-#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
-.veil{position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:
-   radial-gradient(60% 50% at 80% 10%,rgba(167,139,250,.10),transparent 70%),
-   radial-gradient(50% 45% at 10% 90%,rgba(34,211,238,.07),transparent 70%),
-   linear-gradient(180deg,rgba(9,9,11,.15),rgba(9,9,11,.55) 60%,rgba(9,9,11,.75))}
-main,header,footer{position:relative;z-index:2}
-@media(max-width:700px){#gl{opacity:.62}}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(9,13,18,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--ln)}
+.nav .wrap{display:flex;align-items:center;gap:var(--sp3);min-height:68px}
+.brand{min-height:44px;display:flex;align-items:center;gap:10px;text-decoration:none;font:500 1.5rem/1 var(--serif);letter-spacing:-.01em}
+.brand svg{width:26px;height:26px;flex:none}
+.status{display:inline-flex;align-items:center;gap:8px;font:500 .68rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mu);border:1px solid var(--ln);padding:7px 10px;border-radius:2px;white-space:nowrap}
+.status i{width:6px;height:6px;border-radius:50%;background:var(--ac)}
+.nav nav{margin-left:auto;display:flex;align-items:center;gap:4px}
+.nav nav a:not(.btn){display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--mu);text-decoration:none;font-size:.92rem;position:relative}
+.nav nav a:not(.btn):hover,.nav nav a.on{color:var(--tx)}
+.nav nav a.on::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:1px;background:var(--ac)}
+.nav .btn{min-height:44px;padding:0 18px;margin-left:8px;font-size:.92rem}
+.prog{position:absolute;left:0;bottom:-1px;height:1px;background:var(--ac);width:0}
+@media(max-width:940px){.nav nav a:not(.btn){display:none}.nav nav{margin-left:auto}}
+@media(max-width:560px){.status{display:none}.nav .btn{padding:0 14px}}
 
-/* ---------- layout ---------- */
-.wrap{width:min(1180px,100% - 2*var(--gut));margin-inline:auto}
-section{padding:clamp(72px,11vw,150px) 0}
-.eyebrow{font:500 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
-.lead{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--ink-2);max-width:56ch}
-.h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700}
-.grad{background:linear-gradient(95deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:0 24px;border:0;border-radius:14px;font:600 1rem var(--body);cursor:pointer;color:#04121a;
-  background:linear-gradient(95deg,var(--cyan),#7dd3fc 50%,var(--violet));box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 10px 40px -10px rgba(34,211,238,.55);transition:transform .2s,box-shadow .2s}
-.btn:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 14px 44px -8px rgba(167,139,250,.6)}
-.btn[disabled]{opacity:.6;cursor:progress;transform:none}
-.btn.ghost{background:transparent;color:var(--ink);box-shadow:0 0 0 1px var(--line) inset}
-.btn.ghost:hover{box-shadow:0 0 0 1px rgba(255,255,255,.3) inset}
-.link{background:none;border:0;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;font:inherit;cursor:pointer;padding:8px 4px}
+/* hero */
+.hero{padding:clamp(40px,7vw,96px) 0 var(--sp5)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:clamp(32px,5vw,72px);align-items:center}
+.h1{font:400 clamp(2.7rem,6.2vw,5.4rem)/1 var(--serif);letter-spacing:-.025em;margin-top:var(--sp3);max-width:11ch}
+.hero .sub{margin-top:var(--sp3);color:var(--mu);font-size:clamp(1.05rem,1.5vw,1.25rem);max-width:46ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--sp4)}
+.hero .state{margin-top:var(--sp3);font:400 .8rem/1.5 var(--mono);color:var(--dim);letter-spacing:.02em;display:flex;gap:10px;align-items:flex-start}
+.hero .state i{flex:none;width:6px;height:6px;border-radius:50%;background:var(--ac);margin-top:.5em}
+@media(max-width:900px){.hero .wrap{grid-template-columns:minmax(0,1fr)}}
 
-/* glass */
-.glass{position:relative;background:linear-gradient(160deg,var(--glass-2),var(--glass));border:1px solid var(--line);border-radius:22px;
-  -webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 30px 80px -30px rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.08) inset}
-.glass::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
-  background:linear-gradient(140deg,rgba(34,211,238,.55),transparent 35%,transparent 65%,rgba(167,139,250,.5));
-  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55}
-@supports not (backdrop-filter:blur(1px)){.glass{background:#141417}}
+/* network */
+.netbox{border:1px solid var(--ln);background:var(--s1);padding:var(--sp2) var(--sp2) 0}
+.nethead{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.nethead .mono{font-size:.7rem;letter-spacing:.12em;color:var(--mu);text-transform:uppercase}
+#net{display:block;width:100%;height:auto}
+#net .edge{stroke:var(--ln2);stroke-width:1;fill:none;opacity:.55;transition:opacity .3s,stroke .3s}
+#net .node{fill:#55657A;transition:opacity .3s,fill .3s}
+#net .lane{stroke:var(--ln);stroke-width:1;stroke-dasharray:1 5}
+#net text{paint-order:stroke;stroke:#101720;stroke-width:5px;stroke-linejoin:round}
+#net .lbl{font:500 11px var(--mono);letter-spacing:.1em;fill:var(--dim)}
+#net .big{font:500 12px var(--mono);letter-spacing:.08em;fill:var(--mu)}
+#net .asof{stroke:var(--ln2);stroke-width:1;stroke-dasharray:3 4}
+#net .band{fill:var(--ac);opacity:.13}
+#net .bandline{stroke:var(--ac);stroke-width:1.2;fill:none;opacity:.8}
+#net .key{fill:var(--ac)}
+#net .pe{stroke:var(--ac);stroke-width:1.6;opacity:1;fill:none}
+#net .dec{fill:var(--tx)}
+#net .out{fill:var(--bg);stroke:var(--am);stroke-width:2}
+#net .var{stroke:var(--am);stroke-width:1.2;stroke-dasharray:2 3;fill:none}
+#net .ring{fill:none;stroke:var(--ac);stroke-width:1;opacity:0}
+#net .cur .ring{opacity:.6}
+#net .off{opacity:.16}
+#net .hit{cursor:pointer;fill:transparent}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ln);margin:12px calc(var(--sp2)*-1) 0}
+.legend button{background:none;border:0;border-right:1px solid var(--ln);padding:12px 8px 12px 14px;text-align:left;cursor:pointer;min-height:56px;display:flex;flex-direction:column;gap:2px;color:var(--mu);transition:color .15s,background .15s}
+.legend button:last-child{border-right:0}
+.legend button b{font:500 .66rem var(--mono);letter-spacing:.1em;color:var(--dim)}
+.legend button span{font-size:.9rem;font-weight:500}
+.legend button[aria-pressed=true]{color:var(--tx);background:var(--s2)}
+.legend button[aria-pressed=true] b{color:var(--ac)}
+.legend button:hover{background:var(--s2)}
+.cap{border-top:1px solid var(--ln);margin:0 calc(var(--sp2)*-1);padding:14px var(--sp2) 16px;color:var(--mu);font-size:.95rem;min-height:5.2em;background:var(--s1)}
+.cap strong{color:var(--tx);font-weight:600}
+@media(max-width:560px){.legend button{padding:10px 6px 10px 10px}.legend button span{font-size:.78rem}#net .lbl,#net .minor,#net .big{display:none}.cap{font-size:.9rem}}
 
-/* ---------- nav ---------- */
-.nav{position:sticky;top:0;z-index:50;padding:12px 0;background:linear-gradient(180deg,rgba(9,9,11,.85),rgba(9,9,11,.4));-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}
-.nav .wrap{display:flex;align-items:center;gap:20px}
-.brand{min-height:44px;display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.15rem var(--display)}
-.brand .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center}
-.brand .dot svg{width:16px;height:16px}
-.brand small{font:400 .72rem var(--mono);color:var(--ink-3)}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(34,211,238,.35);border-radius:999px;font:500 .74rem var(--mono);letter-spacing:.06em;color:#a5f3fc;background:rgba(34,211,238,.07)}
-.badge i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(34,211,238,.7),0 0 12px var(--cyan);animation:pulse 2.4s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(34,211,238,0),0 0 12px var(--cyan)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0),0 0 12px var(--cyan)}}
-.nav nav{margin-left:auto;display:flex;align-items:center;gap:26px}
-.nav nav a{font-size:.95rem;color:var(--ink-2);text-decoration:none;padding:12px 4px}
-.nav nav a:hover{color:#fff}
-.nav nav a.btn,.nav nav a.btn:hover{color:#04121a}
-section[id],.hero{scroll-margin-top:84px}
-.nav .btn{min-height:42px;padding:0 18px;font-size:.92rem;border-radius:11px}
-@media(max-width:820px){.nav nav a:not(.btn){display:none}.badge{margin-left:auto}.nav nav{margin-left:0}.brand small{display:none}}
-@media(max-width:430px){.nav .btn{display:none}}
-
-/* ---------- hero ---------- */
-.hero{padding-top:clamp(40px,7vw,96px);min-height:calc(100svh - 70px);display:flex;align-items:center}
-.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,5vw,72px);align-items:center}
-.hero h1{font-size:clamp(2.6rem,7.2vw,6rem);font-weight:800;letter-spacing:-.035em;line-height:.98}
-.hero .lead{margin-top:26px}
-.hero-form{margin-top:34px;max-width:520px}
-.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0;list-style:none;color:var(--ink-2);font-size:.92rem}
-.trust li{display:flex;align-items:center;gap:8px}
-.trust li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
-
-/* floating holographic panels */
-.stage{position:relative;perspective:1100px;min-height:600px}
-.pane{position:absolute;padding:20px 22px;transform-style:preserve-3d;will-change:transform}
-.pane .tag{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;margin-bottom:12px}
-.pane .tag b{color:var(--amber);font-weight:500}
-.p-chat{top:0;left:2%;width:min(82%,380px);--z:60px;animation:bob 9s ease-in-out infinite}
-.p-chart{top:236px;right:0;width:min(86%,400px);--z:110px;animation:bob 11s ease-in-out -3s infinite}
-.p-chip{bottom:0;left:6%;width:auto;padding:12px 16px;--z:30px;animation:bob 8s ease-in-out -5s infinite;display:flex;align-items:center;gap:10px;font-size:.92rem;border-radius:999px}
-.p-chip::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 30px rgba(167,139,250,.25);pointer-events:none}
-@keyframes bob{50%{translate:0 -9px}}
-.bub{padding:11px 14px;border-radius:16px;font-size:.96rem;line-height:1.45;max-width:92%}
-.bub.me{background:rgba(255,255,255,.9);color:#101113;margin-left:auto;border-bottom-right-radius:5px}
-.bub.ai{background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#e6fbff;border-bottom-left-radius:5px;margin-top:10px}
-.mini-fan svg{width:100%;height:auto;display:block}
-.mini-cap{margin-top:10px;font-size:.9rem;color:var(--ink-2)}
-@media(max-width:900px){
-  .hero{min-height:0}
-  .hero .wrap{grid-template-columns:1fr}
-  .stage{min-height:0;display:grid;gap:14px;perspective:none;margin-top:8px}
-  .pane{position:relative;inset:auto;width:100%!important;animation:none}
-  .p-chip{width:fit-content}
+/* problem */
+.problem .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0 var(--sp4);margin-top:var(--sp5);position:relative}
+.pi{position:relative;padding-top:var(--sp4)}
+.pi::before{content:"";position:absolute;top:7px;left:0;width:15px;height:15px;border-radius:50%;background:var(--bg);border:2px solid var(--ac);z-index:1}
+.pi:nth-child(3)::before{border-color:var(--am)}
+.pi::after{content:"";position:absolute;top:14px;left:23px;right:-40px;border-top:1px dashed var(--ln2);transition:border-color .8s}
+.pi:last-child::after{display:none}
+.joined .pi::after{border-top:1px solid var(--ac)}
+.pi .n{font:500 .72rem var(--mono);letter-spacing:.12em;color:var(--dim)}
+.pi h3{font:400 1.7rem/1.15 var(--serif);margin:8px 0 12px;letter-spacing:-.01em}
+.pi p{color:var(--mu);font-size:1rem;max-width:34ch}
+.pi .where{margin-top:16px;font:400 .76rem/1.5 var(--mono);color:var(--dim)}
+.gapnote{margin-top:var(--sp5);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:var(--sp4);border-top:1px solid var(--ln);padding-top:var(--sp4)}
+.gapnote p:first-child{font:400 clamp(1.4rem,2.4vw,1.9rem)/1.3 var(--serif);max-width:26ch}
+.gapnote p:last-child{color:var(--mu);max-width:56ch}
+@media(max-width:820px){
+  .problem .grid{grid-template-columns:1fr;gap:var(--sp4);padding-left:36px}
+  .pi{padding-top:0}
+  .pi::before{left:-36px;top:6px}
+  .pi::after{left:-29px;right:auto;top:26px;bottom:-34px;width:0;height:auto;border-top:0;border-left:1px dashed var(--ln2)}
+  .joined .pi::after{border-top:0;border-left:1px solid var(--ac)}
+  .gapnote{grid-template-columns:1fr;gap:16px}
 }
 
-/* ---------- forms ---------- */
-.f-row{display:flex;gap:10px;flex-wrap:wrap}
-.f-row input[type=email]{flex:1 1 240px;min-height:52px;padding:0 16px;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:rgba(9,9,11,.7);color:var(--ink);font:400 1rem var(--body)}
-.f-row input::placeholder{color:#8b8b95}
-.f-row input:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(34,211,238,.25)}
-.f-note{margin-top:12px;font-size:.88rem;color:var(--ink-3)}
-.f-status{margin-top:12px;font-size:.95rem;min-height:1.4em}
-.f-status.err{color:#fda4af}
-.f-status.ok{color:#86efac}
-.f2 h3{font-size:1.35rem;margin-bottom:6px}
-.f2 .q{margin-top:20px}
-.f2 .q>span,.f2 label.sel>span{display:block;font-weight:600;font-size:.95rem;margin-bottom:10px}
+/* engine */
+.engine{background:var(--s1);border-block:1px solid var(--ln)}
+.eng-head{display:flex;justify-content:space-between;align-items:flex-end;gap:var(--sp3);flex-wrap:wrap}
+#stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 var(--sp3);margin-top:var(--sp5);position:relative;--p:0}
+#stages::before{content:"";position:absolute;top:19px;left:20px;right:20px;height:1px;background:var(--ln2)}
+#stages::after{content:"";position:absolute;top:19px;left:20px;height:1px;background:var(--ac);width:calc((100% - 40px)*var(--p));transition:width .5s}
+.st{position:relative}
+.st .hd{display:block;width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer}
+.mk{position:relative;z-index:1;width:40px;height:40px;border-radius:50%;background:var(--s1);border:1px solid var(--ln2);display:grid;place-items:center;font:500 .8rem var(--mono);color:var(--mu);transition:.2s}
+.st.done .mk{border-color:var(--ac);color:var(--ac)}
+.st.open .mk{background:var(--ac);border-color:var(--ac);color:#06201b}
+.st h3{font:400 1.6rem/1.1 var(--serif);margin:20px 0 8px;letter-spacing:-.01em}
+.st .short{color:var(--mu);font-size:.95rem;line-height:1.55;max-width:26ch}
+.more{display:grid;grid-template-rows:1fr;transition:grid-template-rows .35s ease}
+.js .more{grid-template-rows:0fr}
+.js .st.open .more{grid-template-rows:1fr}
+.more>div{overflow:hidden}
+.more dl{padding-top:20px;margin-top:20px;border-top:1px solid var(--ln);font-size:.9rem;line-height:1.55}
+.more dt{font:500 .66rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ac);margin-top:12px}
+.more dt:first-child{margin-top:0}
+.more dd{color:var(--tx);margin-top:4px;max-width:30ch}
+.more .rel{padding-bottom:4px;margin-top:14px;font:400 .72rem/1.5 var(--mono);color:var(--dim)}
+.loop{margin-top:var(--sp4);display:flex;gap:12px;align-items:center;color:var(--mu);font:400 .82rem/1.5 var(--mono)}
+.loop svg{flex:none}
+@media(max-width:940px){
+  #stages{grid-template-columns:1fr;gap:var(--sp3);margin-top:var(--sp4)}
+  #stages::before{left:20px;right:auto;top:20px;bottom:20px;width:1px;height:auto}
+  #stages::after{left:20px;top:20px;width:1px;height:calc((100% - 40px)*var(--p))}
+  .st{padding-left:64px;min-height:44px}
+  .st .mk{position:absolute;left:0;top:0}
+  .st h3{margin:0 0 6px;padding-top:6px}
+  .st .short,.more dd{max-width:52ch}
+}
+
+/* decision record */
+.rec-top{display:flex;flex-wrap:wrap;gap:var(--sp3);justify-content:space-between;align-items:flex-end}
+.scrub{display:flex;border:1px solid var(--ln2);border-radius:2px;overflow:hidden;margin-top:var(--sp4);flex-wrap:wrap}
+.scrub button{flex:1 1 150px;background:none;border:0;border-right:1px solid var(--ln);padding:12px 16px;text-align:left;cursor:pointer;min-height:56px;color:var(--mu);display:flex;flex-direction:column;gap:2px}
+.scrub button:last-child{border-right:0}
+.scrub b{font:500 .66rem var(--mono);letter-spacing:.1em;color:var(--dim)}
+.scrub span{font-size:.93rem;font-weight:500}
+.scrub button[aria-pressed=true]{background:var(--s2);color:var(--tx)}
+.scrub button[aria-pressed=true] b{color:var(--ac)}
+.scrub button:hover{background:var(--s1)}
+.rec{display:grid;grid-template-columns:minmax(0,1fr) 300px;border:1px solid var(--ln2);background:var(--s1);margin-top:var(--sp3)}
+.rec-main{padding:clamp(20px,3vw,36px);min-width:0}
+.rec-side{border-left:1px solid var(--ln);padding:clamp(20px,3vw,32px);background:var(--bg)}
+.rh{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+.rh .id{font:500 .72rem var(--mono);letter-spacing:.1em;color:var(--mu)}
+.rt{font:400 clamp(1.4rem,2.4vw,1.9rem)/1.2 var(--serif);margin:12px 0 4px;max-width:30ch}
+.meta{display:flex;flex-wrap:wrap;gap:6px 24px;color:var(--mu);font-size:.9rem}
+.meta b{color:var(--tx);font-weight:500}
+.blocks{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:var(--sp3);border-top:1px solid var(--ln)}
+.blk{padding:20px 20px 20px 0;border-bottom:1px solid var(--ln);position:relative;transition:opacity .4s}
+.blk:nth-child(even){padding-left:20px;padding-right:0;border-left:1px solid var(--ln)}
+.blk h4{margin:0 0 10px;font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;display:flex;gap:8px;align-items:center}
+.blk h4::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c,var(--mu))}
+.blk[data-k=ev]{--c:#8696A8}.blk[data-k=est]{--c:var(--ac)}.blk[data-k=act]{--c:var(--tx)}.blk[data-k=real]{--c:var(--am)}
+.blk[data-k=ev] h4{color:#A9B6C3}.blk[data-k=est] h4{color:var(--ac)}.blk[data-k=act] h4{color:var(--tx)}.blk[data-k=real] h4{color:var(--am)}
+.blk ul li{font-size:.93rem;color:var(--mu);padding:3px 0;line-height:1.5}
+.blk li b{color:var(--tx);font-weight:500}
+.blk .big{font:400 1.7rem/1.1 var(--serif);color:var(--tx)}
+.blk .pend{display:none;color:var(--dim);font:400 .8rem var(--mono)}
+.blk.pending>*:not(h4){display:none}
+.blk.pending .pend{display:block}
+.blk.pending{opacity:.55}
+.blk.full{grid-column:1/-1;padding-right:0;border-left:0;padding-left:0}
+.range{margin-top:14px}
+.rbar{position:relative;height:34px}
+.rbar .axis{position:absolute;left:0;right:0;top:16px;height:1px;background:var(--ln2)}
+.rbar .rg{position:absolute;top:8px;height:17px;background:var(--ac-d);border:1px solid var(--ac)}
+.rbar .md{position:absolute;top:4px;width:2px;height:25px;background:var(--ac)}
+.rbar .rl{position:absolute;top:2px;width:14px;height:14px;margin-left:-7px;border-radius:50%;border:2px solid var(--am);background:var(--bg);top:9px;transition:opacity .4s}
+.rbar.nor .rl{opacity:0}
+.rscale{display:flex;justify-content:space-between;font:400 .68rem var(--mono);color:var(--dim);margin-top:4px}
+.log h4{margin:0 0 20px;font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mu)}
+.log ol{position:relative;padding-left:22px}
+.log ol::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:1px;background:var(--ln2)}
+.log li{position:relative;padding-bottom:20px;transition:opacity .4s}
+.log li:last-child{padding-bottom:0}
+.log li::before{content:"";position:absolute;left:-22px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:1px solid var(--c,var(--mu))}
+.log li[data-k=ev]{--c:#8696A8}.log li[data-k=est]{--c:var(--ac)}.log li[data-k=act]{--c:var(--tx)}.log li[data-k=real]{--c:var(--am)}
+.log li.on::before{background:var(--c)}
+.log time{display:block;font:500 .7rem var(--mono);letter-spacing:.08em;color:var(--dim)}
+.log p{font-size:.9rem;color:var(--tx);line-height:1.45;margin-top:2px}
+.log li.off{opacity:.35}
+.rec-note{margin-top:var(--sp2);color:var(--dim);font:400 .78rem/1.5 var(--mono)}
+@media(max-width:940px){.rec{grid-template-columns:1fr}.rec-side{border-left:0;border-top:1px solid var(--ln)}}
+@media(max-width:600px){.blocks{grid-template-columns:1fr}.blk:nth-child(even){padding-left:0;border-left:0}.blk{padding-right:0}}
+
+/* planning */
+.plan{background:var(--s1);border-block:1px solid var(--ln)}
+.pl{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(260px,1fr);border:1px solid var(--ln2);background:var(--bg);margin-top:var(--sp4)}
+.pl-chart{padding:clamp(16px,2.6vw,28px);min-width:0}
+.pl-side{border-left:1px solid var(--ln);padding:clamp(16px,2.6vw,28px);display:flex;flex-direction:column;gap:var(--sp3)}
+.pl-bar{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.pl-bar .t{font:500 .7rem var(--mono);letter-spacing:.12em;color:var(--mu);text-transform:uppercase}
+.cht{display:block;width:100%;height:auto}
+.cht text{font:400 12px var(--mono);fill:var(--dim)}
+.cht .grid{stroke:var(--ln);stroke-width:1}
+.cht .hist{stroke:#B5C0CB;stroke-width:1.6;fill:none}
+.cht .fband{fill:var(--ac);opacity:.16}
+.cht .fmed{stroke:var(--ac);stroke-width:2;fill:none}
+.cht .asof{stroke:var(--ln2);stroke-dasharray:3 4}
+.cht .inv{stroke:var(--ac);stroke-width:2;fill:none}
+.cht .invhi{stroke:var(--am);stroke-width:1.6;stroke-dasharray:5 4;fill:none}
+.cht .zero{stroke:var(--rk);stroke-width:1}
+.cht .neg{fill:var(--rk);opacity:.16}
+.cht .arr{fill:var(--tx)}
+.keys{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 0 18px;font-size:.82rem;color:var(--mu)}
+.keys span{display:inline-flex;align-items:center;gap:8px}
+.keys i{display:inline-block;width:18px;height:0;border-top:2px solid var(--c)}
+.keys i.b{height:10px;border:0;background:var(--ac);opacity:.35;width:18px}
+.keys i.d{border-top-style:dashed}
+.sc{border:0;padding:0;margin:0}
+.sc legend{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--mu);margin-bottom:12px;padding:0}
+.sc label{display:block;cursor:pointer;margin-bottom:8px}
+.sc input{position:absolute;opacity:0}
+.sc label span{display:block;border:1px solid var(--ln);padding:12px 14px;min-height:48px;transition:.15s}
+.sc label span b{display:block;font-weight:600;font-size:.95rem}
+.sc label span small{color:var(--mu);font-size:.82rem}
+.sc input:checked+span{border-color:var(--ac);background:var(--ac-d)}
+.sc input:focus-visible+span{outline:2px solid var(--ac);outline-offset:2px}
+.facts{border-top:1px solid var(--ln)}
+.facts div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--ln);font-size:.9rem}
+.facts dt{color:var(--mu)}
+.facts dd{font-weight:500;text-align:right}
+.risk{font-weight:600}
+.risk[data-r=Low]{color:var(--ac)}.risk[data-r=Elevated]{color:var(--am)}.risk[data-r=High]{color:var(--rk)}
+.pl-note{margin-top:var(--sp2);color:var(--dim);font:400 .78rem/1.55 var(--mono);max-width:90ch}
+@media(max-width:940px){.pl{grid-template-columns:1fr}.pl-side{border-left:0;border-top:1px solid var(--ln)}}
+
+/* principles */
+.pr-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 var(--sp5);margin-top:var(--sp5)}
+.pr{border-top:1px solid var(--ln2);padding:var(--sp3) 0 var(--sp4);display:grid;grid-template-columns:56px 1fr;gap:0 8px}
+.pr .n{font:400 2.4rem/1 var(--serif);color:var(--ac)}
+.pr h3{font:500 1.15rem/1.3 var(--sans);margin-bottom:8px}
+.pr p{color:var(--mu);max-width:42ch}
+.statusbox{margin-top:var(--sp4);border:1px solid var(--ln);background:var(--s1);padding:clamp(20px,3vw,32px);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:var(--sp4)}
+.statusbox h3{font:400 1.5rem/1.2 var(--serif)}
+.statusbox p{color:var(--mu);margin-top:8px;font-size:.95rem}
+.statusbox dl div{display:grid;grid-template-columns:minmax(0,12em) 1fr;gap:16px;padding:10px 0;border-bottom:1px solid var(--ln);font-size:.92rem}
+.statusbox dl div:first-child{padding-top:0}
+.statusbox dt{color:var(--mu)}
+@media(max-width:820px){.pr-grid{grid-template-columns:1fr}.statusbox{grid-template-columns:1fr;gap:var(--sp3)}.statusbox dl div{grid-template-columns:1fr;gap:2px}}
+
+/* founder */
+.founder{background:var(--s1);border-block:1px solid var(--ln)}
+.founder .wrap{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:var(--sp5);align-items:start}
+.quote{font:italic 400 clamp(1.8rem,3.4vw,2.8rem)/1.2 var(--serif);letter-spacing:-.015em;margin-top:var(--sp3);max-width:22ch}
+.fbody{margin-top:var(--sp4);max-width:56ch;color:var(--mu)}
+.fbody p+p{margin-top:16px}
+.sign{margin-top:var(--sp4);padding-top:var(--sp2);border-top:1px solid var(--ln);display:flex;flex-direction:column;gap:2px;max-width:56ch}
+.sign b{font-weight:600}
+.sign small{color:var(--mu);font-size:.88rem}
+.bg dl div{padding:var(--sp2) 0;border-top:1px solid var(--ln2)}
+.bg dt{font:400 1.7rem/1.15 var(--serif)}
+.bg dd{color:var(--mu);font-size:.95rem;margin-top:4px}
+.bg .honest{margin-top:var(--sp3);border-left:2px solid var(--am);padding-left:14px;color:var(--mu);font-size:.92rem}
+@media(max-width:900px){.founder .wrap{grid-template-columns:minmax(0,1fr);gap:var(--sp4)}}
+
+/* join */
+.join .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--sp5);align-items:start}
+.join p.lead{max-width:48ch}
+.steps{margin-top:var(--sp4);border-top:1px solid var(--ln)}
+.steps li{display:grid;grid-template-columns:32px 1fr;gap:8px;padding:12px 0;border-bottom:1px solid var(--ln);color:var(--mu);font-size:.95rem}
+.steps li b{font:500 .72rem var(--mono);color:var(--ac);padding-top:.3em}
+.fcard{border:1px solid var(--ln2);background:var(--s1);padding:clamp(20px,3vw,36px)}
+.fcard h3{font:400 1.6rem/1.2 var(--serif);margin-bottom:8px}
+.f-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.f-row input[type=email]{flex:1 1 220px;min-height:52px;padding:0 16px;border-radius:2px;border:1px solid var(--ln2);background:var(--bg);color:var(--tx);font:400 1rem var(--sans)}
+.f-row input::placeholder{color:#7C8A98}
+.f-row input:focus{border-color:var(--ac);outline:none;box-shadow:0 0 0 3px rgba(112,214,195,.25)}
+.f-row .btn{min-height:52px}
+.f-note{margin-top:12px;color:var(--dim);font-size:.85rem}
+.f-status{margin-top:12px;font-size:.93rem;min-height:1.4em}
+.f-status.err{color:var(--rk)}
+.q{margin-top:20px}
+.f2 .q>span,.f2 label.sel>span{display:block;font-weight:600;font-size:.93rem;margin-bottom:10px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
 .chips label{cursor:pointer}
 .chips input{position:absolute;opacity:0;pointer-events:none}
-.chips span{display:inline-block;padding:9px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:.93rem;color:var(--ink-2);transition:.15s}
-.chips input:checked+span{background:rgba(34,211,238,.16);border-color:var(--cyan);color:#fff}
-.chips input:focus-visible+span{outline:2px solid var(--cyan);outline-offset:2px}
-.f2 select{width:100%;min-height:48px;padding:0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(9,9,11,.7);color:var(--ink);font:400 1rem var(--body)}
-.f2 .call{display:flex;gap:10px;align-items:flex-start;margin-top:18px;color:var(--ink-2);font-size:.95rem}
-.f2 .call input{margin-top:4px;width:18px;height:18px;accent-color:var(--cyan)}
-.f2 .acts{display:flex;align-items:center;gap:14px;margin-top:22px;flex-wrap:wrap}
-.f-done{padding:4px 0}
-.f-done h3{font-size:1.4rem}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid var(--ln2);border-radius:2px;font-size:.92rem;color:var(--mu);transition:.15s}
+.chips input:checked+span{background:var(--ac-d);border-color:var(--ac);color:var(--tx)}
+.chips input:focus-visible+span{outline:2px solid var(--ac);outline-offset:2px}
+.f2 select{width:100%;min-height:48px;background:var(--bg);color:var(--tx);border:1px solid var(--ln2);border-radius:2px;padding:0 12px;font:400 1rem var(--sans)}
+.f2 .call{display:flex;gap:12px;align-items:flex-start;margin-top:20px;color:var(--mu);font-size:.93rem;cursor:pointer}
+.f2 .call input{margin-top:3px;width:20px;height:20px;accent-color:var(--ac);flex:none}
+.f2 .acts{display:flex;align-items:center;gap:14px;margin-top:24px;flex-wrap:wrap}
+.f-done h3{margin-bottom:8px}
+.f-done .lead{margin-top:0}
+.brief{margin-top:var(--sp3);font-size:.92rem;color:var(--mu)}
+.brief a{color:var(--ac);display:inline-block;padding:10px 0}
+@media(max-width:900px){.join .wrap{grid-template-columns:minmax(0,1fr);gap:var(--sp4)}}
 
-/* ---------- example ---------- */
-.ex{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,72px);align-items:center}
-.ex .h2{margin:14px 0 20px}
-.chatbox{padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:12px}
-.chatbox .bub{font-size:1.02rem;max-width:88%}
-.chatbox .bub.ai{margin-top:0}
-.chatbox .why{display:block;margin-top:8px;font-size:.84rem;color:#9bdcea}
-.chatbox .bub.me{align-self:flex-end}
-.chatbox .cap{font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:2px}
-.rangebar{margin-top:10px;display:flex;align-items:center;gap:10px;font:500 .8rem var(--mono);color:var(--ink-2)}
-.rangebar .bar{flex:1;height:8px;border-radius:99px;background:rgba(255,255,255,.08);position:relative}
-.rangebar .bar i{position:absolute;left:25%;right:20%;top:0;bottom:0;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--violet))}
-.rangebar .bar b{position:absolute;left:46%;top:-4px;width:3px;height:16px;border-radius:2px;background:#fff}
-@media(max-width:900px){.ex{grid-template-columns:1fr}}
-
-/* ---------- evolution timeline ---------- */
-.tl-head{max-width:720px}
-.tl-head .h2{margin:14px 0 18px}
-.tl{position:relative;margin-top:clamp(40px,6vw,80px);--p:0}
-.spine{position:absolute;left:27px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.08);border-radius:2px}
-.spine i{position:absolute;left:0;top:0;width:100%;height:calc(var(--p)*100%);background:linear-gradient(180deg,var(--cyan),var(--violet));box-shadow:0 0 14px rgba(34,211,238,.7);border-radius:2px}
-.stage-row{position:relative;display:grid;grid-template-columns:56px 1fr;gap:20px;padding-bottom:clamp(36px,5vw,64px)}
-.stage-row:last-child{padding-bottom:0}
-.node{width:56px;height:56px;border-radius:50%;background:var(--bg);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;position:relative;z-index:2;transition:border-color .4s,box-shadow .4s}
-.node svg{width:34px;height:34px;overflow:visible}
-.stage-row.on .node{border-color:var(--cyan);box-shadow:0 0 0 6px rgba(34,211,238,.08),0 0 24px rgba(34,211,238,.35)}
-.stage-row.last.on .node{border-color:var(--violet);box-shadow:0 0 0 6px rgba(167,139,250,.1),0 0 24px rgba(167,139,250,.4)}
-.st-card{padding:clamp(20px,3vw,32px);opacity:.35;transform:translateY(18px);transition:opacity .7s,transform .7s}
-.stage-row.on .st-card{opacity:1;transform:none}
-.st-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:6px}
-.st-n{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
-.stage-row.last .st-n{color:var(--violet)}
-.st-card h3{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700}
-.st-steps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,36px);margin-top:20px}
-.st-steps h4{margin:0 0 6px;font:600 1rem var(--body);color:#fff;display:flex;gap:10px;align-items:center}
-.st-steps h4 em{font:500 .7rem var(--mono);color:var(--ink-3);font-style:normal}
-.st-steps p{color:var(--ink-2);font-size:.98rem}
-.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:20px 0 0;list-style:none}
-.tags li{padding:5px 12px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--ink-2)}
-.loopback{margin:26px 0 0 76px;color:var(--ink-3);font:.9rem var(--mono)}
-@media(min-width:960px){
-  .spine{left:50%;margin-left:-1px}
-  .stage-row{grid-template-columns:1fr 56px 1fr;gap:36px}
-  .stage-row .node{grid-column:2;grid-row:1}
-  .stage-row .st-card{grid-column:3;grid-row:1}
-  .stage-row.flip .st-card{grid-column:1}
-  .loopback{margin-left:0;text-align:center}
-}
-@media(max-width:620px){.st-steps{grid-template-columns:1fr}}
-
-/* ---------- founder ---------- */
-.founder .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,6vw,90px);align-items:start}
-.founder .eyebrow{display:block;margin-bottom:22px}
-.founder .quote{font:italic 400 clamp(1.7rem,3.4vw,2.7rem)/1.22 var(--serif);color:#fff;letter-spacing:-.01em}
-.founder .quote em{font-style:italic;color:var(--amber)}
-.founder .body{margin-top:26px;display:grid;gap:16px;color:var(--ink-2);max-width:60ch}
-.sign{margin-top:26px;display:flex;align-items:center;gap:14px}
-.sign .av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f472b6 55%,var(--violet));display:grid;place-items:center;font:700 1.1rem var(--display);color:#1a1020}
-.sign b{display:block}
-.sign small{color:var(--ink-3)}
-.proof{padding:clamp(22px,3vw,34px)}
-.proof h3{font:600 .78rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px}
-.proof ul{list-style:none;margin:0;padding:0;display:grid;gap:20px}
-.proof li{display:grid;gap:2px}
-.proof li strong{font:700 1.5rem var(--display);letter-spacing:-.02em}
-.proof li span{color:var(--ink-2);font-size:.95rem}
-.proof .honest{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-3);font-size:.9rem}
-@media(max-width:900px){.founder .wrap{grid-template-columns:1fr}}
-
-/* ---------- promises ---------- */
-.prom{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
-.prom .glass{padding:28px}
-.prom svg{width:34px;height:34px;margin-bottom:18px}
-.prom h3{font-size:1.5rem;margin-bottom:10px}
-.prom p{color:var(--ink-2)}
-@media(max-width:900px){.prom{grid-template-columns:1fr}}
-
-/* ---------- faq ---------- */
-.faq{max-width:820px;margin:40px auto 0}
-.faq details{border-bottom:1px solid var(--line)}
-.faq summary{list-style:none;cursor:pointer;padding:22px 4px;font:600 1.15rem var(--display);display:flex;justify-content:space-between;gap:16px;align-items:center}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";font:300 1.6rem var(--body);color:var(--cyan);transition:transform .2s}
-.faq details[open] summary::after{transform:rotate(45deg)}
-.faq details p{padding:0 4px 24px;color:var(--ink-2);max-width:62ch}
-
-/* ---------- cta ---------- */
-.cta{padding:clamp(28px,5vw,64px);text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);align-items:center}
-.cta .h2{margin-bottom:16px}
-@media(max-width:900px){.cta{grid-template-columns:1fr}}
-footer{background:rgba(9,9,11,.82);padding:44px 0 60px;color:var(--ink-3);font-size:.9rem;border-top:1px solid rgba(255,255,255,.06)}
-footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
-footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
-
-
-.hero h1{font-size:clamp(2.5rem,6.4vw,5.4rem)}
-.lead2{margin-top:16px}
-.notdash{margin-top:22px;max-width:56ch;color:var(--ink-2);font-size:1.05rem;text-shadow:0 1px 14px rgba(9,9,11,.95)}
-.notdash b{color:#fff}
-.hero-cta{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin-top:30px}
-.hero-cta .start{color:var(--ink-3);font-size:.92rem}
-.chain{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.chain li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start}
-.chain i{width:10px;height:10px;border-radius:50%;margin-top:7px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
-.chain i.amb{background:var(--amber);box-shadow:0 0 10px var(--amber)}
-.chain i.vio{background:var(--violet);box-shadow:0 0 10px var(--violet)}
-.chain b{display:block;font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
-.chain span{font-size:.98rem;color:var(--ink)}
-.narrow{max-width:820px}
-.prose{margin-top:30px;display:grid;gap:18px;color:var(--ink-2);max-width:62ch;text-shadow:0 1px 14px rgba(9,9,11,.95)}
-.prose .big{font:600 clamp(1.3rem,2.4vw,1.8rem)/1.3 var(--display);color:#fff;letter-spacing:-.01em}
-.prose .dim{color:var(--ink-3)}
-.st-card p{color:var(--ink-2);max-width:52ch;margin-top:10px}
-.st-n{font-size:.85rem}
-.qs{list-style:none;margin:40px 0 34px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.qs li{padding:24px 22px;font:600 1.15rem/1.3 var(--display);letter-spacing:-.01em}
-.qs li span{display:block;font:500 .74rem var(--mono);letter-spacing:.14em;color:var(--cyan);margin-bottom:14px}
-.feat{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
-.feat .glass{padding:26px;grid-column:span 2}
-.feat .glass:nth-child(4){grid-column:span 3}
-.feat .glass:nth-child(5){grid-column:span 3}
-.feat h3{font-size:1.3rem;margin-bottom:10px}
-.feat p{color:var(--ink-2)}
-.feat .hum{background:linear-gradient(160deg,rgba(251,191,36,.10),var(--glass))}
-.feat .hum h3{color:#fde68a}
-@media(max-width:1000px){.qs{grid-template-columns:1fr 1fr}.feat{grid-template-columns:1fr 1fr}.feat .glass,.feat .glass:nth-child(4),.feat .glass:nth-child(5){grid-column:auto}}
-@media(max-width:600px){.qs,.feat{grid-template-columns:1fr}}
-.stage-row.last .st-n{color:var(--violet)}
-
-
-.tp-note{margin-top:18px;font:500 .78rem var(--mono);letter-spacing:.06em;color:var(--amber);text-shadow:0 1px 12px rgba(9,9,11,.95)}
-.rec{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
-.ledger{padding:clamp(20px,3vw,32px)}
-.lg-h{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
-.lg-h b{color:var(--amber);font-weight:500}
-.ledger dl{margin:0}
-.ledger dl>div{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
-.ledger dl>div:first-child{border-top:0}
-.ledger dt{font:600 .95rem var(--body);color:#fff}
-.ledger dd{margin:0;color:var(--ink-2);font-size:.95rem}
-.ledger .pend dt{color:#c4b5fd}
-.ledger .pend dd{color:var(--ink-3);font-style:italic}
-@media(max-width:900px){.rec{grid-template-columns:1fr}.ledger dl>div{grid-template-columns:1fr;gap:2px}}
-.status{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(9,9,11,.5)}
-.status li{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:14px 18px;border-top:1px solid var(--line);color:var(--ink-2)}
-.status li:first-child{border-top:0}
-.status b{color:#fff;font-weight:600}
-@media(max-width:600px){.status li{grid-template-columns:1fr;gap:2px}}
-
-
-.founder .quote{margin-top:26px}
-.secgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin:40px 0 30px}
-.secgrid .glass{padding:26px;grid-column:span 2}
-.secgrid .glass:nth-child(n+4){grid-column:span 3}
-.secgrid h3{font-size:1.25rem;margin-bottom:10px}
-.secgrid p{color:var(--ink-2);font-size:.98rem}
-@media(max-width:1000px){.secgrid{grid-template-columns:1fr 1fr}.secgrid .glass,.secgrid .glass:nth-child(n+4){grid-column:auto}}
-@media(max-width:620px){.secgrid{grid-template-columns:1fr}}
-
-
-/* ---- polish layer ---- */
-.prog{position:fixed;left:0;top:0;right:0;height:2px;z-index:80;background:transparent}
-.prog i{display:block;height:100%;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--cyan),var(--violet));box-shadow:0 0 10px rgba(34,211,238,.6)}
-.nav nav a:not(.btn){position:relative}
-.nav nav a:not(.btn)::after{content:"";position:absolute;left:4px;right:4px;bottom:6px;height:1px;background:var(--cyan);transform:scaleX(0);transform-origin:0 50%;transition:transform .3s}
-.nav nav a.on::after{transform:scaleX(1)}
-.nav nav a.on{color:#fff}
-.hero-cta{margin-top:30px}
-.hero .start{margin-top:16px;color:var(--ink-3);font-size:.92rem}
-.vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
-.vs .glass{padding:clamp(22px,3vw,34px)}
-.vs h3{font-size:1.3rem;margin-bottom:16px}
-.vs ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;color:var(--ink-2)}
-.vs li{display:grid;grid-template-columns:20px 1fr;gap:10px}
-.vs-a li::before{content:"–";color:var(--ink-3)}
-.vs-b li::before{content:"✓";color:var(--cyan);font-weight:700}
-.vs-a{opacity:.85}
-.vs-b{background:linear-gradient(160deg,rgba(34,211,238,.10),var(--glass))}
-.pilot{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(22px,4vw,56px);align-items:center;margin-top:44px}
-.pf{padding:clamp(18px,2.6vw,28px)}
-.pf svg{width:100%;height:auto;display:block;margin-top:8px}
-.pf-cap{margin-top:10px;color:var(--ink-2);font-size:.92rem}
-.psteps{list-style:none;margin:0;padding:0;display:grid;gap:22px}
-.psteps li{display:grid;grid-template-columns:40px 1fr;gap:16px}
-.psteps li>span{width:40px;height:40px;border-radius:50%;border:1px solid rgba(34,211,238,.5);display:grid;place-items:center;font:600 .95rem var(--mono);color:var(--cyan)}
-.psteps h3{font-size:1.2rem;margin-bottom:4px}
-.psteps p{color:var(--ink-2);font-size:.98rem}
-.needs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:40px}
-.needs>div{padding:24px 26px;border:1px solid var(--line);border-radius:18px;background:rgba(9,9,11,.5)}
-.needs h3{font:600 .78rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:14px}
-.needs ul{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:8px}
-.start,.needs ul{text-shadow:0 1px 12px rgba(9,9,11,.9)}
-.mbar{display:none}
-@media(max-width:900px){.vs,.pilot,.needs{grid-template-columns:1fr}}
-@media(max-width:700px){
-  .mbar{display:block;position:fixed;left:0;right:0;bottom:0;z-index:70;padding:10px var(--gut) calc(10px + env(safe-area-inset-bottom));background:linear-gradient(180deg,rgba(9,9,11,0),rgba(9,9,11,.92) 35%);transform:translateY(110%);transition:transform .35s}
-  .mbar.show{transform:none}
-  .mbar .btn{width:100%}
-  footer{padding-bottom:96px}
-}
-@media(prefers-reduced-motion:reduce){.mbar{transition:none}.prog i{transition:none}}
+/* footer */
+footer{border-top:1px solid var(--ln);padding:var(--sp4) 0 var(--sp5)}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:var(--sp4)}
+footer .brand{font-size:1.4rem}
+footer p{color:var(--mu);font-size:.88rem;margin-top:12px;max-width:42ch}
+footer h2{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+footer li a{display:inline-flex;align-items:center;min-height:44px;color:var(--mu);text-decoration:none;font-size:.93rem}
+footer li a:hover{color:var(--ac)}
+@media(max-width:700px){footer .wrap{grid-template-columns:1fr}}
 
 /* reveal */
-.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
-.rv.in{opacity:1;transform:none}
-.no-js .rv,.no-js .st-card{opacity:1;transform:none}
-
+.js .rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .rv,.st-card{opacity:1!important;transform:none!important;transition:none!important}
-  .pane,.badge i{animation:none!important}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .js .rv{opacity:1;transform:none}
 }
 </style>
 </head>
-<body class="no-js" data-endpoint="https://script.google.com/macros/s/AKfycbzS8-cyFKdKrawQlgVAj1tFy9tQsouOKPW6wgqKv_glHlvtp1JPwgQMXkTP8ZO510zS/exec">
-<script>document.body.classList.remove('no-js')</script>
+<body data-endpoint="https://script.google.com/macros/s/AKfycbzS8-cyFKdKrawQlgVAj1tFy9tQsouOKPW6wgqKv_glHlvtp1JPwgQMXkTP8ZO510zS/exec">
 <a class="skip" href="#main">Skip to content</a>
-<div class="prog" aria-hidden="true"><i id="progBar"></i></div>
-<canvas id="gl" aria-hidden="true"></canvas>
-<div class="veil" aria-hidden="true"></div>
+<script>document.documentElement.classList.add('js')</script>
 
 <header class="nav">
   <div class="wrap">
-    <a class="brand" href="#top" aria-label="Udgass.ai, home">
-      <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#06131a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c3-7 5-7 8-2s5 4 10-5"/></svg></span>
+    <a class="brand" href="#top" aria-label="Udgass, back to top">
+      <svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="5" cy="19" r="2.4" fill="#9BA8B5"/><circle cx="12" cy="9" r="2.4" fill="#9BA8B5"/><circle cx="21" cy="14" r="3.2" fill="#70D6C3"/><path d="M5 19L12 9L21 14" fill="none" stroke="#70D6C3" stroke-width="1.2"/></svg>
       Udgass
     </a>
-    <span class="badge" role="status"><i aria-hidden="true"></i>Early development</span>
-    <nav aria-label="Main">
-      <a href="#how">How it works</a>
-      <a href="#difference">Difference</a>
-      <a href="#pilot">Pilot</a>
-      <a href="#security">Security</a>
+    <span class="status"><i aria-hidden="true"></i>In development</span>
+    <nav aria-label="Primary">
+      <a href="#engine">Engine</a>
+      <a href="#record">Decision record</a>
+      <a href="#planning">Planning</a>
+      <a href="#principles">Principles</a>
       <a href="#founder">Founder</a>
-      <a class="btn" href="#join">Request access</a>
+      <a class="btn" href="#join">Early access</a>
     </nav>
   </div>
+  <div class="prog" id="prog"></div>
 </header>
 
 <main id="main">
-<!-- HERO -->
-<section class="hero" id="top">
+
+<!-- A. HERO -->
+<section class="hero" id="top" aria-labelledby="h1">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Business Decision Intelligence</p>
-      <h1 style="margin-top:18px">Your business has <span class="grad">seen the pattern&nbsp;before.</span></h1>
-      <p class="lead">Udgass is a decision intelligence engine in development. It connects business history, decisions and measured outcomes, so organisations can see what is changing and weigh their options with the evidence in view.</p>
-      <p class="notdash"><b>Not another dashboard.</b> A system of record for decisions: what was known, what was estimated, what was decided, and what actually happened.</p>
-      <div class="hero-cta"><a class="btn" href="#join">Request Early Access</a><a class="btn ghost" href="/assets/udgass-design-partner-brief.pdf" download>Design-partner brief (PDF)</a></div>
-      <p class="start">First application: demand and inventory planning.</p>
+      <p class="eyebrow">Udgass / Decision intelligence</p>
+      <h1 class="h1" id="h1">Your business has <em>seen the pattern</em> before.</h1>
+      <p class="sub">Turn organizational history into better-informed decisions. Udgass is being developed to connect historical evidence, predictive intelligence, and real-world outcomes.</p>
+      <div class="cta">
+        <a class="btn" href="#join">Explore Early Access</a>
+        <a class="btn ghost" href="#engine">Explore the Engine</a>
+      </div>
+      <p class="state"><i aria-hidden="true"></i><span>In development · Starting with demand and inventory intelligence</span></p>
     </div>
-    <div class="stage" id="stage" aria-label="Illustrative example panels">
-      <div class="pane glass p-chat" data-depth="1">
-        <div class="tag"><span>Decision memory</span><b>Illustrative</b></div>
-        <ol class="chain">
-          <li><i></i><span><b>What happened</b>A seasonal rise in orders</span></li>
-          <li><i class="amb"></i><span><b>What changed</b>It started earlier than usual</span></li>
-          <li><i class="vio"></i><span><b>What happened next</b>Stock ran out before the peak</span></li>
+
+    <figure class="netbox" aria-label="Conceptual diagram of how business history becomes an estimate, a decision and a recorded outcome">
+      <div class="nethead"><span class="mono">Conceptual representation</span><span class="tag">Illustrative</span></div>
+      <svg id="net" viewBox="0 0 600 470" role="img" aria-labelledby="nett netd"><title id="nett">Business history linked to an estimate, a decision and an outcome</title><desc id="netd">Conceptual diagram. Events in sales, supply, orders and decisions are linked across time. Three pieces of evidence lead to an estimate shown as a widening range, then to a decision, then to a recorded outcome.</desc>
+<line class="lane" x1="12" x2="588" y1="110" y2="110"/><text class="lbl" x="12" y="96">SALES</text>
+<line class="lane" x1="12" x2="588" y1="200" y2="200"/><text class="lbl" x="12" y="186">SUPPLY</text>
+<line class="lane" x1="12" x2="588" y1="290" y2="290"/><text class="lbl" x="12" y="276">ORDERS</text>
+<line class="lane" x1="12" x2="588" y1="380" y2="380"/><text class="lbl" x="12" y="366">DECISIONS</text>
+<line class="asof" x1="340" x2="340" y1="46" y2="430"/><text class="big" x="346" y="42">AS OF</text>
+<path class="edge minor" d="M98.1 104.0 Q114.8 105.9 131.6 115.8"/>
+<path class="edge minor" d="M131.6 115.8 Q154.1 149.8 176.5 191.8"/>
+<path class="edge minor" d="M224.5 124.1 Q236.1 110.5 247.7 105.0"/>
+<path class="edge minor" d="M224.5 124.1 Q256.9 117.2 289.2 118.2"/>
+<path class="edge minor" d="M247.7 105.0 Q268.4 107.6 289.2 118.2"/>
+<path class="edge minor" d="M85.5 185.3 Q109.7 192.0 133.9 206.7"/>
+<path class="edge minor" d="M85.5 185.3 Q91.8 140.7 98.1 104.0"/>
+<path class="edge minor" d="M133.9 206.7 Q155.2 195.2 176.5 191.8"/>
+<path class="edge minor" d="M133.9 206.7 Q168.6 200.3 203.2 201.9"/>
+<path class="edge minor" d="M176.5 191.8 Q189.8 192.9 203.2 201.9"/>
+<path class="edge minor" d="M176.5 191.8 Q200.5 153.9 224.5 124.1"/>
+<path class="edge minor" d="M203.2 201.9 Q213.8 159.0 224.5 124.1"/>
+<path class="edge minor" d="M203.2 201.9 Q248.5 196.2 293.8 198.4"/>
+<path class="edge minor" d="M102.8 288.8 Q118.2 283.8 133.7 286.8"/>
+<path class="edge minor" d="M102.8 288.8 Q142.2 280.0 181.7 279.1"/>
+<path class="edge minor" d="M133.7 286.8 Q157.7 279.0 181.7 279.1"/>
+<path class="edge minor" d="M133.7 286.8 Q177.6 287.9 221.4 297.0"/>
+<path class="edge minor" d="M181.7 279.1 Q201.6 284.1 221.4 297.0"/>
+<path class="edge minor" d="M181.7 279.1 Q219.0 274.6 256.3 278.1"/>
+<path class="edge minor" d="M221.4 297.0 Q238.9 283.6 256.3 278.1"/>
+<path class="edge minor" d="M256.3 278.1 Q275.1 234.2 293.8 198.4"/>
+<path class="edge minor" d="M85.6 391.3 Q106.6 381.4 127.6 379.4"/>
+<path class="edge minor" d="M85.6 391.3 Q129.1 377.4 172.7 371.5"/>
+<path class="edge minor" d="M127.6 379.4 Q150.1 371.4 172.7 371.5"/>
+<path class="edge minor" d="M127.6 379.4 Q167.1 369.8 206.7 368.2"/>
+<path class="edge minor" d="M172.7 371.5 Q189.7 365.9 206.7 368.2"/>
+<path class="edge minor" d="M172.7 371.5 Q210.6 376.5 248.4 389.5"/>
+<path class="edge minor" d="M206.7 368.2 Q227.6 374.9 248.4 389.5"/>
+<path class="edge minor" d="M206.7 368.2 Q214.1 328.6 221.4 297.0"/>
+<path class="edge minor" d="M248.4 389.5 Q267.6 382.1 286.9 382.6"/>
+<circle class="node" cx="98.1" cy="104.0" r="3.6"/>
+<circle class="node minor" cx="131.6" cy="115.8" r="2.6"/>
+<circle class="node minor" cx="224.5" cy="124.1" r="2.6"/>
+<circle class="node" cx="247.7" cy="105.0" r="3.6"/>
+<circle class="node minor" cx="289.2" cy="118.2" r="2.6"/>
+<circle class="node" cx="85.5" cy="185.3" r="3.6"/>
+<circle class="node minor" cx="133.9" cy="206.7" r="2.6"/>
+<circle class="node" cx="176.5" cy="191.8" r="3.6"/>
+<circle class="node minor" cx="203.2" cy="201.9" r="2.6"/>
+<circle class="node minor" cx="293.8" cy="198.4" r="2.6"/>
+<circle class="node" cx="102.8" cy="288.8" r="3.6"/>
+<circle class="node minor" cx="133.7" cy="286.8" r="2.6"/>
+<circle class="node" cx="181.7" cy="279.1" r="3.6"/>
+<circle class="node minor" cx="221.4" cy="297.0" r="2.6"/>
+<circle class="node" cx="256.3" cy="278.1" r="3.6"/>
+<circle class="node" cx="85.6" cy="391.3" r="3.6"/>
+<circle class="node minor" cx="127.6" cy="379.4" r="2.6"/>
+<circle class="node" cx="172.7" cy="371.5" r="3.6"/>
+<circle class="node minor" cx="206.7" cy="368.2" r="2.6"/>
+<circle class="node" cx="248.4" cy="389.5" r="3.6"/>
+<circle class="node minor" cx="286.9" cy="382.6" r="2.6"/>
+<path class="edge pe" data-s="1" d="M190 110 L403 200" style="stroke:var(--ac);opacity:.85"/>
+<path class="edge pe" data-s="1" d="M250 200 L403 200" style="stroke:var(--ac);opacity:.85"/>
+<path class="edge pe" data-s="1" d="M305 290 L403 200" style="stroke:var(--ac);opacity:.85"/>
+<path class="edge pe" data-s="1" d="M190 110 L250 200 L305 290" style="stroke:var(--ac);opacity:.55"/>
+<g data-s="2"><polygon class="band" points="340,200 570,138 570,262"/><polyline class="bandline" points="340,200 570,138"/><polyline class="bandline" points="340,200 570,262"/><path class="bandline" d="M340 200 L570 200" style="stroke-dasharray:2 4;opacity:.6"/><circle class="ring" cx="415" cy="200" r="14"/><circle class="key" cx="415" cy="200" r="6"/><text class="big" x="415" y="138" text-anchor="middle">ESTIMATE</text></g>
+<path class="edge pe" data-s="3" d="M415 206 L455 322"/>
+<g data-s="3"><circle class="ring" cx="455" cy="330" r="15"/><rect class="dec" x="449" y="324" width="12" height="12" transform="rotate(45 455 330)"/><text class="big" x="455" y="362" text-anchor="middle">DECISION</text></g>
+<path class="edge pe" data-s="4" d="M463 324 Q545 290 545 221" style="stroke:var(--am);opacity:.9"/>
+<g data-s="4"><path class="var" d="M545 203 L545 200"/><circle class="ring" cx="545" cy="212" r="15" style="stroke:var(--am)"/><circle class="out" cx="545" cy="212" r="7"/><text class="big" x="545" y="246" text-anchor="middle" style="fill:var(--am)">OUTCOME</text></g>
+<g data-s="1"><circle class="ring" cx="190" cy="110" r="12"/><circle class="key" cx="190" cy="110" r="5"/></g>
+<g data-s="1"><circle class="ring" cx="250" cy="200" r="12"/><circle class="key" cx="250" cy="200" r="5"/></g>
+<g data-s="1"><circle class="ring" cx="305" cy="290" r="12"/><circle class="key" cx="305" cy="290" r="5"/></g>
+<text class="lbl" x="64" y="458">PAST</text><text class="lbl" x="346" y="458">FORWARD</text><line class="lane" x1="110" x2="330" y1="454" y2="454" style="stroke-dasharray:none"/>
+<circle class="hit" data-k="1" cx="190" cy="110" r="22"/>
+<circle class="hit" data-k="1" cx="250" cy="200" r="22"/>
+<circle class="hit" data-k="1" cx="305" cy="290" r="22"/>
+<circle class="hit" data-k="2" cx="415" cy="200" r="34"/>
+<circle class="hit" data-k="3" cx="455" cy="330" r="34"/>
+<circle class="hit" data-k="4" cx="545" cy="212" r="34"/>
+</svg>
+      <ol class="legend" id="legend" aria-label="Follow one decision through the record">
+        <li style="display:contents"><button type="button" data-k="1" aria-pressed="false"><b>01</b><span>Evidence</span></button></li>
+        <li style="display:contents"><button type="button" data-k="2" aria-pressed="false"><b>02</b><span>Estimate</span></button></li>
+        <li style="display:contents"><button type="button" data-k="3" aria-pressed="false"><b>03</b><span>Decision</span></button></li>
+        <li style="display:contents"><button type="button" data-k="4" aria-pressed="true"><b>04</b><span>Outcome</span></button></li>
+      </ol>
+      <p class="cap" id="cap" aria-live="polite"><strong>Evidence to outcome.</strong> Past events are linked. An estimate is made from them, a person decides, and what actually happens is recorded against the estimate.</p>
+    </figure>
+  </div>
+</section>
+
+<!-- B. PROBLEM -->
+<section class="problem" id="problem" aria-labelledby="pb-t">
+  <div class="wrap">
+    <p class="eyebrow rv">The problem</p>
+    <h2 class="h2 rv" id="pb-t" style="max-width:22ch">Businesses record history. They don’t always <em>learn from it.</em></h2>
+    <div class="grid" id="pgrid">
+      <div class="pi rv">
+        <span class="n">01</span>
+        <h3>What happened</h3>
+        <p>Sales, orders, stock movements and supplier events sit in operational systems, each with its own timestamps and owners.</p>
+        <p class="where">Held in: ERP, order and stock systems</p>
+      </div>
+      <div class="pi rv">
+        <span class="n">02</span>
+        <h3>What was decided</h3>
+        <p>The reasoning behind a choice lives in meetings, messages and spreadsheets. Often only the result of the decision survives.</p>
+        <p class="where">Held in: email, slides, personal files</p>
+      </div>
+      <div class="pi rv">
+        <span class="n">03</span>
+        <h3>What actually happened</h3>
+        <p>Outcomes arrive later, in different reports, and are rarely tied back to the estimate and the decision that came before them.</p>
+        <p class="where">Held in: periodic reports and reviews</p>
+      </div>
+    </div>
+    <div class="gapnote rv">
+      <p>Results can be measured. Which judgements held up, and why, is harder to see.</p>
+      <p>When events, decisions and outcomes stay in separate places, an organisation repeats its reasoning instead of building on it. Udgass is being designed to keep the three connected, so that each decision can be reviewed against what followed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- C. ENGINE -->
+<section class="engine" id="engine" aria-labelledby="en-t">
+  <div class="wrap">
+    <div class="eng-head">
+      <div>
+        <p class="eyebrow rv">The engine</p>
+        <h2 class="h2 rv" id="en-t" style="max-width:18ch">From business history to <em>business intelligence.</em></h2>
+      </div>
+      <span class="tag rv">Conceptual · In development</span>
+    </div>
+    <p class="lead rv">Five stages that feed one another. Select a stage to see what it takes in and what it produces.</p>
+
+    <ol id="stages" aria-label="The five stages of the Udgass engine">
+      <li class="st" data-i="0">
+        <button class="hd" type="button" aria-expanded="true" aria-controls="m1" id="b1"><span class="mk">01</span><h3>Remember</h3><p class="short">Build a structured history of events, decisions and outcomes.</p></button>
+        <div class="more" id="m1" role="region" aria-labelledby="b1"><div><dl>
+          <dt>Takes in</dt><dd>Exports of sales, orders, stock and supplier events that a team chooses to provide.</dd>
+          <dt>Produces</dt><dd>A time-ordered record in which each fact is tied to its source and date.</dd>
+          </dl><p class="rel">First stage · receives lessons from 05</p></div></div>
+      </li>
+      <li class="st" data-i="1">
+        <button class="hd" type="button" aria-expanded="false" aria-controls="m2" id="b2"><span class="mk">02</span><h3>Detect</h3><p class="short">Identify changes and potentially meaningful patterns.</p></button>
+        <div class="more" id="m2" role="region" aria-labelledby="b2"><div><dl>
+          <dt>Takes in</dt><dd>The structured history.</dd>
+          <dt>Produces</dt><dd>Flagged changes, shown with the evidence behind them and compared with normal variation. A flag is a prompt for review, not a conclusion.</dd>
+          </dl><p class="rel">After 01 · feeds 03</p></div></div>
+      </li>
+      <li class="st" data-i="2">
+        <button class="hd" type="button" aria-expanded="false" aria-controls="m3" id="b3"><span class="mk">03</span><h3>Predict</h3><p class="short">Estimate possible outcomes with explicit uncertainty.</p></button>
+        <div class="more" id="m3" role="region" aria-labelledby="b3"><div><dl>
+          <dt>Takes in</dt><dd>History and detected changes.</dd>
+          <dt>Produces</dt><dd>A range of possible outcomes with the assumptions stated, rather than a single number.</dd>
+          </dl><p class="rel">After 02 · feeds 04</p></div></div>
+      </li>
+      <li class="st" data-i="3">
+        <button class="hd" type="button" aria-expanded="false" aria-controls="m4" id="b4"><span class="mk">04</span><h3>Evaluate</h3><p class="short">Compare decisions under stated assumptions and constraints.</p></button>
+        <div class="more" id="m4" role="region" aria-labelledby="b4"><div><dl>
+          <dt>Takes in</dt><dd>Estimates, the options under consideration, and constraints such as supplier lead times.</dd>
+          <dt>Produces</dt><dd>A side-by-side comparison of options. People choose. Udgass does not act on your systems.</dd>
+          </dl><p class="rel">After 03 · feeds 05</p></div></div>
+      </li>
+      <li class="st" data-i="4">
+        <button class="hd" type="button" aria-expanded="false" aria-controls="m5" id="b5"><span class="mk">05</span><h3>Learn</h3><p class="short">Evaluate predictions against realised outcomes.</p></button>
+        <div class="more" id="m5" role="region" aria-labelledby="b5"><div><dl>
+          <dt>Takes in</dt><dd>What was estimated, what was decided, and what happened.</dd>
+          <dt>Produces</dt><dd>A measured track record, including misses. Any change to the method is reviewed against that record rather than assumed to be an improvement.</dd>
+          </dl><p class="rel">After 04 · returns to 01</p></div></div>
+      </li>
+    </ol>
+    <p class="loop"><svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><path d="M26 4H8a6 6 0 100 8h6" fill="none" stroke="#70D6C3" stroke-width="1.2"/><path d="M12 9l3 3-3 3" fill="none" stroke="#70D6C3" stroke-width="1.2" transform="translate(0,-1)"/></svg>The record from stage 05 returns to stage 01, so each cycle starts with more evidence.</p>
+  </div>
+</section>
+
+<!-- D. DECISION RECORD -->
+<section id="record" aria-labelledby="dr-t">
+  <div class="wrap">
+    <div class="rec-top">
+      <div>
+        <p class="eyebrow rv">The decision record</p>
+        <h2 class="h2 rv" id="dr-t" style="max-width:18ch">Every important decision has a <em>history.</em></h2>
+      </div>
+      <span class="tag rv">Illustrative · Invented numbers</span>
+    </div>
+    <p class="lead rv">An example of how one decision could be recorded and then reviewed. Move through the stages to see the record grow.</p>
+
+    <div class="scrub" id="scrub" role="group" aria-label="Stage of the record">
+      <button type="button" data-s="1" aria-pressed="false"><b>D+0</b><span>At decision time</span></button>
+      <button type="button" data-s="2" aria-pressed="false"><b>D+2</b><span>Action taken</span></button>
+      <button type="button" data-s="3" aria-pressed="false"><b>D+90</b><span>Outcome arrives</span></button>
+      <button type="button" data-s="4" aria-pressed="true"><b>D+95</b><span>Reviewed</span></button>
+    </div>
+
+    <div class="rec" id="rec" data-s="4">
+      <div class="rec-main">
+        <div class="rh"><span class="id">DR-0001 · ILLUSTRATIVE</span><span class="tag" id="rstate">Reviewed</span></div>
+        <h3 class="rt">Set next quarter’s order quantity for Product group A</h3>
+        <p class="meta"><span>Decision owner: <b>Head of planning</b> (a role, not a person)</span><span>As of: <b>3 March</b></span></p>
+
+        <div class="blocks">
+          <div class="blk" data-k="ev" data-from="1">
+            <h4>Available at decision time</h4>
+            <ul><li><b>Sales history</b> to 3 March</li><li><b>Open orders</b> and current stock</li><li><b>Supplier quote:</b> 21-day lead time</li></ul>
+            <p class="pend">Not yet recorded</p>
+          </div>
+          <div class="blk" data-k="ev" data-from="1">
+            <h4>Evidence considered</h4>
+            <ul><li><b>EV-0412</b> Same period, previous year</li><li><b>EV-0415</b> Early rise in orders</li><li><b>EV-0420</b> Supplier delivery record</li></ul>
+            <p class="pend">Not yet recorded</p>
+          </div>
+          <div class="blk" data-k="est" data-from="1">
+            <h4>Estimate and uncertainty</h4>
+            <p class="big">5,000 units</p>
+            <ul><li>Likely range <b>4,200 to 6,100</b></li><li>Evidence quality: <b>moderate</b></li></ul>
+            <div class="range" aria-hidden="true">
+              <div class="rbar" id="rbar"><span class="axis"></span><span class="rg" style="left:14.8%;width:70.4%"></span><span class="md" style="left:44.4%"></span><span class="rl" id="rl" style="left:61.1%"></span></div>
+              <div class="rscale"><span>3,800</span><span>6,500</span></div>
+            </div>
+            <p class="pend">Not yet recorded</p>
+          </div>
+          <div class="blk" data-k="est" data-from="1">
+            <h4>Assumptions and constraints</h4>
+            <ul><li>Lead time stays near 21 days</li><li>No change in pricing or promotion</li><li>Storage limit: 6,500 units</li></ul>
+            <p class="pend">Not yet recorded</p>
+          </div>
+          <div class="blk" data-k="act" data-from="2">
+            <h4>Action taken</h4>
+            <ul><li><b>Ordered 5,000 units</b> on 5 March</li><li>Recorded by the decision owner</li></ul>
+            <p class="pend">Awaiting the decision</p>
+          </div>
+          <div class="blk" data-k="real" data-from="3">
+            <h4>Realised outcome</h4>
+            <p class="big">5,450 units</p>
+            <ul><li>Actual demand over the quarter</li></ul>
+            <p class="pend">Awaiting the quarter’s end</p>
+          </div>
+          <div class="blk full" data-k="real" data-from="4">
+            <h4>Variance against the estimate</h4>
+            <ul><li><b>+450 units (+9%)</b> above the estimate, inside the stated range</li><li>Reviewer note: the lead-time assumption held. Evidence quality rating unchanged.</li></ul>
+            <p class="pend">Calculated at review</p>
+          </div>
+        </div>
+        <p class="rec-note">Both outcomes inside and outside the stated range are recorded the same way. Nothing on this card is real data.</p>
+      </div>
+
+      <div class="rec-side log" role="group" aria-label="Record history">
+        <h4>Record history</h4>
+        <ol>
+          <li data-k="ev" data-at="1"><time>D+0 · 3 Mar</time><p>Evidence EV-0412, 0415 and 0420 attached</p></li>
+          <li data-k="est" data-at="1"><time>D+0 · 3 Mar</time><p>Estimate recorded: 4,200 to 6,100, central 5,000</p></li>
+          <li data-k="act" data-at="2"><time>D+2 · 5 Mar</time><p>Decision made and action recorded</p></li>
+          <li data-k="real" data-at="3"><time>D+90 · 1 Jun</time><p>Realised outcome recorded: 5,450 units</p></li>
+          <li data-k="real" data-at="4"><time>D+95 · 6 Jun</time><p>Variance calculated and reviewed</p></li>
         </ol>
       </div>
-      <div class="pane glass p-chart" data-depth="2">
-        <div class="tag"><span>Possible outcomes</span><b>Invented numbers</b></div>
-        <div class="mini-fan">
-          <svg viewBox="0 0 360 150" role="img" aria-label="Illustrative chart: a history line, then a forecast whose shaded range widens over time.">
-            <defs>
-              <linearGradient id="fanG" x1="0" x2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".45"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".12"/></linearGradient>
-              <linearGradient id="lineG" x1="0" x2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
-            </defs>
-            <path d="M0 120 L40 110 L80 116 L120 96 L160 100 L200 82" fill="none" stroke="#e4e4e7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-            <path d="M200 82 L360 28 L360 112 Z" fill="url(#fanG)"/>
-            <path d="M200 82 C250 66 300 56 360 58" fill="none" stroke="url(#lineG)" stroke-width="2.4"/>
-            <path d="M200 82 L360 28 M200 82 L360 112" stroke="#a78bfa" stroke-opacity=".5" stroke-dasharray="3 4" fill="none"/>
-            <line x1="200" y1="14" x2="200" y2="140" stroke="#ffffff" stroke-opacity=".25" stroke-dasharray="2 4"/>
-            <circle cx="200" cy="82" r="4.5" fill="#fff"/>
-            <text x="206" y="146" fill="#a1a1aa" font-size="10" font-family="Inter,sans-serif">today</text>
-          </svg>
+    </div>
+  </div>
+</section>
+
+<!-- E. PLANNING -->
+<section class="plan" id="planning" aria-labelledby="pl-t">
+  <div class="wrap">
+    <p class="eyebrow rv">Demand and inventory intelligence</p>
+    <h2 class="h2 rv" id="pl-t" style="max-width:20ch">Start where better decisions can be <em>measured.</em></h2>
+    <p class="lead rv">Demand and stock are where estimates meet reality every week. This is a hypothetical planning view built on synthetic data. Choose a scenario to see how the range and the inventory position change.</p>
+
+    <div class="pl rv">
+      <div class="pl-chart">
+        <div class="pl-bar"><span class="t">Product group A · weekly demand</span><span class="tag">Illustrative scenario</span></div>
+        <svg class="cht" id="cd" viewBox="0 0 520 210" role="img" aria-labelledby="cdt cdd"><title id="cdt">Weekly demand history and forecast range</title><desc id="cdd">Synthetic data. A line shows 26 weeks of demand history, followed by a shaded forecast range for the next 12 weeks.</desc></svg>
+        <div class="pl-bar" style="margin-top:20px"><span class="t">Projected stock · units</span></div>
+        <svg class="cht" id="ci" viewBox="0 0 520 170" role="img" aria-labelledby="cit cid"><title id="cit">Projected inventory position</title><desc id="cid">Synthetic data. Projected stock over 12 weeks at central and high demand, with the week a replenishment order arrives.</desc></svg>
+        <div class="keys" aria-hidden="true">
+          <span><i style="--c:#B5C0CB"></i>Historical demand</span>
+          <span><i class="b"></i>Forecast range</span>
+          <span><i style="--c:var(--ac)"></i>Central estimate</span>
+          <span><i class="d" style="--c:var(--am)"></i>Stock if demand runs high</span>
         </div>
-        <p class="mini-cap">Uncertainty made explicit. The range widens the further ahead it looks.</p>
+        <noscript><p class="pl-note">This illustrative chart needs JavaScript to display.</p></noscript>
       </div>
-      <div class="pane glass p-chip" data-depth="0.6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg>Decision support. People stay accountable.</div>
+      <div class="pl-side">
+        <fieldset class="sc" id="sc">
+          <legend>Scenario</legend>
+          <label><input type="radio" name="sc" value="base" checked><span><b>Baseline</b><small>Demand follows its usual seasonal shape. Supplier lead time 4 weeks.</small></span></label>
+          <label><input type="radio" name="sc" value="surge"><span><b>Demand surge</b><small>Demand about 22% above baseline, with a wider range.</small></span></label>
+          <label><input type="radio" name="sc" value="delay"><span><b>Supplier delay</b><small>Lead time lengthens from 4 to 8 weeks.</small></span></label>
+        </fieldset>
+        <dl class="facts" aria-live="polite">
+          <div><dt>Supplier lead time</dt><dd id="f-lt">4 weeks</dd></div>
+          <div><dt>Replenishment order</dt><dd>1,200 units</dd></div>
+          <div><dt>Opening stock</dt><dd>600 units</dd></div>
+          <div><dt>Range at week 12</dt><dd id="f-rg">±0%</dd></div>
+          <div><dt>Stockout exposure</dt><dd><span class="risk" id="f-rk" data-r="Low">Low</span></dd></div>
+          <div><dt>First week short</dt><dd id="f-wk">None</dd></div>
+        </dl>
+      </div>
     </div>
+    <p class="pl-note">Synthetic data. This view is not connected to any live system, and the exposure rating is a simple calculation on invented numbers to show how the idea works, not a measure of Udgass accuracy.</p>
   </div>
 </section>
 
-
-</section>
-
-<!-- PROBLEM -->
-<section id="problem" aria-labelledby="pr-t">
-  <div class="wrap narrow">
-    <p class="eyebrow rv">The gap</p>
-    <h2 class="h2 rv" id="pr-t" style="margin-top:14px">Organisations record everything. <span class="grad">Few learn from it.</span></h2>
-    <div class="prose rv">
-      <p>Planning, procurement, pricing, supply chain and finance teams make consequential decisions every day. The inputs sit in one system, the forecast in another, the decision in an email, and the outcome in a report months later.</p>
-      <p>Reports describe individual moments. Forecasts estimate the future. Neither preserves the link between the evidence available, the decision taken, and the result that followed.</p>
-      <p class="big">Without that link, an organisation cannot tell whether its judgement, or its models, are improving.</p>
-      <p>Udgass is being built to maintain it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- DIFFERENCE -->
-<section id="difference" aria-labelledby="df-t">
+<!-- F. PRINCIPLES -->
+<section id="principles" aria-labelledby="pn-t">
   <div class="wrap">
-    <p class="eyebrow rv">What is different</p>
-    <h2 class="h2 rv" id="df-t" style="margin-top:14px;max-width:20ch">A forecast gives a number. <span class="grad">Udgass keeps the record.</span></h2>
-    <div class="vs">
-      <div class="glass rv vs-a">
-        <h3>A typical forecast</h3>
-        <ul>
-          <li>Produces an estimate</li>
-          <li>Is replaced by the next one</li>
-          <li>Rarely keeps what it was based on</li>
-          <li>Seldom checked against what happened</li>
-        </ul>
-      </div>
-      <div class="glass rv vs-b">
-        <h3>The Udgass decision record</h3>
-        <ul>
-          <li>Keeps the evidence, assumptions and range</li>
-          <li>Records the decision and who made it</li>
-          <li>Reconciles the estimate with the outcome</li>
-          <li>Reports its own accuracy over time</li>
-        </ul>
-      </div>
+    <p class="eyebrow rv">Engineering principles</p>
+    <h2 class="h2 rv" id="pn-t" style="max-width:20ch">Reliance has to be <em>earned.</em></h2>
+    <div class="pr-grid">
+      <div class="pr rv"><span class="n">1</span><div><h3>Traceable evidence</h3><p>Each estimate is meant to link back to the data and the date it was based on, so a reviewer can reconstruct how it was reached.</p></div></div>
+      <div class="pr rv"><span class="n">2</span><div><h3>Explicit uncertainty</h3><p>Outputs are ranges with their assumptions stated. Where the evidence is thin, the record is meant to say so.</p></div></div>
+      <div class="pr rv"><span class="n">3</span><div><h3>Measured performance</h3><p>Estimates are compared with what happened, and the results are reported, including where they were wrong.</p></div></div>
+      <div class="pr rv"><span class="n">4</span><div><h3>Human accountability</h3><p>Udgass advises and records. A named person makes and owns each decision. It is designed to read data, not to act on your systems.</p></div></div>
     </div>
-    <p class="tp-note rv" style="margin-top:22px">Describes the intended design. Udgass is in early development.</p>
-  </div>
-</section>
 
-<!-- TIMELINE -->
-<section id="how" aria-labelledby="how-t">
-  <div class="wrap">
-    <div class="tl-head rv">
-      <p class="eyebrow">How it works</p>
-      <h2 class="h2" id="how-t">From business history to <span class="grad">measured judgement.</span></h2>
-      <p class="lead" style="margin-top:18px">Five stages in a closed loop. Each builds on the evidence of the last, and the final stage feeds the first.</p>
-    </div>
-    <div class="tl" id="tl">
-      <div class="spine" aria-hidden="true"><i></i></div>
-      <article class="stage-row " data-stage="1">
-        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="#22d3ee"><circle cx="17" cy="17" r="3.2"/></svg></div>
-        <div class="glass st-card"><div class="st-top"><span class="st-n">01</span></div><h3>Remember</h3><p>Establish a structured, time-ordered record of business events, forecasts, decisions and their outcomes, with the source of every input retained.</p></div>
-      </article>
-      <article class="stage-row flip" data-stage="2">
-        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="#22d3ee"><circle cx="9" cy="22" r="2.2"/><circle cx="17" cy="14" r="2.2"/><circle cx="25" cy="21" r="2.2"/><circle cx="13" cy="26" r="1.6" opacity=".6"/><circle cx="23" cy="9" r="3" fill="#fbbf24"/></svg></div>
-        <div class="glass st-card"><div class="st-top"><span class="st-n">02</span></div><h3>Detect</h3><p>Surface structural change, recurring patterns and anomalies, and separate genuine signal from normal variation.</p></div>
-      </article>
-      <article class="stage-row " data-stage="3">
-        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round"><path d="M6 20 L16 16"/><path d="M16 16 L29 7"/><path d="M16 16 L29 25"/><path d="M16 16 L29 16" stroke="#a78bfa"/></svg></div>
-        <div class="glass st-card"><div class="st-top"><span class="st-n">03</span></div><h3>Predict</h3><p>Produce probabilistic estimates grounded in comparable historical situations. Every estimate carries an explicit uncertainty range.</p></div>
-      </article>
-      <article class="stage-row flip" data-stage="4">
-        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17h7"/><path d="M13 17 L22 9 L29 9"/><path d="M13 17 L22 25 L29 25" stroke="#a78bfa"/></svg></div>
-        <div class="glass st-card"><div class="st-top"><span class="st-n">04</span></div><h3>Evaluate</h3><p>Compare scenarios and trade-offs against stated assumptions, constraints and risk tolerance.</p></div>
-      </article>
-      <article class="stage-row last" data-stage="5">
-        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none" stroke="#a78bfa" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M27 17a10 10 0 1 1-4-8"/><path d="M24 4v6h-6"/></svg></div>
-        <div class="glass st-card"><div class="st-top"><span class="st-n">05</span></div><h3>Learn</h3><p>Reconcile predictions with realised outcomes. Measure accuracy over time, expose failures, and define where the system has earned reliance.</p></div>
-      </article>
-    </div>
-    <p class="loopback rv">Every conclusion is bounded by the evidence behind it, and says so.</p>
-  </div>
-</section>
-
-<!-- DECISION RECORD -->
-<section id="record" aria-labelledby="rc-t">
-  <div class="wrap rec">
-    <div class="rv">
-      <p class="eyebrow">The decision record</p>
-      <h2 class="h2" id="rc-t" style="margin-top:14px">Every decision, <span class="grad">with its evidence and its outcome.</span></h2>
-      <p class="lead" style="margin-top:20px">The core of Udgass is a durable record that links an estimate to the decision it informed and to what happened next. That record is what makes performance measurable and accountability clear.</p>
-      <p class="tp-note">Schematic of the intended record structure. Illustrative only; no real data.</p>
-    </div>
-    <div class="glass ledger rv" role="group" aria-label="Schematic of a decision record. Illustrative, no real data.">
-      <div class="lg-h"><span>Decision record</span><b>Illustrative</b></div>
+    <div class="statusbox rv" id="security">
+      <div>
+        <h3>Status and data handling</h3>
+        <p>What exists today, stated plainly. The principles above describe intent, not a deployed system.</p>
+      </div>
       <dl>
-        <div><dt>Decision</dt><dd>The question being decided, and who owns it</dd></div>
-        <div><dt>Evidence considered</dt><dd>Historical situations used, with their sources</dd></div>
-        <div><dt>Estimate</dt><dd>Expected outcome with an explicit uncertainty range</dd></div>
-        <div><dt>Assumptions</dt><dd>What must hold for the estimate to apply</dd></div>
-        <div><dt>Action taken</dt><dd>What the accountable person decided, and why</dd></div>
-        <div class="pend"><dt>Realised outcome</dt><dd>Recorded when known, then reconciled with the estimate</dd></div>
-        <div class="pend"><dt>Variance</dt><dd>The gap between estimate and outcome, kept for learning</dd></div>
+        <div><dt>Stage</dt><dd>Early development</dd></div>
+        <div><dt>Production deployments</dt><dd>None</dd></div>
+        <div><dt>Customer results</dt><dd>None. Examples on this page are illustrative.</dd></div>
+        <div><dt>Security certifications</dt><dd>None</dd></div>
+        <div><dt>Independent security audit</dt><dd>Not yet carried out</dd></div>
+        <div><dt>Data handling</dt><dd>Designed to read exports a team chooses to provide. Storage, access, retention and removal will be agreed in writing with each design partner before any data is shared. These processes are not yet defined.</dd></div>
+        <div><dt>For now</dt><dd>Please do not send sensitive or personal data. Early conversations can use sample or agreed export data.</dd></div>
       </dl>
     </div>
   </div>
 </section>
 
-<!-- PILOT -->
-<section id="pilot" aria-labelledby="pl-t">
-  <div class="wrap">
-    <p class="eyebrow rv">Proposed pilot</p>
-    <h2 class="h2 rv" id="pl-t" style="margin-top:14px;max-width:22ch">Test it on your own history <span class="grad">before you rely on it.</span></h2>
-    <p class="lead rv" style="margin-top:22px">We propose a backtest. We replay your past using only what was known at the time, then compare each estimate with what actually happened. No live systems are touched, and nothing is used for real decisions until you choose.</p>
-    <div class="pilot">
-      <div class="glass pf rv" role="img" aria-label="Illustrative schematic of a backtest: estimates are made as of a past date and compared with the outcome that followed.">
-        <div class="lg-h"><span>How a backtest works</span><b>Illustrative</b></div>
-        <svg viewBox="0 0 420 190" aria-hidden="true">
-          <defs><linearGradient id="pfG" x1="0" x2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".4"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".1"/></linearGradient></defs>
-          <rect x="226" y="18" width="180" height="136" rx="8" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.14)" stroke-dasharray="4 5"/>
-          <path d="M12 118 L52 104 L92 112 L132 88 L172 94 L226 72" fill="none" stroke="#e4e4e7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M226 72 L406 30 L406 118 Z" fill="url(#pfG)"/>
-          <path d="M226 72 C280 62 340 54 406 58" fill="none" stroke="#22d3ee" stroke-width="2.2"/>
-          <path d="M226 72 C270 80 330 96 406 92" fill="none" stroke="#fbbf24" stroke-width="2.2" stroke-dasharray="1 5" stroke-linecap="round"/>
-          <line x1="226" y1="10" x2="226" y2="164" stroke="#fff" stroke-opacity=".5"/>
-          <circle cx="226" cy="72" r="4.5" fill="#fff"/>
-          <text x="12" y="182" fill="#a1a1aa" font-size="11" font-family="Inter,sans-serif">Known at the time</text>
-          <text x="236" y="182" fill="#a1a1aa" font-size="11" font-family="Inter,sans-serif">Hidden from the estimate</text>
-          <text x="232" y="14" fill="#e4e4e7" font-size="11" font-family="Inter,sans-serif">“As of” date</text>
-          <text x="330" y="48" fill="#67e8f9" font-size="11" font-family="Inter,sans-serif">Estimate</text>
-          <text x="328" y="110" fill="#fcd34d" font-size="11" font-family="Inter,sans-serif">What happened</text>
-        </svg>
-        <p class="pf-cap">Estimates are made from the past only, then checked against the outcome that followed.</p>
-      </div>
-      <ol class="psteps">
-        <li class="rv"><span>1</span><div><h3>Agree the scope</h3><p>One product group or decision, and the history to use. Scope and duration are agreed up front.</p></div></li>
-        <li class="rv"><span>2</span><div><h3>Replay the past</h3><p>For chosen past dates, produce estimates using only the data available then.</p></div></li>
-        <li class="rv"><span>3</span><div><h3>Compare with outcomes</h3><p>Measure accuracy against what actually happened, including where the estimates were wrong.</p></div></li>
-        <li class="rv"><span>4</span><div><h3>Decide together</h3><p>You review a written report and choose whether a live trial is worthwhile. No obligation.</p></div></li>
-      </ol>
-    </div>
-    <div class="needs rv">
-      <div><h3>What we would need</h3><ul><li>Exports of sales, orders and stock history</li><li>Product and supplier reference data, where available</li><li>A named decision owner, and a few conversations</li></ul></div>
-      <div><h3>What you would get</h3><ul><li>A written backtest report: estimates, outcomes, accuracy and failures</li><li>A view of how the decision record would look on your data</li><li>No cost and no commitment at this stage of development</li></ul></div>
-    </div>
-    <p class="tp-note rv">A proposal. It has not yet been run with a partner. Terms are agreed in writing before any data is shared.</p>
-    <div class="rv" style="margin-top:26px;display:flex;gap:14px;flex-wrap:wrap"><a class="btn" href="#join">Discuss a pilot</a><a class="btn ghost" href="/assets/udgass-design-partner-brief.pdf" download>Download the brief (PDF)</a></div>
-  </div>
-</section>
-
-<!-- FOCUS -->
-<section id="focus" aria-labelledby="fo-t">
-  <div class="wrap">
-    <p class="eyebrow rv">First application · Demand and inventory</p>
-    <h2 class="h2 rv" id="fo-t" style="margin-top:14px;max-width:18ch">Begin where outcomes can be measured.</h2>
-    <p class="lead rv" style="margin-top:22px">Demand and inventory planning is a recurring decision with quantifiable outcomes and material operating consequences. That makes it a rigorous place to establish whether the approach works.</p>
-    <ul class="qs">
-      <li class="glass rv"><span>01</span>What range of demand should the plan prepare for?</li>
-      <li class="glass rv"><span>02</span>Which products carry elevated shortage risk?</li>
-      <li class="glass rv"><span>03</span>Where is excess inventory likely to accumulate?</li>
-      <li class="glass rv"><span>04</span>How would supplier delays change the outcome?</li>
-    </ul>
-    <div class="prose rv">
-      <p>Udgass is being designed to evaluate these questions against historical evidence, then compare each estimate with what actually happens.</p>
-      <p class="dim">The architecture is intended to extend to other planning and operational decisions. That extension depends on first demonstrating results here.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOUNDER -->
+<!-- G. FOUNDER -->
 <section class="founder" id="founder" aria-labelledby="f-t">
   <div class="wrap">
     <div class="rv">
       <p class="eyebrow">Who is building this</p>
-      <h2 class="h2" id="f-t" style="margin-top:14px">Built by an engineer from <span class="grad">safety-critical software.</span></h2>
-      <p class="quote">In that work you never ship a number without knowing <em>how wrong it could be.</em></p>
-      <div class="body">
-        <p>I'm Kanthipriya Mahale, founder of KPAppWorx. I have spent more than nine years engineering safety-critical embedded software in aerospace and automotive, under DO-178C and ISO 26262, where evidence, traceability and accountability are not optional.</p>
-        <p>Udgass takes the same habits to business decisions: keep the record, state the uncertainty, check the result, and keep a named person accountable. To be clear, this is a discipline I am applying, not a claim that Udgass has been certified to any standard.</p>
+      <h2 class="sr" id="f-t">The founder</h2>
+      <p class="quote">In safety-critical software you never ship a number without knowing how wrong it could be.</p>
+      <div class="fbody">
+        <p>I’m Kanthipriya Mahale, founder of KPAppWorx. I have spent more than nine years engineering safety-critical embedded software in aerospace and automotive, in work shaped by DO-178C and ISO 26262, where evidence, traceability and accountability are not optional.</p>
+        <p>Udgass applies the same habits to business decisions: keep the record, state the uncertainty, check the result, and keep a named person accountable. That is a discipline I bring to the work. It is not a claim that Udgass is certified to any standard.</p>
       </div>
-      <div class="sign"><span class="av" aria-hidden="true">K</span><div><b>Kanthipriya Mahale</b><small>Founder, KPAppWorx Technologies Private Limited · Bengaluru</small></div></div>
+      <div class="sign"><b>Kanthipriya Mahale</b><small>Founder, KPAppWorx Technologies Private Limited · Bengaluru</small></div>
     </div>
-    <div class="glass proof rv" role="group" aria-label="Background">
-      <h3>Background</h3>
-      <ul>
-        <li><strong>9+ years</strong><span>Safety-critical embedded software engineering</span></li>
-        <li><strong>Aerospace and automotive</strong><span>Delivered under DO-178C and ISO 26262</span></li>
-        <li><strong>13 products shipped</strong><span>Through KPAppWorx: 10 iOS and macOS apps and 3 live AI software tools</span></li>
-      </ul>
+    <div class="bg rv">
+      <dl>
+        <div><dt>9+ years</dt><dd>Safety-critical embedded software engineering</dd></div>
+        <div><dt>Aerospace and automotive</dt><dd>Work shaped by DO-178C and ISO 26262</dd></div>
+        <div><dt>13 products shipped</dt><dd>Through KPAppWorx: 10 iOS and macOS apps and 3 live AI software tools</dd></div>
+      </dl>
       <p class="honest">Udgass itself is in early development and has no customers yet.</p>
     </div>
   </div>
 </section>
 
-<!-- SECURITY -->
-<section id="security" aria-labelledby="sec-t">
+<!-- H. JOIN -->
+<section class="join" id="join" aria-labelledby="j-t">
   <div class="wrap">
-    <p class="eyebrow rv">Security and data handling</p>
-    <h2 class="h2 rv" id="sec-t" style="margin-top:14px;max-width:20ch">Designed to read, <span class="grad">never to change.</span></h2>
-    <p class="lead rv" style="margin-top:22px">These are the design principles Udgass is being built around. They describe intent. They are not claims about a deployed system, and nothing here has been independently audited or certified.</p>
-    <div class="secgrid">
-      <div class="glass rv"><h3>Read-only by design</h3><p>Udgass is intended to read from source data and advise. It is not designed to write back to your systems or execute actions, and it will not need credentials that allow it to.</p></div>
-      <div class="glass rv"><h3>Exports first</h3><p>Early work is planned around data exports your team chooses to provide, such as sales, stock and order files. That keeps any direct connection to your live systems out of the first stage.</p></div>
-      <div class="glass rv"><h3>Only the data it needs</h3><p>The first application needs operational history, not personal customer data. We intend to ask only for the fields the demand and inventory work requires.</p></div>
-      <div class="glass rv"><h3>Traceable by design</h3><p>The decision record is intended to show what data an estimate was built from, so that every output can be traced back to its inputs.</p></div>
-      <div class="glass rv"><h3>Agreed in writing</h3><p>How data is stored, who can access it and how it is returned or removed will be defined and agreed in writing with each design partner before any data is shared.</p></div>
+    <div class="rv">
+      <p class="eyebrow">Early access</p>
+      <h2 class="h2" id="j-t" style="max-width:16ch">Help shape a new approach to business <em>intelligence.</em></h2>
+      <p class="lead">Udgass is in early development and is beginning with demand and inventory intelligence. We are looking for a small number of planning teams to test the idea against their own history.</p>
+      <ol class="steps">
+        <li><b>01</b><span>We replay past periods using only what was known at the time.</span></li>
+        <li><b>02</b><span>We compare each estimate with what actually happened.</span></li>
+        <li><b>03</b><span>You decide whether anything is worth taking further.</span></li>
+      </ol>
+      <p class="brief">This is a proposal and has not yet been run with a partner. <a href="/assets/udgass-design-partner-brief.pdf" download>Read the design-partner brief (PDF)</a>.</p>
     </div>
-    <ul class="status rv" aria-label="Security status">
-      <li><b>Security certifications</b>None</li>
-      <li><b>Independent security audit</b>Not yet carried out</li>
-      <li><b>Data retention and removal process</b>Not yet defined. It will be agreed with each design partner before data is shared.</li>
-      <li><b>In the meantime</b>Please do not send sensitive or personal data. Early conversations can use sample or agreed export data.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- PRINCIPLES -->
-<section id="principles" aria-labelledby="pn-t">
-  <div class="wrap narrow">
-    <p class="eyebrow rv">Principles and status</p>
-    <h2 class="h2 rv" id="pn-t" style="margin-top:14px">Reliance has to be <span class="grad">earned.</span></h2>
-    <div class="prose rv">
-      <p>Enterprise decisions need more than a persuasive prediction.</p>
-      <p class="big">They need traceable evidence, explicit uncertainty, measured performance and clear accountability.</p>
-      <p>Udgass is being developed around those four requirements, and will report its own accuracy, including where it is wrong.</p>
-    </div>
-    <ul class="status rv" aria-label="Current status">
-      <li><b>Stage</b>Early development</li>
-      <li><b>Production deployments</b>None yet</li>
-      <li><b>Customer results</b>None yet. Examples on this page are illustrative.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="join" aria-labelledby="j-t" style="padding-top:20px">
-  <div class="wrap">
-    <div class="glass cta rv">
-      <div>
-        <p class="eyebrow">Design partners</p>
-        <h2 class="h2" id="j-t" style="margin-top:14px">Help shape it with real planning decisions.</h2>
-        <p class="lead">We are speaking with a small number of planning, supply chain and operations teams about how consequential decisions are made today, what evidence they rely on, and where history fails to inform the next choice.</p>
-        <p class="lead" style="margin-top:14px">Request early access to be contacted as design partnerships open.</p>
-      </div>
-      <div data-form="cta"></div>
-    </div>
+    <div class="fcard rv" data-form="cta"></div>
   </div>
 </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <span>Udgass by KPAppWorx. © KPAppWorx Technologies Private Limited.</span>
-    <span><a href="/privacy">Privacy</a> · <a href="/">KPAppWorx</a></span>
+    <div>
+      <a class="brand" href="#top"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="5" cy="19" r="2.4" fill="#9BA8B5"/><circle cx="12" cy="9" r="2.4" fill="#9BA8B5"/><circle cx="21" cy="14" r="3.2" fill="#70D6C3"/><path d="M5 19L12 9L21 14" fill="none" stroke="#70D6C3" stroke-width="1.2"/></svg>Udgass</a>
+      <p>A product of KPAppWorx. In early development. No production deployments, customer results or security certifications yet.</p>
+    </div>
+    <div>
+      <h2>Page</h2>
+      <ul><li><a href="#engine">The engine</a></li><li><a href="#record">Decision record</a></li><li><a href="#planning">Planning</a></li><li><a href="#principles">Principles</a></li></ul>
+    </div>
+    <div>
+      <h2>KPAppWorx</h2>
+      <ul><li><a href="/">KPAppWorx</a></li><li><a href="/privacy">Privacy</a></li><li><a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></li></ul>
+    </div>
   </div>
 </footer>
-<div class="mbar" id="mbar" aria-hidden="true"><a class="btn" href="#join" tabindex="-1">Request early access</a></div>
 
 <template id="tpl-form">
   <div class="f1">
+    <h3>Request early access</h3>
+    <p class="f-note" style="margin-top:0">Start with your work email. Two optional questions follow.</p>
     <form class="f-row" novalidate>
       <label class="sr" for="">Work email</label>
       <input type="email" name="email" placeholder="name@company.com" autocomplete="email" inputmode="email" required>
       <button class="btn" type="submit">Request early access</button>
     </form>
-    <p class="f-note">In early development. We use your email only to contact you about Udgass.</p>
+    <p class="f-note">We use your email only to contact you about Udgass.</p>
     <p class="f-status" role="status" aria-live="polite"></p>
   </div>
   <div class="f2" hidden>
     <h3>You're on the list.</h3>
-    <p class="lead" style="font-size:1rem">Two optional questions help us prioritise the right problems.</p>
+    <p class="f-note" style="margin-top:0">Two optional questions help us prioritise the right problems.</p>
     <form novalidate>
       <fieldset style="border:0;padding:0;margin:0" class="q"><legend class="sr">Which decision matters most to your team?</legend>
-        <span style="display:block;font-weight:600;font-size:.95rem;margin-bottom:10px" aria-hidden="true">Which decision matters most to your team?</span>
+        <span style="display:block;font-weight:600;font-size:.93rem;margin-bottom:10px" aria-hidden="true">Which decision matters most to your team?</span>
         <div class="chips">
           <label><input type="checkbox" name="challenge" value="Demand planning"><span>Demand planning</span></label>
           <label><input type="checkbox" name="challenge" value="Inventory levels"><span>Inventory levels</span></label>
@@ -726,164 +813,181 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
       <label class="sel q" style="display:block"><span>Organisation size</span>
         <select name="size"><option value="">Choose one</option><option>Under 50 employees</option><option>50 to 500 employees</option><option>500 to 5,000 employees</option><option>More than 5,000 employees</option></select>
       </label>
-      <label class="call"><input type="checkbox" name="call" value="yes"><span>Open to a 30-minute conversation about how we plan today.</span></label>
+      <label class="call"><input type="checkbox" name="call" value="yes"><span>Open to a 30-minute research conversation about how we plan today.</span></label>
       <div class="acts"><button class="btn" type="submit">Send</button><button class="link" type="button" data-skip>Skip for now</button></div>
     </form>
     <p class="f-status" role="status" aria-live="polite"></p>
   </div>
   <div class="f-done" hidden>
-    <h3></h3><p class="lead" style="font-size:1rem"></p>
+    <h3></h3><p class="lead"></p>
   </div>
 </template>
 
 <script>
-/* =====================================================================
-   Particle field: a memory of layered history (phase 1) that, as you
-   scroll, lifts into an ascending spiral (the loop getting wiser).
-   Plain WebGL, no libraries. Decorative only.
-   ===================================================================== */
 (function(){
-  var cv = document.getElementById('gl');
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var gl = cv.getContext('webgl', {antialias:false, alpha:true, powerPreference:'low-power'});
-  if(!gl){ return; }
-  var mobile = Math.min(innerWidth, innerHeight) < 700;
-  var N = mobile ? 3800 : 9000;
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return [].slice.call((r||document).querySelectorAll(s))};
 
-  var vs = [
-  'attribute vec3 s;',
-  'uniform mat4 M; uniform float t,prog,px,sx;',
-  'varying vec3 col; varying float a;',
-  'float h(float n){return fract(sin(n*127.1)*43758.5453);}',
-  'void main(){',
-  ' float L=s.x,u=s.y,v=s.z;',
-  ' float x=(u-.5)*13.;float z=(v-.5)*7.;float y=(L-.5)*4.6;',
-  ' y+=sin(x*.55+L*6.+t*.35)*.34+sin(z*.9+L*9.+t*.25)*.2;',
-  ' vec3 A=vec3(x,y,z);',
-  ' float ang=u*15.+v*6.2832; float r=.9+v*1.9+L*.5;',
-  ' vec3 B=vec3(cos(ang)*r,(u-.5)*7.2+sin(t*.4+v*6.)*.12,sin(ang)*r);',
-  ' float k=smoothstep(0.,1.,prog);',
-  ' vec3 p=mix(A,B,k); p.x+=sx;',
-  ' gl_Position=M*vec4(p,1.);',
-  ' float pulse=exp(-pow((fract(u-t*.045)-.5)*5.,2.));',
-  ' float ember=step(.9975,h(L*91.+u*37.+v*17.));',
-  ' col=mix(vec3(.13,.83,.93),vec3(.65,.55,.98),clamp(L*.9+v*.3+k*.2,0.,1.));',
-  ' col=mix(col,vec3(1.,.75,.14),ember);',
-  ' a=.75+.6*pulse+ember*.7;',
-  ' gl_PointSize=(2.6+pulse*2.2+ember*4.)*px*(9./gl_Position.w);',
-  '}'].join('\n');
-  var fs = [
-  'precision mediump float; varying vec3 col; varying float a;',
-  'void main(){vec2 c=gl_PointCoord-.5;float d=length(c);if(d>.5)discard;',
-  ' float f=smoothstep(.5,.0,d);gl_FragColor=vec4(col*(.7+f),f*a);}'].join('\n');
+  /* reveal + problem join */
+  var io=('IntersectionObserver' in window)?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'}):null;
+  $$('.rv').forEach(function(el){io?io.observe(el):el.classList.add('in')});
+  var pg=$('#pgrid');
+  if(pg&&io){new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){pg.classList.add('joined')},reduce?0:500);o.disconnect()}})},{threshold:.5}).observe(pg)}else if(pg){pg.classList.add('joined')}
 
-  function sh(type,src){var o=gl.createShader(type);gl.shaderSource(o,src);gl.compileShader(o);return gl.getShaderParameter(o,gl.COMPILE_STATUS)?o:null}
-  var v=sh(gl.VERTEX_SHADER,vs), f=sh(gl.FRAGMENT_SHADER,fs);
-  if(!v||!f){return}
-  var pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);
-  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){return}
-  gl.useProgram(pr);
-
-  var LAYERS=14, d=new Float32Array(N*3), i;
-  /* seeded so the field looks the same on every visit */
-  var seed=7; function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
-  for(i=0;i<N;i++){
-    d[i*3]=(Math.floor(rnd()*LAYERS)+.5+(rnd()-.5)*.25)/LAYERS;
-    d[i*3+1]=rnd(); d[i*3+2]=rnd();
-  }
-  var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);
-  var loc=gl.getAttribLocation(pr,'s');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,0,0);
-  var U={M:gl.getUniformLocation(pr,'M'),t:gl.getUniformLocation(pr,'t'),prog:gl.getUniformLocation(pr,'prog'),px:gl.getUniformLocation(pr,'px'),sx:gl.getUniformLocation(pr,'sx')};
-  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
-
-  function persp(fov,asp,n,f){var q=1/Math.tan(fov/2),r=1/(n-f);return[q/asp,0,0,0, 0,q,0,0, 0,0,(n+f)*r,-1, 0,0,2*n*f*r,0]}
-  function mul(a,b){var o=new Array(16),i,j;for(i=0;i<4;i++)for(j=0;j<4;j++)o[j*4+i]=a[i]*b[j*4]+a[4+i]*b[j*4+1]+a[8+i]*b[j*4+2]+a[12+i]*b[j*4+3];return o}
-  function rotY(a){var c=Math.cos(a),s=Math.sin(a);return[c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]}
-  function rotX(a){var c=Math.cos(a),s=Math.sin(a);return[1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1]}
-  function trans(x,y,z){return[1,0,0,0, 0,1,0,0, 0,0,1,0, x,y,z,1]}
-
-  var W=0,H=0,dpr=1;
-  function resize(){
-    dpr=Math.min(window.devicePixelRatio||1, mobile?1.5:1.75);
-    W=Math.round(innerWidth*dpr);H=Math.round(innerHeight*dpr);
-    if(cv.width!==W||cv.height!==H){cv.width=W;cv.height=H}
-    gl.viewport(0,0,W,H);
-  }
-  resize();addEventListener('resize',resize);
-
-  var mx=0,my=0,tx=0,ty=0,prog=0,tprog=0,vis=true,t0=performance.now(),raf=0;
-  addEventListener('pointermove',function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5},{passive:true});
+  /* nav progress + active link */
+  var prog=$('#prog'),links=$$('.nav nav a[href^="#"]:not(.btn)'),secs=links.map(function(a){return $(a.getAttribute('href'))});
   function onScroll(){
-    var max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
-    tprog=Math.min(1,Math.max(0,(scrollY/max-.06)/.62));
-    if(reduce)draw(0);
+    var h=document.documentElement,max=h.scrollHeight-innerHeight;
+    prog.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';
+    var cur=-1,y=scrollY+140;secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
   }
   addEventListener('scroll',onScroll,{passive:true});onScroll();
 
-  function draw(time){
-    mx+=(tx-mx)*.04;my+=(ty-my)*.04;prog+=(tprog-prog)*.06;
-    var wide=innerWidth>900;
-    var sx=wide?(1-Math.min(1,prog*2.2))*2.7:0;           // hero: sit to the right of the headline
-    var cam=wide?10.5:13.5;
-    var P=persp(.9,W/H,.1,60);
-    var V=mul(trans(0,-.2,-cam),mul(rotX(.35+my*.2-prog*.25),rotY(time*.025+mx*.5+prog*1.1)));
-    gl.uniformMatrix4fv(U.M,false,new Float32Array(mul(P,V)));
-    gl.uniform1f(U.t,time);gl.uniform1f(U.prog,prog);gl.uniform1f(U.px,dpr*(mobile?1.1:1.4));gl.uniform1f(U.sx,sx);
-    gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.POINTS,0,N);
+  /* hero network */
+  var net=$('#net'),leg=$$('#legend button'),cap=$('#cap');
+  var capText={
+    1:['Evidence.','Linked events from sales, supply and orders are gathered. Each one keeps its source and date.'],
+    2:['Estimate.','An estimate is made from that evidence only, as a range with its assumptions stated.'],
+    3:['Decision.','A person chooses what to do. The decision is recorded with the estimate that informed it.'],
+    4:['Outcome.','What actually happens is recorded against the estimate. It may land inside or outside the range. Both are kept.']
+  };
+  function setK(k){
+    leg.forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.k===k))});
+    $$('[data-s]',net).forEach(function(el){var s=+el.dataset.s;el.classList.toggle('off',s>k);el.classList.toggle('cur',s===k)});
+    cap.innerHTML='<strong></strong> ';cap.firstChild.textContent=capText[k][0];cap.appendChild(document.createTextNode(capText[k][1]));
   }
-  function loop(){raf=0;if(!vis)return;draw((performance.now()-t0)/1000);raf=requestAnimationFrame(loop)}
-  if(reduce){draw(0);addEventListener('resize',function(){draw(0)});}
-  else{
-    document.addEventListener('visibilitychange',function(){vis=!document.hidden;if(vis&&!raf)loop()});
-    loop();
+  var auto=null;
+  function stopAuto(){if(auto){clearTimeout(auto);auto=null}}
+  leg.forEach(function(b){b.addEventListener('click',function(){stopAuto();setK(+b.dataset.k)})});
+  $$('.hit',net).forEach(function(h){h.addEventListener('click',function(){stopAuto();setK(+h.dataset.k)})});
+  if(!reduce){
+    var k=0;setK(1);
+    auto=setTimeout(function step(){k++;if(k>4){auto=null;return}setK(k);auto=setTimeout(step,1300)},1500);
   }
-})();
 
-/* ---------- reveal on scroll, timeline spine + stage lighting ---------- */
-(function(){
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var rv=[].slice.call(document.querySelectorAll('.rv'));
-  if(!('IntersectionObserver' in window)||reduce){rv.forEach(function(e){e.classList.add('in')});}
-  else{
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
-    rv.forEach(function(e){io.observe(e)});
+  /* engine */
+  var st=$$('#stages .st'),stg=$('#stages');
+  function openStage(i){
+    st.forEach(function(s,j){
+      var o=j===i;s.classList.toggle('open',o);s.classList.toggle('done',j<i);
+      $('.hd',s).setAttribute('aria-expanded',String(o));
+    });
+    stg.style.setProperty('--p',String(i/(st.length-1)));
   }
-  var tl=document.getElementById('tl'),rows=[].slice.call(tl.querySelectorAll('.stage-row'));
-  function upd(){
-    var r=tl.getBoundingClientRect(),vh=innerHeight,mid=vh*.62;
-    var p=(mid-r.top)/r.height;p=Math.max(0,Math.min(1,p));
-    tl.style.setProperty('--p',reduce?1:p);
-    rows.forEach(function(row){var b=row.getBoundingClientRect();if(reduce||b.top<vh*.7)row.classList.add('on')});
-  }
-  addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+  st.forEach(function(s,i){
+    var b=$('.hd',s);
+    b.addEventListener('click',function(){openStage(i)});
+    b.addEventListener('keydown',function(e){
+      var d={ArrowRight:1,ArrowDown:1,ArrowLeft:-1,ArrowUp:-1}[e.key];
+      if(d){e.preventDefault();var n=(i+d+st.length)%st.length;$('.hd',st[n]).focus();openStage(n)}
+      if(e.key==='Home'){e.preventDefault();$('.hd',st[0]).focus();openStage(0)}
+      if(e.key==='End'){e.preventDefault();$('.hd',st[4]).focus();openStage(4)}
+    });
+  });
+  openStage(0);
 
-  /* restrained depth on the hero panels */
-  var st=document.getElementById('stage');
-  if(!reduce&&matchMedia('(min-width:901px)').matches){
-    var ps=[].slice.call(st.querySelectorAll('.pane')),tx=0,ty=0,cx=0,cy=0,run=false;
-    addEventListener('pointermove',function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5;if(!run){run=true;requestAnimationFrame(tick)}},{passive:true});
-    function tick(){
-      cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;
-      ps.forEach(function(p){var d=parseFloat(p.dataset.depth||1);p.style.transform='translate3d('+(-cx*14*d)+'px,'+(-cy*10*d)+'px,'+(parseFloat(getComputedStyle(p).getPropertyValue('--z'))||0)+'px) rotateY('+(cx*7)+'deg) rotateX('+(-cy*6)+'deg)'});
-      if(Math.abs(tx-cx)>.001||Math.abs(ty-cy)>.001)requestAnimationFrame(tick);else run=false;
+  /* decision record */
+  var rec=$('#rec'),sb=$$('#scrub button'),names={1:'Decided',2:'Acted on',3:'Outcome in',4:'Reviewed'};
+  function setRec(s){
+    sb.forEach(function(b){b.setAttribute('aria-pressed',String(+b.dataset.s===s))});
+    $$('.blk',rec).forEach(function(b){b.classList.toggle('pending',+b.dataset.from>s)});
+    $$('.log li',rec).forEach(function(l){var on=+l.dataset.at<=s;l.classList.toggle('on',on);l.classList.toggle('off',!on)});
+    $('#rbar').classList.toggle('nor',s<3);
+    $('#rstate').textContent=names[s];
+  }
+  sb.forEach(function(b){b.addEventListener('click',function(){setRec(+b.dataset.s)})});
+  setRec(4);
+
+  /* planning chart (synthetic, deterministic) */
+  var NH=26,NF=12,X0=10,X1=510,YD=[38,205],cdEl=$('#cd'),ciEl=$('#ci');
+  var STEP=(X1-X0)/(NH+NF-1);
+  function xw(i){return X0+i*STEP}
+  function base(w){return 100+0.6*w+14*Math.sin(2*Math.PI*w/13)+5*Math.sin(w*2.3+1)}
+  var hist=[];for(var w=0;w<NH;w++)hist.push(base(w));
+  var SC={
+    base:{mult:1,wb:.07,ws:.014,lead:4},
+    surge:{mult:1.22,wb:.10,ws:.022,lead:4},
+    delay:{mult:1,wb:.07,ws:.014,lead:8}
+  };
+  var S0=600,Q=1200;
+  function model(k){
+    var p=SC[k],med=[],lo=[],hi=[],im=[S0],ih=[S0],mm=S0,mh=S0;
+    for(var h=1;h<=NF;h++){
+      var m=base(NH-1+h)*p.mult,e=p.wb+p.ws*h;
+      med.push(m);lo.push(m*(1-e));hi.push(m*(1+e));
+      mm-=m;mh-=hi[h-1];if(h>=p.lead){if(h===p.lead){mm+=Q;mh+=Q}}
+      im.push(mm);ih.push(mh);
     }
+    var risk='Low',wk=null;
+    for(var i=1;i<=NF;i++){if(im[i]<0){risk='High';wk=i;break}}
+    if(risk==='Low'){for(var j=1;j<=NF;j++){if(ih[j]<0){risk='Elevated';wk=j;break}}}
+    return {med:med,lo:lo,hi:hi,im:im,ih:ih,risk:risk,wk:wk,lead:p.lead,rg:Math.round((p.wb+p.ws*NF)*100)};
   }
+  var cur=model('base'),from=cur,raf=0;
+  function yd(v){return YD[1]-(v-60)/(190-60)*(YD[1]-YD[0])}
+  var IY=[18,140],IMIN=-700,IMAX=1300;
+  function yi(v){return IY[1]-(v-IMIN)/(IMAX-IMIN)*(IY[1]-IY[0])}
+  function pts(a,f){return a.map(function(v,i){return f(i,v)}).join(' ')}
+  function render(m){
+    var s='';
+    [80,120,160].forEach(function(v){s+='<line class="grid" x1="'+X0+'" x2="'+X1+'" y1="'+yd(v)+'" y2="'+yd(v)+'"/><text x="'+(X0)+'" y="'+(yd(v)-4)+'">'+v+'</text>'});
+    var ax=xw(NH-1);
+    s+='<line class="asof" x1="'+ax+'" x2="'+ax+'" y1="22" y2="'+YD[1]+'"/>';
+    s+='<text x="'+(ax-6)+'" y="16" text-anchor="end">History: 26 weeks</text><text x="'+(ax+6)+'" y="16">Forecast: 12 weeks</text>';
+    s+='<polyline class="hist" points="'+pts(hist,function(i,v){return xw(i).toFixed(1)+','+yd(v).toFixed(1)})+'"/>';
+    var up=m.hi.map(function(v,i){return xw(NH+i).toFixed(1)+','+yd(v).toFixed(1)});
+    var dn=m.lo.map(function(v,i){return xw(NH+i).toFixed(1)+','+yd(v).toFixed(1)}).reverse();
+    var a0=xw(NH-1).toFixed(1)+','+yd(hist[NH-1]).toFixed(1);
+    s+='<polygon class="fband" points="'+a0+' '+up.join(' ')+' '+dn.join(' ')+' '+a0+'"/>';
+    s+='<polyline class="fmed" points="'+a0+' '+m.med.map(function(v,i){return xw(NH+i).toFixed(1)+','+yd(v).toFixed(1)}).join(' ')+'"/>';
+    cdEl.innerHTML=s+'<title id="cdt">Weekly demand history and forecast range</title><desc id="cdd">Synthetic data. A line shows 26 weeks of demand history, followed by a shaded forecast range for the next 12 weeks.</desc>';
+    var t='',z=yi(0);
+    t+='<line class="zero" x1="'+X0+'" x2="'+X1+'" y1="'+z+'" y2="'+z+'"/><text x="'+X0+'" y="'+(z-5)+'">0 units</text>';
+    var ix=function(i){return X0+i*(X1-X0)/NF};
+    var im=m.im.map(function(v,i){return [ix(i),yi(Math.max(IMIN,Math.min(IMAX,v)))]});
+    var ih=m.ih.map(function(v,i){return [ix(i),yi(Math.max(IMIN,Math.min(IMAX,v)))]});
+    var neg=ih.map(function(p,i){return [p[0],Math.max(p[1],z)]});
+    t+='<polygon class="neg" points="'+neg.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ')+' '+ix(NF).toFixed(1)+','+z+' '+ix(0).toFixed(1)+','+z+'"/>';
+    t+='<polyline class="invhi" points="'+ih.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ')+'"/>';
+    t+='<polyline class="inv" points="'+im.map(function(p){return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ')+'"/>';
+    var lx=ix(m.lead);
+    t+='<path class="arr" d="M'+lx+' '+(IY[0]-10)+' l-5 -8 h10 z" transform="translate(0,16)"/><text x="'+(lx+(m.lead>6?-10:10))+'" y="'+(IY[0]+8)+'" text-anchor="'+(m.lead>6?'end':'start')+'">Order arrives, week '+m.lead+'</text>';
+    t+='<text x="'+X0+'" y="164">Now</text><text x="'+X1+'" y="164" text-anchor="end">Week 12</text>';
+    ciEl.innerHTML=t+'<title id="cit">Projected inventory position</title><desc id="cid">Synthetic data. Projected stock over 12 weeks at central and high demand, with the week a replenishment order arrives.</desc>';
+  }
+  function lerp(a,b,t){return a.map(function(v,i){return v+(b[i]-v)*t})}
+  function mix(a,b,t){return {med:lerp(a.med,b.med,t),lo:lerp(a.lo,b.lo,t),hi:lerp(a.hi,b.hi,t),im:lerp(a.im,b.im,t),ih:lerp(a.ih,b.ih,t),lead:b.lead}}
+  function facts(m){
+    $('#f-lt').textContent=m.lead+' weeks';$('#f-rg').textContent='±'+m.rg+'%';
+    var r=$('#f-rk');r.textContent=m.risk;r.setAttribute('data-r',m.risk);
+    $('#f-wk').textContent=m.wk?('Week '+m.wk+(m.risk==='High'?'':' (if demand runs high)')):'None';
+  }
+  function go(k){
+    var to=model(k);facts(to);
+    cancelAnimationFrame(raf);
+    if(reduce){cur=to;render(to);return}
+    var t0=performance.now(),a=cur;
+    (function f(now){
+      var t=Math.min(1,(now-t0)/450),e=t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+      render(mix(a,to,e));
+      if(t<1)raf=requestAnimationFrame(f);else cur=to;
+    })(t0);
+  }
+  render(cur);facts(cur);
+  $$('#sc input').forEach(function(i){i.addEventListener('change',function(){go(i.value)})});
 })();
+</script>
 
-/* =====================================================================
-   Two-step early-access form.
-   Step 1 saves the email. Step 2 updates the SAME row (matched by id).
-   Success is shown only after the server confirms with {ok:true,id,step}.
-   If no endpoint is configured, it says so instead of pretending.
-   ===================================================================== */
+<script>
+/* Two-step early-access form. Step 1 saves the email. Step 2 updates the SAME row (matched by id).
+   Success is shown only after the server confirms with {ok:true,id,step}. */
 (function(){
   var tpl=document.getElementById('tpl-form');
   var state={id:(window.crypto&&crypto.randomUUID)?crypto.randomUUID():('u'+Date.now().toString(36)+Math.random().toString(36).slice(2,10)),saved1:false,saved2:false,email:''};
   var mounts=[].slice.call(document.querySelectorAll('[data-form]'));
   var views=[];
   var EMAIL=/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/;
-
   function post(payload){
     var endpoint=document.body.getAttribute('data-endpoint')||'';
     if(!endpoint){return Promise.reject({code:'noendpoint'})}
@@ -903,7 +1007,6 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
   }
   function show(v,which){['f1','f2','f-done'].forEach(function(c){v.root.querySelector('.'+c).hidden=(c!==which)})}
   function status(el,msg,cls){el.textContent=msg||'';el.className='f-status'+(cls?' '+cls:'')}
-
   mounts.forEach(function(m,idx){
     m.appendChild(tpl.content.cloneNode(true));
     var root=m,v={root:root};views.push(v);
@@ -934,24 +1037,6 @@ footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
       }).catch(function(e){status(s2,failText(e),'err')}).then(function(){b2.disabled=false;b2.textContent='Send'});
     });
   });
-})();
-
-/* ---- progress, active nav, mobile CTA ---- */
-(function(){
-  var bar=document.getElementById('progBar'),mb=document.getElementById('mbar'),join=document.getElementById('join');
-  var links=[].slice.call(document.querySelectorAll('.nav nav a[href^="#"]:not(.btn)'));
-  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
-  var hero=document.getElementById('top');
-  function upd(){
-    var max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
-    bar.style.transform='scaleX('+Math.min(1,scrollY/max)+')';
-    var cur=null;secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.top<innerHeight*.4&&r.bottom>innerHeight*.4)cur=s.id});
-    links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)});
-    var jr=join.getBoundingClientRect(),hr=hero.getBoundingClientRect();
-    var show=hr.bottom<0&&(jr.top>innerHeight*.85||jr.bottom<0);
-    mb.classList.toggle('show',show);mb.querySelector('a').tabIndex=show?0:-1;
-  }
-  addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
 })();
 </script>
 </body>
