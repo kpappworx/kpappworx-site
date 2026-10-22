@@ -44,9 +44,9 @@ window.KP_PRODUCTS = [
   {
     id: "udgass",
     name: "Udgass.ai",
-    audience: "inventory and demand planners",
-    descriptor: "AI demand forecasting from historical patterns",
-    summary: "Learns from years of business history to anticipate demand, with the uncertainty shown. Early-access list open; no product to sign in to yet.",
+    audience: "planners, supply-chain teams and business leaders",
+    descriptor: "Business decision intelligence engine",
+    summary: "Remembers a business’s history, detects change, predicts outcomes with the uncertainty shown, and learns from results. Starting with demand and inventory. Early-access list open; no product to sign in to yet.",
     status: "in-development",
     href: "/udgass",
     accent: "#24509c",
