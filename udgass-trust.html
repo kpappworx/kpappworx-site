@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Udgass · Trust and evaluation</title>
+<meta name="description" content="What Udgass does with your data, what security work exists and does not exist yet, and how a planning or security team can evaluate it on its own history in about ten minutes.">
+<link rel="canonical" href="https://www.kpappworx.com/udgass-trust">
+<meta name="theme-color" content="#090D12">
+<link rel="preload" href="/assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Newsreader";src:url(/assets/fonts/newsreader-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(/assets/fonts/newsreader-latin-wght-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+@font-face{font-family:"Inter";src:url(/assets/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(/assets/fonts/jetbrains-mono-latin-wght-normal.woff2) format("woff2");font-weight:100 800;font-display:swap}
+:root{--bg:#090D12;--s1:#101720;--s2:#151F29;--tx:#F0F2EF;--mu:#9BA8B5;--dim:#8493A2;--ac:#70D6C3;--am:#E3B96F;--rk:#E39A80;--ln:rgba(155,168,181,.2);--ln2:rgba(155,168,181,.36);
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;--gut:clamp(16px,4vw,40px)}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--tx);font:400 1.0625rem/1.65 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,p,ul,ol,dl,dd{margin:0}ul,ol{padding:0;list-style:none}a{color:inherit}
+:focus-visible{outline:2px solid var(--ac);outline-offset:3px;border-radius:2px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ac);color:#06201b;padding:10px 16px;z-index:100;font-weight:600;text-decoration:none}.skip:focus{top:12px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 var(--gut)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(9,13,18,.94);border-bottom:1px solid var(--ln)}
+.nav .wrap{display:flex;align-items:center;gap:24px;min-height:68px;max-width:1200px}
+.brand{min-height:44px;display:flex;align-items:center;gap:10px;text-decoration:none;font:500 1.5rem/1 var(--serif)}
+.brand svg{width:26px;height:26px;flex:none}
+.nav nav{margin-left:auto;display:flex;align-items:center;gap:6px}
+.nav nav a{min-height:44px;min-width:44px;display:inline-flex;align-items:center;padding:0 12px;text-decoration:none;color:var(--mu);font-size:.95rem}
+.nav nav a:hover{color:var(--tx)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:2px;border:1px solid var(--ac);background:var(--ac);color:#06201b;font:600 .98rem var(--sans);text-decoration:none}
+.btn:hover{background:#8fe3d3}.btn.ghost{background:transparent;color:var(--tx);border-color:var(--ln2)}.btn.ghost:hover{border-color:var(--ac);color:var(--ac)}
+.nav nav a.btn{color:#06201b}.nav nav a.btn:hover{color:#06201b}
+.nav .btn{min-height:44px;padding:0 18px;font-size:.92rem}
+@media(max-width:620px){.nav nav a.hide{display:none}}
+@media(max-width:440px){.nav nav a.ov{display:none}.nav .wrap{gap:12px}.nav nav a.btn{padding:0 12px}}
+.eyebrow{font:500 .75rem/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ac)}
+h1{font:400 clamp(2.2rem,5.4vw,3.8rem)/1.06 var(--serif);letter-spacing:-.02em;text-wrap:balance;margin-top:16px;max-width:18ch}
+h1 em,h2 em{font-style:italic;color:var(--ac)}
+h2{font:400 clamp(1.7rem,3.2vw,2.3rem)/1.15 var(--serif);letter-spacing:-.01em;text-wrap:balance;margin-top:12px}
+.lead{color:var(--mu);font-size:clamp(1.05rem,1.4vw,1.2rem);max-width:60ch;margin-top:24px}
+section{padding:clamp(48px,7vw,88px) 0;border-top:1px solid var(--ln)}
+.hero{padding-top:clamp(56px,8vw,104px);border-top:0}
+.tag{display:inline-block;font:500 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--am);border:1px solid rgba(227,185,111,.45);padding:7px 10px;border-radius:2px;margin-bottom:8px}
+.tw{position:relative;margin-top:24px;border:1px solid var(--ln);background:var(--s1)}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;vertical-align:top;padding:12px 16px;border-bottom:1px solid var(--ln)}
+tr:last-child th,tr:last-child td{border-bottom:0}
+th{font-weight:500;color:var(--mu);width:34%}
+td b.no{color:var(--rk);font-weight:600}td b.yes{color:var(--ac);font-weight:600}td b.na{color:var(--dim);font-weight:600}
+@media(max-width:640px){table,tbody,tr,th,td{display:block;width:100%}th{padding-bottom:0;border-bottom:0}td{padding-top:4px}}
+.steps{counter-reset:s;margin-top:24px;display:grid;grid-template-columns:minmax(0,1fr);gap:1px;background:var(--ln);border:1px solid var(--ln)}
+.steps li{min-width:0;counter-increment:s;background:var(--s1);padding:20px 20px 20px 64px;position:relative}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:20px;font:500 .8rem var(--mono);color:var(--ac)}
+.steps b{display:block;font-weight:600}
+.steps span{color:var(--mu);font-size:.95rem}
+code{font:500 .86em var(--mono);background:var(--s2);border:1px solid var(--ln);padding:2px 6px;border-radius:2px;color:var(--tx);overflow-wrap:anywhere}
+pre{margin:10px 0 0;padding:12px 14px;background:var(--bg);border:1px solid var(--ln);overflow-x:auto;font:500 .85rem/1.5 var(--mono);color:var(--tx);max-width:100%}
+.note{margin-top:24px;border-left:2px solid var(--am);background:var(--s1);padding:14px 18px;color:#cfd6dd;font-size:.97rem;max-width:68ch}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin-top:24px}
+@media(max-width:760px){.cols{grid-template-columns:minmax(0,1fr)}}
+.cols div{border:1px solid var(--ln);background:var(--s1);padding:20px}
+.cols h3{font:400 1.25rem/1.2 var(--serif);margin-bottom:8px}.cols p,.cols li{color:var(--mu);font-size:.95rem}
+.cols li{padding:4px 0}
+ul.dot li{position:relative;padding-left:16px}ul.dot li::before{content:"";position:absolute;left:0;top:.8em;width:5px;height:5px;border-radius:50%;background:var(--ac)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+footer{border-top:1px solid var(--ln);padding:40px 0 56px;color:var(--mu);font-size:.92rem}
+footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap">
+  <a class="brand" href="/udgass" aria-label="Udgass home"><svg viewBox="0 0 26 26" aria-hidden="true"><circle cx="5" cy="19" r="2.4" fill="#9BA8B5"/><circle cx="12" cy="9" r="2.4" fill="#9BA8B5"/><circle cx="21" cy="14" r="3.2" fill="#70D6C3"/><path d="M5 19L12 9L21 14" fill="none" stroke="#70D6C3" stroke-width="1.2"/></svg>Udgass</a>
+  <nav aria-label="Primary"><a class="hide" href="#evaluate">Evaluate</a><a class="hide" href="#data">Data</a><a class="hide" href="#gaps">Gaps</a><a class="ov" href="/udgass">Overview</a><a class="btn" href="/udgass#join">Request a pilot</a></nav>
+</div></header>
+
+<main id="main">
+<section class="hero" aria-labelledby="t">
+ <div class="wrap">
+  <p class="tag">Early stage · read this before you evaluate</p>
+  <p class="eyebrow">Trust and evaluation</p>
+  <h1 id="t">Check it on your own history. <em>Keep your data.</em></h1>
+  <p class="lead">This page is for planning, security and procurement teams. It says what Udgass does with data, what safeguards exist, and what does not exist yet. Udgass is early software from one developer. It has no customers, no certifications and has not yet been run on a company’s real data.</p>
+  <div class="cta"><a class="btn" href="/udgass#join">Request a pilot</a><a class="btn ghost" href="#gaps">Jump to what is missing</a></div>
+ </div>
+</section>
+
+<section id="glance" aria-labelledby="g-t"><div class="wrap">
+  <p class="eyebrow">At a glance</p><h2 id="g-t">What exists today</h2>
+  <div class="tw" role="region" aria-label="Summary table" tabindex="0"><table>
+   <tr><th scope="row">What it is</th><td>A local, read-only engine (command line, Python standard library only) that replays your past sales, compares its estimates with what happened, flags unusual weeks, compares stock options under assumptions you state, and keeps a tamper-evident record of decisions and runs.</td></tr>
+   <tr><th scope="row">Where it runs</th><td>On a computer you control. There is no hosted service and no account.</td></tr>
+   <tr><th scope="row">What it needs</th><td>One CSV with date, product and quantity. Nothing else.</td></tr>
+   <tr><th scope="row">What it does to systems</th><td>Nothing. It reads the file you point it at. It has no connection to any ERP, planning or purchasing system and cannot place an order.</td></tr>
+   <tr><th scope="row">Who decides</th><td>A person. Outputs are advice with stated ranges. A named person makes and owns each decision.</td></tr>
+   <tr><th scope="row">Tested on</th><td>Invented data only (46 automated tests). <b class="no">No measurement on real company data exists yet.</b> That is what a pilot is for.</td></tr>
+  </table></div>
+</div></section>
+
+<section id="evaluate" aria-labelledby="e-t"><div class="wrap">
+  <p class="eyebrow">Evaluate it</p><h2 id="e-t">Ten minutes, on your machine</h2>
+  <p class="lead">You need Python 3.9 or newer and one export of at least 56 weeks. Leave out customer names, emails and other personal data.</p>
+  <ol class="steps">
+   <li><b>Look at the file first</b><span>Shows the columns found, products, weeks, gaps, and anything that looks personal. Changes and writes nothing.</span><pre tabindex="0">python3 -m udgass check sales.csv</pre></li>
+   <li><b>Replay your history</b><span>Each estimate uses only data that existed at its date, then is compared with what happened and with a flat baseline.</span><pre tabindex="0">python3 -m udgass backtest sales.csv --out report.html --leaderboard</pre></li>
+   <li><b>Score your current forecast against it</b><span>The test that matters. Supply the forecasts exactly as they were made at the time, not re-run today.</span><pre tabindex="0">python3 -m udgass compare-forecast sales.csv our_forecasts.csv</pre></li>
+  </ol>
+  <p class="note">If Udgass is not clearly better than your current forecast or the baseline, that is a valid result. On one of our invented test sets it only tied the baseline. Good results on past data do not guarantee future performance. The code, a one-page pilot guide and the security notes are shared with an evaluating team on request.</p>
+</div></section>
+
+<section id="data" aria-labelledby="d-t"><div class="wrap">
+  <p class="eyebrow">Data handling</p><h2 id="d-t">What happens to your file</h2>
+  <div class="cols">
+   <div><h3>What the software does</h3><ul class="dot">
+     <li>Reads your file once, in memory, on your machine</li>
+     <li>Never modifies it (checked by an automated test)</li>
+     <li>Makes no network calls. Network and process modules are not imported (checked by a test)</li>
+     <li>No third-party dependencies</li>
+     <li>Writes only the report files you name and a small run log</li></ul></div>
+   <div><h3>Safeguards</h3><ul class="dot">
+     <li>Refuses files with extra columns that look personal (emails, phones, names, addresses), unless overridden. Best effort: it can miss free text</li>
+     <li>Run log records version, settings and file hashes, never data rows. Hash-chained, so edits are detected. Tamper-evident, not tamper-proof</li>
+     <li>Reports label which data they were measured on</li></ul></div>
+  </div>
+  <p class="note">This website is separate. The early-access form sends what a visitor types to a Google Sheet operated by KPAppWorx. The “Try it” tool on the overview page reads a file inside the visitor’s browser and does not upload it. See the <a href="/privacy">privacy policy</a>.</p>
+</div></section>
+
+<section id="gaps" aria-labelledby="x-t"><div class="wrap">
+  <p class="eyebrow">What is missing</p><h2 id="x-t">The honest checklist</h2>
+  <p class="lead">Questions security and procurement teams usually ask, answered as they stand.</p>
+  <div class="tw" role="region" aria-label="Status table" tabindex="0"><table>
+   <tr><th scope="row">SOC 2, ISO 27001</th><td><b class="no">None.</b> No audit has started.</td></tr>
+   <tr><th scope="row">Independent penetration test</th><td><b class="no">None.</b></td></tr>
+   <tr><th scope="row">Customer references</th><td><b class="no">None.</b> No production deployments.</td></tr>
+   <tr><th scope="row">Real-data accuracy evidence</th><td><b class="no">None yet.</b> Published figures come from invented data.</td></tr>
+   <tr><th scope="row">Integrations (SAP, Oracle, Snowflake, …)</th><td><b class="no">None.</b> CSV exports only.</td></tr>
+   <tr><th scope="row">Hosted service, single sign-on, roles</th><td><b class="na">Not applicable today.</b> There is no hosted service to sign in to.</td></tr>
+   <tr><th scope="row">Sub-processors</th><td>None for the engine, which runs on your machine. The website form uses Google.</td></tr>
+   <tr><th scope="row">Data residency and retention</th><td>Data stays where you run it. Udgass keeps nothing beyond the files you create.</td></tr>
+   <tr><th scope="row">Support and uptime commitments</th><td><b class="no">None.</b> One person, replies within a few days.</td></tr>
+   <tr><th scope="row">Contract terms, liability</th><td><b class="no">Not drafted.</b> Advisory use only. A pilot would be agreed in writing first.</td></tr>
+  </table></div>
+  <h2 style="margin-top:56px">What would change this, in order</h2>
+  <ol class="steps">
+   <li><b>Backtests on real history</b><span>With three to five planning teams, shared only with their consent, whatever the result.</span></li>
+   <li><b>Head-to-head against your forecast</b><span>Paid pilots using the comparison above.</span></li>
+   <li><b>Security work before any hosted version</b><span>Independent penetration test, then a SOC 2 readiness exercise.</span></li>
+   <li><b>One read-only integration</b><span>For one named system, chosen with a design partner.</span></li>
+   <li><b>Named references</b><span>Only from customers who agree.</span></li>
+  </ol>
+  <div class="cta"><a class="btn" href="/udgass#join">Request a pilot</a><a class="btn ghost" href="mailto:hello@kpappworx.com?subject=Udgass%20evaluation">Email the founder</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><p>Udgass is a product of KPAppWorx Technologies Private Limited, Bengaluru. In early development. <a href="/udgass">Overview</a> · <a href="/privacy">Privacy</a> · <a href="/">KPAppWorx</a></p></div></footer>
+</body>
+</html>
