@@ -46,7 +46,7 @@ window.KP_PRODUCTS = [
     name: "Udgass.ai",
     audience: "planners, supply-chain teams and business leaders",
     descriptor: "Business decision intelligence engine",
-    summary: "Remembers a business’s history, detects change, predicts outcomes with the uncertainty shown, and learns from results. Starting with demand and inventory. Early-access list open; no product to sign in to yet.",
+    summary: "A decision intelligence engine in development. It connects business history, decisions and measured outcomes, and shows the uncertainty behind every estimate. First application: demand and inventory planning. Design-partner list open; no product to sign in to yet.",
     status: "in-development",
     href: "/udgass",
     accent: "#24509c",

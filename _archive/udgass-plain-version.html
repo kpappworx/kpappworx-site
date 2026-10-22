@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Udgass.ai — Business Decision Intelligence Engine</title>
+<meta name="description" content="Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand." />
+<link rel="canonical" href="https://www.kpappworx.com/udgass" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="KPAppWorx Technologies" />
+<meta property="og:title" content="Udgass.ai — Business Decision Intelligence Engine" />
+<meta property="og:description" content="Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand." />
+<meta property="og:url" content="https://www.kpappworx.com/udgass" />
+<meta property="og:image" content="https://www.kpappworx.com/assets/img/udgass-og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Udgass.ai: layered business history with traces from similar past periods leading to a widening forecast range. Illustrative." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Udgass.ai — Business Decision Intelligence Engine" />
+<meta name="twitter:description" content="Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand." />
+<meta name="twitter:image" content="https://www.kpappworx.com/assets/img/udgass-og.png" />
+<meta name="theme-color" content="#f6f2e9" />
+<link rel="icon" href="/logo-nav.png" type="image/png" />
+<script>document.documentElement.setAttribute('data-theme','light');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.kpappworx.com/#org",
+      "name": "KPAppWorx Technologies Private Limited",
+      "alternateName": "KPAppWorx",
+      "url": "https://www.kpappworx.com",
+      "logo": "https://www.kpappworx.com/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bengaluru",
+        "addressRegion": "Karnataka",
+        "addressCountry": "IN"
+      },
+      "email": "hello@kpappworx.com"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.kpappworx.com/udgass#page",
+      "url": "https://www.kpappworx.com/udgass",
+      "name": "Udgass.ai — Business Decision Intelligence Engine",
+      "description": "Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand.",
+      "inLanguage": "en",
+      "isPartOf": { "@type": "WebSite", "name": "KPAppWorx", "url": "https://www.kpappworx.com" },
+      "publisher": { "@id": "https://www.kpappworx.com/#org" }
+    }
+  ]
+}
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/assets/css/base.css" />
+<link rel="stylesheet" href="/assets/css/kp.css" />
+<link rel="stylesheet" href="/assets/css/nova.css" />
+<link rel="stylesheet" href="/assets/css/quarterdeck.css" />
+<link rel="stylesheet" href="/assets/css/udgass.css" />
+</head>
+<body class="ud">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+<symbol id="m-ev" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="7.5"/></symbol>
+<symbol id="m-mem" viewBox="0 0 24 24"><path d="M3 8c3-2.4 6 2.4 9 0s6-2.4 9 0M3 12.5c3-2.4 6 2.4 9 0s6-2.4 9 0M3 17c3-2.4 6 2.4 9 0s6-2.4 9 0"/></symbol>
+<symbol id="m-rel" viewBox="0 0 24 24"><circle cx="6" cy="16" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M8 14.6C11 12 13 12 16 9.4" stroke-dasharray="1 3"/></symbol>
+<symbol id="m-link" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="2.5"/><circle cx="18.5" cy="12" r="2.5"/><path d="M8 12h8"/></symbol>
+<symbol id="m-exc" viewBox="0 0 24 24"><path d="M3 15h5l2.5-9 3 13 2-4H21"/></symbol>
+<symbol id="m-branch" viewBox="0 0 24 24"><path d="M12 3v7M12 10l-5.5 5M12 10l5.5 5"/><circle cx="12" cy="3.5" r="1.5"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="19" r="2.2"/></symbol>
+<symbol id="m-pre" viewBox="0 0 24 24"><path d="M2.5 16l5-4 4 1.5"/><path d="M11.5 13.5l9.5-3" stroke-dasharray="1.5 3"/></symbol>
+<symbol id="m-unc" viewBox="0 0 24 24"><path d="M3 12h4"/><path d="M7 12L21 5M7 12h14M7 12l14 7" stroke-dasharray="1.5 3"/></symbol>
+<symbol id="m-dec" viewBox="0 0 24 24"><path d="M3 12h6M9 12l6-5.5M9 12l6 5.5"/><circle cx="18" cy="6" r="1.8"/><circle cx="18" cy="18" r="1.8"/></symbol>
+<symbol id="m-out" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.4l2.8 2.8L16.2 9.6"/></symbol>
+<symbol id="m-spiral" viewBox="0 0 24 24"><path d="M12 12a1 1 0 0 1 2 0a2.5 2.5 0 0 1-5 0a4 4 0 0 1 8 0a5.5 5.5 0 0 1-11 0"/></symbol>
+</defs></svg>
+
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Main navigation">
+    <div class="ud-lockup">
+      <a href="/" class="brand" aria-label="KPAppWorx home"><img src="/logo-nav.png" alt="" width="28" height="28" /><span class="nm">KPAppWorx</span></a>
+      <span class="ud-sep" aria-hidden="true"></span>
+      <a href="/udgass" class="ud-wordmark" aria-label="Udgass.ai"><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect width="28" height="28" rx="7" fill="#0c1526"/><path d="M5 18c3 0 3-8 6-8s3 8 6 8" stroke="#eef1f7" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M17 18c1.8 0 3-3 6-7" stroke="#8fb0ee" stroke-width="1.8" stroke-dasharray="2.2 2.6" fill="none" stroke-linecap="round"/><circle cx="23" cy="11" r="1.8" fill="#8fb0ee"/></svg>Udgass<small>.ai</small></a>
+    </div>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#example">Example</a>
+      <a href="#faq">Questions</a>
+    </div>
+    <div class="nav-actions">
+      <a href="#early-access" class="btn btn-primary">Join Early Access</a>
+    </div>
+    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#how">How it works</a>
+    <a href="#example">Example</a>
+    <a href="#faq">Questions</a>
+    <div class="mm-divider"></div>
+    <a href="#early-access"><strong>Join the Early Access List</strong></a>
+    <a href="/">← KPAppWorx home</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="tp tp-hero" aria-labelledby="hero-title">
+  <div class="ud-field-bg" id="memoryField" data-center="1" aria-hidden="true"></div>
+  <div class="tp-hero-text">
+    <p class="tp-kicker">Udgass by KPAppWorx · early development</p>
+    <h1 class="tp-h1" id="hero-title">Your business has seen the pattern before.</h1>
+    <p class="tp-sub">Udgass is a memory for your business. It remembers what happened, and tells you what is likely to happen next.</p>
+    <a href="#early-access" class="ud-btn ud-btn-light">Join the early-access list
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  </div>
+  <a href="#idea" class="tp-scroll">Scroll to know more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+</section>
+
+<section class="tp" id="idea" aria-labelledby="idea-title">
+  <h2 class="tp-h2" id="idea-title">What would you decide differently if your business remembered everything?</h2>
+  <p>Every sale, every order, every rush and every quiet week is already in your records. Most of it sits in spreadsheets and different tools, and nobody has time to piece it together.</p>
+  <p>Udgass is being built to read that history, notice what has changed, say what is likely to happen next, and check afterwards whether it was right.</p>
+  <p class="tp-dim">We are starting with one question: how much stock to buy.</p>
+</section>
+
+<section class="tp tp-ask" id="ask" aria-labelledby="ask-title">
+  <h2 class="tp-h2" id="ask-title">Ask it a plain question. Get a plain answer.</h2>
+  <p>An example of how it could feel. The product is not built yet, and the numbers below are made up.</p>
+  <div class="ud-chat" role="img" aria-label="Illustrative example conversation. Made-up numbers.">
+    <p class="ud-bub me">Should I reorder the blue jackets this week?</p>
+    <p class="ud-bub ai">Probably yes, a smaller batch than last year. Orders started rising 3 weeks earlier than usual, and the 4 past seasons that looked like this ended with a sell-out. Range: 80 to 140 units.<span class="why">Based on 4 similar past seasons. Your call.</span></p>
+    <p class="ud-bub me">Okay, I’ll order 100.</p>
+    <p class="ud-bub ai">Noted. I’ll check in after the season and tell you how close we were.</p>
+  </div>
+  <p class="tp-dim">Illustrative only. Invented numbers, not a real customer.</p>
+</section>
+
+<section class="tp tp-verbs" id="verbs" aria-label="What Udgass does">
+  <p class="ud-verb"><b>Udgass remembers.</b> Sales, orders, decisions, results.</p>
+  <p class="ud-verb"><b>Udgass notices.</b> When something is different from usual.</p>
+  <p class="ud-verb"><b>Udgass suggests.</b> What is likely next, with an honest range.</p>
+  <p class="ud-verb"><b>Udgass checks.</b> Whether it was right, so it improves.</p>
+  <p class="ud-verb ud-never"><b>Udgass never acts.</b> It only reads. You always decide.</p>
+</section>
+
+<section class="tp" id="how" aria-labelledby="how-title">
+  <h2 class="tp-h2" id="how-title">It learns from what happened, and checks itself.</h2>
+  <p>Eight steps, one loop. Pick a step to read about it.</p>
+  <div class="ud-loopfig reveal" id="loopFig">
+      <div class="ud-loopfig-svg"></div>
+      <div class="ud-loopfig-cap" aria-live="polite">
+        <p class="n">Step 2 of 8</p>
+        <h3 class="ud-h3">Remember</h3>
+        <p class="desc">Pick a step to read about it.</p>
+        <p class="key"><span class="k"><svg class="mk" viewBox="0 0 24 24"><use href="#m-mem"/></svg>what’s recorded</span><span class="k ex"><svg class="mk" viewBox="0 0 24 24"><use href="#m-exc"/></svg>what’s unusual</span></p>
+        <p class="ud-caption">Each trip around leaves Udgass knowing more, so the next one starts further along.</p>
+      </div>
+    </div>
+  <details class="ud-allsteps"><summary>Read all eight steps in full</summary>
+    <ol class="ud-loop" style="list-style:none" aria-label="The Udgass loop">
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 1</span><span class="ud-step-tag">Exports first</span></div>
+        <h3 class="ud-h3">Connect</h3>
+        <p>Udgass reads the data you already have, such as sales, stock and orders. It only looks. It never changes anything. We would start from a spreadsheet export, so there is no technical setup.</p>
+        <ul class="ud-signals" aria-label="Connect: key ideas"><li>Read-only</li><li>Starts with a spreadsheet</li></ul>
+      </li>
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 2</span><span class="ud-step-tag first">First focus</span></div>
+        <h3 class="ud-h3">Remember</h3>
+        <p>It keeps a clear timeline of your business: what sold, what you ordered, what it predicted, what you decided, and what happened after.</p>
+        <ul class="ud-signals" aria-label="Remember: key ideas"><li>History</li><li>Your decisions</li><li>Results</li></ul>
+      </li>
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 3</span><span class="ud-step-tag">Direction</span></div>
+        <h3 class="ud-h3">Detect</h3>
+        <p>It spots when something is different from usual, like a sudden jump in orders or a supplier getting slower, and tries to tell a real change from normal ups and downs.</p>
+        <ul class="ud-signals" aria-label="Detect: key ideas"><li>Real change</li><li>Not noise</li></ul>
+      </li>
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 4</span><span class="ud-step-tag">Direction</span></div>
+        <h3 class="ud-h3">Diagnose</h3>
+        <p>When something changes, it looks for likely reasons and checks them against your records. It keeps what it knows separate from what it is only guessing.</p>
+        <ul class="ud-signals" aria-label="Diagnose: key ideas"><li>What we know</li><li>What we guess</li><li>What’s missing</li></ul>
+      </li>
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 5</span><span class="ud-step-tag first">First focus</span></div>
+        <h3 class="ud-h3">Predict</h3>
+        <p>It says what is likely to happen next as a range, for example “between 80 and 120”, instead of one made-up exact number.</p>
+        <ul class="ud-signals" aria-label="Predict: key ideas"><li>A range, not a point</li><li>What-if options</li></ul>
+      </li>
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 6</span><span class="ud-step-tag">Direction</span></div>
+        <h3 class="ud-h3">Recommend</h3>
+        <p>It suggests what to do and shows why, including what it assumed. You decide. Udgass never acts on its own.</p>
+        <ul class="ud-signals" aria-label="Recommend: key ideas"><li>Reasons shown</li><li>Assumptions shown</li><li>You decide</li></ul>
+      </li>
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 7</span><span class="ud-step-tag first">First focus</span></div>
+        <h3 class="ud-h3">Verify</h3>
+        <p>Later, it compares what it said would happen with what did happen, and tells you plainly how close it was. If it can’t tell whether your action made the difference, it says so.</p>
+        <ul class="ud-signals" aria-label="Verify: key ideas"><li>Was it right?</li><li>Honest about doubt</li></ul>
+      </li>
+      <li class="ud-step">
+        <div class="ud-step-top"><span class="ud-step-n">STEP 8</span><span class="ud-step-tag first">First focus</span></div>
+        <h3 class="ud-h3">Learn</h3>
+        <p>It uses those results to get better for your business over time, and shows you whether it really is improving.</p>
+        <ul class="ud-signals" aria-label="Learn: key ideas"><li>Gets better</li><li>Shows its record</li></ul>
+      </li>
+    </ol>
+    </details>
+  <p class="tp-dim">“First focus” steps are where we are starting. “Direction” steps come later. Nothing on this page is available today.</p>
+</section>
+
+<section class="tp" id="example" aria-labelledby="example-title">
+  <h2 class="tp-h2" id="example-title">How it could go for a small shop.</h2>
+  <p>Meera sells handmade lamps online. This is an imagined story with made-up numbers. Udgass can’t do this yet.</p>
+  <div class="tp-story">
+    <article><span>Before</span><h3>She guesses, every October</h3><p>Two years ago Meera ran out of lamps in week two of the festival season. Last year she over-ordered and still held 300 in January. Each time she went on a feeling.</p></article>
+    <article><span>With Udgass</span><h3>She sees what her history says</h3><p>Sales climbed in the three weeks before the festival, both years. Her supplier took five weeks, not three. Last year’s sale made one week look bigger than normal. Udgass suggests 400 to 550 lamps, and shows how it got there.</p></article>
+    <article><span>After</span><h3>It checks how it did</h3><p>Meera orders 450 and tells Udgass. In January it sets what it predicted beside what sold, says plainly if it was close, and starts next year from there. She made the call.</p></article>
+  </div>
+</section>
+
+<section class="tp" id="promise" aria-labelledby="promise-title">
+  <h2 class="tp-h2" id="promise-title">What we promise.</h2>
+  <ul class="tp-promise">
+    <li><b>It only reads your data.</b> It never changes anything.</li>
+    <li><b>You make the decision.</b> Udgass advises.</li>
+    <li><b>It shows its doubt.</b> A range, never false precision.</li>
+    <li><b>It checks itself.</b> And shares results only when they are real.</li>
+  </ul>
+</section>
+
+<section class="tp" id="faq" aria-labelledby="faq-title">
+  <h2 class="tp-h3" id="faq-title">Questions people ask first</h2>
+  <div class="ud-faq reveal">
+      <details><summary>Can I use Udgass today?</summary><p>Not yet. Udgass is still being built, and there is nothing to sign in to. The charts on this page use made-up numbers to show the idea. The early-access list is how we will keep you posted.</p></details>
+      <details><summary>What is Udgass, in plain words?</summary><p>Think of it as a memory and a second opinion for your business. It reads your past records, notices when something changes, works out likely reasons, says what is likely to happen next, and suggests what to do. Later it checks whether it was right. We are starting with how much stock to buy.</p></details>
+      <details><summary>Will it make decisions or act for us?</summary><p>No. It only gives advice, and it only reads your data. It shows its reasons and how unsure it is, and you decide.</p></details>
+      <details><summary>What would it need from me?</summary><p>To start, your past sales and stock numbers, for example a spreadsheet export. Joining the list doesn’t mean sharing any data.</p></details>
+      <details><summary>Is it only for small shops, or only for forecasting?</summary><p>No to both. We start with stock planning because those choices repeat and you can see whether they worked. Udgass is meant for planners, supply-chain teams and owners, and for single departments in bigger companies that want to try it on one problem. Over time we want it to help with other repeating choices too, like pricing and cash flow. None of that is built yet.</p></details>
+      <details><summary>How will we know it works?</summary><p>We will compare what it predicted with what happened, and with simple methods like a spreadsheet average. We will share results only when we have real ones.</p></details>
+    </div>
+</section>
+
+<!-- ============================ EARLY ACCESS ============================ -->
+<section class="tp tp-end" id="early-access" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="tp-founder"><div class="ud-founder">
+      <p class="ud-eyebrow">A note from the founder</p>
+      <h2 class="ud-h2" id="founder-title">Why I’m building this, and where it stands.</h2>
+      <p>I’m Kanthipriya Mahale. I run KPAppWorx on my own, from Bengaluru. I spent years building software for aircraft and cars, where a wrong answer is expensive, and it left me with one habit: show your evidence and say what you don’t know.</p>
+      <p>Udgass is being built that way. It isn’t ready yet, and I would rather tell you that than pretend. If you plan stock, forecast demand or make the same kind of decision again and again, I’d like to hear how you do it today. Fill in the form below, or reply to any email I send you.</p>
+      <p class="sig">Kanthipriya Mahale<br><span>Founder, KPAppWorx</span></p>
+    </div></div>
+    <div class="ud-cta-grid tp-cta">
+      <div class="ud-cta-copy reveal">
+        <p class="ud-eyebrow">Early access</p>
+        <h2 class="ud-h2" id="cta-title">What could your business learn from its own history?</h2>
+        <p class="ud-lede">We are still building Udgass, starting with stock and demand. Join the list to follow along and tell us what you would want it to do.</p>
+        <ul class="ud-cta-points">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>A few short questions, most of them optional. No phone number.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>You don’t need to connect anything or share any data.</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Joining just shows interest. It isn’t a commitment, and Udgass isn’t ready yet.</li>
+        </ul>
+        <p class="ud-byline">Udgass is a product by KPAppWorx. <a href="/">Visit kpappworx.com</a></p>
+      </div>
+
+      <div class="reveal">
+        <form class="ud-form" id="earlyForm" novalidate data-endpoint="https://script.google.com/macros/s/AKfycbzS8-cyFKdKrawQlgVAj1tFy9tQsouOKPW6wgqKv_glHlvtp1JPwgQMXkTP8ZO510zS/exec" aria-labelledby="form-title">
+          <h3 id="form-title">Join the early-access list</h3>
+          <p class="sub">Tell us a little about your business. It helps us decide who to invite first.</p>
+
+          <div class="ud-field">
+            <label for="ea-email">Work email</label>
+            <input type="email" id="ea-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="ea-email-err" />
+            <p class="ud-err" id="ea-email-err"></p>
+          </div>
+          <div class="ud-row2">
+            <div class="ud-field">
+              <label for="ea-company">Company name</label>
+              <input type="text" id="ea-company" name="company" autocomplete="organization" required aria-describedby="ea-company-err" />
+              <p class="ud-err" id="ea-company-err"></p>
+            </div>
+            <div class="ud-field">
+              <label for="ea-role">Role <span class="opt">(optional)</span></label>
+              <input type="text" id="ea-role" name="role" autocomplete="organization-title" />
+            </div>
+          </div>
+          <div class="ud-field">
+            <label for="ea-size">Company size <span class="opt">(optional)</span></label>
+            <select id="ea-size" name="size">
+              <option value="">Choose one</option>
+              <option>Under 50 people</option>
+              <option>50–500 people</option>
+              <option>500+ people</option>
+            </select>
+          </div>
+          <fieldset class="ud-field">
+            <legend>Which business decision do you most want better evidence for? <span class="opt">(optional)</span></legend>
+            <div class="ud-chips">
+              <label><input type="radio" name="challenge" value="Stockouts" /><span>Stockouts</span></label>
+              <label><input type="radio" name="challenge" value="Excess inventory" /><span>Excess inventory</span></label>
+              <label><input type="radio" name="challenge" value="Seasonal demand" /><span>Seasonal demand</span></label>
+              <label><input type="radio" name="challenge" value="Unpredictable demand" /><span>Unpredictable demand</span></label>
+              <label><input type="radio" name="challenge" value="Supplier planning" /><span>Supplier planning</span></label>
+              <label><input type="radio" name="challenge" value="Purchasing" /><span>Purchasing</span></label>
+              <label><input type="radio" name="challenge" value="Pricing" /><span>Pricing</span></label>
+              <label><input type="radio" name="challenge" value="Cash flow" /><span>Cash flow</span></label>
+              <label><input type="radio" name="challenge" value="Staffing" /><span>Staffing</span></label>
+              <label><input type="radio" name="challenge" value="Other" /><span>Other</span></label>
+            </div>
+            <p class="ud-hint">Demand and inventory come first. The others tell us where to go next.</p>
+          </fieldset>
+          <div class="ud-field">
+            <label for="ea-today">How do you handle this today? <span class="opt">(optional)</span></label>
+            <input type="text" id="ea-today" name="today" maxlength="200" placeholder="Spreadsheets, an ERP, a planning tool, nothing formal…" />
+          </div>
+          <div class="ud-field ud-check">
+            <label><input type="checkbox" id="ea-call" name="call" /><span>Happy to have a short call, or to try Udgass on an export of my data when it’s ready.</span></label>
+          </div>
+
+          <button type="submit" class="ud-btn ud-btn-solid">Join the Early Access List
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+
+          <div class="ud-result" id="earlyResult" role="status" aria-live="polite" hidden></div>
+
+          <p class="ud-fine">Submitting adds your details to our early-access list, which we keep in a private Google Sheet. If it can’t be submitted from here, we’ll open an email to <a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a> instead, and your request reaches us when you send it. We’ll use your details only to contact you about Udgass. See our <a href="/privacy">Privacy Policy</a>.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" class="brand" aria-label="KPAppWorx home"><img src="/logo-nav.png" alt="" width="28" height="28" />KPAppWorx</a>
+        <p class="tagline">Software that shows its work.</p>
+        <p>KPAppWorx Technologies Private Limited builds B2B software and iOS apps. Bengaluru, India.</p>
+        <p class="ud-foot-note">Udgass is a product by KPAppWorx. Charts on this page use synthetic data for illustration.</p>
+      </div>
+      <nav class="footer-col" aria-label="Product">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#how">Udgass: how it works</a></li>
+          <li><a href="#early-access">Early-access list</a></li>
+          <li><a href="/products/quarterdeck">Quarterdeck AI</a></li>
+          <li><a href="/products">All products</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Company">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/">KPAppWorx home</a></li>
+          <li><a href="/company">Company</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/labs">iOS apps</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Legal">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Contact">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></li>
+          <li><a href="https://www.linkedin.com/company/kpappworx/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="/contact">Contact page</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> KPAppWorx Technologies Private Limited · Bengaluru, Karnataka, India</span>
+      <span class="status-pill"><i aria-hidden="true"></i>Udgass is in early development · early-access list open</span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/site.js"></script>
+<script src="/assets/js/udgass.js"></script>
+<script src="/assets/js/udgass-visual.js"></script>
+</body>
+</html>

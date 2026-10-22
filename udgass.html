@@ -1,398 +1,836 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Udgass.ai — Business Decision Intelligence Engine</title>
-<meta name="description" content="Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand." />
-<link rel="canonical" href="https://www.kpappworx.com/udgass" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="KPAppWorx Technologies" />
-<meta property="og:title" content="Udgass.ai — Business Decision Intelligence Engine" />
-<meta property="og:description" content="Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand." />
-<meta property="og:url" content="https://www.kpappworx.com/udgass" />
-<meta property="og:image" content="https://www.kpappworx.com/assets/img/udgass-og.png" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Udgass.ai: layered business history with traces from similar past periods leading to a widening forecast range. Illustrative." />
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Udgass.ai — Business Decision Intelligence Engine" />
-<meta name="twitter:description" content="Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand." />
-<meta name="twitter:image" content="https://www.kpappworx.com/assets/img/udgass-og.png" />
-<meta name="theme-color" content="#f6f2e9" />
-<link rel="icon" href="/logo-nav.png" type="image/png" />
-<script>document.documentElement.setAttribute('data-theme','light');</script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://www.kpappworx.com/#org",
-      "name": "KPAppWorx Technologies Private Limited",
-      "alternateName": "KPAppWorx",
-      "url": "https://www.kpappworx.com",
-      "logo": "https://www.kpappworx.com/logo.png",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Bengaluru",
-        "addressRegion": "Karnataka",
-        "addressCountry": "IN"
-      },
-      "email": "hello@kpappworx.com"
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://www.kpappworx.com/udgass#page",
-      "url": "https://www.kpappworx.com/udgass",
-      "name": "Udgass.ai — Business Decision Intelligence Engine",
-      "description": "Udgass is a tool in early development from KPAppWorx. It remembers your business’s history, spots what has changed and tells you what is likely to happen next, so you can plan with evidence. Starting with stock and demand.",
-      "inLanguage": "en",
-      "isPartOf": { "@type": "WebSite", "name": "KPAppWorx", "url": "https://www.kpappworx.com" },
-      "publisher": { "@id": "https://www.kpappworx.com/#org" }
-    }
-  ]
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Udgass · Business Decision Intelligence</title>
+<meta name="description" content="Udgass is a decision intelligence engine in development. It connects business history, decisions and measured outcomes so organisations can evaluate their options with the evidence in view. First application: demand and inventory planning.">
+<link rel="canonical" href="https://www.kpappworx.com/udgass">
+<meta property="og:url" content="https://www.kpappworx.com/udgass">
+<meta property="og:title" content="Udgass · Business Decision Intelligence">
+<meta property="og:description" content="A decision intelligence engine in development: business history, decisions and measured outcomes in one record.">
+<meta property="og:image" content="https://www.kpappworx.com/assets/img/udgass-og.png">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#09090b">
+<link rel="preload" href="assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Bricolage Grotesque";src:url(assets/fonts/bricolage-grotesque-latin-wght-normal.woff2) format("woff2");font-weight:200 800;font-display:swap}
+@font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Newsreader";src:url(assets/fonts/newsreader-latin-wght-italic.woff2) format("woff2");font-weight:200 800;font-style:italic;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url(assets/fonts/jetbrains-mono-latin-wght-normal.woff2) format("woff2");font-weight:100 800;font-display:swap}
+
+:root{
+  --bg:#09090b;            /* zinc-950 */
+  --ink:#f4f4f5;           /* zinc-100 */
+  --ink-2:#d4d4d8;         /* zinc-300 */
+  --ink-3:#a1a1aa;         /* zinc-400 */
+  --cyan:#22d3ee;
+  --violet:#a78bfa;
+  --amber:#fbbf24;
+  --line:rgba(255,255,255,.10);
+  --glass:rgba(255,255,255,.045);
+  --glass-2:rgba(255,255,255,.075);
+  --display:"Bricolage Grotesque",Inter,system-ui,sans-serif;
+  --body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:Newsreader,Georgia,serif;
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  --gut:clamp(18px,4vw,40px);
 }
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
-<link rel="preload" href="/assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/assets/fonts/bricolage-grotesque-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="/assets/css/base.css" />
-<link rel="stylesheet" href="/assets/css/kp.css" />
-<link rel="stylesheet" href="/assets/css/nova.css" />
-<link rel="stylesheet" href="/assets/css/quarterdeck.css" />
-<link rel="stylesheet" href="/assets/css/udgass.css" />
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);margin:0;letter-spacing:-.02em;line-height:1.05;text-wrap:balance}
+p{margin:0}
+h1,h2{filter:drop-shadow(0 2px 16px rgba(9,9,11,.95))}
+.lead,.founder .body p,.prom p,.faq details p,.eyebrow,.trust,.f-note{text-shadow:0 1px 14px rgba(9,9,11,.95),0 0 3px rgba(9,9,11,.8)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;background:#fff;color:#000;padding:10px 14px;border-radius:8px;z-index:100}
+.skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- background ---------- */
+#gl{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block;pointer-events:none}
+.veil{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:
+   radial-gradient(60% 50% at 80% 10%,rgba(167,139,250,.10),transparent 70%),
+   radial-gradient(50% 45% at 10% 90%,rgba(34,211,238,.07),transparent 70%),
+   linear-gradient(180deg,rgba(9,9,11,.15),rgba(9,9,11,.55) 60%,rgba(9,9,11,.75))}
+main,header,footer{position:relative;z-index:2}
+@media(max-width:700px){#gl{opacity:.62}}
+
+/* ---------- layout ---------- */
+.wrap{width:min(1180px,100% - 2*var(--gut));margin-inline:auto}
+section{padding:clamp(72px,11vw,150px) 0}
+.eyebrow{font:500 .78rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--cyan)}
+.lead{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--ink-2);max-width:56ch}
+.h2{font-size:clamp(2rem,4.6vw,3.6rem);font-weight:700}
+.grad{background:linear-gradient(95deg,var(--cyan),var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:52px;padding:0 24px;border:0;border-radius:14px;font:600 1rem var(--body);cursor:pointer;color:#04121a;
+  background:linear-gradient(95deg,var(--cyan),#7dd3fc 50%,var(--violet));box-shadow:0 0 0 1px rgba(255,255,255,.25) inset,0 10px 40px -10px rgba(34,211,238,.55);transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:0 0 0 1px rgba(255,255,255,.35) inset,0 14px 44px -8px rgba(167,139,250,.6)}
+.btn[disabled]{opacity:.6;cursor:progress;transform:none}
+.btn.ghost{background:transparent;color:var(--ink);box-shadow:0 0 0 1px var(--line) inset}
+.btn.ghost:hover{box-shadow:0 0 0 1px rgba(255,255,255,.3) inset}
+.link{background:none;border:0;color:var(--ink-2);text-decoration:underline;text-underline-offset:3px;font:inherit;cursor:pointer;padding:8px 4px}
+
+/* glass */
+.glass{position:relative;background:linear-gradient(160deg,var(--glass-2),var(--glass));border:1px solid var(--line);border-radius:22px;
+  -webkit-backdrop-filter:blur(18px) saturate(1.3);backdrop-filter:blur(18px) saturate(1.3);box-shadow:0 30px 80px -30px rgba(0,0,0,.8),0 1px 0 rgba(255,255,255,.08) inset}
+.glass::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+  background:linear-gradient(140deg,rgba(34,211,238,.55),transparent 35%,transparent 65%,rgba(167,139,250,.5));
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:.55}
+@supports not (backdrop-filter:blur(1px)){.glass{background:#141417}}
+
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:50;padding:12px 0;background:linear-gradient(180deg,rgba(9,9,11,.85),rgba(9,9,11,.4));-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05)}
+.nav .wrap{display:flex;align-items:center;gap:20px}
+.brand{min-height:44px;display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.15rem var(--display)}
+.brand .dot{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--cyan),var(--violet));display:grid;place-items:center}
+.brand .dot svg{width:16px;height:16px}
+.brand small{font:400 .72rem var(--mono);color:var(--ink-3)}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid rgba(34,211,238,.35);border-radius:999px;font:500 .74rem var(--mono);letter-spacing:.06em;color:#a5f3fc;background:rgba(34,211,238,.07)}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 0 rgba(34,211,238,.7),0 0 12px var(--cyan);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(34,211,238,0),0 0 12px var(--cyan)}100%{box-shadow:0 0 0 0 rgba(34,211,238,0),0 0 12px var(--cyan)}}
+.nav nav{margin-left:auto;display:flex;align-items:center;gap:26px}
+.nav nav a{font-size:.95rem;color:var(--ink-2);text-decoration:none;padding:12px 4px}
+.nav nav a:hover{color:#fff}
+.nav nav a.btn,.nav nav a.btn:hover{color:#04121a}
+section[id],.hero{scroll-margin-top:84px}
+.nav .btn{min-height:42px;padding:0 18px;font-size:.92rem;border-radius:11px}
+@media(max-width:820px){.nav nav a:not(.btn){display:none}.badge{margin-left:auto}.nav nav{margin-left:0}.brand small{display:none}}
+@media(max-width:430px){.nav .btn{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-top:clamp(40px,7vw,96px);min-height:calc(100svh - 70px);display:flex;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(24px,5vw,72px);align-items:center}
+.hero h1{font-size:clamp(2.6rem,7.2vw,6rem);font-weight:800;letter-spacing:-.035em;line-height:.98}
+.hero .lead{margin-top:26px}
+.hero-form{margin-top:34px;max-width:520px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:26px;padding:0;list-style:none;color:var(--ink-2);font-size:.92rem}
+.trust li{display:flex;align-items:center;gap:8px}
+.trust li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+
+/* floating holographic panels */
+.stage{position:relative;perspective:1100px;min-height:600px}
+.pane{position:absolute;padding:20px 22px;transform-style:preserve-3d;will-change:transform}
+.pane .tag{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;margin-bottom:12px}
+.pane .tag b{color:var(--amber);font-weight:500}
+.p-chat{top:0;left:2%;width:min(82%,380px);--z:60px;animation:bob 9s ease-in-out infinite}
+.p-chart{top:236px;right:0;width:min(86%,400px);--z:110px;animation:bob 11s ease-in-out -3s infinite}
+.p-chip{bottom:0;left:6%;width:auto;padding:12px 16px;--z:30px;animation:bob 8s ease-in-out -5s infinite;display:flex;align-items:center;gap:10px;font-size:.92rem;border-radius:999px}
+.p-chip::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 30px rgba(167,139,250,.25);pointer-events:none}
+@keyframes bob{50%{translate:0 -9px}}
+.bub{padding:11px 14px;border-radius:16px;font-size:.96rem;line-height:1.45;max-width:92%}
+.bub.me{background:rgba(255,255,255,.9);color:#101113;margin-left:auto;border-bottom-right-radius:5px}
+.bub.ai{background:rgba(34,211,238,.1);border:1px solid rgba(34,211,238,.3);color:#e6fbff;border-bottom-left-radius:5px;margin-top:10px}
+.mini-fan svg{width:100%;height:auto;display:block}
+.mini-cap{margin-top:10px;font-size:.9rem;color:var(--ink-2)}
+@media(max-width:900px){
+  .hero{min-height:0}
+  .hero .wrap{grid-template-columns:1fr}
+  .stage{min-height:0;display:grid;gap:14px;perspective:none;margin-top:8px}
+  .pane{position:relative;inset:auto;width:100%!important;animation:none}
+  .p-chip{width:fit-content}
+}
+
+/* ---------- forms ---------- */
+.f-row{display:flex;gap:10px;flex-wrap:wrap}
+.f-row input[type=email]{flex:1 1 240px;min-height:52px;padding:0 16px;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:rgba(9,9,11,.7);color:var(--ink);font:400 1rem var(--body)}
+.f-row input::placeholder{color:#8b8b95}
+.f-row input:focus{border-color:var(--cyan);outline:none;box-shadow:0 0 0 3px rgba(34,211,238,.25)}
+.f-note{margin-top:12px;font-size:.88rem;color:var(--ink-3)}
+.f-status{margin-top:12px;font-size:.95rem;min-height:1.4em}
+.f-status.err{color:#fda4af}
+.f-status.ok{color:#86efac}
+.f2 h3{font-size:1.35rem;margin-bottom:6px}
+.f2 .q{margin-top:20px}
+.f2 .q>span,.f2 label.sel>span{display:block;font-weight:600;font-size:.95rem;margin-bottom:10px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:9px 14px;border:1px solid rgba(255,255,255,.22);border-radius:999px;font-size:.93rem;color:var(--ink-2);transition:.15s}
+.chips input:checked+span{background:rgba(34,211,238,.16);border-color:var(--cyan);color:#fff}
+.chips input:focus-visible+span{outline:2px solid var(--cyan);outline-offset:2px}
+.f2 select{width:100%;min-height:48px;padding:0 12px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(9,9,11,.7);color:var(--ink);font:400 1rem var(--body)}
+.f2 .call{display:flex;gap:10px;align-items:flex-start;margin-top:18px;color:var(--ink-2);font-size:.95rem}
+.f2 .call input{margin-top:4px;width:18px;height:18px;accent-color:var(--cyan)}
+.f2 .acts{display:flex;align-items:center;gap:14px;margin-top:22px;flex-wrap:wrap}
+.f-done{padding:4px 0}
+.f-done h3{font-size:1.4rem}
+
+/* ---------- example ---------- */
+.ex{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.ex .h2{margin:14px 0 20px}
+.chatbox{padding:clamp(18px,3vw,30px);display:flex;flex-direction:column;gap:12px}
+.chatbox .bub{font-size:1.02rem;max-width:88%}
+.chatbox .bub.ai{margin-top:0}
+.chatbox .why{display:block;margin-top:8px;font-size:.84rem;color:#9bdcea}
+.chatbox .bub.me{align-self:flex-end}
+.chatbox .cap{font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:2px}
+.rangebar{margin-top:10px;display:flex;align-items:center;gap:10px;font:500 .8rem var(--mono);color:var(--ink-2)}
+.rangebar .bar{flex:1;height:8px;border-radius:99px;background:rgba(255,255,255,.08);position:relative}
+.rangebar .bar i{position:absolute;left:25%;right:20%;top:0;bottom:0;border-radius:99px;background:linear-gradient(90deg,var(--cyan),var(--violet))}
+.rangebar .bar b{position:absolute;left:46%;top:-4px;width:3px;height:16px;border-radius:2px;background:#fff}
+@media(max-width:900px){.ex{grid-template-columns:1fr}}
+
+/* ---------- evolution timeline ---------- */
+.tl-head{max-width:720px}
+.tl-head .h2{margin:14px 0 18px}
+.tl{position:relative;margin-top:clamp(40px,6vw,80px);--p:0}
+.spine{position:absolute;left:27px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.08);border-radius:2px}
+.spine i{position:absolute;left:0;top:0;width:100%;height:calc(var(--p)*100%);background:linear-gradient(180deg,var(--cyan),var(--violet));box-shadow:0 0 14px rgba(34,211,238,.7);border-radius:2px}
+.stage-row{position:relative;display:grid;grid-template-columns:56px 1fr;gap:20px;padding-bottom:clamp(36px,5vw,64px)}
+.stage-row:last-child{padding-bottom:0}
+.node{width:56px;height:56px;border-radius:50%;background:var(--bg);border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;position:relative;z-index:2;transition:border-color .4s,box-shadow .4s}
+.node svg{width:34px;height:34px;overflow:visible}
+.stage-row.on .node{border-color:var(--cyan);box-shadow:0 0 0 6px rgba(34,211,238,.08),0 0 24px rgba(34,211,238,.35)}
+.stage-row.last.on .node{border-color:var(--violet);box-shadow:0 0 0 6px rgba(167,139,250,.1),0 0 24px rgba(167,139,250,.4)}
+.st-card{padding:clamp(20px,3vw,32px);opacity:.35;transform:translateY(18px);transition:opacity .7s,transform .7s}
+.stage-row.on .st-card{opacity:1;transform:none}
+.st-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin-bottom:6px}
+.st-n{font:500 .74rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.stage-row.last .st-n{color:var(--violet)}
+.st-card h3{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:700}
+.st-steps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,3vw,36px);margin-top:20px}
+.st-steps h4{margin:0 0 6px;font:600 1rem var(--body);color:#fff;display:flex;gap:10px;align-items:center}
+.st-steps h4 em{font:500 .7rem var(--mono);color:var(--ink-3);font-style:normal}
+.st-steps p{color:var(--ink-2);font-size:.98rem}
+.tags{display:flex;flex-wrap:wrap;gap:8px;padding:0;margin:20px 0 0;list-style:none}
+.tags li{padding:5px 12px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--ink-2)}
+.loopback{margin:26px 0 0 76px;color:var(--ink-3);font:.9rem var(--mono)}
+@media(min-width:960px){
+  .spine{left:50%;margin-left:-1px}
+  .stage-row{grid-template-columns:1fr 56px 1fr;gap:36px}
+  .stage-row .node{grid-column:2;grid-row:1}
+  .stage-row .st-card{grid-column:3;grid-row:1}
+  .stage-row.flip .st-card{grid-column:1}
+  .loopback{margin-left:0;text-align:center}
+}
+@media(max-width:620px){.st-steps{grid-template-columns:1fr}}
+
+/* ---------- founder ---------- */
+.founder .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(28px,6vw,90px);align-items:start}
+.founder .eyebrow{display:block;margin-bottom:22px}
+.founder .quote{font:italic 400 clamp(1.7rem,3.4vw,2.7rem)/1.22 var(--serif);color:#fff;letter-spacing:-.01em}
+.founder .quote em{font-style:italic;color:var(--amber)}
+.founder .body{margin-top:26px;display:grid;gap:16px;color:var(--ink-2);max-width:60ch}
+.sign{margin-top:26px;display:flex;align-items:center;gap:14px}
+.sign .av{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#fbbf24,#f472b6 55%,var(--violet));display:grid;place-items:center;font:700 1.1rem var(--display);color:#1a1020}
+.sign b{display:block}
+.sign small{color:var(--ink-3)}
+.proof{padding:clamp(22px,3vw,34px)}
+.proof h3{font:600 .78rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:18px}
+.proof ul{list-style:none;margin:0;padding:0;display:grid;gap:20px}
+.proof li{display:grid;gap:2px}
+.proof li strong{font:700 1.5rem var(--display);letter-spacing:-.02em}
+.proof li span{color:var(--ink-2);font-size:.95rem}
+.proof .honest{margin-top:22px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-3);font-size:.9rem}
+@media(max-width:900px){.founder .wrap{grid-template-columns:1fr}}
+
+/* ---------- promises ---------- */
+.prom{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.prom .glass{padding:28px}
+.prom svg{width:34px;height:34px;margin-bottom:18px}
+.prom h3{font-size:1.5rem;margin-bottom:10px}
+.prom p{color:var(--ink-2)}
+@media(max-width:900px){.prom{grid-template-columns:1fr}}
+
+/* ---------- faq ---------- */
+.faq{max-width:820px;margin:40px auto 0}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:22px 4px;font:600 1.15rem var(--display);display:flex;justify-content:space-between;gap:16px;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:300 1.6rem var(--body);color:var(--cyan);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 4px 24px;color:var(--ink-2);max-width:62ch}
+
+/* ---------- cta ---------- */
+.cta{padding:clamp(28px,5vw,64px);text-align:left;display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,60px);align-items:center}
+.cta .h2{margin-bottom:16px}
+@media(max-width:900px){.cta{grid-template-columns:1fr}}
+footer{background:rgba(9,9,11,.82);padding:44px 0 60px;color:var(--ink-3);font-size:.9rem;border-top:1px solid rgba(255,255,255,.06)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
+footer a{color:var(--ink-2);display:inline-block;padding:10px 2px}
+
+
+.hero h1{font-size:clamp(2.5rem,6.4vw,5.4rem)}
+.lead2{margin-top:16px}
+.notdash{margin-top:22px;max-width:56ch;color:var(--ink-2);font-size:1.05rem;text-shadow:0 1px 14px rgba(9,9,11,.95)}
+.notdash b{color:#fff}
+.hero-cta{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin-top:30px}
+.hero-cta .start{color:var(--ink-3);font-size:.92rem}
+.chain{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.chain li{display:grid;grid-template-columns:14px 1fr;gap:12px;align-items:start}
+.chain i{width:10px;height:10px;border-radius:50%;margin-top:7px;background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.chain i.amb{background:var(--amber);box-shadow:0 0 10px var(--amber)}
+.chain i.vio{background:var(--violet);box-shadow:0 0 10px var(--violet)}
+.chain b{display:block;font:500 .72rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:2px}
+.chain span{font-size:.98rem;color:var(--ink)}
+.narrow{max-width:820px}
+.prose{margin-top:30px;display:grid;gap:18px;color:var(--ink-2);max-width:62ch;text-shadow:0 1px 14px rgba(9,9,11,.95)}
+.prose .big{font:600 clamp(1.3rem,2.4vw,1.8rem)/1.3 var(--display);color:#fff;letter-spacing:-.01em}
+.prose .dim{color:var(--ink-3)}
+.st-card p{color:var(--ink-2);max-width:52ch;margin-top:10px}
+.st-n{font-size:.85rem}
+.qs{list-style:none;margin:40px 0 34px;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.qs li{padding:24px 22px;font:600 1.15rem/1.3 var(--display);letter-spacing:-.01em}
+.qs li span{display:block;font:500 .74rem var(--mono);letter-spacing:.14em;color:var(--cyan);margin-bottom:14px}
+.feat{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:44px}
+.feat .glass{padding:26px;grid-column:span 2}
+.feat .glass:nth-child(4){grid-column:span 3}
+.feat .glass:nth-child(5){grid-column:span 3}
+.feat h3{font-size:1.3rem;margin-bottom:10px}
+.feat p{color:var(--ink-2)}
+.feat .hum{background:linear-gradient(160deg,rgba(251,191,36,.10),var(--glass))}
+.feat .hum h3{color:#fde68a}
+@media(max-width:1000px){.qs{grid-template-columns:1fr 1fr}.feat{grid-template-columns:1fr 1fr}.feat .glass,.feat .glass:nth-child(4),.feat .glass:nth-child(5){grid-column:auto}}
+@media(max-width:600px){.qs,.feat{grid-template-columns:1fr}}
+.stage-row.last .st-n{color:var(--violet)}
+
+
+.tp-note{margin-top:18px;font:500 .78rem var(--mono);letter-spacing:.06em;color:var(--amber);text-shadow:0 1px 12px rgba(9,9,11,.95)}
+.rec{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,72px);align-items:center}
+.ledger{padding:clamp(20px,3vw,32px)}
+.lg-h{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.lg-h b{color:var(--amber);font-weight:500}
+.ledger dl{margin:0}
+.ledger dl>div{display:grid;grid-template-columns:150px 1fr;gap:14px;padding:13px 0;border-top:1px solid var(--line)}
+.ledger dl>div:first-child{border-top:0}
+.ledger dt{font:600 .95rem var(--body);color:#fff}
+.ledger dd{margin:0;color:var(--ink-2);font-size:.95rem}
+.ledger .pend dt{color:#c4b5fd}
+.ledger .pend dd{color:var(--ink-3);font-style:italic}
+@media(max-width:900px){.rec{grid-template-columns:1fr}.ledger dl>div{grid-template-columns:1fr;gap:2px}}
+.status{list-style:none;margin:34px 0 0;padding:0;display:grid;gap:0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:rgba(9,9,11,.5)}
+.status li{display:grid;grid-template-columns:200px 1fr;gap:14px;padding:14px 18px;border-top:1px solid var(--line);color:var(--ink-2)}
+.status li:first-child{border-top:0}
+.status b{color:#fff;font-weight:600}
+@media(max-width:600px){.status li{grid-template-columns:1fr;gap:2px}}
+
+
+.founder .quote{margin-top:26px}
+.secgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin:40px 0 30px}
+.secgrid .glass{padding:26px;grid-column:span 2}
+.secgrid .glass:nth-child(n+4){grid-column:span 3}
+.secgrid h3{font-size:1.25rem;margin-bottom:10px}
+.secgrid p{color:var(--ink-2);font-size:.98rem}
+@media(max-width:1000px){.secgrid{grid-template-columns:1fr 1fr}.secgrid .glass,.secgrid .glass:nth-child(n+4){grid-column:auto}}
+@media(max-width:620px){.secgrid{grid-template-columns:1fr}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+.no-js .rv,.no-js .st-card{opacity:1;transform:none}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv,.st-card{opacity:1!important;transform:none!important;transition:none!important}
+  .pane,.badge i{animation:none!important}
+}
+</style>
 </head>
-<body class="ud">
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
-<symbol id="m-ev" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="12" cy="12" r="7.5"/></symbol>
-<symbol id="m-mem" viewBox="0 0 24 24"><path d="M3 8c3-2.4 6 2.4 9 0s6-2.4 9 0M3 12.5c3-2.4 6 2.4 9 0s6-2.4 9 0M3 17c3-2.4 6 2.4 9 0s6-2.4 9 0"/></symbol>
-<symbol id="m-rel" viewBox="0 0 24 24"><circle cx="6" cy="16" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M8 14.6C11 12 13 12 16 9.4" stroke-dasharray="1 3"/></symbol>
-<symbol id="m-link" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="2.5"/><circle cx="18.5" cy="12" r="2.5"/><path d="M8 12h8"/></symbol>
-<symbol id="m-exc" viewBox="0 0 24 24"><path d="M3 15h5l2.5-9 3 13 2-4H21"/></symbol>
-<symbol id="m-branch" viewBox="0 0 24 24"><path d="M12 3v7M12 10l-5.5 5M12 10l5.5 5"/><circle cx="12" cy="3.5" r="1.5"/><circle cx="6" cy="19" r="2.2"/><circle cx="18" cy="19" r="2.2"/></symbol>
-<symbol id="m-pre" viewBox="0 0 24 24"><path d="M2.5 16l5-4 4 1.5"/><path d="M11.5 13.5l9.5-3" stroke-dasharray="1.5 3"/></symbol>
-<symbol id="m-unc" viewBox="0 0 24 24"><path d="M3 12h4"/><path d="M7 12L21 5M7 12h14M7 12l14 7" stroke-dasharray="1.5 3"/></symbol>
-<symbol id="m-dec" viewBox="0 0 24 24"><path d="M3 12h6M9 12l6-5.5M9 12l6 5.5"/><circle cx="18" cy="6" r="1.8"/><circle cx="18" cy="18" r="1.8"/></symbol>
-<symbol id="m-out" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M8 12.4l2.8 2.8L16.2 9.6"/></symbol>
-<symbol id="m-spiral" viewBox="0 0 24 24"><path d="M12 12a1 1 0 0 1 2 0a2.5 2.5 0 0 1-5 0a4 4 0 0 1 8 0a5.5 5.5 0 0 1-11 0"/></symbol>
-</defs></svg>
+<body class="no-js" data-endpoint="https://script.google.com/macros/s/AKfycbzS8-cyFKdKrawQlgVAj1tFy9tQsouOKPW6wgqKv_glHlvtp1JPwgQMXkTP8ZO510zS/exec">
+<script>document.body.classList.remove('no-js')</script>
+<a class="skip" href="#main">Skip to content</a>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
 
-
-<a class="skip-link" href="#main">Skip to content</a>
-
-<header class="site-header">
-  <nav class="nav" aria-label="Main navigation">
-    <div class="ud-lockup">
-      <a href="/" class="brand" aria-label="KPAppWorx home"><img src="/logo-nav.png" alt="" width="28" height="28" /><span class="nm">KPAppWorx</span></a>
-      <span class="ud-sep" aria-hidden="true"></span>
-      <a href="/udgass" class="ud-wordmark" aria-label="Udgass.ai"><svg viewBox="0 0 28 28" aria-hidden="true" focusable="false"><rect width="28" height="28" rx="7" fill="#0c1526"/><path d="M5 18c3 0 3-8 6-8s3 8 6 8" stroke="#eef1f7" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M17 18c1.8 0 3-3 6-7" stroke="#8fb0ee" stroke-width="1.8" stroke-dasharray="2.2 2.6" fill="none" stroke-linecap="round"/><circle cx="23" cy="11" r="1.8" fill="#8fb0ee"/></svg>Udgass<small>.ai</small></a>
-    </div>
-    <div class="nav-links">
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Udgass.ai, home">
+      <span class="dot" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="#06131a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 15c3-7 5-7 8-2s5 4 10-5"/></svg></span>
+      Udgass
+    </a>
+    <span class="badge" role="status"><i aria-hidden="true"></i>Early development</span>
+    <nav aria-label="Main">
       <a href="#how">How it works</a>
-      <a href="#example">Example</a>
-      <a href="#faq">Questions</a>
-    </div>
-    <div class="nav-actions">
-      <a href="#early-access" class="btn btn-primary">Join Early Access</a>
-    </div>
-    <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-    </button>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#how">How it works</a>
-    <a href="#example">Example</a>
-    <a href="#faq">Questions</a>
-    <div class="mm-divider"></div>
-    <a href="#early-access"><strong>Join the Early Access List</strong></a>
-    <a href="/">← KPAppWorx home</a>
+      <a href="#record">Decision record</a>
+      <a href="#security">Security</a>
+      <a href="#founder">Founder</a>
+      <a class="btn" href="#join">Request access</a>
+    </nav>
   </div>
 </header>
 
 <main id="main">
-
-<section class="tp tp-hero" aria-labelledby="hero-title">
-  <div class="ud-field-bg" id="memoryField" data-center="1" aria-hidden="true"></div>
-  <div class="tp-hero-text">
-    <p class="tp-kicker">Udgass by KPAppWorx · early development</p>
-    <h1 class="tp-h1" id="hero-title">Your business has seen the pattern before.</h1>
-    <p class="tp-sub">Udgass is a memory for your business. It remembers what happened, and tells you what is likely to happen next.</p>
-    <a href="#early-access" class="ud-btn ud-btn-light">Join the early-access list
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
-  <a href="#idea" class="tp-scroll">Scroll to know more<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
-</section>
-
-<section class="tp" id="idea" aria-labelledby="idea-title">
-  <h2 class="tp-h2" id="idea-title">What would you decide differently if your business remembered everything?</h2>
-  <p>Every sale, every order, every rush and every quiet week is already in your records. Most of it sits in spreadsheets and different tools, and nobody has time to piece it together.</p>
-  <p>Udgass is being built to read that history, notice what has changed, say what is likely to happen next, and check afterwards whether it was right.</p>
-  <p class="tp-dim">We are starting with one question: how much stock to buy.</p>
-</section>
-
-<section class="tp tp-ask" id="ask" aria-labelledby="ask-title">
-  <h2 class="tp-h2" id="ask-title">Ask it a plain question. Get a plain answer.</h2>
-  <p>An example of how it could feel. The product is not built yet, and the numbers below are made up.</p>
-  <div class="ud-chat" role="img" aria-label="Illustrative example conversation. Made-up numbers.">
-    <p class="ud-bub me">Should I reorder the blue jackets this week?</p>
-    <p class="ud-bub ai">Probably yes, a smaller batch than last year. Orders started rising 3 weeks earlier than usual, and the 4 past seasons that looked like this ended with a sell-out. Range: 80 to 140 units.<span class="why">Based on 4 similar past seasons. Your call.</span></p>
-    <p class="ud-bub me">Okay, I’ll order 100.</p>
-    <p class="ud-bub ai">Noted. I’ll check in after the season and tell you how close we were.</p>
-  </div>
-  <p class="tp-dim">Illustrative only. Invented numbers, not a real customer.</p>
-</section>
-
-<section class="tp tp-verbs" id="verbs" aria-label="What Udgass does">
-  <p class="ud-verb"><b>Udgass remembers.</b> Sales, orders, decisions, results.</p>
-  <p class="ud-verb"><b>Udgass notices.</b> When something is different from usual.</p>
-  <p class="ud-verb"><b>Udgass suggests.</b> What is likely next, with an honest range.</p>
-  <p class="ud-verb"><b>Udgass checks.</b> Whether it was right, so it improves.</p>
-  <p class="ud-verb ud-never"><b>Udgass never acts.</b> It only reads. You always decide.</p>
-</section>
-
-<section class="tp" id="how" aria-labelledby="how-title">
-  <h2 class="tp-h2" id="how-title">It learns from what happened, and checks itself.</h2>
-  <p>Eight steps, one loop. Pick a step to read about it.</p>
-  <div class="ud-loopfig reveal" id="loopFig">
-      <div class="ud-loopfig-svg"></div>
-      <div class="ud-loopfig-cap" aria-live="polite">
-        <p class="n">Step 2 of 8</p>
-        <h3 class="ud-h3">Remember</h3>
-        <p class="desc">Pick a step to read about it.</p>
-        <p class="key"><span class="k"><svg class="mk" viewBox="0 0 24 24"><use href="#m-mem"/></svg>what’s recorded</span><span class="k ex"><svg class="mk" viewBox="0 0 24 24"><use href="#m-exc"/></svg>what’s unusual</span></p>
-        <p class="ud-caption">Each trip around leaves Udgass knowing more, so the next one starts further along.</p>
-      </div>
-    </div>
-  <details class="ud-allsteps"><summary>Read all eight steps in full</summary>
-    <ol class="ud-loop" style="list-style:none" aria-label="The Udgass loop">
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 1</span><span class="ud-step-tag">Exports first</span></div>
-        <h3 class="ud-h3">Connect</h3>
-        <p>Udgass reads the data you already have, such as sales, stock and orders. It only looks. It never changes anything. We would start from a spreadsheet export, so there is no technical setup.</p>
-        <ul class="ud-signals" aria-label="Connect: key ideas"><li>Read-only</li><li>Starts with a spreadsheet</li></ul>
-      </li>
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 2</span><span class="ud-step-tag first">First focus</span></div>
-        <h3 class="ud-h3">Remember</h3>
-        <p>It keeps a clear timeline of your business: what sold, what you ordered, what it predicted, what you decided, and what happened after.</p>
-        <ul class="ud-signals" aria-label="Remember: key ideas"><li>History</li><li>Your decisions</li><li>Results</li></ul>
-      </li>
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 3</span><span class="ud-step-tag">Direction</span></div>
-        <h3 class="ud-h3">Detect</h3>
-        <p>It spots when something is different from usual, like a sudden jump in orders or a supplier getting slower, and tries to tell a real change from normal ups and downs.</p>
-        <ul class="ud-signals" aria-label="Detect: key ideas"><li>Real change</li><li>Not noise</li></ul>
-      </li>
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 4</span><span class="ud-step-tag">Direction</span></div>
-        <h3 class="ud-h3">Diagnose</h3>
-        <p>When something changes, it looks for likely reasons and checks them against your records. It keeps what it knows separate from what it is only guessing.</p>
-        <ul class="ud-signals" aria-label="Diagnose: key ideas"><li>What we know</li><li>What we guess</li><li>What’s missing</li></ul>
-      </li>
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 5</span><span class="ud-step-tag first">First focus</span></div>
-        <h3 class="ud-h3">Predict</h3>
-        <p>It says what is likely to happen next as a range, for example “between 80 and 120”, instead of one made-up exact number.</p>
-        <ul class="ud-signals" aria-label="Predict: key ideas"><li>A range, not a point</li><li>What-if options</li></ul>
-      </li>
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 6</span><span class="ud-step-tag">Direction</span></div>
-        <h3 class="ud-h3">Recommend</h3>
-        <p>It suggests what to do and shows why, including what it assumed. You decide. Udgass never acts on its own.</p>
-        <ul class="ud-signals" aria-label="Recommend: key ideas"><li>Reasons shown</li><li>Assumptions shown</li><li>You decide</li></ul>
-      </li>
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 7</span><span class="ud-step-tag first">First focus</span></div>
-        <h3 class="ud-h3">Verify</h3>
-        <p>Later, it compares what it said would happen with what did happen, and tells you plainly how close it was. If it can’t tell whether your action made the difference, it says so.</p>
-        <ul class="ud-signals" aria-label="Verify: key ideas"><li>Was it right?</li><li>Honest about doubt</li></ul>
-      </li>
-      <li class="ud-step">
-        <div class="ud-step-top"><span class="ud-step-n">STEP 8</span><span class="ud-step-tag first">First focus</span></div>
-        <h3 class="ud-h3">Learn</h3>
-        <p>It uses those results to get better for your business over time, and shows you whether it really is improving.</p>
-        <ul class="ud-signals" aria-label="Learn: key ideas"><li>Gets better</li><li>Shows its record</li></ul>
-      </li>
-    </ol>
-    </details>
-  <p class="tp-dim">“First focus” steps are where we are starting. “Direction” steps come later. Nothing on this page is available today.</p>
-</section>
-
-<section class="tp" id="example" aria-labelledby="example-title">
-  <h2 class="tp-h2" id="example-title">How it could go for a small shop.</h2>
-  <p>Meera sells handmade lamps online. This is an imagined story with made-up numbers. Udgass can’t do this yet.</p>
-  <div class="tp-story">
-    <article><span>Before</span><h3>She guesses, every October</h3><p>Two years ago Meera ran out of lamps in week two of the festival season. Last year she over-ordered and still held 300 in January. Each time she went on a feeling.</p></article>
-    <article><span>With Udgass</span><h3>She sees what her history says</h3><p>Sales climbed in the three weeks before the festival, both years. Her supplier took five weeks, not three. Last year’s sale made one week look bigger than normal. Udgass suggests 400 to 550 lamps, and shows how it got there.</p></article>
-    <article><span>After</span><h3>It checks how it did</h3><p>Meera orders 450 and tells Udgass. In January it sets what it predicted beside what sold, says plainly if it was close, and starts next year from there. She made the call.</p></article>
-  </div>
-</section>
-
-<section class="tp" id="promise" aria-labelledby="promise-title">
-  <h2 class="tp-h2" id="promise-title">What we promise.</h2>
-  <ul class="tp-promise">
-    <li><b>It only reads your data.</b> It never changes anything.</li>
-    <li><b>You make the decision.</b> Udgass advises.</li>
-    <li><b>It shows its doubt.</b> A range, never false precision.</li>
-    <li><b>It checks itself.</b> And shares results only when they are real.</li>
-  </ul>
-</section>
-
-<section class="tp" id="faq" aria-labelledby="faq-title">
-  <h2 class="tp-h3" id="faq-title">Questions people ask first</h2>
-  <div class="ud-faq reveal">
-      <details><summary>Can I use Udgass today?</summary><p>Not yet. Udgass is still being built, and there is nothing to sign in to. The charts on this page use made-up numbers to show the idea. The early-access list is how we will keep you posted.</p></details>
-      <details><summary>What is Udgass, in plain words?</summary><p>Think of it as a memory and a second opinion for your business. It reads your past records, notices when something changes, works out likely reasons, says what is likely to happen next, and suggests what to do. Later it checks whether it was right. We are starting with how much stock to buy.</p></details>
-      <details><summary>Will it make decisions or act for us?</summary><p>No. It only gives advice, and it only reads your data. It shows its reasons and how unsure it is, and you decide.</p></details>
-      <details><summary>What would it need from me?</summary><p>To start, your past sales and stock numbers, for example a spreadsheet export. Joining the list doesn’t mean sharing any data.</p></details>
-      <details><summary>Is it only for small shops, or only for forecasting?</summary><p>No to both. We start with stock planning because those choices repeat and you can see whether they worked. Udgass is meant for planners, supply-chain teams and owners, and for single departments in bigger companies that want to try it on one problem. Over time we want it to help with other repeating choices too, like pricing and cash flow. None of that is built yet.</p></details>
-      <details><summary>How will we know it works?</summary><p>We will compare what it predicted with what happened, and with simple methods like a spreadsheet average. We will share results only when we have real ones.</p></details>
-    </div>
-</section>
-
-<!-- ============================ EARLY ACCESS ============================ -->
-<section class="tp tp-end" id="early-access" aria-labelledby="cta-title">
+<!-- HERO -->
+<section class="hero" id="top">
   <div class="wrap">
-    <div class="tp-founder"><div class="ud-founder">
-      <p class="ud-eyebrow">A note from the founder</p>
-      <h2 class="ud-h2" id="founder-title">Why I’m building this, and where it stands.</h2>
-      <p>I’m Kanthipriya Mahale. I run KPAppWorx on my own, from Bengaluru. I spent years building software for aircraft and cars, where a wrong answer is expensive, and it left me with one habit: show your evidence and say what you don’t know.</p>
-      <p>Udgass is being built that way. It isn’t ready yet, and I would rather tell you that than pretend. If you plan stock, forecast demand or make the same kind of decision again and again, I’d like to hear how you do it today. Fill in the form below, or reply to any email I send you.</p>
-      <p class="sig">Kanthipriya Mahale<br><span>Founder, KPAppWorx</span></p>
-    </div></div>
-    <div class="ud-cta-grid tp-cta">
-      <div class="ud-cta-copy reveal">
-        <p class="ud-eyebrow">Early access</p>
-        <h2 class="ud-h2" id="cta-title">What could your business learn from its own history?</h2>
-        <p class="ud-lede">We are still building Udgass, starting with stock and demand. Join the list to follow along and tell us what you would want it to do.</p>
-        <ul class="ud-cta-points">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>A few short questions, most of them optional. No phone number.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>You don’t need to connect anything or share any data.</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Joining just shows interest. It isn’t a commitment, and Udgass isn’t ready yet.</li>
-        </ul>
-        <p class="ud-byline">Udgass is a product by KPAppWorx. <a href="/">Visit kpappworx.com</a></p>
+    <div>
+      <p class="eyebrow">Business Decision Intelligence</p>
+      <h1 style="margin-top:18px">Your business has <span class="grad">seen the pattern&nbsp;before.</span></h1>
+      <p class="lead">Udgass is a decision intelligence engine in development. It connects business history, decisions and measured outcomes so organisations can understand what is changing, anticipate what may follow, and evaluate their options with the evidence in view.</p>
+      <p class="notdash"><b>Not another dashboard.</b> A system of record for decisions: what was known, what was estimated, what was decided, and what actually happened.</p>
+      <div class="hero-cta"><a class="btn" href="#join">Request Early Access</a><span class="start">First application: demand and inventory planning.</span></div>
+    </div>
+    <div class="stage" id="stage" aria-label="Illustrative example panels">
+      <div class="pane glass p-chat" data-depth="1">
+        <div class="tag"><span>Decision memory</span><b>Illustrative</b></div>
+        <ol class="chain">
+          <li><i></i><span><b>What happened</b>A seasonal rise in orders</span></li>
+          <li><i class="amb"></i><span><b>What changed</b>It started earlier than usual</span></li>
+          <li><i class="vio"></i><span><b>What happened next</b>Stock ran out before the peak</span></li>
+        </ol>
       </div>
-
-      <div class="reveal">
-        <form class="ud-form" id="earlyForm" novalidate data-endpoint="https://script.google.com/macros/s/AKfycbzS8-cyFKdKrawQlgVAj1tFy9tQsouOKPW6wgqKv_glHlvtp1JPwgQMXkTP8ZO510zS/exec" aria-labelledby="form-title">
-          <h3 id="form-title">Join the early-access list</h3>
-          <p class="sub">Tell us a little about your business. It helps us decide who to invite first.</p>
-
-          <div class="ud-field">
-            <label for="ea-email">Work email</label>
-            <input type="email" id="ea-email" name="email" autocomplete="email" inputmode="email" required aria-describedby="ea-email-err" />
-            <p class="ud-err" id="ea-email-err"></p>
-          </div>
-          <div class="ud-row2">
-            <div class="ud-field">
-              <label for="ea-company">Company name</label>
-              <input type="text" id="ea-company" name="company" autocomplete="organization" required aria-describedby="ea-company-err" />
-              <p class="ud-err" id="ea-company-err"></p>
-            </div>
-            <div class="ud-field">
-              <label for="ea-role">Role <span class="opt">(optional)</span></label>
-              <input type="text" id="ea-role" name="role" autocomplete="organization-title" />
-            </div>
-          </div>
-          <div class="ud-field">
-            <label for="ea-size">Company size <span class="opt">(optional)</span></label>
-            <select id="ea-size" name="size">
-              <option value="">Choose one</option>
-              <option>Under 50 people</option>
-              <option>50–500 people</option>
-              <option>500+ people</option>
-            </select>
-          </div>
-          <fieldset class="ud-field">
-            <legend>Which business decision do you most want better evidence for? <span class="opt">(optional)</span></legend>
-            <div class="ud-chips">
-              <label><input type="radio" name="challenge" value="Stockouts" /><span>Stockouts</span></label>
-              <label><input type="radio" name="challenge" value="Excess inventory" /><span>Excess inventory</span></label>
-              <label><input type="radio" name="challenge" value="Seasonal demand" /><span>Seasonal demand</span></label>
-              <label><input type="radio" name="challenge" value="Unpredictable demand" /><span>Unpredictable demand</span></label>
-              <label><input type="radio" name="challenge" value="Supplier planning" /><span>Supplier planning</span></label>
-              <label><input type="radio" name="challenge" value="Purchasing" /><span>Purchasing</span></label>
-              <label><input type="radio" name="challenge" value="Pricing" /><span>Pricing</span></label>
-              <label><input type="radio" name="challenge" value="Cash flow" /><span>Cash flow</span></label>
-              <label><input type="radio" name="challenge" value="Staffing" /><span>Staffing</span></label>
-              <label><input type="radio" name="challenge" value="Other" /><span>Other</span></label>
-            </div>
-            <p class="ud-hint">Demand and inventory come first. The others tell us where to go next.</p>
-          </fieldset>
-          <div class="ud-field">
-            <label for="ea-today">How do you handle this today? <span class="opt">(optional)</span></label>
-            <input type="text" id="ea-today" name="today" maxlength="200" placeholder="Spreadsheets, an ERP, a planning tool, nothing formal…" />
-          </div>
-          <div class="ud-field ud-check">
-            <label><input type="checkbox" id="ea-call" name="call" /><span>Happy to have a short call, or to try Udgass on an export of my data when it’s ready.</span></label>
-          </div>
-
-          <button type="submit" class="ud-btn ud-btn-solid">Join the Early Access List
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-
-          <div class="ud-result" id="earlyResult" role="status" aria-live="polite" hidden></div>
-
-          <p class="ud-fine">Submitting adds your details to our early-access list, which we keep in a private Google Sheet. If it can’t be submitted from here, we’ll open an email to <a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a> instead, and your request reaches us when you send it. We’ll use your details only to contact you about Udgass. See our <a href="/privacy">Privacy Policy</a>.</p>
-        </form>
+      <div class="pane glass p-chart" data-depth="2">
+        <div class="tag"><span>Possible outcomes</span><b>Invented numbers</b></div>
+        <div class="mini-fan">
+          <svg viewBox="0 0 360 150" role="img" aria-label="Illustrative chart: a history line, then a forecast whose shaded range widens over time.">
+            <defs>
+              <linearGradient id="fanG" x1="0" x2="1"><stop offset="0" stop-color="#22d3ee" stop-opacity=".45"/><stop offset="1" stop-color="#a78bfa" stop-opacity=".12"/></linearGradient>
+              <linearGradient id="lineG" x1="0" x2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#a78bfa"/></linearGradient>
+            </defs>
+            <path d="M0 120 L40 110 L80 116 L120 96 L160 100 L200 82" fill="none" stroke="#e4e4e7" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+            <path d="M200 82 L360 28 L360 112 Z" fill="url(#fanG)"/>
+            <path d="M200 82 C250 66 300 56 360 58" fill="none" stroke="url(#lineG)" stroke-width="2.4"/>
+            <path d="M200 82 L360 28 M200 82 L360 112" stroke="#a78bfa" stroke-opacity=".5" stroke-dasharray="3 4" fill="none"/>
+            <line x1="200" y1="14" x2="200" y2="140" stroke="#ffffff" stroke-opacity=".25" stroke-dasharray="2 4"/>
+            <circle cx="200" cy="82" r="4.5" fill="#fff"/>
+            <text x="206" y="146" fill="#a1a1aa" font-size="10" font-family="Inter,sans-serif">today</text>
+          </svg>
+        </div>
+        <p class="mini-cap">Uncertainty made explicit. The range widens the further ahead it looks.</p>
       </div>
+      <div class="pane glass p-chip" data-depth="0.6"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/></svg>Decision support. People stay accountable.</div>
     </div>
   </div>
 </section>
 
+
+</section>
+
+<!-- PROBLEM -->
+<section id="problem" aria-labelledby="pr-t">
+  <div class="wrap narrow">
+    <p class="eyebrow rv">The gap</p>
+    <h2 class="h2 rv" id="pr-t" style="margin-top:14px">Organisations record everything. <span class="grad">Few learn from it.</span></h2>
+    <div class="prose rv">
+      <p>Planning, procurement, pricing, supply chain and finance teams make consequential decisions every day. The inputs sit in one system, the forecast in another, the decision in an email, and the outcome in a report months later.</p>
+      <p>Reports describe individual moments. Forecasts estimate the future. Neither preserves the link between the evidence available, the decision taken, and the result that followed.</p>
+      <p class="big">Without that link, an organisation cannot tell whether its judgement, or its models, are improving.</p>
+      <p>Udgass is being built to maintain it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="how" aria-labelledby="how-t">
+  <div class="wrap">
+    <div class="tl-head rv">
+      <p class="eyebrow">How it works</p>
+      <h2 class="h2" id="how-t">From business history to <span class="grad">measured judgement.</span></h2>
+      <p class="lead" style="margin-top:18px">Five stages in a closed loop. Each builds on the evidence of the last, and the final stage feeds the first.</p>
+    </div>
+    <div class="tl" id="tl">
+      <div class="spine" aria-hidden="true"><i></i></div>
+      <article class="stage-row " data-stage="1">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="#22d3ee"><circle cx="17" cy="17" r="3.2"/></svg></div>
+        <div class="glass st-card"><div class="st-top"><span class="st-n">01</span></div><h3>Remember</h3><p>Establish a structured, time-ordered record of business events, forecasts, decisions and their outcomes, with the source of every input retained.</p></div>
+      </article>
+      <article class="stage-row flip" data-stage="2">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="#22d3ee"><circle cx="9" cy="22" r="2.2"/><circle cx="17" cy="14" r="2.2"/><circle cx="25" cy="21" r="2.2"/><circle cx="13" cy="26" r="1.6" opacity=".6"/><circle cx="23" cy="9" r="3" fill="#fbbf24"/></svg></div>
+        <div class="glass st-card"><div class="st-top"><span class="st-n">02</span></div><h3>Detect</h3><p>Surface structural change, recurring patterns and anomalies, and separate genuine signal from normal variation.</p></div>
+      </article>
+      <article class="stage-row " data-stage="3">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round"><path d="M6 20 L16 16"/><path d="M16 16 L29 7"/><path d="M16 16 L29 25"/><path d="M16 16 L29 16" stroke="#a78bfa"/></svg></div>
+        <div class="glass st-card"><div class="st-top"><span class="st-n">03</span></div><h3>Predict</h3><p>Produce probabilistic estimates grounded in comparable historical situations. Every estimate carries an explicit uncertainty range.</p></div>
+      </article>
+      <article class="stage-row flip" data-stage="4">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17h7"/><path d="M13 17 L22 9 L29 9"/><path d="M13 17 L22 25 L29 25" stroke="#a78bfa"/></svg></div>
+        <div class="glass st-card"><div class="st-top"><span class="st-n">04</span></div><h3>Evaluate</h3><p>Compare scenarios and trade-offs against stated assumptions, constraints and risk tolerance.</p></div>
+      </article>
+      <article class="stage-row last" data-stage="5">
+        <div class="node" aria-hidden="true"><svg viewBox="0 0 34 34" fill="none" stroke="#a78bfa" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M27 17a10 10 0 1 1-4-8"/><path d="M24 4v6h-6"/></svg></div>
+        <div class="glass st-card"><div class="st-top"><span class="st-n">05</span></div><h3>Learn</h3><p>Reconcile predictions with realised outcomes. Measure accuracy over time, expose failures, and define where the system has earned reliance.</p></div>
+      </article>
+    </div>
+    <p class="loopback rv">Every conclusion is bounded by the evidence behind it, and says so.</p>
+  </div>
+</section>
+
+<!-- DECISION RECORD -->
+<section id="record" aria-labelledby="rc-t">
+  <div class="wrap rec">
+    <div class="rv">
+      <p class="eyebrow">The decision record</p>
+      <h2 class="h2" id="rc-t" style="margin-top:14px">Every decision, <span class="grad">with its evidence and its outcome.</span></h2>
+      <p class="lead" style="margin-top:20px">The core of Udgass is a durable record that links an estimate to the decision it informed and to what happened next. That record is what makes performance measurable and accountability clear.</p>
+      <p class="tp-note">Schematic of the intended record structure. Illustrative only; no real data.</p>
+    </div>
+    <div class="glass ledger rv" role="group" aria-label="Schematic of a decision record. Illustrative, no real data.">
+      <div class="lg-h"><span>Decision record</span><b>Illustrative</b></div>
+      <dl>
+        <div><dt>Decision</dt><dd>The question being decided, and who owns it</dd></div>
+        <div><dt>Evidence considered</dt><dd>Historical situations used, with their sources</dd></div>
+        <div><dt>Estimate</dt><dd>Expected outcome with an explicit uncertainty range</dd></div>
+        <div><dt>Assumptions</dt><dd>What must hold for the estimate to apply</dd></div>
+        <div><dt>Action taken</dt><dd>What the accountable person decided, and why</dd></div>
+        <div class="pend"><dt>Realised outcome</dt><dd>Recorded when known, then reconciled with the estimate</dd></div>
+        <div class="pend"><dt>Variance</dt><dd>The gap between estimate and outcome, kept for learning</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<!-- FOCUS -->
+<section id="focus" aria-labelledby="fo-t">
+  <div class="wrap">
+    <p class="eyebrow rv">First application · Demand and inventory</p>
+    <h2 class="h2 rv" id="fo-t" style="margin-top:14px;max-width:18ch">Begin where outcomes can be measured.</h2>
+    <p class="lead rv" style="margin-top:22px">Demand and inventory planning is a recurring decision with quantifiable outcomes and material operating consequences. That makes it a rigorous place to establish whether the approach works.</p>
+    <ul class="qs">
+      <li class="glass rv"><span>01</span>What range of demand should the plan prepare for?</li>
+      <li class="glass rv"><span>02</span>Which products carry elevated shortage risk?</li>
+      <li class="glass rv"><span>03</span>Where is excess inventory likely to accumulate?</li>
+      <li class="glass rv"><span>04</span>How would supplier delays change the outcome?</li>
+    </ul>
+    <div class="prose rv">
+      <p>Udgass is being designed to evaluate these questions against historical evidence, then compare each estimate with what actually happens.</p>
+      <p class="dim">The architecture is intended to extend to other planning and operational decisions. That extension depends on first demonstrating results here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT FOR DECISIONS -->
+<section id="built" aria-labelledby="bt-t">
+  <div class="wrap">
+    <h2 class="h2 rv" id="bt-t" style="max-width:20ch">Designed for decisions, <span class="grad">not for reporting.</span></h2>
+    <div class="feat">
+      <div class="glass rv"><h3>Historical context</h3><p>Read current conditions against comparable past situations, not in isolation.</p></div>
+      <div class="glass rv"><h3>Evidence-backed estimates</h3><p>Each estimate shows its supporting history, assumptions, uncertainty and limitations.</p></div>
+      <div class="glass rv"><h3>Scenario evaluation</h3><p>Compare outcomes and trade-offs before committing to a course of action.</p></div>
+      <div class="glass rv"><h3>Measured performance</h3><p>Accuracy is judged against realised outcomes over time, not asserted.</p></div>
+      <div class="glass rv hum"><h3>Decision support, by design</h3><p>Udgass is being designed to read from source systems and advise. It does not execute actions. Accountability stays with the people who decide.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="founder" id="founder" aria-labelledby="f-t">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Who is building this</p>
+      <h2 class="h2" id="f-t" style="margin-top:14px">Built by an engineer from <span class="grad">safety-critical software.</span></h2>
+      <p class="quote">In that work you never ship a number without knowing <em>how wrong it could be.</em></p>
+      <div class="body">
+        <p>I'm Kanthipriya Mahale, founder of KPAppWorx. I have spent more than nine years engineering safety-critical embedded software in aerospace and automotive, under DO-178C and ISO 26262, where evidence, traceability and accountability are not optional.</p>
+        <p>Udgass takes the same habits to business decisions: keep the record, state the uncertainty, check the result, and keep a named person accountable. To be clear, this is a discipline I am applying, not a claim that Udgass has been certified to any standard.</p>
+      </div>
+      <div class="sign"><span class="av" aria-hidden="true">K</span><div><b>Kanthipriya Mahale</b><small>Founder, KPAppWorx Technologies Private Limited · Bengaluru</small></div></div>
+    </div>
+    <div class="glass proof rv" role="group" aria-label="Background">
+      <h3>Background</h3>
+      <ul>
+        <li><strong>9+ years</strong><span>Safety-critical embedded software engineering</span></li>
+        <li><strong>Aerospace and automotive</strong><span>Delivered under DO-178C and ISO 26262</span></li>
+        <li><strong>13 products shipped</strong><span>Through KPAppWorx: 10 iOS and macOS apps and 3 live AI software tools</span></li>
+      </ul>
+      <p class="honest">Udgass itself is in early development and has no customers yet.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY -->
+<section id="security" aria-labelledby="sec-t">
+  <div class="wrap">
+    <p class="eyebrow rv">Security and data handling</p>
+    <h2 class="h2 rv" id="sec-t" style="margin-top:14px;max-width:20ch">Designed to read, <span class="grad">never to change.</span></h2>
+    <p class="lead rv" style="margin-top:22px">These are the design principles Udgass is being built around. They describe intent. They are not claims about a deployed system, and nothing here has been independently audited or certified.</p>
+    <div class="secgrid">
+      <div class="glass rv"><h3>Read-only by design</h3><p>Udgass is intended to read from source data and advise. It is not designed to write back to your systems or execute actions, and it will not need credentials that allow it to.</p></div>
+      <div class="glass rv"><h3>Exports first</h3><p>Early work is planned around data exports your team chooses to provide, such as sales, stock and order files. That keeps any direct connection to your live systems out of the first stage.</p></div>
+      <div class="glass rv"><h3>Only the data it needs</h3><p>The first application needs operational history, not personal customer data. We intend to ask only for the fields the demand and inventory work requires.</p></div>
+      <div class="glass rv"><h3>Traceable by design</h3><p>The decision record is intended to show what data an estimate was built from, so that every output can be traced back to its inputs.</p></div>
+      <div class="glass rv"><h3>Agreed in writing</h3><p>How data is stored, who can access it and how it is returned or removed will be defined and agreed in writing with each design partner before any data is shared.</p></div>
+    </div>
+    <ul class="status rv" aria-label="Security status">
+      <li><b>Security certifications</b>None</li>
+      <li><b>Independent security audit</b>Not yet carried out</li>
+      <li><b>Data retention and removal process</b>Not yet defined. It will be agreed with each design partner before data is shared.</li>
+      <li><b>In the meantime</b>Please do not send sensitive or personal data. Early conversations can use sample or agreed export data.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section id="principles" aria-labelledby="pn-t">
+  <div class="wrap narrow">
+    <p class="eyebrow rv">Principles and status</p>
+    <h2 class="h2 rv" id="pn-t" style="margin-top:14px">Reliance has to be <span class="grad">earned.</span></h2>
+    <div class="prose rv">
+      <p>Enterprise decisions need more than a persuasive prediction.</p>
+      <p class="big">They need traceable evidence, explicit uncertainty, measured performance and clear accountability.</p>
+      <p>Udgass is being developed around those four requirements, and will report its own accuracy, including where it is wrong.</p>
+    </div>
+    <ul class="status rv" aria-label="Current status">
+      <li><b>Stage</b>Early development</li>
+      <li><b>Production deployments</b>None yet</li>
+      <li><b>Customer results</b>None yet. Examples on this page are illustrative.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="join" aria-labelledby="j-t" style="padding-top:20px">
+  <div class="wrap">
+    <div class="glass cta rv">
+      <div>
+        <p class="eyebrow">Design partners</p>
+        <h2 class="h2" id="j-t" style="margin-top:14px">Help shape it with real planning decisions.</h2>
+        <p class="lead">We are speaking with a small number of planning, supply chain and operations teams about how consequential decisions are made today, what evidence they rely on, and where history fails to inform the next choice.</p>
+        <p class="lead" style="margin-top:14px">Request early access to be contacted as design partnerships open.</p>
+      </div>
+      <div data-form="cta"></div>
+    </div>
+  </div>
+</section>
 </main>
 
-<footer class="site-footer">
+<footer>
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="/" class="brand" aria-label="KPAppWorx home"><img src="/logo-nav.png" alt="" width="28" height="28" />KPAppWorx</a>
-        <p class="tagline">Software that shows its work.</p>
-        <p>KPAppWorx Technologies Private Limited builds B2B software and iOS apps. Bengaluru, India.</p>
-        <p class="ud-foot-note">Udgass is a product by KPAppWorx. Charts on this page use synthetic data for illustration.</p>
-      </div>
-      <nav class="footer-col" aria-label="Product">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#how">Udgass: how it works</a></li>
-          <li><a href="#early-access">Early-access list</a></li>
-          <li><a href="/products/quarterdeck">Quarterdeck AI</a></li>
-          <li><a href="/products">All products</a></li>
-        </ul>
-      </nav>
-      <nav class="footer-col" aria-label="Company">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="/">KPAppWorx home</a></li>
-          <li><a href="/company">Company</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/labs">iOS apps</a></li>
-        </ul>
-      </nav>
-      <nav class="footer-col" aria-label="Legal">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="/privacy">Privacy Policy</a></li>
-          <li><a href="/terms">Terms of Service</a></li>
-        </ul>
-      </nav>
-      <nav class="footer-col" aria-label="Contact">
-        <h4>Contact</h4>
-        <ul>
-          <li><a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></li>
-          <li><a href="https://www.linkedin.com/company/kpappworx/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="/contact">Contact page</a></li>
-        </ul>
-      </nav>
-    </div>
-    <div class="footer-bottom">
-      <span>© <span id="year">2026</span> KPAppWorx Technologies Private Limited · Bengaluru, Karnataka, India</span>
-      <span class="status-pill"><i aria-hidden="true"></i>Udgass is in early development · early-access list open</span>
-    </div>
+    <span>Udgass by KPAppWorx. © KPAppWorx Technologies Private Limited.</span>
+    <span><a href="/privacy">Privacy</a> · <a href="/">KPAppWorx</a></span>
   </div>
 </footer>
-<script src="/assets/js/site.js"></script>
-<script src="/assets/js/udgass.js"></script>
-<script src="/assets/js/udgass-visual.js"></script>
+
+<template id="tpl-form">
+  <div class="f1">
+    <form class="f-row" novalidate>
+      <label class="sr" for="">Work email</label>
+      <input type="email" name="email" placeholder="name@company.com" autocomplete="email" inputmode="email" required>
+      <button class="btn" type="submit">Request early access</button>
+    </form>
+    <p class="f-note">In early development. We use your email only to contact you about Udgass.</p>
+    <p class="f-status" role="status" aria-live="polite"></p>
+  </div>
+  <div class="f2" hidden>
+    <h3>You're on the list.</h3>
+    <p class="lead" style="font-size:1rem">Two optional questions help us prioritise the right problems.</p>
+    <form novalidate>
+      <fieldset style="border:0;padding:0;margin:0" class="q"><legend class="sr">Which decision matters most to your team?</legend>
+        <span style="display:block;font-weight:600;font-size:.95rem;margin-bottom:10px" aria-hidden="true">Which decision matters most to your team?</span>
+        <div class="chips">
+          <label><input type="checkbox" name="challenge" value="Demand planning"><span>Demand planning</span></label>
+          <label><input type="checkbox" name="challenge" value="Inventory levels"><span>Inventory levels</span></label>
+          <label><input type="checkbox" name="challenge" value="Procurement"><span>Procurement</span></label>
+          <label><input type="checkbox" name="challenge" value="Supplier risk"><span>Supplier risk</span></label>
+          <label><input type="checkbox" name="challenge" value="Other"><span>Other</span></label>
+        </div>
+      </fieldset>
+      <label class="sel q" style="display:block"><span>Organisation size</span>
+        <select name="size"><option value="">Choose one</option><option>Under 50 employees</option><option>50 to 500 employees</option><option>500 to 5,000 employees</option><option>More than 5,000 employees</option></select>
+      </label>
+      <label class="call"><input type="checkbox" name="call" value="yes"><span>Open to a 30-minute conversation about how we plan today.</span></label>
+      <div class="acts"><button class="btn" type="submit">Send</button><button class="link" type="button" data-skip>Skip for now</button></div>
+    </form>
+    <p class="f-status" role="status" aria-live="polite"></p>
+  </div>
+  <div class="f-done" hidden>
+    <h3></h3><p class="lead" style="font-size:1rem"></p>
+  </div>
+</template>
+
+<script>
+/* =====================================================================
+   Particle field: a memory of layered history (phase 1) that, as you
+   scroll, lifts into an ascending spiral (the loop getting wiser).
+   Plain WebGL, no libraries. Decorative only.
+   ===================================================================== */
+(function(){
+  var cv = document.getElementById('gl');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gl = cv.getContext('webgl', {antialias:false, alpha:true, powerPreference:'low-power'});
+  if(!gl){ return; }
+  var mobile = Math.min(innerWidth, innerHeight) < 700;
+  var N = mobile ? 3800 : 9000;
+
+  var vs = [
+  'attribute vec3 s;',
+  'uniform mat4 M; uniform float t,prog,px,sx;',
+  'varying vec3 col; varying float a;',
+  'float h(float n){return fract(sin(n*127.1)*43758.5453);}',
+  'void main(){',
+  ' float L=s.x,u=s.y,v=s.z;',
+  ' float x=(u-.5)*13.;float z=(v-.5)*7.;float y=(L-.5)*4.6;',
+  ' y+=sin(x*.55+L*6.+t*.35)*.34+sin(z*.9+L*9.+t*.25)*.2;',
+  ' vec3 A=vec3(x,y,z);',
+  ' float ang=u*15.+v*6.2832; float r=.9+v*1.9+L*.5;',
+  ' vec3 B=vec3(cos(ang)*r,(u-.5)*7.2+sin(t*.4+v*6.)*.12,sin(ang)*r);',
+  ' float k=smoothstep(0.,1.,prog);',
+  ' vec3 p=mix(A,B,k); p.x+=sx;',
+  ' gl_Position=M*vec4(p,1.);',
+  ' float pulse=exp(-pow((fract(u-t*.045)-.5)*5.,2.));',
+  ' float ember=step(.9975,h(L*91.+u*37.+v*17.));',
+  ' col=mix(vec3(.13,.83,.93),vec3(.65,.55,.98),clamp(L*.9+v*.3+k*.2,0.,1.));',
+  ' col=mix(col,vec3(1.,.75,.14),ember);',
+  ' a=.75+.6*pulse+ember*.7;',
+  ' gl_PointSize=(2.6+pulse*2.2+ember*4.)*px*(9./gl_Position.w);',
+  '}'].join('\n');
+  var fs = [
+  'precision mediump float; varying vec3 col; varying float a;',
+  'void main(){vec2 c=gl_PointCoord-.5;float d=length(c);if(d>.5)discard;',
+  ' float f=smoothstep(.5,.0,d);gl_FragColor=vec4(col*(.7+f),f*a);}'].join('\n');
+
+  function sh(type,src){var o=gl.createShader(type);gl.shaderSource(o,src);gl.compileShader(o);return gl.getShaderParameter(o,gl.COMPILE_STATUS)?o:null}
+  var v=sh(gl.VERTEX_SHADER,vs), f=sh(gl.FRAGMENT_SHADER,fs);
+  if(!v||!f){return}
+  var pr=gl.createProgram();gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);
+  if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){return}
+  gl.useProgram(pr);
+
+  var LAYERS=14, d=new Float32Array(N*3), i;
+  /* seeded so the field looks the same on every visit */
+  var seed=7; function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
+  for(i=0;i<N;i++){
+    d[i*3]=(Math.floor(rnd()*LAYERS)+.5+(rnd()-.5)*.25)/LAYERS;
+    d[i*3+1]=rnd(); d[i*3+2]=rnd();
+  }
+  var buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,d,gl.STATIC_DRAW);
+  var loc=gl.getAttribLocation(pr,'s');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,3,gl.FLOAT,false,0,0);
+  var U={M:gl.getUniformLocation(pr,'M'),t:gl.getUniformLocation(pr,'t'),prog:gl.getUniformLocation(pr,'prog'),px:gl.getUniformLocation(pr,'px'),sx:gl.getUniformLocation(pr,'sx')};
+  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+
+  function persp(fov,asp,n,f){var q=1/Math.tan(fov/2),r=1/(n-f);return[q/asp,0,0,0, 0,q,0,0, 0,0,(n+f)*r,-1, 0,0,2*n*f*r,0]}
+  function mul(a,b){var o=new Array(16),i,j;for(i=0;i<4;i++)for(j=0;j<4;j++)o[j*4+i]=a[i]*b[j*4]+a[4+i]*b[j*4+1]+a[8+i]*b[j*4+2]+a[12+i]*b[j*4+3];return o}
+  function rotY(a){var c=Math.cos(a),s=Math.sin(a);return[c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]}
+  function rotX(a){var c=Math.cos(a),s=Math.sin(a);return[1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1]}
+  function trans(x,y,z){return[1,0,0,0, 0,1,0,0, 0,0,1,0, x,y,z,1]}
+
+  var W=0,H=0,dpr=1;
+  function resize(){
+    dpr=Math.min(window.devicePixelRatio||1, mobile?1.5:1.75);
+    W=Math.round(innerWidth*dpr);H=Math.round(innerHeight*dpr);
+    if(cv.width!==W||cv.height!==H){cv.width=W;cv.height=H}
+    gl.viewport(0,0,W,H);
+  }
+  resize();addEventListener('resize',resize);
+
+  var mx=0,my=0,tx=0,ty=0,prog=0,tprog=0,vis=true,t0=performance.now(),raf=0;
+  addEventListener('pointermove',function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5},{passive:true});
+  function onScroll(){
+    var max=Math.max(1,document.documentElement.scrollHeight-innerHeight);
+    tprog=Math.min(1,Math.max(0,(scrollY/max-.06)/.62));
+    if(reduce)draw(0);
+  }
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  function draw(time){
+    mx+=(tx-mx)*.04;my+=(ty-my)*.04;prog+=(tprog-prog)*.06;
+    var wide=innerWidth>900;
+    var sx=wide?(1-Math.min(1,prog*2.2))*2.7:0;           // hero: sit to the right of the headline
+    var cam=wide?10.5:13.5;
+    var P=persp(.9,W/H,.1,60);
+    var V=mul(trans(0,-.2,-cam),mul(rotX(.35+my*.2-prog*.25),rotY(time*.025+mx*.5+prog*1.1)));
+    gl.uniformMatrix4fv(U.M,false,new Float32Array(mul(P,V)));
+    gl.uniform1f(U.t,time);gl.uniform1f(U.prog,prog);gl.uniform1f(U.px,dpr*(mobile?1.1:1.4));gl.uniform1f(U.sx,sx);
+    gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.POINTS,0,N);
+  }
+  function loop(){raf=0;if(!vis)return;draw((performance.now()-t0)/1000);raf=requestAnimationFrame(loop)}
+  if(reduce){draw(0);addEventListener('resize',function(){draw(0)});}
+  else{
+    document.addEventListener('visibilitychange',function(){vis=!document.hidden;if(vis&&!raf)loop()});
+    loop();
+  }
+})();
+
+/* ---------- reveal on scroll, timeline spine + stage lighting ---------- */
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if(!('IntersectionObserver' in window)||reduce){rv.forEach(function(e){e.classList.add('in')});}
+  else{
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -6% 0px'});
+    rv.forEach(function(e){io.observe(e)});
+  }
+  var tl=document.getElementById('tl'),rows=[].slice.call(tl.querySelectorAll('.stage-row'));
+  function upd(){
+    var r=tl.getBoundingClientRect(),vh=innerHeight,mid=vh*.62;
+    var p=(mid-r.top)/r.height;p=Math.max(0,Math.min(1,p));
+    tl.style.setProperty('--p',reduce?1:p);
+    rows.forEach(function(row){var b=row.getBoundingClientRect();if(reduce||b.top<vh*.7)row.classList.add('on')});
+  }
+  addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();
+
+  /* restrained depth on the hero panels */
+  var st=document.getElementById('stage');
+  if(!reduce&&matchMedia('(min-width:901px)').matches){
+    var ps=[].slice.call(st.querySelectorAll('.pane')),tx=0,ty=0,cx=0,cy=0,run=false;
+    addEventListener('pointermove',function(e){tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5;if(!run){run=true;requestAnimationFrame(tick)}},{passive:true});
+    function tick(){
+      cx+=(tx-cx)*.08;cy+=(ty-cy)*.08;
+      ps.forEach(function(p){var d=parseFloat(p.dataset.depth||1);p.style.transform='translate3d('+(-cx*14*d)+'px,'+(-cy*10*d)+'px,'+(parseFloat(getComputedStyle(p).getPropertyValue('--z'))||0)+'px) rotateY('+(cx*7)+'deg) rotateX('+(-cy*6)+'deg)'});
+      if(Math.abs(tx-cx)>.001||Math.abs(ty-cy)>.001)requestAnimationFrame(tick);else run=false;
+    }
+  }
+})();
+
+/* =====================================================================
+   Two-step early-access form.
+   Step 1 saves the email. Step 2 updates the SAME row (matched by id).
+   Success is shown only after the server confirms with {ok:true,id,step}.
+   If no endpoint is configured, it says so instead of pretending.
+   ===================================================================== */
+(function(){
+  var tpl=document.getElementById('tpl-form');
+  var state={id:(window.crypto&&crypto.randomUUID)?crypto.randomUUID():('u'+Date.now().toString(36)+Math.random().toString(36).slice(2,10)),saved1:false,saved2:false,email:''};
+  var mounts=[].slice.call(document.querySelectorAll('[data-form]'));
+  var views=[];
+  var EMAIL=/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/;
+
+  function post(payload){
+    var endpoint=document.body.getAttribute('data-endpoint')||'';
+    if(!endpoint){return Promise.reject({code:'noendpoint'})}
+    var ctl=('AbortController' in window)?new AbortController():null;
+    var to=setTimeout(function(){ctl&&ctl.abort()},15000);
+    return fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload),signal:ctl?ctl.signal:undefined})
+      .then(function(r){if(!r.ok)throw {code:'http'};return r.json()})
+      .then(function(j){
+        if(!j||j.ok!==true||j.id!==payload.id||j.step!==payload.step)throw {code:'unconfirmed'};
+        return j;
+      })
+      .finally(function(){clearTimeout(to)});
+  }
+  function failText(e){
+    if(e&&e.code==='noendpoint')return 'Sign-up is not switched on for this preview yet, so nothing was sent.';
+    return 'I could not confirm that this was saved, so please do not count on it. Try again, or email hello@kpappworx.com.';
+  }
+  function show(v,which){['f1','f2','f-done'].forEach(function(c){v.root.querySelector('.'+c).hidden=(c!==which)})}
+  function status(el,msg,cls){el.textContent=msg||'';el.className='f-status'+(cls?' '+cls:'')}
+
+  mounts.forEach(function(m,idx){
+    m.appendChild(tpl.content.cloneNode(true));
+    var root=m,v={root:root};views.push(v);
+    var f1=root.querySelector('.f1 form'),em=f1.querySelector('input'),lab=f1.querySelector('label'),
+        s1=root.querySelector('.f1 .f-status'),b1=f1.querySelector('button');
+    em.id='em-'+idx;lab.setAttribute('for',em.id);
+    f1.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var val=em.value.trim();
+      if(!EMAIL.test(val)){status(s1,'Please enter a valid email address.','err');em.focus();return}
+      b1.disabled=true;b1.textContent='Saving…';status(s1,'');
+      post({step:1,id:state.id,email:val,source:'kpappworx.com/udgass'}).then(function(){
+        state.saved1=true;state.email=val;views.forEach(function(x){show(x,'f2')});
+        var h=v.root.querySelector('.f2 h3');if(h){h.setAttribute('tabindex','-1');h.focus()}
+      }).catch(function(e){status(s1,failText(e),'err')}).then(function(){b1.disabled=false;b1.textContent='Request early access'});
+    });
+    var f2=root.querySelector('.f2 form'),s2=root.querySelector('.f2 .f-status'),b2=f2.querySelector('button[type=submit]'),skip=f2.querySelector('[data-skip]');
+    function done(title,body){views.forEach(function(x){var d=x.root.querySelector('.f-done');d.querySelector('h3').textContent=title;d.querySelector('.lead').textContent=body;show(x,'f-done')})}
+    skip.addEventListener('click',function(){done("You're on the list.","We will write to you when there is something real to try. Thank you.")});
+    f2.addEventListener('submit',function(ev){
+      ev.preventDefault();
+      var ch=[].slice.call(f2.querySelectorAll('input[name=challenge]:checked')).map(function(i){return i.value});
+      var size=f2.querySelector('select').value,call=f2.querySelector('input[name=call]').checked;
+      if(!ch.length&&!size&&!call){skip.click();return}
+      b2.disabled=true;b2.textContent='Saving…';status(s2,'');
+      post({step:2,id:state.id,challenge:ch.join(', '),size:size,call:call?'yes':''}).then(function(){
+        state.saved2=true;done('Thank you. That is saved.',"We will write to you when there is something real to try.");
+      }).catch(function(e){status(s2,failText(e),'err')}).then(function(){b2.disabled=false;b2.textContent='Send'});
+    });
+  });
+})();
+</script>
 </body>
 </html>

@@ -46,6 +46,11 @@
       "source": "/audit",
       "destination": "/products/quarterdeck",
       "permanent": false
+    },
+    {
+      "source": "/udgass-next",
+      "destination": "/udgass",
+      "permanent": false
     }
   ]
 }
