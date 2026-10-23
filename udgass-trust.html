@@ -86,7 +86,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
   <p class="eyebrow">Trust and evaluation</p>
   <h1 id="t">Check it on your own history. <em>Keep your data.</em></h1>
   <p class="lead">This page is for planning, security and procurement teams. It says what Udgass does with data, what safeguards exist, and what does not exist yet. Udgass is early software from one developer. It has no customers, no certifications and has not yet been run on a company’s real data.</p>
-  <div class="cta"><a class="btn" href="/udgass#assessment">Request the assessment</a><a class="btn ghost" href="#gaps">Jump to what is missing</a></div>
+  <div class="cta"><a class="btn" href="/udgass#assessment">Download the assessment kit</a><a class="btn ghost" href="#gaps">Jump to what is missing</a></div>
  </div>
 </section>
 
@@ -98,7 +98,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
    <tr><th scope="row">What it needs</th><td>One CSV with date, product and quantity. Nothing else.</td></tr>
    <tr><th scope="row">What it does to systems</th><td>Nothing. It reads the file you point it at. It has no connection to any ERP, planning or purchasing system and cannot place an order.</td></tr>
    <tr><th scope="row">Who decides</th><td>A person. Outputs are advice with stated ranges. A named person makes and owns each decision.</td></tr>
-   <tr><th scope="row">Tested on</th><td>Invented data only (94 automated tests, Python 3.9 and 3.13). <b class="no">No measurement on real company data exists yet.</b> That is what a pilot is for.</td></tr>
+   <tr><th scope="row">Tested on</th><td>Invented data only (97 automated tests, Python 3.9 and 3.13; runs on Windows 11, macOS and Linux). <b class="no">No measurement on real company data exists yet.</b> That is what a pilot is for.</td></tr>
   </table></div>
 </div></section>
 
@@ -106,7 +106,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
   <p class="eyebrow">Evaluate it</p><h2 id="e-t">The demand assessment, on your machine</h2>
   <p class="lead">You need Python 3.9 or newer and a sales export. Leave out customer names, emails and other personal data; columns that look personal are ignored and never stored.</p>
   <div class="tw" role="region" aria-label="Data requirements table" tabindex="0"><table>
-   <tr><th scope="row">Sales (required)</th><td>Date, product code, quantity. Location if you have several. Daily or weekly rows; at least 39 weeks, ideally two years or more. Monthly totals are not enough. <a href="/assets/udgass-sample-sales-synthetic.csv" download>Sample file (synthetic)</a>.</td></tr>
+   <tr><th scope="row">Sales (required)</th><td>Date, product code, quantity. Location if you have several. Daily or weekly rows; at least 56 weeks (just over a year), ideally two years or more for a reliable verdict. Monthly totals are not enough. <a href="/assets/udgass-sample-sales-synthetic.csv" download>Sample file (synthetic)</a>.</td></tr>
    <tr><th scope="row">Stock snapshots (optional)</th><td>Date, product code, quantity on hand. Shows where stock-outs hid demand.</td></tr>
    <tr><th scope="row">Purchase orders (optional)</th><td>PO number, product code, order date, quantity, promised date, receipt date, vendor. Shows real lead times and whether they are changing.</td></tr>
    <tr><th scope="row">Your past forecasts (optional)</th><td>Product code, the first date of each forecast window, and the forecast total for that window, as it was made at the time. Enables a head-to-head comparison.</td></tr>
@@ -114,7 +114,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
   </table></div>
   <ol class="steps">
    <li><b>Check the file</b><span>Shows the columns found, products, weeks, gaps and anything that looks personal. Changes nothing.</span><pre tabindex="0">python3 -m udgass check sales.csv</pre></li>
-   <li><b>Run the assessment</b><span>Replays your history, compares with simple methods and your own forecasts, and writes one report. A temporary working database is deleted when it finishes.</span><pre tabindex="0">python3 -m udgass assess --sales sales.csv --out assessment.html</pre></li>
+   <li><b>Run the assessment</b><span>Replays your history, compares with simple methods and your own forecasts, and writes one report. A temporary working database is deleted when it finishes.</span><pre tabindex="0">python3 -m udgass assess --sales sales.csv --out assessment.html</pre><span>On Windows, type <code>py</code> instead of <code>python3</code>. Typed commands work even where Windows blocks double-clicked scripts.</span></li>
    <li><b>Share only if you want to</b><span>An anonymised copy replaces product and location codes. The report ends with a draft summary in relative figures only, which is never published without your written approval.</span><pre tabindex="0">python3 -m udgass assess --sales sales.csv --anonymise --out shareable.html</pre></li>
   </ol>
   <p class="note">If Udgass is not clearly better than your current forecast or a simple average, the report says so. The view on whether a pilot is justified is advisory; the decision rests with your company. The first three assessments are free; in return we learn from whatever you choose to share. Publishing any result is a separate, optional permission. <a href="/assets/udgass-sample-report-illustrative.html" target="_blank" rel="noopener">See a sample report (illustrative, synthetic data)</a>.</p>
@@ -130,7 +130,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
      <li>No third-party dependencies</li>
      <li>Writes only the report you name (the older single-file commands also keep a small run log of file hashes)</li></ul></div>
    <div><h3>Safeguards</h3><ul class="dot">
-     <li>Refuses files with extra columns that look personal (emails, phones, names, addresses), unless overridden. Best effort: it can miss free text</li>
+     <li>Flags extra columns that look personal (emails, phones, names, addresses); the assessment ignores them and never stores them. Best effort: it can miss free text</li>
      <li>Run log records version, settings and file hashes, never data rows. Hash-chained, so edits are detected. Tamper-evident, not tamper-proof</li>
      <li>Reports label which data they were measured on</li></ul></div>
   </div>
@@ -150,7 +150,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
    <tr><th scope="row">Sub-processors</th><td>None for the engine, which runs on your machine. The website form uses Google.</td></tr>
    <tr><th scope="row">Data residency and retention</th><td>Data stays where you run it. Udgass keeps nothing beyond the files you create. Udgass does not accept company data at present. If that is ever needed, signed written terms on storage, access and deletion come first.</td></tr>
    <tr><th scope="row">Support and uptime commitments</th><td><b class="no">None.</b> One person, replies within a few days.</td></tr>
-   <tr><th scope="row">Contract terms, liability</th><td><b class="no">Not drafted.</b> Advisory use only. A pilot would be agreed in writing first.</td></tr>
+   <tr><th scope="row">Contract terms, liability</th><td><b class="no">Drafts only, not yet reviewed by a lawyer.</b> Advisory use only. A pilot would be agreed in writing first.</td></tr>
   </table></div>
   <h2 style="margin-top:56px">What would change this, in order</h2>
   <ol class="steps">
