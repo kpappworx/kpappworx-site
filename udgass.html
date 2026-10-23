@@ -807,7 +807,7 @@ footer li a:hover{color:var(--ac)}
         <div><dt>Customer results</dt><dd>None. Examples on this page are illustrative. Measured results so far use invented data only.</dd></div>
         <div><dt>Security certifications</dt><dd>None</dd></div>
         <div><dt>Independent security audit</dt><dd>Not yet carried out</dd></div>
-        <div><dt>Data handling</dt><dd>The demand assessment runs on the company's own computer and uploads nothing. If data has to be shared instead, written terms come first: agreed fields only, encrypted storage, founder-only access, deletion within 30 days with confirmation.</dd></div>
+        <div><dt>Data handling</dt><dd>The demand assessment runs on the company's own computer and makes no network connections. Udgass does not accept company data at present; if that is ever needed, signed written terms on storage, access and deletion come first.</dd></div>
         <div><dt>For now</dt><dd>Please do not send sensitive or personal data. Early conversations can use sample or agreed export data.</dd></div>
       </dl>
     </div>
@@ -854,10 +854,10 @@ footer li a:hover{color:var(--ac)}
       <dl class="offer">
         <div><dt>What you need</dt><dd>A sales export with date, product and quantity, daily or weekly, ideally two years or more. Optional: stock-on-hand snapshots, purchase orders with receipt dates, and your own past forecasts for a head-to-head comparison.</dd></div>
         <div><dt>What you get</dt><dd>A report covering data quality, which inventory questions your data can and cannot answer, accuracy against simple methods (and against your forecasts, if provided), the products where estimates fail, and an advisory view on whether a pilot is justified.</dd></div>
-        <div><dt>Cost</dt><dd>Free for the first three companies, in exchange for permission to quote the result, positive or negative, only in wording your company approves in writing. No data or confidential details are ever published. Later assessments and pilots are paid.</dd></div>
-        <div><dt>Your data</dt><dd>The assessment runs on your machine and uploads nothing. If you cannot run it yourself, data is accepted only under written terms agreed first: agreed fields only, encrypted storage, access by the founder only, deletion within 30 days with written confirmation.</dd></div>
+        <div><dt>Cost</dt><dd>Free for the first three companies. In return, we learn how Udgass performs on real data from whatever you choose to share. Publishing any result or testimonial is a separate, optional permission you can decline; nothing is published without your written approval of the exact wording, and never your data. Later assessments and pilots are paid.</dd></div>
+        <div><dt>Your data</dt><dd>The assessment runs on your machine and makes no network connections; this was checked by tracing a full run. If you cannot run it yourself, tell us: written data terms come first, and no data is accepted before both sides have signed them.</dd></div>
       </dl>
-      <p class="brief"><a href="/assets/udgass-sample-sales-synthetic.csv" download>Download a sample sales file (CSV, synthetic data)</a> · <a href="/udgass-trust#evaluate">Data requirements and how it runs</a></p>
+      <p class="brief"><a href="/assets/udgass-sample-report-illustrative.html" target="_blank" rel="noopener">See a sample report (illustrative, synthetic data)</a> · <a href="/assets/udgass-sample-sales-synthetic.csv" download>Sample sales file (CSV)</a> · <a href="/udgass-trust#evaluate">Data requirements and how it runs</a></p>
     </div>
     <div class="fcard rv" data-form="cta"></div>
   </div>
@@ -1247,10 +1247,16 @@ var UdgassEngine=(function(){
   var views=[];
   var EMAIL=/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/;
   function post(payload){
+    return post1(payload).catch(function(e){
+      if(e&&(e.code==='noendpoint'||e.code==='unconfirmed'))throw e;
+      return new Promise(function(r){setTimeout(r,1500)}).then(function(){return post1(payload)});   // one retry: the server ignores duplicates
+    });
+  }
+  function post1(payload){
     var endpoint=document.body.getAttribute('data-endpoint')||'';
     if(!endpoint){return Promise.reject({code:'noendpoint'})}
     var ctl=('AbortController' in window)?new AbortController():null;
-    var to=setTimeout(function(){ctl&&ctl.abort()},15000);
+    var to=setTimeout(function(){ctl&&ctl.abort()},30000);
     return fetch(endpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload),signal:ctl?ctl.signal:undefined})
       .then(function(r){if(!r.ok)throw {code:'http'};return r.json()})
       .then(function(j){

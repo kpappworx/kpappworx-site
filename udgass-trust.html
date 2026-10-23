@@ -98,7 +98,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
    <tr><th scope="row">What it needs</th><td>One CSV with date, product and quantity. Nothing else.</td></tr>
    <tr><th scope="row">What it does to systems</th><td>Nothing. It reads the file you point it at. It has no connection to any ERP, planning or purchasing system and cannot place an order.</td></tr>
    <tr><th scope="row">Who decides</th><td>A person. Outputs are advice with stated ranges. A named person makes and owns each decision.</td></tr>
-   <tr><th scope="row">Tested on</th><td>Invented data only (94 automated tests). <b class="no">No measurement on real company data exists yet.</b> That is what a pilot is for.</td></tr>
+   <tr><th scope="row">Tested on</th><td>Invented data only (94 automated tests, Python 3.9 and 3.13). <b class="no">No measurement on real company data exists yet.</b> That is what a pilot is for.</td></tr>
   </table></div>
 </div></section>
 
@@ -117,18 +117,18 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
    <li><b>Run the assessment</b><span>Replays your history, compares with simple methods and your own forecasts, and writes one report. A temporary working database is deleted when it finishes.</span><pre tabindex="0">python3 -m udgass assess --sales sales.csv --out assessment.html</pre></li>
    <li><b>Share only if you want to</b><span>An anonymised copy replaces product and location codes. The report ends with a draft summary in relative figures only, which is never published without your written approval.</span><pre tabindex="0">python3 -m udgass assess --sales sales.csv --anonymise --out shareable.html</pre></li>
   </ol>
-  <p class="note">If Udgass is not clearly better than your current forecast or a simple average, the report says so. The view on whether a pilot is justified is advisory; the decision rests with your company. The first three assessments are free in exchange for permission to quote the result in wording you approve.</p>
+  <p class="note">If Udgass is not clearly better than your current forecast or a simple average, the report says so. The view on whether a pilot is justified is advisory; the decision rests with your company. The first three assessments are free; in return we learn from whatever you choose to share. Publishing any result is a separate, optional permission. <a href="/assets/udgass-sample-report-illustrative.html" target="_blank" rel="noopener">See a sample report (illustrative, synthetic data)</a>.</p>
 </div></section>
 
 <section id="data" aria-labelledby="d-t"><div class="wrap">
   <p class="eyebrow">Data handling</p><h2 id="d-t">What happens to your file</h2>
   <div class="cols">
    <div><h3>What the software does</h3><ul class="dot">
-     <li>Reads your file once, in memory, on your machine</li>
+     <li>Reads your files on your machine and works in a temporary folder that is deleted when the run ends</li>
      <li>Never modifies it (checked by an automated test)</li>
-     <li>Makes no network calls. Network and process modules are not imported (checked by a test)</li>
+     <li>Makes no network connections: checked by a source scan, a test, and a traced full run with zero network system calls</li>
      <li>No third-party dependencies</li>
-     <li>Writes only the report files you name and a small run log</li></ul></div>
+     <li>Writes only the report you name (the older single-file commands also keep a small run log of file hashes)</li></ul></div>
    <div><h3>Safeguards</h3><ul class="dot">
      <li>Refuses files with extra columns that look personal (emails, phones, names, addresses), unless overridden. Best effort: it can miss free text</li>
      <li>Run log records version, settings and file hashes, never data rows. Hash-chained, so edits are detected. Tamper-evident, not tamper-proof</li>
@@ -148,7 +148,7 @@ footer a{display:inline-flex;min-height:44px;align-items:center;padding:0 6px}
    <tr><th scope="row">Integrations (SAP, Oracle, Snowflake, …)</th><td><b class="no">None.</b> CSV exports only.</td></tr>
    <tr><th scope="row">Hosted service, single sign-on, roles</th><td><b class="na">Not applicable today.</b> There is no hosted service to sign in to.</td></tr>
    <tr><th scope="row">Sub-processors</th><td>None for the engine, which runs on your machine. The website form uses Google.</td></tr>
-   <tr><th scope="row">Data residency and retention</th><td>Data stays where you run it. Udgass keeps nothing beyond the files you create. If you cannot run it and data must be shared: written terms first, agreed fields only, encrypted storage, founder-only access, deletion within 30 days with written confirmation.</td></tr>
+   <tr><th scope="row">Data residency and retention</th><td>Data stays where you run it. Udgass keeps nothing beyond the files you create. Udgass does not accept company data at present. If that is ever needed, signed written terms on storage, access and deletion come first.</td></tr>
    <tr><th scope="row">Support and uptime commitments</th><td><b class="no">None.</b> One person, replies within a few days.</td></tr>
    <tr><th scope="row">Contract terms, liability</th><td><b class="no">Not drafted.</b> Advisory use only. A pilot would be agreed in writing first.</td></tr>
   </table></div>
