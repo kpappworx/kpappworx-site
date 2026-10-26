@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Udgass · Inventory decisions from your own history</title>
-<meta name="description" content="Udgass helps planning teams make better inventory decisions using their own business history: it replays past demand, measures forecast accuracy against simple methods, and records decisions and outcomes. Free demand assessment for the first three companies.">
+<title>Udgass · Enterprise decision intelligence, in development</title>
+<meta name="description" content="Udgass is an enterprise decision intelligence engine in development by KPAppWorx: evidence, explicit uncertainty and a record of every decision and its outcome. First application: demand and inventory, with a free browser check and assessment.">
 <link rel="canonical" href="https://www.kpappworx.com/udgass">
 <meta name="theme-color" content="#090D12">
 <link rel="preload" href="assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -15,6 +15,26 @@
 @font-face{font-family:"Inter";src:url(assets/fonts/inter-latin-wght-normal.woff2) format("woff2");font-weight:100 900;font-display:swap}
 @font-face{font-family:"JetBrains Mono";src:url(assets/fonts/jetbrains-mono-latin-wght-normal.woff2) format("woff2");font-weight:100 800;font-display:swap}
 
+/* architecture + direction */
+.arch{margin-top:var(--sp4);border:1px solid var(--ln);border-radius:4px;overflow:hidden}
+.arch .ly{display:grid;grid-template-columns:56px minmax(0,1.1fr) minmax(0,1.6fr) minmax(0,1.3fr);gap:var(--sp3);padding:18px var(--sp3);border-top:1px solid var(--ln);align-items:start}
+.arch .ly:first-child{border-top:0}
+.arch .ly.hd{background:var(--s1);font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.arch .n{font-family:var(--mono);color:var(--ac);font-size:.85rem}
+.arch h3{font-family:var(--sans);font-size:1rem;font-weight:600;margin:0}
+.arch p{margin:0;color:var(--mu);font-size:.92rem;line-height:1.55}
+.arch .ls{font-size:.88rem;color:var(--tx);line-height:1.5}
+.arch .ls b{display:inline-block;font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-bottom:6px;border:1px solid var(--ln2)}
+.arch .ls b.ok{color:var(--ac);border-color:rgba(112,214,195,.45)}
+.arch .ls b.pt{color:var(--am);border-color:rgba(227,185,111,.45)}
+.arch .ls b.pl{color:var(--dim)}
+.arch-note{margin-top:var(--sp2);color:var(--dim);font-size:.85rem}
+.dir{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp3);margin-top:var(--sp4)}
+.dir div{border-top:1px solid var(--ln2);padding-top:var(--sp2)}
+.dir h3{font-family:var(--sans);font-size:1rem;font-weight:600;margin:0 0 6px}
+.dir p{margin:0;color:var(--mu);font-size:.92rem;line-height:1.55}
+.dir .now{border-top-color:var(--ac)}
+@media(max-width:860px){.arch .ly{grid-template-columns:40px minmax(0,1fr);gap:8px var(--sp2)}.arch .ly>p,.arch .ly>.ls{grid-column:2}.arch .ly.hd{display:none}.dir{grid-template-columns:1fr}}
 :root{
   --bg:#090D12; --s1:#101720; --s2:#151F29;
   --tx:#F0F2EF; --mu:#9BA8B5; --dim:#8493A2;
@@ -413,14 +433,14 @@ footer li a:hover{color:var(--ac)}
     </a>
     <span class="status"><i aria-hidden="true"></i>In development</span>
     <nav aria-label="Primary">
-      <a href="#engine">Engine</a>
+      <a href="#engine">Approach</a>
+      <a href="#architecture">Architecture</a>
       <a href="#record">Decision record</a>
-      <a href="#planning">Planning</a>
+      <a href="#planning">First application</a>
       <a href="#try">Try it</a>
-      <a href="#principles">Principles</a>
-      <a href="#founder">Founder</a>
+      <a href="#security">Status</a>
       <a href="/udgass-trust">Trust</a>
-      <a class="btn" href="#assessment">Demand assessment</a>
+      <a class="btn" href="#assessment">Design partners</a>
     </nav>
   </div>
   <div class="prog" id="prog"></div>
@@ -432,15 +452,15 @@ footer li a:hover{color:var(--ac)}
 <section class="hero" id="top" aria-labelledby="h1">
   <div class="wrap">
     <div>
-      <p class="eyebrow">Udgass / Decision intelligence</p>
-      <p class="brandline">Your business has <em>seen the pattern</em> before.</p>
-      <h1 class="h1 h1-plain" id="h1">Make better inventory decisions using your own business history.</h1>
-      <p class="sub">Udgass replays your sales history, measures how accurate estimates would have been, and helps planning teams weigh replenishment decisions with evidence, explicit uncertainty and real outcomes.</p>
+      <p class="eyebrow">Udgass / Enterprise decision intelligence · in development</p>
+      <p class="brandline">From fragmented data to <em>evidence-backed</em> decisions.</p>
+      <h1 class="h1 h1-plain" id="h1">Turn business data into decisions you can trust.</h1>
+      <p class="sub">Udgass is an enterprise decision intelligence engine in development. It is being built to connect business data, evaluate possible outcomes and help organisations decide with evidence, with the assumptions, the uncertainty and a record of what happened next kept together. The first application is demand and inventory.</p>
       <div class="cta">
-        <a class="btn" href="#assessment">Run a demand assessment</a>
-        <a class="btn ghost" href="#engine">Explore the engine</a>
+        <a class="btn" href="#try">Try the first application</a>
+        <a class="btn ghost" href="#assessment">Become a design partner</a>
       </div>
-      <p class="state"><i aria-hidden="true"></i><span>Start with your history. Measure the results before relying on any forecast.</span></p>
+      <p class="state"><i aria-hidden="true"></i><span>Understand what is happening. Explore what could happen next. Evaluate what to do. Learn from the outcome.</span></p>
     </div>
 
     <figure class="netbox" aria-label="Conceptual diagram of how business history becomes an estimate, a decision and a recorded outcome">
@@ -559,7 +579,7 @@ footer li a:hover{color:var(--ac)}
       </div>
     </div>
     <div class="gapnote rv">
-      <p>Results can be measured. Which judgements held up, and why, is harder to see.</p>
+      <p>Data is fragmented, forecasts are uncertain, analysis is separate from the decision, and outcomes are rarely traced back.</p>
       <p>When events, decisions and outcomes stay in separate places, an organisation repeats its reasoning instead of building on it. Udgass is being designed to keep the three connected, so that each decision can be reviewed against what followed.</p>
     </div>
   </div>
@@ -570,8 +590,8 @@ footer li a:hover{color:var(--ac)}
   <div class="wrap">
     <div class="eng-head">
       <div>
-        <p class="eyebrow rv">The engine</p>
-        <h2 class="h2 rv" id="en-t" style="max-width:18ch">From business history to <em>business intelligence.</em></h2>
+        <p class="eyebrow rv">The Udgass approach</p>
+        <h2 class="h2 rv" id="en-t" style="max-width:20ch">Understand, anticipate, evaluate, <em>learn.</em></h2>
       </div>
       <span class="tag rv">Conceptual · In development</span>
     </div>
@@ -615,6 +635,26 @@ footer li a:hover{color:var(--ac)}
       </li>
     </ol>
     <p class="loop"><svg width="28" height="16" viewBox="0 0 28 16" aria-hidden="true"><path d="M26 4H8a6 6 0 100 8h6" fill="none" stroke="#70D6C3" stroke-width="1.2"/><path d="M12 9l3 3-3 3" fill="none" stroke="#70D6C3" stroke-width="1.2" transform="translate(0,-1)"/></svg>The record from stage 05 returns to stage 01, so each cycle starts with more evidence.</p>
+  </div>
+</section>
+
+<!-- C2. ARCHITECTURE -->
+<section id="architecture" aria-labelledby="ar-t">
+  <div class="wrap">
+    <p class="eyebrow rv">The intelligence architecture</p>
+    <h2 class="h2 rv" id="ar-t" style="max-width:22ch">Seven layers, built from the <em>decision</em> outwards.</h2>
+    <p class="lead rv">Udgass is designed as layers with plain interfaces between them, so methods and models can be replaced without rebuilding the rest. The status column says what exists in the code today. Nothing here is a hosted service.</p>
+    <div class="arch rv" role="table" aria-label="Udgass architecture layers and their current status">
+      <div class="ly hd" role="row"><span role="columnheader">Layer</span><span role="columnheader">Purpose</span><span role="columnheader">Responsibility</span><span role="columnheader">Status today</span></div>
+      <div class="ly" role="row"><span class="n" role="cell">01</span><h3 role="cell">Data connectivity</h3><p role="cell">Bring in data from authorised sources, read-only by default.</p><div class="ls" role="cell"><b class="pt">Partial</b><br>File imports (CSV) with preview before commit. No live connectors to ERP, databases or warehouses yet.</div></div>
+      <div class="ly" role="row"><span class="n" role="cell">02</span><h3 role="cell">Data quality and lineage</h3><p role="cell">Validate data, flag problems, keep source and history of every record.</p><div class="ls" role="cell"><b class="ok">Built</b><br>Validation and data-quality reports, versioned corrections that never overwrite, and a fingerprint of the exact data each analysis saw.</div></div>
+      <div class="ly" role="row"><span class="n" role="cell">03</span><h3 role="cell">Business context</h3><p role="cell">Represent products, locations, suppliers, orders and how they relate.</p><div class="ls" role="cell"><b class="pt">Partial</b><br>A fixed model for inventory: products, locations, suppliers, stock, purchase orders and events. Not yet a general, configurable business model.</div></div>
+      <div class="ly" role="row"><span class="n" role="cell">04</span><h3 role="cell">Analytical engine</h3><p role="cell">Replaceable methods for forecasting, change detection and risk.</p><div class="ls" role="cell"><b class="ok">Built</b><br>Simple forecasting methods chosen per product by backtest, change detection with evidence, and a gate that blocks a method change unless it wins on past data. Methods are deliberately basic.</div></div>
+      <div class="ly" role="row"><span class="n" role="cell">05</span><h3 role="cell">Decision evaluation</h3><p role="cell">Compare options against objectives, costs, constraints and uncertainty.</p><div class="ls" role="cell"><b class="pt">Partial</b><br>Inventory scenarios with costs and constraints, compared on the same simulated demand. Inventory decisions only.</div></div>
+      <div class="ly" role="row"><span class="n" role="cell">06</span><h3 role="cell">Decision memory</h3><p role="cell">Keep evidence, assumptions, approval and outcome of each decision.</p><div class="ls" role="cell"><b class="ok">Built</b><br>Append-only decision records with a tamper-evident chain, and later comparison of forecasts with what actually happened.</div></div>
+      <div class="ly" role="row"><span class="n" role="cell">07</span><h3 role="cell">Governance and deployment</h3><p role="cell">Access control, audit, reproducibility and deployment choice.</p><div class="ls" role="cell"><b class="pt">Partial</b><br>Runs on a computer you control. Organisations, API keys with roles, an append-only audit log, export and purge. Not built: single sign-on, a hosted or private-cloud deployment, or a security certification.</div></div>
+    </div>
+    <p class="arch-note rv">Status reflects the Udgass engine source code as of October 2026. Built means implemented and covered by automated tests, not proven on customer data.</p>
   </div>
 </section>
 
@@ -706,9 +746,9 @@ footer li a:hover{color:var(--ac)}
 <!-- E. PLANNING -->
 <section class="plan" id="planning" aria-labelledby="pl-t">
   <div class="wrap">
-    <p class="eyebrow rv">Demand and inventory intelligence</p>
+    <p class="eyebrow rv">First application · Demand and inventory intelligence</p>
     <h2 class="h2 rv" id="pl-t" style="max-width:20ch">Start where better decisions can be <em>measured.</em></h2>
-    <p class="lead rv">Demand and stock are where estimates meet reality every week. This is a hypothetical planning view built on synthetic data. Choose a scenario to see how the range and the inventory position change.</p>
+    <p class="lead rv">Which products are tying up cash, and which keep running out? Demand and stock are where estimates meet reality every week, so it is where Udgass starts. This is a hypothetical planning view built on synthetic data. Choose a scenario to see how the range and the inventory position change.</p>
 
     <div class="pl rv">
       <div class="pl-chart">
@@ -749,16 +789,16 @@ footer li a:hover{color:var(--ac)}
 <section class="try" id="try" aria-labelledby="try-t">
   <div class="wrap">
     <p class="eyebrow rv">Working today</p>
-    <h2 class="h2 rv" id="try-t" style="max-width:20ch">Run a backtest on a file. See how it <em>did.</em></h2>
+    <h2 class="h2 rv" id="try-t" style="max-width:22ch">See where your stock is <em>stuck</em> and where it runs out.</h2>
     <p class="lead rv">This is the first working piece of Udgass. Choose a sales file and it replays your history, makes each estimate using only what was known at the time, and checks it against what happened. It runs in your browser and the file is not uploaded anywhere.</p>
 
     <div class="box2 rv">
       <div class="try-in">
         <div>
           <h3>Your file</h3>
-          <p>A CSV with a date column, a quantity column and, optionally, a product column. Daily or weekly rows both work. It needs at least 56 weeks of history.</p>
+          <p>A sales export saved as CSV: one row per sale or per day, with a date, an item and a quantity. Tally, Busy, Zoho and Excel column names such as <i>Voucher Date</i>, <i>Item Name</i> and <i>Qty</i> are recognised. In Excel use <i>File &gt; Save As &gt; CSV</i>. It needs at least 56 weeks of history.</p>
           <div class="try-opts">
-            <label>Date format<select id="tryfmt"><option value="iso">2024-03-31</option><option value="dmy">31/03/2024</option><option value="mdy">03/31/2024</option></select></label>
+            <label>Date format<select id="tryfmt"><option value="auto" selected>Detect automatically</option><option value="iso">2024-03-31</option><option value="dmy">31/03/2024 or 31-Mar-2024</option><option value="mdy">03/31/2024</option></select></label>
             <label>Estimate how far ahead<select id="tryh"><option value="2">2 weeks</option><option value="4" selected>4 weeks</option><option value="8">8 weeks</option></select></label>
           </div>
           <div class="try-row">
@@ -766,13 +806,14 @@ footer li a:hover{color:var(--ac)}
             <label class="fbtn" for="tryfile">Choose a CSV file</label>
             <button class="fbtn ghost" type="button" id="trysample">Use invented sample data</button>
           </div>
+          <p class="try-priv">Prefer help? <a href="mailto:kpappworx@gmail.com?subject=Udgass%20guided%20check">Book a 20-minute guided check</a>: on a screen-share we do the export together and your file stays on your computer.</p>
           <p class="try-priv">Please do not use files containing personal or sensitive data. The file is read in this page only and nothing is sent to a server.</p>
           <p class="try-st" id="tryst" role="status" aria-live="polite"></p>
         </div>
         <div>
           <h3>What you will see</h3>
           <ul class="try-spec">
-            <li><b>Error of the estimates</b> compared with a simple flat baseline</li>
+            <li><b>Slowing products</b>: recent sales well below earlier sales, where stock may be sitting</li><li><b>Possible stock-outs</b>: steady sellers with sudden weeks of no sales</li><li><b>Error of the estimates</b> compared with a simple flat baseline</li>
             <li><b>How often reality landed inside the stated range</b></li>
             <li><b>Results by product</b>, and the largest misses</li>
             <li><b>The assumptions</b> made about your data</li>
@@ -785,21 +826,40 @@ footer li a:hover{color:var(--ac)}
   </div>
 </section>
 
+<!-- E2. DIRECTION -->
+<section id="direction" aria-labelledby="dv-t">
+  <div class="wrap">
+    <p class="eyebrow rv">Long-term direction</p>
+    <h2 class="h2 rv" id="dv-t" style="max-width:22ch">One architecture. More <em>decisions</em> over time.</h2>
+    <p class="lead rv">The layers are not specific to inventory. If the first application earns its place, the same evidence, evaluation and memory could support other recurring decisions. These are possible directions, not commitments or current features.</p>
+    <div class="dir">
+      <div class="now rv"><h3>Now: demand and inventory</h3><p>What to reorder, how much stock to hold, and where stock is stuck or running out.</p></div>
+      <div class="rv"><h3>Supply and procurement</h3><p>Supplier lead-time risk, delivery performance, and the cost of alternatives.</p></div>
+      <div class="rv"><h3>Working capital</h3><p>Cash tied up in stock and orders, and the trade-off with service levels.</p></div>
+      <div class="rv"><h3>Operations and capacity</h3><p>Matching production or fulfilment capacity to a range of possible demand.</p></div>
+      <div class="rv"><h3>Continuous monitoring</h3><p>Flagging meaningful changes in authorised data to the right person, against thresholds a team sets.</p></div>
+      <div class="rv"><h3>Organisational learning</h3><p>Reviewing which decisions held up, across teams, from the record rather than from memory.</p></div>
+    </div>
+  </div>
+</section>
+
 <!-- F. PRINCIPLES -->
 <section id="principles" aria-labelledby="pn-t">
   <div class="wrap">
-    <p class="eyebrow rv">Engineering principles</p>
+    <p class="eyebrow rv">Trust and governance</p>
     <h2 class="h2 rv" id="pn-t" style="max-width:20ch">Reliance has to be <em>earned.</em></h2>
     <div class="pr-grid">
       <div class="pr rv"><span class="n">1</span><div><h3>Traceable evidence</h3><p>Each estimate is meant to link back to the data and the date it was based on, so a reviewer can reconstruct how it was reached.</p></div></div>
       <div class="pr rv"><span class="n">2</span><div><h3>Explicit uncertainty</h3><p>Outputs are ranges with their assumptions stated. Where the evidence is thin, the record is meant to say so.</p></div></div>
       <div class="pr rv"><span class="n">3</span><div><h3>Measured performance</h3><p>Estimates are compared with what happened, and the results are reported, including where they were wrong.</p></div></div>
       <div class="pr rv"><span class="n">4</span><div><h3>Human accountability</h3><p>Udgass advises and records. A named person makes and owns each decision. It is designed to read data, not to act on your systems.</p></div></div>
+      <div class="pr rv"><span class="n">5</span><div><h3>Read-only, least privilege</h3><p>Integrations are designed to read only what a team authorises. Any future ability to act would need explicit permission and human approval.</p></div></div>
+      <div class="pr rv"><span class="n">6</span><div><h3>Model independence</h3><p>No single model or language model is responsible for the whole system. Methods are replaceable and each change is tested against the record. No language model is used today.</p></div></div>
     </div>
 
     <div class="statusbox rv" id="security">
       <div>
-        <h3>Status and data handling</h3>
+        <h3>Development status and data handling</h3>
         <p>What exists today, stated plainly. The principles above describe intent, not a deployed system.</p>
       </div>
       <dl>
@@ -844,7 +904,7 @@ footer li a:hover{color:var(--ac)}
   <span id="join" class="anchor" aria-hidden="true"></span>
   <div class="wrap">
     <div class="rv">
-      <p class="eyebrow">Demand assessment</p>
+      <p class="eyebrow">Early assessment and design partnership</p>
       <h2 class="h2" id="j-t" style="max-width:17ch">See how your own history would have been <em>forecast.</em></h2>
       <p class="lead">You run the assessment on your own computer with your sales export. It replays past periods using only what was known at the time, compares the estimates with what happened and with simple methods, and shows where they fail. You keep the report.</p>
       <ol class="steps">
@@ -855,6 +915,7 @@ footer li a:hover{color:var(--ac)}
       <dl class="offer">
         <div><dt>What you need</dt><dd>A sales export with date, product and quantity, daily or weekly: at least 56 weeks, ideally two years or more. Optional: stock-on-hand snapshots, purchase orders with receipt dates, and your own past forecasts for a head-to-head comparison.</dd></div>
         <div><dt>What you get</dt><dd>A report covering data quality, which inventory questions your data can and cannot answer, accuracy against simple methods (and against your forecasts, if provided), the products where estimates fail, and an advisory view on whether a pilot is justified.</dd></div>
+        <div><dt>Design partners</dt><dd>We are looking for a small number of businesses to shape the first application with us: a short call each month and honest feedback on whether the results help real decisions. Larger organisations can start with one product group, site or region.</dd></div>
         <div><dt>Cost</dt><dd>Free for the first three companies. In return, we learn how Udgass performs on real data from whatever you choose to share. Publishing any result or testimonial is a separate, optional permission you can decline; nothing is published without your written approval of the exact wording, and never your data. Later assessments and pilots are paid.</dd></div>
         <div><dt>Your data</dt><dd>The assessment runs on your machine and makes no network connections; this was checked by tracing a full run. If you cannot run it yourself, tell us: written data terms come first, and no data is accepted before both sides have signed them.</dd></div>
       </dl>
@@ -881,7 +942,7 @@ footer li a:hover{color:var(--ac)}
     </div>
     <div>
       <h2>Page</h2>
-      <ul><li><a href="#engine">The engine</a></li><li><a href="#record">Decision record</a></li><li><a href="#planning">Planning</a></li><li><a href="#try">Try it</a></li><li><a href="#principles">Principles</a></li><li><a href="/udgass-trust">Trust and evaluation</a></li></ul>
+      <ul><li><a href="#engine">Approach</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#record">Decision record</a></li><li><a href="#planning">First application</a></li><li><a href="#direction">Direction</a></li><li><a href="#try">Try it</a></li><li><a href="#principles">Principles</a></li><li><a href="/udgass-trust">Trust and evaluation</a></li></ul>
     </div>
     <div>
       <h2>KPAppWorx</h2>
@@ -1129,23 +1190,26 @@ var UdgassEngine=(function(){
   }
   /* ---- data ---- */
   function parseCSV(text){
-    var rows=[],row=[],f='',q=false,i=0,n=text.length;
+    var rows=[],row=[],f='',q=false,i=0,n=text.length,fl=text.slice(0,text.indexOf('\n')>0?text.indexOf('\n'):200),D=',';
+    if((fl.match(/;/g)||[]).length>(fl.match(/,/g)||[]).length)D=';';if((fl.match(/\t/g)||[]).length>(fl.match(new RegExp(D,'g'))||[]).length)D='\t';
     if(text.charCodeAt(0)===0xFEFF)i=1;
     for(;i<n;i++){var c=text[i];
       if(q){if(c==='"'){if(text[i+1]==='"'){f+='"';i++}else q=false}else f+=c}
       else if(c==='"')q=true;
-      else if(c===','){row.push(f);f=''}
+      else if(c===D){row.push(f);f=''}
       else if(c==='\n'||c==='\r'){if(c==='\r'&&text[i+1]==='\n')i++;row.push(f);f='';if(row.length>1||row[0]!=='')rows.push(row);row=[]}
       else f+=c}
     if(f!==''||row.length){row.push(f);rows.push(row)}
     return rows;
   }
-  var DN=['date','order_date','day','ds','week','invoice_date'],SN=['sku','product','item','product_id','item_id','product_group'],QN=['quantity','qty','units','units_sold','sales','y','demand'];
-  function pick(hdr,names){var low=hdr.map(function(h){return h.trim().toLowerCase()});for(var i=0;i<names.length;i++){var j=low.indexOf(names[i]);if(j>=0)return j}return -1}
+  var DN=['date','order_date','day','ds','week','invoice_date','voucher_date','vch_date','bill_date','txn_date','transaction_date','posting_date','sale_date','document_date'],SN=['sku','product','item','product_id','item_id','item_name','item_code','stock_item','stock_item_name','product_name','particulars','material','description','product_group'],QN=['quantity','qty','units','units_sold','sold_qty','quantity_sold','billed_qty','actual_qty','outward_qty','outwards','nos','sales','y','demand'];
+  function pick(hdr,names){var low=hdr.map(function(h){return h.trim().toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'')});for(var i=0;i<names.length;i++){var j=low.indexOf(names[i]);if(j>=0)return j}return -1}
   function parseDate(s,fmt){
     s=(s||'').trim();var m,y,mo,d;
-    if(fmt==='iso'){m=/^(\d{4})-(\d{2})-(\d{2})/.exec(s);if(!m)return null;y=+m[1];mo=+m[2];d=+m[3]}
-    else{m=/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{4})$/.exec(s);if(!m)return null;y=+m[3];if(fmt==='dmy'){d=+m[1];mo=+m[2]}else{mo=+m[1];d=+m[2]}}
+    if(fmt==='auto')fmt=/^\d{4}-/.test(s)?'iso':'dmy';
+    if(fmt==='iso'){m=/^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(s);if(!m)return null;y=+m[1];mo=+m[2];d=+m[3]}
+    else if((m=/^(\d{1,2})[\s\/.-]([A-Za-z]{3})[A-Za-z]*[\s\/.-](\d{2}|\d{4})/.exec(s))){mo='janfebmaraprmayjunjulaugsepoctnovdec'.indexOf(m[2].toLowerCase())/3+1;if(mo<1)return null;d=+m[1];y=+m[3];if(y<100)y+=2000}
+    else{m=/^(\d{1,2})[\/.-](\d{1,2})[\/.-](\d{2}|\d{4})/.exec(s);if(!m)return null;y=+m[3];if(y<100)y+=2000;if(fmt==='dmy'){d=+m[1];mo=+m[2]}else{mo=+m[1];d=+m[2]}}
     var t=Date.UTC(y,mo-1,d),dt=new Date(t);
     if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d)return null;
     return t;
@@ -1155,10 +1219,10 @@ var UdgassEngine=(function(){
   function load(text,opt){
     opt=opt||{};var rows=parseCSV(text);if(rows.length<2)throw new Error('The file has no data rows.');
     var hdr=rows[0],dc=pick(hdr,DN),qc=pick(hdr,QN),sc=pick(hdr,SN);
-    if(dc<0||qc<0)throw new Error('Could not find a date column and a quantity column. Columns found: '+hdr.join(', ')+'. Expected names like date, sku, quantity.');
+    if(dc<0||qc<0)throw new Error('Could not find a date column and a quantity column. Columns found: '+hdr.join(', ')+'. Rename them to Date, Item and Qty and try again, or book a guided check.');
     var agg={},skipped={},nrows=0,minW=Infinity,maxW=-Infinity;
     for(var i=1;i<rows.length;i++){var r=rows[i];nrows++;
-      var t=parseDate(r[dc],opt.dateFormat||'iso');if(t===null){skipped['unreadable date']=(skipped['unreadable date']||0)+1;continue}
+      var t=parseDate(r[dc],opt.dateFormat||'auto');if(t===null){skipped['unreadable date']=(skipped['unreadable date']||0)+1;continue}
       var qv=parseFloat(String(r[qc]||'').replace(/,/g,'').trim());if(!isFinite(qv)){skipped['unreadable quantity']=(skipped['unreadable quantity']||0)+1;continue}
       var sku=((sc>=0?r[sc]:'ALL')||'').trim()||'UNKNOWN',w=mondayOf(t);
       (agg[sku]||(agg[sku]={}))[w]=((agg[sku][w])||0)+qv;
@@ -1189,7 +1253,18 @@ var UdgassEngine=(function(){
     return {rows:rows,params:{horizonWeeks:H,stepWeeks:S,minTrainWeeks:MT,intervalLevel:L,origins:origins.length},
       summary:{n:rows.length,wape:w,wapeBaseline:wb,improvement:(wb>0&&wb===wb)?1-w/wb:null,bias:A>0?(A-E)/A:NaN,coverage:rows.filter(function(r){return r.inside}).length/rows.length,bySku:bySku,worst:worst}};
   }
-  return {load:load,backtest:backtest,forecastTotal:forecastTotal,parseCSV:parseCSV};
+  function signals(ds){
+    var slow=[],out=[];
+    Object.keys(ds.series).forEach(function(k){var y=ds.series[k],n=y.length;if(n<26)return;
+      var rec=mean(y.slice(-13)),prev=mean(y.slice(-26,-13));
+      if(prev>0&&rec<prev*0.6)slow.push({sku:k,prev:prev,rec:rec,drop:1-rec/prev});
+      var base=mean(y.filter(function(v){return v>0})),act=y.filter(function(v){return v>0}).length/n,z=0,run=0,maxRun=0;
+      if(act>=0.8){for(var i=4;i<n;i++){if(y[i]===0&&mean(y.slice(i-4,i))>base*0.5){z++;run++;maxRun=Math.max(maxRun,run)}else run=0}}
+      if(z>0)out.push({sku:k,weeks:z,longest:maxRun,typical:base})});
+    slow.sort(function(a,b){return b.drop-a.drop});out.sort(function(a,b){return b.weeks*b.typical-a.weeks*a.typical});
+    return {slow:slow.slice(0,10),out:out.slice(0,10)};
+  }
+  return {load:load,backtest:backtest,forecastTotal:forecastTotal,parseCSV:parseCSV,signals:signals};
 })();
 
 
@@ -1204,7 +1279,7 @@ var UdgassEngine=(function(){
     var s=11;function rnd(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
     function gauss(){var u=1-rnd(),v=rnd();return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
     var skus=[['SKU-A',120,14,.2,0],['SKU-B',60,10,.1,1],['SKU-C',200,20,0,2],['SKU-D',35,6,.3,3],['SKU-E',90,9,-.05,4]],start=Date.UTC(2022,0,3),lines=['date,sku,quantity'];
-    skus.forEach(function(k){for(var i=0;i<156;i++){var v=k[1]+k[3]*i+k[2]*Math.sin(2*Math.PI*(i%52)/52+k[4])+gauss()*k[1]*.08;if(k[0]==='SKU-C'&&i>=100&&i<104)v*=1.6;lines.push(new Date(start+i*604800000).toISOString().slice(0,10)+','+k[0]+','+Math.max(0,Math.round(v)))}});
+    skus.forEach(function(k){for(var i=0;i<156;i++){var v=k[1]+k[3]*i+k[2]*Math.sin(2*Math.PI*(i%52)/52+k[4])+gauss()*k[1]*.08;if(k[0]==='SKU-C'&&i>=100&&i<104)v*=1.6;if(k[0]==='SKU-B'&&(i===120||i===121||i===140))v=0;if(k[0]==='SKU-D'&&i>=143)v*=.45;lines.push(new Date(start+i*604800000).toISOString().slice(0,10)+','+k[0]+','+Math.max(0,Math.round(v)))}});
     return lines.join('\n');
   }
   function render(ds,res,name,invented){
@@ -1214,6 +1289,12 @@ var UdgassEngine=(function(){
     var skipped=Object.keys(q.rowsSkipped).map(function(k){return k+': '+q.rowsSkipped[k]}).join(', ')||'none';
     var h='';
     if(invented)h+='<p class="tag" style="margin-bottom:16px">Invented sample data. Says nothing about real accuracy.</p>';
+    var sg=E.signals(ds);
+    h+='<h4>Where stock may be sitting</h4><p style="color:var(--mu);font-size:.9rem">Products whose last 13 weeks sold at least 40% less than the 13 weeks before. Check what you are holding of these before reordering.</p>';
+    h+=sg.slow.length?'<div class="tw" tabindex="0" role="region" aria-label="Slowing products"><table><tr><th>Product</th><th>Weekly sales before</th><th>Weekly sales recently</th><th>Change</th></tr>'+sg.slow.map(function(r){return '<tr><td>'+esc(r.sku)+'</td><td>'+num(r.prev)+'</td><td>'+num(r.rec)+'</td><td>-'+pct(r.drop,0)+'</td></tr>'}).join('')+'</table></div>':'<p>No product slowed this sharply.</p>';
+    h+='<h4>Possible stock-outs</h4><p style="color:var(--mu);font-size:.9rem">Products that normally sell almost every week but had weeks with no sales right after selling well. That often means the shelf was empty, but it can also be a missing export, so check before acting.</p>';
+    h+=sg.out.length?'<div class="tw" tabindex="0" role="region" aria-label="Possible stock-outs"><table><tr><th>Product</th><th>Weeks with no sales</th><th>Longest gap (weeks)</th><th>Typical weekly sales</th></tr>'+sg.out.map(function(r){return '<tr><td>'+esc(r.sku)+'</td><td>'+r.weeks+'</td><td>'+r.longest+'</td><td>'+num(r.typical)+'</td></tr>'}).join('')+'</table></div>':'<p>No sudden gaps found in steady sellers.</p>';
+    h+='<h4>How well past sales predicted what happened</h4>';
     h+='<div class="tk"><div><b>'+pct(s.wape)+'</b><span>Error (WAPE) of the estimates</span></div><div><b>'+pct(s.wapeBaseline)+'</b><span>Error of a flat 4-week baseline</span></div><div><b>'+pct(s.coverage,0)+'</b><span>Actuals inside the stated range (aims for '+pct(p.intervalLevel,0)+')</span></div><div><b>'+pct(s.bias)+'</b><span>Bias. Positive means estimates ran low</span></div></div>';
     h+='<p style="margin-top:16px">Across '+s.n+' estimates, the method had '+impTxt+'. Coverage was '+near+' the intended '+pct(p.intervalLevel,0)+'.</p>';
     h+='<div class="tnote"><b>How to read this.</b> This measures how a simple method performed on this file, across '+q.skus+' product'+(q.skus===1?'':'s')+', over '+p.horizonWeeks+'-week windows. It does not show how it will perform on future data, and it says nothing about any other business.</div>';
@@ -1231,7 +1312,7 @@ var UdgassEngine=(function(){
     msg('Analysing…');out.hidden=true;
     setTimeout(function(){
       try{
-        var ds=E.load(text,{dateFormat:$('tryfmt').value}),res=E.backtest(ds,{horizon:+$('tryh').value});
+        var ds=E.load(text,{dateFormat:$('tryfmt').value}),res=E.backtest(ds,{horizon:+$('tryh').value});/* needs 56 weeks */
         render(ds,res,name,invented);msg('Done. '+res.summary.n+' estimates replayed.');
         out.setAttribute('tabindex','-1');out.focus({preventScroll:true});out.scrollIntoView({behavior:'smooth',block:'start'});
       }catch(e){out.hidden=true;msg(e.message,true)}
