@@ -86,7 +86,9 @@ section{padding:var(--sp6) 0;position:relative}
 .nav nav a.on::after{content:"";position:absolute;left:12px;right:12px;bottom:6px;height:1px;background:var(--ac)}
 .nav .btn{min-height:44px;padding:0 18px;margin-left:8px;font-size:.92rem}
 .prog{position:absolute;left:0;bottom:-1px;height:1px;background:var(--ac);width:0}
-@media(max-width:940px){.nav nav a:not(.btn){display:none}.nav nav{margin-left:auto}}
+.nav nav a{white-space:nowrap}
+@media(max-width:1180px){.nav nav a:not(.btn){padding:0 8px;font-size:.88rem}}
+@media(max-width:1040px){.nav nav a:not(.btn){display:none}.nav nav{margin-left:auto}}
 @media(max-width:560px){.status{display:none}.nav .btn{padding:0 14px}}
 
 /* hero */
@@ -435,8 +437,7 @@ footer li a:hover{color:var(--ac)}
     <nav aria-label="Primary">
       <a href="#engine">Approach</a>
       <a href="#architecture">Architecture</a>
-      <a href="#record">Decision record</a>
-      <a href="#planning">First application</a>
+      <a href="#planning">Application</a>
       <a href="#try">Try it</a>
       <a href="#security">Status</a>
       <a href="/udgass-trust">Trust</a>
