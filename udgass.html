@@ -395,6 +395,20 @@ footer li a{justify-content:flex-start}
 .f-done .lead{margin-top:0}
 .brief{margin-top:var(--sp3);font-size:.92rem;color:var(--mu)}
 .offer{margin-top:var(--sp4);border-top:1px solid var(--ln)}
+.pricing .plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp3);margin-top:var(--sp5)}
+.pricing .pc{display:flex;flex-direction:column;gap:var(--sp2);padding:var(--sp4) var(--sp3);background:var(--s1);border:1px solid var(--ln)}
+.pricing .pc.main{border-color:var(--ac)}
+.pricing .pc h3{font:400 1.6rem/1.2 var(--serif)}
+.pricing .pc .price{font:400 2.2rem/1.1 var(--serif);color:var(--tx)}
+.pricing .pc .price small{display:block;margin-top:6px;font:400 .9rem/1.4 var(--sans);color:var(--mu)}
+.pricing .pc ul{list-style:none;display:grid;gap:10px;color:var(--mu);font-size:.97rem}
+.pricing .pc li{padding-left:18px;position:relative}
+.pricing .pc li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1px;background:var(--ac)}
+.pricing .pc .btn{margin-top:auto}
+.pricing .pc .tagline{font:500 .72rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--am)}
+.pricing .fine{margin-top:var(--sp4);color:var(--dim);font-size:.92rem;max-width:80ch}
+.pricing .fine p+p{margin-top:var(--sp1)}
+@media(max-width:940px){.pricing .plans{grid-template-columns:minmax(0,1fr)}}
 .offer div{display:grid;grid-template-columns:minmax(0,9em) minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--ln);font-size:.93rem}
 .offer dt{color:var(--tx);font-weight:600}.offer dd{margin:0;color:var(--mu)}
 .anchor{position:absolute;top:0}
@@ -440,6 +454,7 @@ footer li a:hover{color:var(--ac)}
       <a href="#planning">Application</a>
       <a href="#try">Try it</a>
       <a href="#security">Status</a>
+      <a href="#pricing">Pricing</a>
       <a href="/udgass-trust">Trust</a>
       <a class="btn" href="#assessment">Design partners</a>
     </nav>
@@ -869,7 +884,7 @@ footer li a:hover{color:var(--ac)}
         <div><dt>Customer results</dt><dd>None. Examples on this page are illustrative. Measured results so far use invented data only.</dd></div>
         <div><dt>Security certifications</dt><dd>None</dd></div>
         <div><dt>Independent security audit</dt><dd>Not yet carried out</dd></div>
-        <div><dt>Data handling</dt><dd>The demand assessment runs on the company's own computer and makes no network connections. Udgass does not accept company data at present; if that is ever needed, signed written terms on storage, access and deletion come first.</dd></div>
+        <div><dt>Data handling</dt><dd>The demand assessment runs on the company's own computer and makes no network connections. With an Early Access licence, the engine checks the licence key with Lemon Squeezy when an admin activates or refreshes it, sending the key and an installation name only, never business data. Udgass does not accept company data at present; if that is ever needed, signed written terms on storage, access and deletion come first.</dd></div>
         <div><dt>For now</dt><dd>Please do not send sensitive or personal data. Early conversations can use sample or agreed export data.</dd></div>
       </dl>
     </div>
@@ -917,7 +932,7 @@ footer li a:hover{color:var(--ac)}
         <div><dt>What you need</dt><dd>A sales export with date, product and quantity, daily or weekly: at least 56 weeks, ideally two years or more. Optional: stock-on-hand snapshots, purchase orders with receipt dates, and your own past forecasts for a head-to-head comparison.</dd></div>
         <div><dt>What you get</dt><dd>A report covering data quality, which inventory questions your data can and cannot answer, accuracy against simple methods (and against your forecasts, if provided), the products where estimates fail, and an advisory view on whether a pilot is justified.</dd></div>
         <div><dt>Design partners</dt><dd>We are looking for a small number of businesses to shape the first application with us: a short call each month and honest feedback on whether the results help real decisions. Larger organisations can start with one product group, site or region.</dd></div>
-        <div><dt>Cost</dt><dd>Free for the first three companies. In return, we learn how Udgass performs on real data from whatever you choose to share. Publishing any result or testimonial is a separate, optional permission you can decline; nothing is published without your written approval of the exact wording, and never your data. Later assessments and pilots are paid.</dd></div>
+        <div><dt>Cost</dt><dd>Free for the first three companies. In return, we learn how Udgass performs on real data from whatever you choose to share. Publishing any result or testimonial is a separate, optional permission you can decline; nothing is published without your written approval of the exact wording, and never your data. Later assessments and pilots are paid; see <a href="#pricing">Pricing</a>.</dd></div>
         <div><dt>Your data</dt><dd>The assessment runs on your machine and makes no network connections; this was checked by tracing a full run. If you cannot run it yourself, tell us: written data terms come first, and no data is accepted before both sides have signed them.</dd></div>
       </dl>
       <p class="brief"><a href="/assets/udgass-sample-report-illustrative.html" target="_blank" rel="noopener">See a sample report (illustrative, synthetic data)</a> · <a href="/assets/udgass-sample-sales-synthetic.csv" download>Sample sales file (CSV)</a> · <a href="/udgass-trust#evaluate">Data requirements and how it runs</a></p>
@@ -933,6 +948,58 @@ footer li a:hover{color:var(--ac)}
     <div class="fcard rv" data-form="cta"></div>
   </div>
 </section>
+
+<!-- I. PRICING -->
+<section class="pricing" id="pricing" aria-labelledby="pr-t">
+  <div class="wrap">
+    <div class="rv">
+      <p class="eyebrow">Pricing</p>
+      <h2 class="h2" id="pr-t">Start free. Pay when it earns a place in <em>your week.</em></h2>
+      <p class="lead">The Health Check is free at any size. The engine runs on your own computer; a subscription unlocks it for your whole catalogue. Larger organisations can evaluate Udgass on their own history under a signed agreement.</p>
+    </div>
+    <div class="plans">
+      <article class="pc rv" aria-labelledby="pc1">
+        <h3 id="pc1">Free</h3>
+        <p class="price">$0<small>No card, no account</small></p>
+        <ul>
+          <li>Stock &amp; Cash Health Check on any number of products</li>
+          <li>The engine (patterns, forecasts with ranges, backtests, reorder suggestions, scenarios, decision records) on up to 25 products</li>
+          <li>Your data, records and exports always stay available</li>
+        </ul>
+        <a class="btn ghost" href="#assessment">Get the assessment kit</a>
+      </article>
+      <article class="pc main rv" aria-labelledby="pc2">
+        <p class="tagline">Early Access · founding price</p>
+        <h3 id="pc2">Early Access</h3>
+        <p class="price">$149 / month<small>or $1,490 / year. Price held for 12 months for early customers.</small></p>
+        <ul>
+          <li>Everything in Free, with the engine on your whole catalogue</li>
+          <li>Runs on your computer; your data is not uploaded</li>
+          <li>Updates during Early Access</li>
+          <li>Email support from the founder (no response-time guarantee)</li>
+          <li>Cancel any time; access runs to the end of the paid period</li>
+        </ul>
+        <!-- CHECKOUT: replace href with the Lemon Squeezy checkout link and the label with "Subscribe" once the product exists -->
+        <a class="btn" id="ea-checkout" href="#assessment">Ask for Early Access</a>
+      </article>
+      <article class="pc rv" aria-labelledby="pc3">
+        <h3 id="pc3">Enterprise evaluation</h3>
+        <p class="price">Fixed fee<small>Agreed per scope, invoiced</small></p>
+        <ul>
+          <li>An evaluation protocol agreed in writing before any data is examined</li>
+          <li>Runs in your environment, read-only, on extracts you choose</li>
+          <li>A report of the result under that protocol, whatever it shows</li>
+          <li>Signed data and confidentiality terms first</li>
+        </ul>
+        <a class="btn ghost" href="mailto:hello@kpappworx.com?subject=Udgass%20enterprise%20evaluation">Talk to us</a>
+      </article>
+    </div>
+    <div class="fine rv">
+      <p>Early Access is early software: results so far come from public datasets and simulations, and Udgass has not yet been shown to improve a real company's results. Forecasts and suggestions are advisory; you make every decision. There is no hosted service, single sign-on or security certification.</p>
+      <p>Payments are handled by Lemon Squeezy, which acts as the merchant of record and adds any applicable sales tax. Prices in US dollars.</p>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -943,7 +1010,7 @@ footer li a:hover{color:var(--ac)}
     </div>
     <div>
       <h2>Page</h2>
-      <ul><li><a href="#engine">Approach</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#record">Decision record</a></li><li><a href="#planning">First application</a></li><li><a href="#direction">Direction</a></li><li><a href="#try">Try it</a></li><li><a href="#principles">Principles</a></li><li><a href="/udgass-trust">Trust and evaluation</a></li></ul>
+      <ul><li><a href="#engine">Approach</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#record">Decision record</a></li><li><a href="#planning">First application</a></li><li><a href="#direction">Direction</a></li><li><a href="#try">Try it</a></li><li><a href="#principles">Principles</a></li><li><a href="#pricing">Pricing</a></li><li><a href="/udgass-trust">Trust and evaluation</a></li></ul>
     </div>
     <div>
       <h2>KPAppWorx</h2>
