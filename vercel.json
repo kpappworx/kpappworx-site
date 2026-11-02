@@ -3,6 +3,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "kpappworx.com"
+        }
+      ],
+      "destination": "https://www.kpappworx.com/:path*",
+      "permanent": true
+    },
+    {
       "source": "/quarterdeck",
       "destination": "/products/quarterdeck",
       "permanent": true

@@ -7,6 +7,22 @@
 <meta name="description" content="Udgass is an enterprise decision intelligence engine in development by KPAppWorx: evidence, explicit uncertainty and a record of every decision and its outcome. First application: demand and inventory, with a free browser check and assessment.">
 <link rel="canonical" href="https://www.kpappworx.com/udgass">
 <meta name="theme-color" content="#090D12">
+<link rel="icon" href="/assets/img/udgass/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/assets/img/udgass/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/assets/img/udgass/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KPAppWorx">
+<meta property="og:title" content="Udgass: decisions you can trust, with the evidence kept">
+<meta property="og:description" content="An enterprise decision intelligence engine in development by KPAppWorx. Evidence, explicit uncertainty and a record of every decision and its outcome. First application: demand and inventory.">
+<meta property="og:url" content="https://www.kpappworx.com/udgass">
+<meta property="og:image" content="https://www.kpappworx.com/assets/img/udgass/udgass-og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Udgass by KPAppWorx: enterprise decision intelligence, in development. Evidence, uncertainty, decision records, outcomes.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Udgass: decisions you can trust, with the evidence kept">
+<meta name="twitter:description" content="An enterprise decision intelligence engine in development by KPAppWorx. First application: demand and inventory.">
+<meta name="twitter:image" content="https://www.kpappworx.com/assets/img/udgass/udgass-og.png">
 <link rel="preload" href="assets/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -88,8 +104,18 @@ section{padding:var(--sp6) 0;position:relative}
 .prog{position:absolute;left:0;bottom:-1px;height:1px;background:var(--ac);width:0}
 .nav nav a{white-space:nowrap}
 @media(max-width:1180px){.nav nav a:not(.btn){padding:0 8px;font-size:.88rem}}
-@media(max-width:1040px){.nav nav a:not(.btn){display:none}.nav nav{margin-left:auto}}
-@media(max-width:560px){.status{display:none}.nav .btn{padding:0 14px}}
+.nav .menu{display:none;min-height:44px;padding:0 14px;margin-left:auto;background:transparent;color:var(--tx);border:1px solid var(--ln2);border-radius:2px;font:500 .9rem var(--sans);cursor:pointer}
+.nav .menu:hover{border-color:var(--ac);color:var(--ac)}
+@media(max-width:1040px){
+  .nav .menu{display:inline-flex;align-items:center}
+  .nav nav{margin-left:0}
+  .nav nav a:not(.btn){display:none}
+  .nav.open nav{position:absolute;top:100%;left:0;right:0;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:8px var(--gut) 16px;background:var(--bg);border-bottom:1px solid var(--ln2);max-height:calc(100vh - 68px);overflow-y:auto}
+  .nav.open nav a:not(.btn){display:flex;justify-content:flex-start;padding:0 4px;min-height:48px;font-size:1rem;border-bottom:1px solid var(--ln)}
+  .nav.open nav a.on::after{left:4px;right:auto;width:24px}
+  .nav.open nav .btn{margin:12px 0 0}
+}
+@media(max-width:560px){.status{display:none}.nav .btn{padding:0 14px}.nav:not(.open) nav{display:none}}
 
 /* hero */
 .hero{padding:clamp(40px,7vw,96px) 0 var(--sp5)}
@@ -368,7 +394,7 @@ footer li a{justify-content:flex-start}
 .steps{margin-top:var(--sp4);border-top:1px solid var(--ln)}
 .steps li{display:grid;grid-template-columns:32px 1fr;gap:8px;padding:12px 0;border-bottom:1px solid var(--ln);color:var(--mu);font-size:.95rem}
 .steps li b{font:500 .72rem var(--mono);color:var(--ac);padding-top:.3em}
-.fcard{border:1px solid var(--ln2);background:var(--s1);padding:clamp(20px,3vw,36px)}
+.fcard{border:1px solid var(--ln2);background:var(--s1);padding:clamp(20px,3vw,36px);scroll-margin-top:88px}
 @media(min-width:901px){#assessment .fcard{position:sticky;top:96px}}
 .fcard h3{font:400 1.6rem/1.2 var(--serif);margin-bottom:8px}
 .f-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
@@ -405,6 +431,8 @@ footer li a{justify-content:flex-start}
 .pricing .pc li{padding-left:18px;position:relative}
 .pricing .pc li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:1px;background:var(--ac)}
 .pricing .pc .btn{margin-top:auto}
+.pricing .pc .alt{margin-top:-6px;font-size:.88rem;color:var(--dim);text-align:center}
+.pricing .pc .alt a{color:var(--mu)}
 .pricing .pc .tagline{font:500 .72rem/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--am)}
 .pricing .fine{margin-top:var(--sp4);color:var(--dim);font-size:.92rem;max-width:80ch}
 .pricing .fine p+p{margin-top:var(--sp1)}
@@ -425,6 +453,8 @@ footer p{color:var(--mu);font-size:.88rem;margin-top:12px;max-width:42ch}
 footer h2{font:500 .68rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
 footer li a{display:inline-flex;align-items:center;min-height:44px;color:var(--mu);text-decoration:none;font-size:.93rem}
 footer li a:hover{color:var(--ac)}
+footer .wrap.legal{display:block;margin-top:var(--sp4)}
+footer .wrap.legal p{margin:0;max-width:none;padding-top:var(--sp3);border-top:1px solid var(--ln);color:var(--dim);font-size:.82rem}
 @media(max-width:700px){footer .wrap{grid-template-columns:1fr}}
 
 /* reveal */
@@ -448,7 +478,8 @@ footer li a:hover{color:var(--ac)}
       Udgass
     </a>
     <span class="status"><i aria-hidden="true"></i>In development</span>
-    <nav aria-label="Primary">
+    <button class="menu" type="button" aria-expanded="false" aria-controls="primary-nav">Menu</button>
+    <nav aria-label="Primary" id="primary-nav">
       <a href="#engine">Approach</a>
       <a href="#architecture">Architecture</a>
       <a href="#planning">Application</a>
@@ -822,7 +853,7 @@ footer li a:hover{color:var(--ac)}
             <label class="fbtn" for="tryfile">Choose a CSV file</label>
             <button class="fbtn ghost" type="button" id="trysample">Use invented sample data</button>
           </div>
-          <p class="try-priv">Prefer help? <a href="mailto:kpappworx@gmail.com?subject=Udgass%20guided%20check">Book a 20-minute guided check</a>: on a screen-share we do the export together and your file stays on your computer.</p>
+          <p class="try-priv">Prefer help? <a href="mailto:hello@kpappworx.com?subject=Udgass%20guided%20check">Book a 20-minute guided check</a>: on a screen-share we do the export together and your file stays on your computer.</p>
           <p class="try-priv">Please do not use files containing personal or sensitive data. The file is read in this page only and nothing is sent to a server.</p>
           <p class="try-st" id="tryst" role="status" aria-live="polite"></p>
         </div>
@@ -945,7 +976,7 @@ footer li a:hover{color:var(--ac)}
         </details>
       </div>
     </div>
-    <div class="fcard rv" data-form="cta"></div>
+    <div class="fcard rv" id="request" data-form="cta"></div>
   </div>
 </section>
 
@@ -966,7 +997,7 @@ footer li a:hover{color:var(--ac)}
           <li>The full engine on up to 25 products: change detection, forecasts with ranges, backtests, reorder suggestions, stock scenarios, decision records and outcome tracking</li>
           <li>Above 25 products the engine's analyses stop with a clear message; your data, records and exports stay available</li>
         </ul>
-        <a class="btn ghost" href="#assessment">Get the assessment kit</a>
+        <a class="btn ghost" href="#request" data-path="assessment">Get the free assessment</a>
       </article>
       <article class="pc main rv" aria-labelledby="pc2">
         <p class="tagline">Introductory Early Access pricing</p>
@@ -984,7 +1015,7 @@ footer li a:hover{color:var(--ac)}
           <li>Cancel any time; access runs to the end of the paid period</li>
         </ul>
         <!-- CHECKOUT: replace href with the Lemon Squeezy checkout link and the label with "Subscribe" once the product exists -->
-        <a class="btn" id="ea-checkout" href="#assessment">Ask for Early Access</a>
+        <a class="btn" id="ea-checkout" href="#request" data-path="early-access">Ask for Early Access</a>
       </article>
       <article class="pc rv" aria-labelledby="pc3">
         <h3 id="pc3">Enterprise evaluation</h3>
@@ -995,12 +1026,13 @@ footer li a:hover{color:var(--ac)}
           <li>A report of the result under that protocol, whatever it shows</li>
           <li>Data and confidentiality terms signed first</li>
         </ul>
-        <a class="btn ghost" href="mailto:hello@kpappworx.com?subject=Udgass%20enterprise%20evaluation">Talk to us</a>
+        <a class="btn ghost" href="#request" data-path="enterprise">Request an enterprise evaluation</a>
+        <p class="alt">Or email <a href="mailto:hello@kpappworx.com?subject=Udgass%20enterprise%20evaluation">hello@kpappworx.com</a></p>
       </article>
     </div>
     <div class="fine rv">
       <p>Udgass is early software. Results so far come from public datasets and simulations; it has not yet been shown to improve a real company's results. Forecasts and suggestions are advisory, and you make every decision. There is no hosted service, single sign-on or security certification yet.</p>
-      <p>Prices are in US dollars. Payments will be handled by Lemon Squeezy, which acts as the merchant of record and adds any applicable sales tax. Until checkout opens, Early Access starts with a request through the form above.</p>
+      <p>Prices are in US dollars. Payments will be handled by Lemon Squeezy, which acts as the merchant of record and adds any applicable sales tax. Until checkout opens, Early Access starts with a request through the form above; choose Early Access there.</p>
     </div>
   </div>
 </section>
@@ -1013,20 +1045,31 @@ footer li a:hover{color:var(--ac)}
       <p>A product of KPAppWorx. In early development. No production deployments, customer results or security certifications yet.</p>
     </div>
     <div>
-      <h2>Page</h2>
+      <h2>On this page</h2>
       <ul><li><a href="#engine">Approach</a></li><li><a href="#architecture">Architecture</a></li><li><a href="#record">Decision record</a></li><li><a href="#planning">First application</a></li><li><a href="#direction">Direction</a></li><li><a href="#try">Try it</a></li><li><a href="#principles">Principles</a></li><li><a href="#pricing">Pricing</a></li><li><a href="/udgass-trust">Trust and evaluation</a></li></ul>
     </div>
     <div>
-      <h2>KPAppWorx</h2>
-      <ul><li><a href="/">KPAppWorx</a></li><li><a href="/privacy">Privacy</a></li><li><a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></li></ul>
+      <h2>Company and legal</h2>
+      <ul><li><a href="/">KPAppWorx</a></li><li><a href="/privacy">Privacy policy</a></li><li><a href="/terms">Terms of service</a></li><li><a href="mailto:hello@kpappworx.com">hello@kpappworx.com</a></li></ul>
     </div>
+  </div>
+  <div class="wrap legal">
+    <p>© 2026 KPAppWorx Technologies Private Limited · Bengaluru, Karnataka, India</p>
   </div>
 </footer>
 
 <template id="tpl-form">
   <div class="f1">
-    <h3>Request the assessment</h3>
-    <p class="f-note" style="margin-top:0">Start with your work email. We reply with the assessment kit and a data checklist. Two optional questions follow.</p>
+    <h3 data-path-title>Request the assessment</h3>
+    <p class="f-note" style="margin-top:0" data-path-note>Start with your work email. We reply with the assessment kit and a data checklist. Two optional questions follow.</p>
+    <fieldset class="q paths" style="border:0;padding:0;margin:16px 0 0"><legend class="sr">What would you like?</legend>
+      <span aria-hidden="true" style="display:block;font-weight:600;font-size:.93rem;margin-bottom:10px">What would you like?</span>
+      <div class="chips">
+        <label><input type="radio" name="path" value="assessment" checked><span>Free assessment</span></label>
+        <label><input type="radio" name="path" value="early-access"><span>Early Access</span></label>
+        <label><input type="radio" name="path" value="enterprise"><span>Enterprise evaluation</span></label>
+      </div>
+    </fieldset>
     <form class="f-row" novalidate>
       <label class="sr" for="">Work email</label>
       <input type="email" name="email" placeholder="name@company.com" autocomplete="email" inputmode="email" required>
@@ -1074,12 +1117,27 @@ footer li a:hover{color:var(--ac)}
   if(pg&&io){new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){setTimeout(function(){pg.classList.add('joined')},reduce?0:500);o.disconnect()}})},{threshold:.5}).observe(pg)}else if(pg){pg.classList.add('joined')}
 
   /* nav progress + active link */
-  var prog=$('#prog'),links=$$('.nav nav a[href^="#"]:not(.btn)'),secs=links.map(function(a){return $(a.getAttribute('href'))});
+  var prog=$('#prog'),links=$$('.nav nav a[href^="#"]:not(.btn)');
+  /* page position of each linked section, from the layout (offsetTop is relative to the nearest positioned parent,
+     which put Status at the top of the page). The assessment section has no menu item, so it clears the highlight. */
+  function top(el){return el?el.getBoundingClientRect().top+scrollY:Infinity}
   function onScroll(){
     var h=document.documentElement,max=h.scrollHeight-innerHeight;
     prog.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';
-    var cur=-1,y=scrollY+140,as=$('#assessment');secs.forEach(function(s,i){if(s&&s.offsetTop<=y)cur=i});if(as&&as.offsetTop<=y)cur=-1;
-    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+    var y=scrollY+140,marks=links.map(function(a,i){return {i:i,t:top($(a.getAttribute('href')))}});
+    var as=$('#assessment');if(as)marks.push({i:-1,t:top(as)});
+    var cur=-1,best=-Infinity;marks.forEach(function(m){if(m.t<=y&&m.t>best){best=m.t;cur=m.i}});
+    if(scrollY+innerHeight>=h.scrollHeight-4){var pr=links.findIndex(function(a){return a.getAttribute('href')==='#pricing'});if(pr>=0)cur=pr}
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur);if(i===cur)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
+  }
+  /* small screens: menu button opens and closes the navigation */
+  var nav=$('header.nav'),mb=$('.nav .menu');
+  function setMenu(open){nav.classList.toggle('open',open);mb.setAttribute('aria-expanded',open?'true':'false');mb.textContent=open?'Close':'Menu'}
+  if(mb){
+    mb.addEventListener('click',function(){setMenu(!nav.classList.contains('open'))});
+    $$('.nav nav a').forEach(function(a){a.addEventListener('click',function(){setMenu(false)})});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&nav.classList.contains('open')){setMenu(false);mb.focus()}});
+    addEventListener('resize',function(){if(innerWidth>1040&&nav.classList.contains('open'))setMenu(false)});
   }
   addEventListener('scroll',onScroll,{passive:true});onScroll();
 
@@ -1408,6 +1466,21 @@ var UdgassEngine=(function(){
   var mounts=[].slice.call(document.querySelectorAll('[data-form]'));
   var views=[];
   var EMAIL=/^[^\s@]{1,64}@[^\s@]+\.[^\s@]{2,}$/;
+  var PATHS={
+    'assessment':{title:'Request the assessment',button:'Request the assessment',note:'Start with your work email. We reply with the assessment kit and a data checklist. Two optional questions follow.',done:'We will reply by email with the assessment kit and the data checklist.'},
+    'early-access':{title:'Ask for Early Access',button:'Ask for Early Access',note:'Checkout is not open yet. Leave your work email and we reply with how Early Access works and when you can start. Two optional questions follow.',done:'We will reply by email about Early Access and when you can start.'},
+    'enterprise':{title:'Request an enterprise evaluation',button:'Request an evaluation',note:'Leave your work email and we reply to agree the scope and an evaluation protocol before any data is examined. Two optional questions follow.',done:'We will reply by email to agree the scope of an evaluation.'}
+  };
+  var path='assessment';
+  function setPath(p){
+    if(!PATHS[p])return;path=p;
+    views.forEach(function(v){
+      var r=v.root.querySelector('.paths input[type=radio][value="'+p+'"]');if(r)r.checked=true;
+      var t=v.root.querySelector('[data-path-title]'),n=v.root.querySelector('[data-path-note]'),b=v.root.querySelector('.f1 form button');
+      if(t)t.textContent=PATHS[p].title;if(n)n.textContent=PATHS[p].note;if(b&&!b.disabled)b.textContent=PATHS[p].button;
+    });
+  }
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('[data-path]');if(a)setPath(a.getAttribute('data-path'))});
   function post(payload){
     return post1(payload).catch(function(e){
       if(e&&(e.code==='noendpoint'||e.code==='unconfirmed'))throw e;
@@ -1439,19 +1512,20 @@ var UdgassEngine=(function(){
     var f1=root.querySelector('.f1 form'),em=f1.querySelector('input'),lab=f1.querySelector('label'),
         s1=root.querySelector('.f1 .f-status'),b1=f1.querySelector('button');
     em.id='em-'+idx;lab.setAttribute('for',em.id);
+    [].slice.call(root.querySelectorAll('.paths input[type=radio]')).forEach(function(r){r.name='path-'+idx;r.addEventListener('change',function(){if(r.checked)setPath(r.value)})});
     f1.addEventListener('submit',function(ev){
       ev.preventDefault();
       var val=em.value.trim();
       if(!EMAIL.test(val)){status(s1,'Please enter a valid email address.','err');em.focus();return}
       b1.disabled=true;b1.textContent='Saving…';status(s1,'');
-      post({step:1,id:state.id,email:val,source:'kpappworx.com/udgass'}).then(function(){
+      post({step:1,id:state.id,email:val,source:'kpappworx.com/udgass · '+path}).then(function(){
         state.saved1=true;state.email=val;views.forEach(function(x){show(x,'f2')});
         var h=v.root.querySelector('.f2 h3');if(h){h.setAttribute('tabindex','-1');h.focus()}
-      }).catch(function(e){status(s1,failText(e),'err')}).then(function(){b1.disabled=false;b1.textContent='Request the assessment'});
+      }).catch(function(e){status(s1,failText(e),'err')}).then(function(){b1.disabled=false;b1.textContent=PATHS[path].button});
     });
     var f2=root.querySelector('.f2 form'),s2=root.querySelector('.f2 .f-status'),b2=f2.querySelector('button[type=submit]'),skip=f2.querySelector('[data-skip]');
     function done(title,body){views.forEach(function(x){var d=x.root.querySelector('.f-done');d.querySelector('h3').textContent=title;d.querySelector('.lead').textContent=body;show(x,'f-done')})}
-    skip.addEventListener('click',function(){done("Request received.","We will reply by email with the assessment kit and the data checklist. Thank you.")});
+    skip.addEventListener('click',function(){done("Request received.",PATHS[path].done+" Thank you.")});
     f2.addEventListener('submit',function(ev){
       ev.preventDefault();
       var ch=[].slice.call(f2.querySelectorAll('input[name=challenge]:checked')).map(function(i){return i.value});
@@ -1459,7 +1533,7 @@ var UdgassEngine=(function(){
       if(!ch.length&&!size&&!call){skip.click();return}
       b2.disabled=true;b2.textContent='Saving…';status(s2,'');
       post({step:2,id:state.id,challenge:ch.join(', '),size:size,call:call?'yes':''}).then(function(){
-        state.saved2=true;done('Thank you. That is saved.',"We will reply by email with the assessment kit and the data checklist.");
+        state.saved2=true;done('Thank you. That is saved.',PATHS[path].done);
       }).catch(function(e){status(s2,failText(e),'err')}).then(function(){b2.disabled=false;b2.textContent='Send'});
     });
   });
